@@ -1,0 +1,604 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		42697C9B2534402800EA6275 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42697C9A2534402800EA6275 /* AppDelegate.swift */; };
+		42697C9D2534402800EA6275 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42697C9C2534402800EA6275 /* ViewController.swift */; };
+		42697CA02534402800EA6275 /* Zelda.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 42697C9E2534402800EA6275 /* Zelda.xcdatamodeld */; };
+		42697CA22534402900EA6275 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 42697CA12534402900EA6275 /* Assets.xcassets */; };
+		42697CA52534402900EA6275 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 42697CA32534402900EA6275 /* Main.storyboard */; };
+		42697CB12534402900EA6275 /* ZeldaTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42697CB02534402900EA6275 /* ZeldaTests.swift */; };
+		42697CBC2534402900EA6275 /* ZeldaUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42697CBB2534402900EA6275 /* ZeldaUITests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		42697CAD2534402900EA6275 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 42697C8F2534402800EA6275 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 42697C962534402800EA6275;
+			remoteInfo = Zelda;
+		};
+		42697CB82534402900EA6275 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 42697C8F2534402800EA6275 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 42697C962534402800EA6275;
+			remoteInfo = Zelda;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		42697C972534402800EA6275 /* Zelda.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Zelda.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		42697C9A2534402800EA6275 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		42697C9C2534402800EA6275 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		42697C9F2534402800EA6275 /* Zelda.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Zelda.xcdatamodel; sourceTree = "<group>"; };
+		42697CA12534402900EA6275 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		42697CA42534402900EA6275 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		42697CA62534402900EA6275 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		42697CA72534402900EA6275 /* Zelda.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Zelda.entitlements; sourceTree = "<group>"; };
+		42697CAC2534402900EA6275 /* ZeldaTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ZeldaTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		42697CB02534402900EA6275 /* ZeldaTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZeldaTests.swift; sourceTree = "<group>"; };
+		42697CB22534402900EA6275 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		42697CB72534402900EA6275 /* ZeldaUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ZeldaUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		42697CBB2534402900EA6275 /* ZeldaUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZeldaUITests.swift; sourceTree = "<group>"; };
+		42697CBD2534402900EA6275 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		42697C942534402800EA6275 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		42697CA92534402900EA6275 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		42697CB42534402900EA6275 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		42697C8E2534402800EA6275 = {
+			isa = PBXGroup;
+			children = (
+				42697C992534402800EA6275 /* Zelda */,
+				42697CAF2534402900EA6275 /* ZeldaTests */,
+				42697CBA2534402900EA6275 /* ZeldaUITests */,
+				42697C982534402800EA6275 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		42697C982534402800EA6275 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				42697C972534402800EA6275 /* Zelda.app */,
+				42697CAC2534402900EA6275 /* ZeldaTests.xctest */,
+				42697CB72534402900EA6275 /* ZeldaUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		42697C992534402800EA6275 /* Zelda */ = {
+			isa = PBXGroup;
+			children = (
+				42697C9A2534402800EA6275 /* AppDelegate.swift */,
+				42697C9C2534402800EA6275 /* ViewController.swift */,
+				42697CA12534402900EA6275 /* Assets.xcassets */,
+				42697CA32534402900EA6275 /* Main.storyboard */,
+				42697CA62534402900EA6275 /* Info.plist */,
+				42697CA72534402900EA6275 /* Zelda.entitlements */,
+				42697C9E2534402800EA6275 /* Zelda.xcdatamodeld */,
+			);
+			path = Zelda;
+			sourceTree = "<group>";
+		};
+		42697CAF2534402900EA6275 /* ZeldaTests */ = {
+			isa = PBXGroup;
+			children = (
+				42697CB02534402900EA6275 /* ZeldaTests.swift */,
+				42697CB22534402900EA6275 /* Info.plist */,
+			);
+			path = ZeldaTests;
+			sourceTree = "<group>";
+		};
+		42697CBA2534402900EA6275 /* ZeldaUITests */ = {
+			isa = PBXGroup;
+			children = (
+				42697CBB2534402900EA6275 /* ZeldaUITests.swift */,
+				42697CBD2534402900EA6275 /* Info.plist */,
+			);
+			path = ZeldaUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		42697C962534402800EA6275 /* Zelda */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 42697CC02534402900EA6275 /* Build configuration list for PBXNativeTarget "Zelda" */;
+			buildPhases = (
+				42697C932534402800EA6275 /* Sources */,
+				42697C942534402800EA6275 /* Frameworks */,
+				42697C952534402800EA6275 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Zelda;
+			productName = Zelda;
+			productReference = 42697C972534402800EA6275 /* Zelda.app */;
+			productType = "com.apple.product-type.application";
+		};
+		42697CAB2534402900EA6275 /* ZeldaTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 42697CC32534402900EA6275 /* Build configuration list for PBXNativeTarget "ZeldaTests" */;
+			buildPhases = (
+				42697CA82534402900EA6275 /* Sources */,
+				42697CA92534402900EA6275 /* Frameworks */,
+				42697CAA2534402900EA6275 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				42697CAE2534402900EA6275 /* PBXTargetDependency */,
+			);
+			name = ZeldaTests;
+			productName = ZeldaTests;
+			productReference = 42697CAC2534402900EA6275 /* ZeldaTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		42697CB62534402900EA6275 /* ZeldaUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 42697CC62534402900EA6275 /* Build configuration list for PBXNativeTarget "ZeldaUITests" */;
+			buildPhases = (
+				42697CB32534402900EA6275 /* Sources */,
+				42697CB42534402900EA6275 /* Frameworks */,
+				42697CB52534402900EA6275 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				42697CB92534402900EA6275 /* PBXTargetDependency */,
+			);
+			name = ZeldaUITests;
+			productName = ZeldaUITests;
+			productReference = 42697CB72534402900EA6275 /* ZeldaUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		42697C8F2534402800EA6275 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1220;
+				LastUpgradeCheck = 1220;
+				TargetAttributes = {
+					42697C962534402800EA6275 = {
+						CreatedOnToolsVersion = 12.2;
+					};
+					42697CAB2534402900EA6275 = {
+						CreatedOnToolsVersion = 12.2;
+						TestTargetID = 42697C962534402800EA6275;
+					};
+					42697CB62534402900EA6275 = {
+						CreatedOnToolsVersion = 12.2;
+						TestTargetID = 42697C962534402800EA6275;
+					};
+				};
+			};
+			buildConfigurationList = 42697C922534402800EA6275 /* Build configuration list for PBXProject "Zelda" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 42697C8E2534402800EA6275;
+			productRefGroup = 42697C982534402800EA6275 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				42697C962534402800EA6275 /* Zelda */,
+				42697CAB2534402900EA6275 /* ZeldaTests */,
+				42697CB62534402900EA6275 /* ZeldaUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		42697C952534402800EA6275 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				42697CA22534402900EA6275 /* Assets.xcassets in Resources */,
+				42697CA52534402900EA6275 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		42697CAA2534402900EA6275 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		42697CB52534402900EA6275 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		42697C932534402800EA6275 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				42697C9D2534402800EA6275 /* ViewController.swift in Sources */,
+				42697CA02534402800EA6275 /* Zelda.xcdatamodeld in Sources */,
+				42697C9B2534402800EA6275 /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		42697CA82534402900EA6275 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				42697CB12534402900EA6275 /* ZeldaTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		42697CB32534402900EA6275 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				42697CBC2534402900EA6275 /* ZeldaUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		42697CAE2534402900EA6275 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 42697C962534402800EA6275 /* Zelda */;
+			targetProxy = 42697CAD2534402900EA6275 /* PBXContainerItemProxy */;
+		};
+		42697CB92534402900EA6275 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 42697C962534402800EA6275 /* Zelda */;
+			targetProxy = 42697CB82534402900EA6275 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		42697CA32534402900EA6275 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				42697CA42534402900EA6275 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		42697CBE2534402900EA6275 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 11.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		42697CBF2534402900EA6275 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 11.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = macosx;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+			};
+			name = Release;
+		};
+		42697CC12534402900EA6275 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Zelda/Zelda.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = S833P2K5YV;
+				ENABLE_HARDENED_RUNTIME = YES;
+				INFOPLIST_FILE = Zelda/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = biz.biubiubiu.Zelda;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		42697CC22534402900EA6275 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Zelda/Zelda.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = S833P2K5YV;
+				ENABLE_HARDENED_RUNTIME = YES;
+				INFOPLIST_FILE = Zelda/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = biz.biubiubiu.Zelda;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+		42697CC42534402900EA6275 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = S833P2K5YV;
+				INFOPLIST_FILE = ZeldaTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 11.0;
+				PRODUCT_BUNDLE_IDENTIFIER = biz.biubiubiu.ZeldaTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Zelda.app/Contents/MacOS/Zelda";
+			};
+			name = Debug;
+		};
+		42697CC52534402900EA6275 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = S833P2K5YV;
+				INFOPLIST_FILE = ZeldaTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 11.0;
+				PRODUCT_BUNDLE_IDENTIFIER = biz.biubiubiu.ZeldaTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Zelda.app/Contents/MacOS/Zelda";
+			};
+			name = Release;
+		};
+		42697CC72534402900EA6275 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = S833P2K5YV;
+				INFOPLIST_FILE = ZeldaUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = biz.biubiubiu.ZeldaUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TEST_TARGET_NAME = Zelda;
+			};
+			name = Debug;
+		};
+		42697CC82534402900EA6275 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = S833P2K5YV;
+				INFOPLIST_FILE = ZeldaUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = biz.biubiubiu.ZeldaUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TEST_TARGET_NAME = Zelda;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		42697C922534402800EA6275 /* Build configuration list for PBXProject "Zelda" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				42697CBE2534402900EA6275 /* Debug */,
+				42697CBF2534402900EA6275 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		42697CC02534402900EA6275 /* Build configuration list for PBXNativeTarget "Zelda" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				42697CC12534402900EA6275 /* Debug */,
+				42697CC22534402900EA6275 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		42697CC32534402900EA6275 /* Build configuration list for PBXNativeTarget "ZeldaTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				42697CC42534402900EA6275 /* Debug */,
+				42697CC52534402900EA6275 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		42697CC62534402900EA6275 /* Build configuration list for PBXNativeTarget "ZeldaUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				42697CC72534402900EA6275 /* Debug */,
+				42697CC82534402900EA6275 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		42697C9E2534402800EA6275 /* Zelda.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				42697C9F2534402800EA6275 /* Zelda.xcdatamodel */,
+			);
+			currentVersion = 42697C9F2534402800EA6275 /* Zelda.xcdatamodel */;
+			path = Zelda.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = 42697C8F2534402800EA6275 /* Project object */;
+}
