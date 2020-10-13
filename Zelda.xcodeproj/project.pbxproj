@@ -8,12 +8,14 @@
 
 /* Begin PBXBuildFile section */
 		42697C9B2534402800EA6275 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42697C9A2534402800EA6275 /* AppDelegate.swift */; };
-		42697C9D2534402800EA6275 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42697C9C2534402800EA6275 /* ViewController.swift */; };
+		42697C9D2534402800EA6275 /* AppSideBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42697C9C2534402800EA6275 /* AppSideBarViewController.swift */; };
 		42697CA02534402800EA6275 /* Zelda.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 42697C9E2534402800EA6275 /* Zelda.xcdatamodeld */; };
 		42697CA22534402900EA6275 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 42697CA12534402900EA6275 /* Assets.xcassets */; };
 		42697CA52534402900EA6275 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 42697CA32534402900EA6275 /* Main.storyboard */; };
 		42697CB12534402900EA6275 /* ZeldaTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42697CB02534402900EA6275 /* ZeldaTests.swift */; };
 		42697CBC2534402900EA6275 /* ZeldaUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42697CBB2534402900EA6275 /* ZeldaUITests.swift */; };
+		42697CD22535245000EA6275 /* SideBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42697CD12535245000EA6275 /* SideBarViewController.swift */; };
+		42697CD725352BA100EA6275 /* SideBarCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42697CD625352BA100EA6275 /* SideBarCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,7 +38,7 @@
 /* Begin PBXFileReference section */
 		42697C972534402800EA6275 /* Zelda.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Zelda.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		42697C9A2534402800EA6275 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		42697C9C2534402800EA6275 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		42697C9C2534402800EA6275 /* AppSideBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSideBarViewController.swift; sourceTree = "<group>"; };
 		42697C9F2534402800EA6275 /* Zelda.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Zelda.xcdatamodel; sourceTree = "<group>"; };
 		42697CA12534402900EA6275 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		42697CA42534402900EA6275 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -48,6 +50,8 @@
 		42697CB72534402900EA6275 /* ZeldaUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ZeldaUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		42697CBB2534402900EA6275 /* ZeldaUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZeldaUITests.swift; sourceTree = "<group>"; };
 		42697CBD2534402900EA6275 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		42697CD12535245000EA6275 /* SideBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideBarViewController.swift; sourceTree = "<group>"; };
+		42697CD625352BA100EA6275 /* SideBarCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideBarCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,12 +103,14 @@
 			isa = PBXGroup;
 			children = (
 				42697C9A2534402800EA6275 /* AppDelegate.swift */,
-				42697C9C2534402800EA6275 /* ViewController.swift */,
+				42697C9C2534402800EA6275 /* AppSideBarViewController.swift */,
 				42697CA12534402900EA6275 /* Assets.xcassets */,
 				42697CA32534402900EA6275 /* Main.storyboard */,
 				42697CA62534402900EA6275 /* Info.plist */,
 				42697CA72534402900EA6275 /* Zelda.entitlements */,
 				42697C9E2534402800EA6275 /* Zelda.xcdatamodeld */,
+				42697CD12535245000EA6275 /* SideBarViewController.swift */,
+				42697CD625352BA100EA6275 /* SideBarCell.swift */,
 			);
 			path = Zelda;
 			sourceTree = "<group>";
@@ -256,9 +262,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				42697C9D2534402800EA6275 /* ViewController.swift in Sources */,
+				42697CD725352BA100EA6275 /* SideBarCell.swift in Sources */,
+				42697C9D2534402800EA6275 /* AppSideBarViewController.swift in Sources */,
 				42697CA02534402800EA6275 /* Zelda.xcdatamodeld in Sources */,
 				42697C9B2534402800EA6275 /* AppDelegate.swift in Sources */,
+				42697CD22535245000EA6275 /* SideBarViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
