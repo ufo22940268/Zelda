@@ -50,10 +50,10 @@ class SideBarViewController: NSViewController, NSTableViewDataSource, NSTableVie
 	}
 	
 	func tableView(_ tableView: NSTableView, viewFor tableColumn: NSTableColumn?, row: Int) -> NSView? {
-		let view = tableView.makeView(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: "cell"), owner: nil) as! SideBarCell
+		let view = tableView.makeView(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: "cell"), owner: nil) as! NSTableCellView
 		let item = SideBarItem.allCases[row]
-		view.titleView.stringValue = item.label
-		view.image.image = item.icon
+		view.textField?.stringValue = item.label
+		view.imageView?.image = item.icon
 		return view
 	}
 }

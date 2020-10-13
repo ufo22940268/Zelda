@@ -15,7 +15,6 @@
 		42697CB12534402900EA6275 /* ZeldaTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42697CB02534402900EA6275 /* ZeldaTests.swift */; };
 		42697CBC2534402900EA6275 /* ZeldaUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42697CBB2534402900EA6275 /* ZeldaUITests.swift */; };
 		42697CD22535245000EA6275 /* SideBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42697CD12535245000EA6275 /* SideBarViewController.swift */; };
-		42697CD725352BA100EA6275 /* SideBarCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42697CD625352BA100EA6275 /* SideBarCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,7 +50,6 @@
 		42697CBB2534402900EA6275 /* ZeldaUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZeldaUITests.swift; sourceTree = "<group>"; };
 		42697CBD2534402900EA6275 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		42697CD12535245000EA6275 /* SideBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideBarViewController.swift; sourceTree = "<group>"; };
-		42697CD625352BA100EA6275 /* SideBarCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideBarCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -110,7 +108,6 @@
 				42697CA72534402900EA6275 /* Zelda.entitlements */,
 				42697C9E2534402800EA6275 /* Zelda.xcdatamodeld */,
 				42697CD12535245000EA6275 /* SideBarViewController.swift */,
-				42697CD625352BA100EA6275 /* SideBarCell.swift */,
 			);
 			path = Zelda;
 			sourceTree = "<group>";
@@ -262,7 +259,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				42697CD725352BA100EA6275 /* SideBarCell.swift in Sources */,
 				42697C9D2534402800EA6275 /* AppSideBarViewController.swift in Sources */,
 				42697CA02534402800EA6275 /* Zelda.xcdatamodeld in Sources */,
 				42697C9B2534402800EA6275 /* AppDelegate.swift in Sources */,
