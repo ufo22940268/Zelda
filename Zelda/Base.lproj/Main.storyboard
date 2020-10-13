@@ -849,13 +849,13 @@
             <objects>
                 <viewController id="CSd-hC-8Zy" sceneMemberID="viewController">
                     <view key="view" id="L0l-sc-QJa">
-                        <rect key="frame" x="0.0" y="0.0" width="270" height="300"/>
+                        <rect key="frame" x="0.0" y="0.0" width="400" height="300"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </view>
                 </viewController>
                 <customObject id="0BN-St-kf5" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="653" y="1044"/>
+            <point key="canvasLocation" x="640" y="1243"/>
         </scene>
     </scenes>
     <resources>
