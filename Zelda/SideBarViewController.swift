@@ -7,23 +7,53 @@
 
 import Cocoa
 
-class SideBarViewController: NSViewController, NSTableViewDataSource, NSTableViewDelegate {
+enum SideBarItem: CaseIterable {
+	case dashboard
+	case history
+	case more
 
-	@IBOutlet weak var tableView: NSTableView!
+	// MARK: Internal
+
+	var label: String {
+		switch self {
+		case .dashboard:
+			return "监控"
+		case .history:
+			return "记录"
+		case .more:
+			return "更多"
+		}
+	}
 	
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        // Do view setup here.
-		
-    }
+	var icon: NSImage? {
+		switch self {
+		case .dashboard:
+			return NSImage(systemSymbolName: "cloud.fill", accessibilityDescription: nil)
+		case .history:
+			return NSImage(systemSymbolName: "clock.fill", accessibilityDescription: nil)
+		case .more:
+			return NSImage(systemSymbolName: "lineweight", accessibilityDescription: nil)
+		}
+	}
+}
+
+class SideBarViewController: NSViewController, NSTableViewDataSource, NSTableViewDelegate {
+	@IBOutlet var tableView: NSTableView!
+
+	override func viewDidLoad() {
+		super.viewDidLoad()
+		// Do view setup here.
+	}
     
 	func numberOfRows(in tableView: NSTableView) -> Int {
-		return 3
+		return SideBarItem.allCases.count
 	}
 	
 	func tableView(_ tableView: NSTableView, viewFor tableColumn: NSTableColumn?, row: Int) -> NSView? {
 		let view = tableView.makeView(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: "cell"), owner: nil) as! SideBarCell
-		view.titleView.stringValue = "\(row)"
+		let item = SideBarItem.allCases[row]
+		view.titleView.stringValue = item.label
+		view.image.image = item.icon
 		return view
 	}
 }

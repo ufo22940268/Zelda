@@ -12,4 +12,6 @@ class SideBarCell: NSTableCellView {
 	@IBOutlet weak var titleView: NSTextField!
 	@IBOutlet weak var image: NSImageView!
 	
+	override class func awakeFromNib() {
+	}
 }
