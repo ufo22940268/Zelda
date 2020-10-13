@@ -15,6 +15,10 @@
 		42697CB12534402900EA6275 /* ZeldaTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42697CB02534402900EA6275 /* ZeldaTests.swift */; };
 		42697CBC2534402900EA6275 /* ZeldaUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42697CBB2534402900EA6275 /* ZeldaUITests.swift */; };
 		42697CD22535245000EA6275 /* SideBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42697CD12535245000EA6275 /* SideBarViewController.swift */; };
+		42697CE52535809700EA6275 /* EndPointEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42697CE42535809700EA6275 /* EndPointEditViewController.swift */; };
+		42697CEB2535817100EA6275 /* EndPoint.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 42697CE92535817100EA6275 /* EndPoint.storyboard */; };
+		42697CF325358ACC00EA6275 /* Toolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42697CF225358ACC00EA6275 /* Toolbar.swift */; };
+		42697CF825358B1900EA6275 /* MainWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42697CF725358B1900EA6275 /* MainWindow.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -50,6 +54,10 @@
 		42697CBB2534402900EA6275 /* ZeldaUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZeldaUITests.swift; sourceTree = "<group>"; };
 		42697CBD2534402900EA6275 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		42697CD12535245000EA6275 /* SideBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideBarViewController.swift; sourceTree = "<group>"; };
+		42697CE42535809700EA6275 /* EndPointEditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndPointEditViewController.swift; sourceTree = "<group>"; };
+		42697CEA2535817100EA6275 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Zelda/Base.lproj/EndPoint.storyboard; sourceTree = "<group>"; };
+		42697CF225358ACC00EA6275 /* Toolbar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Toolbar.swift; sourceTree = "<group>"; };
+		42697CF725358B1900EA6275 /* MainWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainWindow.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,6 +109,7 @@
 			isa = PBXGroup;
 			children = (
 				42697C9A2534402800EA6275 /* AppDelegate.swift */,
+				42697CE92535817100EA6275 /* EndPoint.storyboard */,
 				42697C9C2534402800EA6275 /* AppSideBarViewController.swift */,
 				42697CA12534402900EA6275 /* Assets.xcassets */,
 				42697CA32534402900EA6275 /* Main.storyboard */,
@@ -108,6 +117,9 @@
 				42697CA72534402900EA6275 /* Zelda.entitlements */,
 				42697C9E2534402800EA6275 /* Zelda.xcdatamodeld */,
 				42697CD12535245000EA6275 /* SideBarViewController.swift */,
+				42697CE42535809700EA6275 /* EndPointEditViewController.swift */,
+				42697CF225358ACC00EA6275 /* Toolbar.swift */,
+				42697CF725358B1900EA6275 /* MainWindow.swift */,
 			);
 			path = Zelda;
 			sourceTree = "<group>";
@@ -234,6 +246,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				42697CA22534402900EA6275 /* Assets.xcassets in Resources */,
+				42697CEB2535817100EA6275 /* EndPoint.storyboard in Resources */,
 				42697CA52534402900EA6275 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -262,7 +275,10 @@
 				42697C9D2534402800EA6275 /* AppSideBarViewController.swift in Sources */,
 				42697CA02534402800EA6275 /* Zelda.xcdatamodeld in Sources */,
 				42697C9B2534402800EA6275 /* AppDelegate.swift in Sources */,
+				42697CF325358ACC00EA6275 /* Toolbar.swift in Sources */,
 				42697CD22535245000EA6275 /* SideBarViewController.swift in Sources */,
+				42697CE52535809700EA6275 /* EndPointEditViewController.swift in Sources */,
+				42697CF825358B1900EA6275 /* MainWindow.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -304,6 +320,14 @@
 				42697CA42534402900EA6275 /* Base */,
 			);
 			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		42697CE92535817100EA6275 /* EndPoint.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				42697CEA2535817100EA6275 /* Base */,
+			);
+			name = EndPoint.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */

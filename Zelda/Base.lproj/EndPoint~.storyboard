@@ -685,21 +685,18 @@
         <!--Window Controller-->
         <scene sceneID="R2V-B0-nI4">
             <objects>
-                <windowController id="B8D-0N-5wS" customClass="MainWindow" customModule="Zelda" customModuleProvider="target" sceneMemberID="viewController">
-                    <window key="window" title="BiuBiuBiu" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" animationBehavior="default" titlebarAppearsTransparent="YES" id="IQv-IB-iLA">
+                <windowController id="B8D-0N-5wS" sceneMemberID="viewController">
+                    <window key="window" title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" animationBehavior="default" titlebarAppearsTransparent="YES" id="IQv-IB-iLA">
                         <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES" fullSizeContentView="YES"/>
                         <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
                         <rect key="contentRect" x="196" y="240" width="480" height="270"/>
-                        <rect key="screenRect" x="0.0" y="0.0" width="2560" height="1415"/>
-                        <toolbar key="toolbar" implicitIdentifier="98B97C19-1460-4DDF-8240-9CAEFEA814FE" autosavesConfiguration="NO" displayMode="iconOnly" sizeMode="regular" id="Abf-lY-QYw" customClass="Toolbar" customModule="Zelda" customModuleProvider="target">
+                        <rect key="screenRect" x="0.0" y="0.0" width="1680" height="1027"/>
+                        <toolbar key="toolbar" implicitIdentifier="98B97C19-1460-4DDF-8240-9CAEFEA814FE" autosavesConfiguration="NO" displayMode="iconOnly" sizeMode="regular" id="Abf-lY-QYw">
                             <allowedToolbarItems>
                                 <toolbarItem implicitItemIdentifier="3D7F07FF-A2E6-485E-BBF8-4980EADA968C" label="Add" paletteLabel="Toolbar Item" tag="-1" selectable="YES" id="Ibe-Xe-Zun">
                                     <imageReference key="image" image="plus" catalog="system" symbolScale="large"/>
                                     <size key="minSize" width="40.5" height="29"/>
                                     <size key="maxSize" width="40.5" height="29"/>
-                                    <connections>
-                                        <segue destination="6RC-Gq-vJE" kind="sheet" id="FGf-a9-FNV"/>
-                                    </connections>
                                 </toolbarItem>
                             </allowedToolbarItems>
                             <defaultToolbarItems>
@@ -742,14 +739,6 @@
                 <customObject id="0TO-bg-AYW" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="75" y="711"/>
-        </scene>
-        <!--addEndPoint-->
-        <scene sceneID="j0y-cV-ttg">
-            <objects>
-                <controllerPlaceholder storyboardName="EndPoint" referencedIdentifier="addEndPoint" id="6RC-Gq-vJE" sceneMemberID="viewController"/>
-                <customObject id="HDe-hC-9od" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="95" y="1081"/>
         </scene>
         <!--Side Bar View Controller-->
         <scene sceneID="Rg6-dw-OFJ">
@@ -856,6 +845,33 @@
                 <customObject id="0BN-St-kf5" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="653" y="1044"/>
+        </scene>
+        <!--End Point Edit View Controller-->
+        <scene sceneID="WFx-BC-Lyj">
+            <objects>
+                <viewController id="EuP-jN-LuZ" customClass="EndPointEditViewController" customModule="Zelda" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" id="7ha-wJ-Huq">
+                        <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="mdG-F9-FdC">
+                                <rect key="frame" x="207" y="142" width="37" height="16"/>
+                                <textFieldCell key="cell" lineBreakMode="clipping" title="Label" id="2Vi-dL-89f">
+                                    <font key="font" usesAppearanceFont="YES"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="mdG-F9-FdC" firstAttribute="centerX" secondItem="7ha-wJ-Huq" secondAttribute="centerX" id="78j-G0-gPo"/>
+                            <constraint firstItem="mdG-F9-FdC" firstAttribute="centerY" secondItem="7ha-wJ-Huq" secondAttribute="centerY" id="goW-IA-WIU"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <customObject id="KtC-ds-7VR" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-420" y="612"/>
         </scene>
     </scenes>
     <resources>
