@@ -20,11 +20,17 @@ class EndPointEditViewController: NSViewController, NSTextFieldDelegate {
 	@IBOutlet var tableView: NSTableView!
 	var watchPaths = Set<String>()
 
+	var type = EndPointEditType.edit
+
+	var context: NSManagedObjectContext {
+		type.context
+	}
+
 	override func viewDidLoad() {
 		super.viewDidLoad()
 
 		validateCancellable = validateSubject
-			.map { url in
+			.map { url -> String in
 				if !self.validateResultSubject.value.isProcessing {
 					self.validateResultSubject.send(.pending)
 				}
@@ -36,8 +42,12 @@ class EndPointEditViewController: NSViewController, NSTextFieldDelegate {
 				return url
 			}
 			.debounce(for: 1, scheduler: DispatchQueue.main)
-			.flatMap { url in
-				ApiHelper.validate(url: url)
+			.flatMap { url -> AnyPublisher<ValidateURLResult, Never> in
+				if self.isDuplicated(url: url) {
+					return Just(ValidateURLResult.duplicatedUrl).eraseToAnyPublisher()
+				} else {
+					return ApiHelper.validate(url: url).eraseToAnyPublisher()
+				}
 			}
 			.receive(on: DispatchQueue.main)
 			.subscribe(validateResultSubject)
@@ -59,7 +69,11 @@ class EndPointEditViewController: NSViewController, NSTextFieldDelegate {
 
 	@IBAction func onConfirm(_ sender: Any) {
 		saveEndPoint()
-		self.view.window?.close()
+		view.window?.close()
+	}
+
+	func isDuplicated(url: String) -> Bool {
+		try! context.fetchOne(EndPointEntity.self, "url = %@", url) != nil
 	}
 
 	// MARK: Private

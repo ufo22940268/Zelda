@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		422199042536E6860090AA28 /* NSManagedObjectContext+Name.swift in Sources */ = {isa = PBXBuildFile; fileRef = 422199032536E6860090AA28 /* NSManagedObjectContext+Name.swift */; };
+		422199132536EB410090AA28 /* NSManagedObjectContext+Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 422199122536EB410090AA28 /* NSManagedObjectContext+Helper.swift */; };
+		4221991B2536EC0D0090AA28 /* EndPointEditType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4221991A2536EC0D0090AA28 /* EndPointEditType.swift */; };
 		42697C9B2534402800EA6275 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42697C9A2534402800EA6275 /* AppDelegate.swift */; };
 		42697C9D2534402800EA6275 /* AppSideBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42697C9C2534402800EA6275 /* AppSideBarViewController.swift */; };
 		42697CA02534402800EA6275 /* Zelda.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 42697C9E2534402800EA6275 /* Zelda.xcdatamodeld */; };
@@ -25,6 +28,7 @@
 		42697D142536941300EA6275 /* Api+JSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42697D132536941300EA6275 /* Api+JSON.swift */; };
 		42697D1D2536A0FF00EA6275 /* EndPointEditViewController+Table.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42697D1C2536A0FF00EA6275 /* EndPointEditViewController+Table.swift */; };
 		42A3049E2536CC5200E89376 /* EditPointViewController+Confirm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42A3049D2536CC5200E89376 /* EditPointViewController+Confirm.swift */; };
+		42C8992F2536D275000D527D /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 42C8992D2536D275000D527D /* Model.xcdatamodeld */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -45,6 +49,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		422199032536E6860090AA28 /* NSManagedObjectContext+Name.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSManagedObjectContext+Name.swift"; sourceTree = "<group>"; };
+		422199122536EB410090AA28 /* NSManagedObjectContext+Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSManagedObjectContext+Helper.swift"; sourceTree = "<group>"; };
+		4221991A2536EC0D0090AA28 /* EndPointEditType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndPointEditType.swift; sourceTree = "<group>"; };
 		42697C972534402800EA6275 /* Zelda.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Zelda.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		42697C9A2534402800EA6275 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		42697C9C2534402800EA6275 /* AppSideBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSideBarViewController.swift; sourceTree = "<group>"; };
@@ -69,6 +76,7 @@
 		42697D132536941300EA6275 /* Api+JSON.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Api+JSON.swift"; sourceTree = "<group>"; };
 		42697D1C2536A0FF00EA6275 /* EndPointEditViewController+Table.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "EndPointEditViewController+Table.swift"; sourceTree = "<group>"; };
 		42A3049D2536CC5200E89376 /* EditPointViewController+Confirm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "EditPointViewController+Confirm.swift"; sourceTree = "<group>"; };
+		42C8992E2536D275000D527D /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,6 +105,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4221990E2536EB260090AA28 /* DB */ = {
+			isa = PBXGroup;
+			children = (
+				422199032536E6860090AA28 /* NSManagedObjectContext+Name.swift */,
+				422199122536EB410090AA28 /* NSManagedObjectContext+Helper.swift */,
+			);
+			path = DB;
+			sourceTree = "<group>";
+		};
 		42697C8E2534402800EA6275 = {
 			isa = PBXGroup;
 			children = (
@@ -133,6 +150,8 @@
 				42697CF225358ACC00EA6275 /* Toolbar.swift */,
 				42697CF725358B1900EA6275 /* MainWindow.swift */,
 				42697D01253675D500EA6275 /* Api */,
+				42C8992D2536D275000D527D /* Model.xcdatamodeld */,
+				4221990E2536EB260090AA28 /* DB */,
 			);
 			path = Zelda;
 			sourceTree = "<group>";
@@ -171,6 +190,7 @@
 				42697CE42535809700EA6275 /* EndPointEditViewController.swift */,
 				42697D1C2536A0FF00EA6275 /* EndPointEditViewController+Table.swift */,
 				42A3049D2536CC5200E89376 /* EditPointViewController+Confirm.swift */,
+				4221991A2536EC0D0090AA28 /* EndPointEditType.swift */,
 			);
 			path = EndPointEdit;
 			sourceTree = "<group>";
@@ -314,14 +334,18 @@
 				42A3049E2536CC5200E89376 /* EditPointViewController+Confirm.swift in Sources */,
 				42697C9D2534402800EA6275 /* AppSideBarViewController.swift in Sources */,
 				42697CA02534402800EA6275 /* Zelda.xcdatamodeld in Sources */,
+				4221991B2536EC0D0090AA28 /* EndPointEditType.swift in Sources */,
 				42697D142536941300EA6275 /* Api+JSON.swift in Sources */,
 				42697D03253675F200EA6275 /* Api.swift in Sources */,
+				422199132536EB410090AA28 /* NSManagedObjectContext+Helper.swift in Sources */,
 				42697C9B2534402800EA6275 /* AppDelegate.swift in Sources */,
+				422199042536E6860090AA28 /* NSManagedObjectContext+Name.swift in Sources */,
 				42697D1D2536A0FF00EA6275 /* EndPointEditViewController+Table.swift in Sources */,
 				42697CF325358ACC00EA6275 /* Toolbar.swift in Sources */,
 				42697CD22535245000EA6275 /* SideBarViewController.swift in Sources */,
 				42697CFD2536743D00EA6275 /* Api+Validate.swift in Sources */,
 				42697CE52535809700EA6275 /* EndPointEditViewController.swift in Sources */,
+				42C8992F2536D275000D527D /* Model.xcdatamodeld in Sources */,
 				42697CF825358B1900EA6275 /* MainWindow.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -688,6 +712,16 @@
 			);
 			currentVersion = 42697C9F2534402800EA6275 /* Zelda.xcdatamodel */;
 			path = Zelda.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+		42C8992D2536D275000D527D /* Model.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				42C8992E2536D275000D527D /* Model.xcdatamodel */,
+			);
+			currentVersion = 42C8992E2536D275000D527D /* Model.xcdatamodel */;
+			path = Model.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};

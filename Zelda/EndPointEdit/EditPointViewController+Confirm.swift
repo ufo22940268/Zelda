@@ -5,9 +5,9 @@
 //  Created by Frank Cheng on 2020/10/14.
 //
 
-import Foundation
 import AppKit
 import Combine
+import Foundation
 
 extension EndPointEditViewController {
 	func saveEndPoint() {
