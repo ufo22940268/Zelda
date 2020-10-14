@@ -22,6 +22,8 @@
 		42697CFD2536743D00EA6275 /* Api+Validate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42697CFC2536743D00EA6275 /* Api+Validate.swift */; };
 		42697D03253675F200EA6275 /* Api.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42697D02253675F200EA6275 /* Api.swift */; };
 		42697D09253676A800EA6275 /* SwiftyJSON in Frameworks */ = {isa = PBXBuildFile; productRef = 42697D08253676A800EA6275 /* SwiftyJSON */; };
+		42697D142536941300EA6275 /* Api+JSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42697D132536941300EA6275 /* Api+JSON.swift */; };
+		42697D1D2536A0FF00EA6275 /* EndPointEditViewController+Table.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42697D1C2536A0FF00EA6275 /* EndPointEditViewController+Table.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -63,6 +65,8 @@
 		42697CF725358B1900EA6275 /* MainWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainWindow.swift; sourceTree = "<group>"; };
 		42697CFC2536743D00EA6275 /* Api+Validate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Api+Validate.swift"; sourceTree = "<group>"; };
 		42697D02253675F200EA6275 /* Api.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Api.swift; sourceTree = "<group>"; };
+		42697D132536941300EA6275 /* Api+JSON.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Api+JSON.swift"; sourceTree = "<group>"; };
+		42697D1C2536A0FF00EA6275 /* EndPointEditViewController+Table.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "EndPointEditViewController+Table.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -123,7 +127,7 @@
 				42697CA72534402900EA6275 /* Zelda.entitlements */,
 				42697C9E2534402800EA6275 /* Zelda.xcdatamodeld */,
 				42697CD12535245000EA6275 /* SideBarViewController.swift */,
-				42697CE42535809700EA6275 /* EndPointEditViewController.swift */,
+				42697D182536A0D900EA6275 /* EndPointEdit */,
 				42697CF225358ACC00EA6275 /* Toolbar.swift */,
 				42697CF725358B1900EA6275 /* MainWindow.swift */,
 				42697D01253675D500EA6275 /* Api */,
@@ -154,8 +158,18 @@
 			children = (
 				42697CFC2536743D00EA6275 /* Api+Validate.swift */,
 				42697D02253675F200EA6275 /* Api.swift */,
+				42697D132536941300EA6275 /* Api+JSON.swift */,
 			);
 			path = Api;
+			sourceTree = "<group>";
+		};
+		42697D182536A0D900EA6275 /* EndPointEdit */ = {
+			isa = PBXGroup;
+			children = (
+				42697CE42535809700EA6275 /* EndPointEditViewController.swift */,
+				42697D1C2536A0FF00EA6275 /* EndPointEditViewController+Table.swift */,
+			);
+			path = EndPointEdit;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -296,8 +310,10 @@
 			files = (
 				42697C9D2534402800EA6275 /* AppSideBarViewController.swift in Sources */,
 				42697CA02534402800EA6275 /* Zelda.xcdatamodeld in Sources */,
+				42697D142536941300EA6275 /* Api+JSON.swift in Sources */,
 				42697D03253675F200EA6275 /* Api.swift in Sources */,
 				42697C9B2534402800EA6275 /* AppDelegate.swift in Sources */,
+				42697D1D2536A0FF00EA6275 /* EndPointEditViewController+Table.swift in Sources */,
 				42697CF325358ACC00EA6275 /* Toolbar.swift in Sources */,
 				42697CD22535245000EA6275 /* SideBarViewController.swift in Sources */,
 				42697CFD2536743D00EA6275 /* Api+Validate.swift in Sources */,

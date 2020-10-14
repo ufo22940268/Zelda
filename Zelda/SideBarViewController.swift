@@ -24,7 +24,7 @@ enum SideBarItem: CaseIterable {
 			return "更多"
 		}
 	}
-	
+
 	var icon: NSImage? {
 		switch self {
 		case .dashboard:
@@ -44,11 +44,11 @@ class SideBarViewController: NSViewController, NSTableViewDataSource, NSTableVie
 		super.viewDidLoad()
 		// Do view setup here.
 	}
-    
+
 	func numberOfRows(in tableView: NSTableView) -> Int {
 		return SideBarItem.allCases.count
 	}
-	
+
 	func tableView(_ tableView: NSTableView, viewFor tableColumn: NSTableColumn?, row: Int) -> NSView? {
 		let view = tableView.makeView(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: "cell"), owner: nil) as! NSTableCellView
 		let item = SideBarItem.allCases[row]

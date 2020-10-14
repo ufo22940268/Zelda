@@ -19,8 +19,8 @@ extension ApiHelper {
 						return ValidateURLResult.requestError(errorLog)
 					}
 
-					if (try JSON(data: ar.data)).count > 0 {
-						return ValidateURLResult.ok
+					if let json = try? JSON(data: ar.data), json.count > 0 {
+						return ValidateURLResult.ok(json)
 					} else {
 						return ValidateURLResult.jsonError(errorLog)
 					}
@@ -47,7 +47,7 @@ enum ValidateURLResult: Equatable {
 	case requestError(_ responseLog: ResponseLog)
 	case jsonError(_ responseLog: ResponseLog)
 	case pending
-	case ok
+	case ok(_ json: JSON)
 	case duplicatedUrl
 
 	// MARK: Internal

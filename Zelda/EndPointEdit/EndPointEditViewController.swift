@@ -9,11 +9,16 @@ import Cocoa
 import Combine
 
 class EndPointEditViewController: NSViewController, NSTextFieldDelegate {
+	// MARK: Internal
+
 	var validateCancellable: AnyCancellable?
 	var validateResultCancellable: AnyCancellable?
 	var validateSubject = PassthroughSubject<String, Never>()
 	var validateResultSubject = CurrentValueSubject<ValidateURLResult, Never>(.initial)
 	@IBOutlet var prompt: NSTextField!
+	var apiData = [String: String]()
+	@IBOutlet var tableView: NSTableView!
+	var watchPaths = Set<String>()
 
 	override func viewDidLoad() {
 		super.viewDidLoad()
@@ -23,11 +28,11 @@ class EndPointEditViewController: NSViewController, NSTextFieldDelegate {
 				if !self.validateResultSubject.value.isProcessing {
 					self.validateResultSubject.send(.pending)
 				}
-				
+
 				if url.isEmpty {
 					self.validateResultSubject.send(.initial)
 				}
-				
+
 				return url
 			}
 			.debounce(for: 1, scheduler: DispatchQueue.main)
@@ -36,15 +41,28 @@ class EndPointEditViewController: NSViewController, NSTextFieldDelegate {
 			}
 			.receive(on: DispatchQueue.main)
 			.subscribe(validateResultSubject)
-		
-		validateResultCancellable = validateResultSubject.sink { (result) in
+
+		validateResultCancellable = validateResultSubject.sink { result in
 			self.prompt.stringValue = result.label
+			if case .ok(let json) = result {
+				self.load(apiData: json.convertToPathMap())
+			} else {
+				self.load(apiData: [String: String]())
+			}
 		}
 	}
 
 	func controlTextDidChange(_ obj: Notification) {
 		guard let field = obj.object as? NSTextField else { return }
-		print(field.stringValue)
 		validateSubject.send(field.stringValue)
 	}
+
+	// MARK: Private
+
+	private func load(apiData: [String: String]) {
+		self.apiData = apiData
+		self.tableView.reloadData()
+	}
+		
 }
+
