@@ -21,7 +21,5 @@ class AppSideBarViewController: NSSplitViewController {
 		// Update the view, if already loaded.
 		}
 	}
-
-
 }
 

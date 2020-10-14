@@ -13,7 +13,7 @@ class EndPointEditViewController: NSViewController, NSTextFieldDelegate {
 
 	var validateCancellable: AnyCancellable?
 	var validateResultCancellable: AnyCancellable?
-	var validateSubject = PassthroughSubject<String, Never>()
+	var urlSubject = CurrentValueSubject<String, Never>("")
 	var validateResultSubject = CurrentValueSubject<ValidateURLResult, Never>(.initial)
 	@IBOutlet var prompt: NSTextField!
 	var apiData = [String: String]()
@@ -29,7 +29,7 @@ class EndPointEditViewController: NSViewController, NSTextFieldDelegate {
 	override func viewDidLoad() {
 		super.viewDidLoad()
 
-		validateCancellable = validateSubject
+		validateCancellable = urlSubject
 			.map { url -> String in
 				if !self.validateResultSubject.value.isProcessing {
 					self.validateResultSubject.send(.pending)
@@ -64,7 +64,7 @@ class EndPointEditViewController: NSViewController, NSTextFieldDelegate {
 
 	func controlTextDidChange(_ obj: Notification) {
 		guard let field = obj.object as? NSTextField else { return }
-		validateSubject.send(field.stringValue)
+		urlSubject.send(field.stringValue)
 	}
 
 	@IBAction func onConfirm(_ sender: Any) {

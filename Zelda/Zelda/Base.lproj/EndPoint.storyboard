@@ -8,7 +8,7 @@
         <!--Window Controller-->
         <scene sceneID="9H5-H3-HHU">
             <objects>
-                <windowController storyboardIdentifier="addEndPoint" id="7pg-A8-NyK" sceneMemberID="viewController">
+                <windowController id="7pg-A8-NyK" sceneMemberID="viewController">
                     <window key="window" title="添加监控" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" titlebarAppearsTransparent="YES" id="ik5-DH-Yxx">
                         <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES"/>
                         <windowCollectionBehavior key="collectionBehavior" fullScreenPrimary="YES"/>
@@ -38,7 +38,7 @@
         <!--End Point Edit View Controller-->
         <scene sceneID="WFx-BC-Lyj">
             <objects>
-                <viewController id="EuP-jN-LuZ" customClass="EndPointEditViewController" customModule="Zelda" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="addEndPoint" id="EuP-jN-LuZ" customClass="EndPointEditViewController" customModule="Zelda" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" wantsLayer="YES" id="7ha-wJ-Huq">
                         <rect key="frame" x="0.0" y="0.0" width="608" height="437"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -125,7 +125,7 @@
                                             <color key="gridColor" name="gridColor" catalog="System" colorSpace="catalog"/>
                                             <tableColumns>
                                                 <tableColumn identifier="check" width="40" minWidth="40" maxWidth="1000" id="Fwv-9d-4u0">
-                                                    <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border">
+                                                    <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" title="监控">
                                                         <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
                                                         <color key="backgroundColor" name="headerColor" catalog="System" colorSpace="catalog"/>
                                                     </tableHeaderCell>
