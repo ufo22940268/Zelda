@@ -57,12 +57,15 @@ class EndPointEditViewController: NSViewController, NSTextFieldDelegate {
 		validateSubject.send(field.stringValue)
 	}
 
+	@IBAction func onConfirm(_ sender: Any) {
+		saveEndPoint()
+		self.view.window?.close()
+	}
+
 	// MARK: Private
 
 	private func load(apiData: [String: String]) {
 		self.apiData = apiData
-		self.tableView.reloadData()
+		tableView.reloadData()
 	}
-		
 }
-

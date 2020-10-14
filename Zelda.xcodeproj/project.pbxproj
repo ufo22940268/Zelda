@@ -24,6 +24,7 @@
 		42697D09253676A800EA6275 /* SwiftyJSON in Frameworks */ = {isa = PBXBuildFile; productRef = 42697D08253676A800EA6275 /* SwiftyJSON */; };
 		42697D142536941300EA6275 /* Api+JSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42697D132536941300EA6275 /* Api+JSON.swift */; };
 		42697D1D2536A0FF00EA6275 /* EndPointEditViewController+Table.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42697D1C2536A0FF00EA6275 /* EndPointEditViewController+Table.swift */; };
+		42A3049E2536CC5200E89376 /* EditPointViewController+Confirm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42A3049D2536CC5200E89376 /* EditPointViewController+Confirm.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -67,6 +68,7 @@
 		42697D02253675F200EA6275 /* Api.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Api.swift; sourceTree = "<group>"; };
 		42697D132536941300EA6275 /* Api+JSON.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Api+JSON.swift"; sourceTree = "<group>"; };
 		42697D1C2536A0FF00EA6275 /* EndPointEditViewController+Table.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "EndPointEditViewController+Table.swift"; sourceTree = "<group>"; };
+		42A3049D2536CC5200E89376 /* EditPointViewController+Confirm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "EditPointViewController+Confirm.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -168,6 +170,7 @@
 			children = (
 				42697CE42535809700EA6275 /* EndPointEditViewController.swift */,
 				42697D1C2536A0FF00EA6275 /* EndPointEditViewController+Table.swift */,
+				42A3049D2536CC5200E89376 /* EditPointViewController+Confirm.swift */,
 			);
 			path = EndPointEdit;
 			sourceTree = "<group>";
@@ -308,6 +311,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				42A3049E2536CC5200E89376 /* EditPointViewController+Confirm.swift in Sources */,
 				42697C9D2534402800EA6275 /* AppSideBarViewController.swift in Sources */,
 				42697CA02534402800EA6275 /* Zelda.xcdatamodeld in Sources */,
 				42697D142536941300EA6275 /* Api+JSON.swift in Sources */,

@@ -94,11 +94,14 @@
                                 </gridCells>
                             </gridView>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="NeC-7W-9m7">
-                                <rect key="frame" x="521" y="13" width="74" height="32"/>
-                                <buttonCell key="cell" type="push" title="下一步" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="FAu-Pn-kpr">
+                                <rect key="frame" x="534" y="13" width="61" height="32"/>
+                                <buttonCell key="cell" type="push" title="确定" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="FAu-Pn-kpr">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
+                                <connections>
+                                    <action selector="onConfirm:" target="EuP-jN-LuZ" id="1L0-0Z-NQ8"/>
+                                </connections>
                             </button>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="T1c-3a-kA1">
                                 <rect key="frame" x="48" y="341" width="101" height="16"/>
@@ -132,7 +135,7 @@
                                                     </buttonCell>
                                                     <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                                 </tableColumn>
-                                                <tableColumn identifier="key" width="169" minWidth="40" maxWidth="1000" id="5cn-sC-90a">
+                                                <tableColumn identifier="key" width="199" minWidth="40" maxWidth="1000" id="5cn-sC-90a">
                                                     <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" title="Key">
                                                         <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
                                                         <color key="backgroundColor" name="headerColor" catalog="System" colorSpace="catalog"/>
@@ -144,7 +147,7 @@
                                                     </textFieldCell>
                                                     <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                                 </tableColumn>
-                                                <tableColumn identifier="value" width="252.5" minWidth="40" maxWidth="1000" id="Hqd-ae-1oF">
+                                                <tableColumn identifier="value" width="223" minWidth="40" maxWidth="1000" id="Hqd-ae-1oF">
                                                     <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" title="Value">
                                                         <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
                                                         <color key="backgroundColor" name="headerColor" catalog="System" colorSpace="catalog"/>
