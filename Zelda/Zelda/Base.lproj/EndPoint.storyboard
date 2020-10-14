@@ -75,6 +75,9 @@
                                                 <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                                 <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                             </textFieldCell>
+                                            <connections>
+                                                <outlet property="delegate" destination="EuP-jN-LuZ" id="bvM-kT-ikG"/>
+                                            </connections>
                                         </textField>
                                     </gridCell>
                                     <gridCell row="rmI-vj-sPe" column="yWE-sZ-S13" id="REr-Bu-Y6T"/>
@@ -225,6 +228,9 @@
                             <constraint firstItem="T1c-3a-kA1" firstAttribute="top" secondItem="N4D-Vg-u2R" secondAttribute="bottom" constant="20" id="wBm-I8-t5O"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="prompt" destination="Zqs-eS-dpQ" id="tLT-Xz-JFC"/>
+                    </connections>
                 </viewController>
                 <customObject id="KtC-ds-7VR" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>

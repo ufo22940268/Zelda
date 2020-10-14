@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -19,6 +19,9 @@
 		42697CEB2535817100EA6275 /* EndPoint.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 42697CE92535817100EA6275 /* EndPoint.storyboard */; };
 		42697CF325358ACC00EA6275 /* Toolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42697CF225358ACC00EA6275 /* Toolbar.swift */; };
 		42697CF825358B1900EA6275 /* MainWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42697CF725358B1900EA6275 /* MainWindow.swift */; };
+		42697CFD2536743D00EA6275 /* Api+Validate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42697CFC2536743D00EA6275 /* Api+Validate.swift */; };
+		42697D03253675F200EA6275 /* Api.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42697D02253675F200EA6275 /* Api.swift */; };
+		42697D09253676A800EA6275 /* SwiftyJSON in Frameworks */ = {isa = PBXBuildFile; productRef = 42697D08253676A800EA6275 /* SwiftyJSON */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -58,6 +61,8 @@
 		42697CEA2535817100EA6275 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Zelda/Base.lproj/EndPoint.storyboard; sourceTree = "<group>"; };
 		42697CF225358ACC00EA6275 /* Toolbar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Toolbar.swift; sourceTree = "<group>"; };
 		42697CF725358B1900EA6275 /* MainWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainWindow.swift; sourceTree = "<group>"; };
+		42697CFC2536743D00EA6275 /* Api+Validate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Api+Validate.swift"; sourceTree = "<group>"; };
+		42697D02253675F200EA6275 /* Api.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Api.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -65,6 +70,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				42697D09253676A800EA6275 /* SwiftyJSON in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -120,6 +126,7 @@
 				42697CE42535809700EA6275 /* EndPointEditViewController.swift */,
 				42697CF225358ACC00EA6275 /* Toolbar.swift */,
 				42697CF725358B1900EA6275 /* MainWindow.swift */,
+				42697D01253675D500EA6275 /* Api */,
 			);
 			path = Zelda;
 			sourceTree = "<group>";
@@ -142,6 +149,15 @@
 			path = ZeldaUITests;
 			sourceTree = "<group>";
 		};
+		42697D01253675D500EA6275 /* Api */ = {
+			isa = PBXGroup;
+			children = (
+				42697CFC2536743D00EA6275 /* Api+Validate.swift */,
+				42697D02253675F200EA6275 /* Api.swift */,
+			);
+			path = Api;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -158,6 +174,9 @@
 			dependencies = (
 			);
 			name = Zelda;
+			packageProductDependencies = (
+				42697D08253676A800EA6275 /* SwiftyJSON */,
+			);
 			productName = Zelda;
 			productReference = 42697C972534402800EA6275 /* Zelda.app */;
 			productType = "com.apple.product-type.application";
@@ -229,6 +248,9 @@
 				Base,
 			);
 			mainGroup = 42697C8E2534402800EA6275;
+			packageReferences = (
+				42697D07253676A800EA6275 /* XCRemoteSwiftPackageReference "SwiftyJSON" */,
+			);
 			productRefGroup = 42697C982534402800EA6275 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -274,9 +296,11 @@
 			files = (
 				42697C9D2534402800EA6275 /* AppSideBarViewController.swift in Sources */,
 				42697CA02534402800EA6275 /* Zelda.xcdatamodeld in Sources */,
+				42697D03253675F200EA6275 /* Api.swift in Sources */,
 				42697C9B2534402800EA6275 /* AppDelegate.swift in Sources */,
 				42697CF325358ACC00EA6275 /* Toolbar.swift in Sources */,
 				42697CD22535245000EA6275 /* SideBarViewController.swift in Sources */,
+				42697CFD2536743D00EA6275 /* Api+Validate.swift in Sources */,
 				42697CE52535809700EA6275 /* EndPointEditViewController.swift in Sources */,
 				42697CF825358B1900EA6275 /* MainWindow.swift in Sources */,
 			);
@@ -616,6 +640,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		42697D07253676A800EA6275 /* XCRemoteSwiftPackageReference "SwiftyJSON" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SwiftyJSON/SwiftyJSON.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		42697D08253676A800EA6275 /* SwiftyJSON */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 42697D07253676A800EA6275 /* XCRemoteSwiftPackageReference "SwiftyJSON" */;
+			productName = SwiftyJSON;
+		};
+/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		42697C9E2534402800EA6275 /* Zelda.xcdatamodeld */ = {
