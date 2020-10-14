@@ -41,6 +41,9 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 	func applicationDidFinishLaunching(_ aNotification: Notification) {
 		// Insert code here to initialize your application
 		print("coredata", persistentContainer.persistentStoreDescriptions.first!.url ?? "")
+		if ProcessInfo.processInfo.environment["resetData"] == "true" {
+			resetCoreData()
+		}
 	}
 
 	func applicationWillTerminate(_ aNotification: Notification) {
