@@ -71,7 +71,12 @@ class EndPointEditViewController: NSViewController, NSTextFieldDelegate {
 	@IBAction func onConfirm(_ sender: Any) {
 		let endPointId = saveEndPoint()
 		NotificationCenter.default.post(name: .syncEndPoint, object: endPointId)
-		view.window?.close()
+		presentingViewController?.dismiss(self)
+	}
+	
+	override func viewDidDisappear() {
+		validateCancellable?.cancel()
+		validateResultCancellable?.cancel()
 	}
 
 	func isDuplicated(url: String) -> Bool {
