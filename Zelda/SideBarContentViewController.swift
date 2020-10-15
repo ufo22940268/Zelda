@@ -15,7 +15,7 @@ class SideBarContentViewController: NSViewController {
 	override func viewDidLoad() {
 		NotificationCenter.default.publisher(for: .syncEndPoint)
 			.flatMap { notif -> AnyPublisher<Void, ResponseError> in
-				let endPointId = notif.object as! NSManagedObjectID
+				let endPointId = (self.context.persistentStoreCoordinator?.managedObjectID(forURIRepresentation: notif.object as! URL))!
 				let endPoint = self.context.object(with: endPointId)
 				return BackendAgent.default.upsert(endPoint: endPoint as! EndPointEntity)
 			}

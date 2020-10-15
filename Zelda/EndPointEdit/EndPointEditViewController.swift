@@ -12,7 +12,7 @@ class EndPointEditViewController: NSViewController, NSTextFieldDelegate {
 	// MARK: Internal
 
 	var validateCancellable: AnyCancellable?
-	var validateResultCancellable: AnyCancellable?
+	var validateResultCancellable: AnyCancellable?	
 	@Published var url: String = ""
 	var validateResultSubject = CurrentValueSubject<ValidateURLResult, Never>(.initial)
 	@IBOutlet var prompt: NSTextField!
@@ -70,7 +70,7 @@ class EndPointEditViewController: NSViewController, NSTextFieldDelegate {
 
 	@IBAction func onConfirm(_ sender: Any) {
 		let endPointId = saveEndPoint()
-		NotificationCenter.default.post(name: .syncEndPoint, object: endPointId)
+		NotificationCenter.default.post(name: .syncEndPoint, object: endPointId.uriRepresentation())
 		presentingViewController?.dismiss(self)
 	}
 	
