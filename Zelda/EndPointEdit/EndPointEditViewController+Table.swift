@@ -26,7 +26,7 @@ extension EndPointEditViewController: NSTableViewDelegate, NSTableViewDataSource
 		} else if tableColumn?.identifier.rawValue == "value" {
 			return value
 		} else if tableColumn?.identifier.rawValue == "check" {
-			return watchPaths.contains(path)
+			return watchPathsSubject.value.contains(path)
 		}
 		
 		return nil
@@ -37,9 +37,9 @@ extension EndPointEditViewController: NSTableViewDelegate, NSTableViewDataSource
 		if identifier.rawValue == "check" {
 			let checked = object as! Bool
 			if checked {
-				watchPaths.insert(apiDataArray[row].0)
+				watchPathsSubject.value.insert(apiDataArray[row].0)
 			} else {
-				watchPaths.remove(apiDataArray[row].0)
+				watchPathsSubject.value.remove(apiDataArray[row].0)
 			}
 		}
 	}

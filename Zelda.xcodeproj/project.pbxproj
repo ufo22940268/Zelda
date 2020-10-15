@@ -16,6 +16,7 @@
 		4226D4A52537D59500CE8DB1 /* BackendAgent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4226D4A42537D59500CE8DB1 /* BackendAgent.swift */; };
 		4226D4AA2537D5E700CE8DB1 /* BackendAgent+EndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4226D4A92537D5E700CE8DB1 /* BackendAgent+EndPoint.swift */; };
 		4226D4B3253810A700CE8DB1 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4226D4B2253810A700CE8DB1 /* ViewController.swift */; };
+		4226D4B82538211400CE8DB1 /* Button+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4226D4B72538211400CE8DB1 /* Button+Helpers.swift */; };
 		42697C9B2534402800EA6275 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42697C9A2534402800EA6275 /* AppDelegate.swift */; };
 		42697C9D2534402800EA6275 /* AppSideBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42697C9C2534402800EA6275 /* AppSideBarViewController.swift */; };
 		42697CA02534402800EA6275 /* Zelda.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 42697C9E2534402800EA6275 /* Zelda.xcdatamodeld */; };
@@ -64,6 +65,7 @@
 		4226D4A42537D59500CE8DB1 /* BackendAgent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackendAgent.swift; sourceTree = "<group>"; };
 		4226D4A92537D5E700CE8DB1 /* BackendAgent+EndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BackendAgent+EndPoint.swift"; sourceTree = "<group>"; };
 		4226D4B2253810A700CE8DB1 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		4226D4B72538211400CE8DB1 /* Button+Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Button+Helpers.swift"; sourceTree = "<group>"; };
 		42697C972534402800EA6275 /* Zelda.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Zelda.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		42697C9A2534402800EA6275 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		42697C9C2534402800EA6275 /* AppSideBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSideBarViewController.swift; sourceTree = "<group>"; };
@@ -178,6 +180,7 @@
 				4226D49F2537C78B00CE8DB1 /* SideBarContentViewController.swift */,
 				4226D4AE2537D5EC00CE8DB1 /* BackendAgent */,
 				4226D4B2253810A700CE8DB1 /* ViewController.swift */,
+				4226D4B72538211400CE8DB1 /* Button+Helpers.swift */,
 			);
 			path = Zelda;
 			sourceTree = "<group>";
@@ -367,6 +370,7 @@
 				42697D03253675F200EA6275 /* Api.swift in Sources */,
 				422199132536EB410090AA28 /* NSManagedObjectContext+Helper.swift in Sources */,
 				4226D4A02537C78B00CE8DB1 /* SideBarContentViewController.swift in Sources */,
+				4226D4B82538211400CE8DB1 /* Button+Helpers.swift in Sources */,
 				42697C9B2534402800EA6275 /* AppDelegate.swift in Sources */,
 				422199042536E6860090AA28 /* NSManagedObjectContext+Name.swift in Sources */,
 				42697D1D2536A0FF00EA6275 /* EndPointEditViewController+Table.swift in Sources */,

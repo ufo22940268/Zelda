@@ -14,7 +14,7 @@ extension EndPointEditViewController {
 		let ep = EndPointEntity(context: context)
 		ep.url = url
 
-		for api in apiDataArray.filter({ watchPaths.contains($0.0) }) {
+		for api in apiDataArray.filter({ watchPathsSubject.value.contains($0.0) }) {
 			let (path, value) = api
 			let apiEntity = ApiEntity(context: context)
 			apiEntity.endPoint = ep

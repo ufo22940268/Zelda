@@ -17,7 +17,8 @@ class EndPointEditViewController: ViewController, NSTextFieldDelegate {
 	@IBOutlet var prompt: NSTextField!
 	var apiData = [String: String]()
 	@IBOutlet var tableView: NSTableView!
-	var watchPaths = Set<String>()
+	var watchPathsSubject = CurrentValueSubject<Set<String>, Never>(Set<String>())
+	
 	@IBOutlet weak var confirmButton: NSButton!
 
 	var type = EndPointEditType.edit
@@ -28,7 +29,8 @@ class EndPointEditViewController: ViewController, NSTextFieldDelegate {
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
-
+		
+		confirmButton.setPrimary()
 		$url
 			.map { url -> String in
 				if !self.validateResultSubject.value.isProcessing && self.validateResultSubject.value != .initial {
@@ -60,8 +62,18 @@ class EndPointEditViewController: ViewController, NSTextFieldDelegate {
 				self.load(apiData: [String: String]())
 				self.confirmButton.isEnabled = false
 			}
-						
 		}.store(in: &disposableBag.cancellables)
+		
+		validateResultSubject.combineLatest(watchPathsSubject)
+			.sink { ar in
+				let (result, watch) = ar
+				if case .ok = result, watch.count > 0  {
+					self.confirmButton.isEnabled = true
+				} else {
+					self.confirmButton.isEnabled = false
+				}
+			}
+			.store(in: &disposableBag.cancellables)
 	}
 
 	func controlTextDidChange(_ obj: Notification) {
@@ -76,6 +88,11 @@ class EndPointEditViewController: ViewController, NSTextFieldDelegate {
 		disposableBag.dispose()
 	}
 
+	@IBAction func onCancel(_ sender: Any) {
+		presentingViewController?.dismiss(self)
+		disposableBag.dispose()
+	}
+	
 	func isDuplicated(url: String) -> Bool {
 		try! context.fetchOne(EndPointEntity.self, "url = %@", url) != nil
 	}

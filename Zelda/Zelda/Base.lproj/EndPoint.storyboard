@@ -93,6 +93,17 @@
                                     </gridCell>
                                 </gridCells>
                             </gridView>
+                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="d6l-a4-Ys8">
+                                <rect key="frame" x="468" y="13" width="61" height="32"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <buttonCell key="cell" type="push" title="取消" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="qkj-bZ-eEG">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" size="13" name=".PingFangSC-Regular"/>
+                                    <connections>
+                                        <action selector="onCancel:" target="EuP-jN-LuZ" id="IJO-2x-Y0q"/>
+                                    </connections>
+                                </buttonCell>
+                            </button>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="NeC-7W-9m7">
                                 <rect key="frame" x="534" y="13" width="61" height="32"/>
                                 <buttonCell key="cell" type="push" title="确定" bezelStyle="rounded" alignment="center" enabled="NO" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="FAu-Pn-kpr">
