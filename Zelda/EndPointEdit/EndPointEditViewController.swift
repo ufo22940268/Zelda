@@ -18,28 +18,26 @@ class EndPointEditViewController: ViewController, NSTextFieldDelegate {
 	var apiData = [String: String]()
 	@IBOutlet var tableView: NSTableView!
 	var watchPaths = Set<String>()
+	@IBOutlet weak var confirmButton: NSButton!
 
 	var type = EndPointEditType.edit
 
 	var context: NSManagedObjectContext {
 		type.context
 	}
-
+	
 	override func viewDidLoad() {
 		super.viewDidLoad()
 
 		$url
 			.map { url -> String in
-				if !self.validateResultSubject.value.isProcessing {
+				if !self.validateResultSubject.value.isProcessing && self.validateResultSubject.value != .initial {
 					self.validateResultSubject.send(.pending)
-				}
-
-				if url.isEmpty {
-					self.validateResultSubject.send(.initial)
 				}
 
 				return url
 			}
+			.filter { !$0.isEmpty }
 			.debounce(for: 1, scheduler: DispatchQueue.main)
 			.flatMap { url -> AnyPublisher<ValidateURLResult, Never> in
 				if self.isDuplicated(url: url) {
@@ -57,9 +55,12 @@ class EndPointEditViewController: ViewController, NSTextFieldDelegate {
 			self.prompt.stringValue = result.label
 			if case .ok(let json) = result {
 				self.load(apiData: json.convertToPathMap())
+				self.confirmButton.isEnabled = true
 			} else {
 				self.load(apiData: [String: String]())
+				self.confirmButton.isEnabled = false
 			}
+						
 		}.store(in: &disposableBag.cancellables)
 	}
 

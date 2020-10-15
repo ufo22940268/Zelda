@@ -95,7 +95,7 @@
                             </gridView>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="NeC-7W-9m7">
                                 <rect key="frame" x="534" y="13" width="61" height="32"/>
-                                <buttonCell key="cell" type="push" title="确定" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="FAu-Pn-kpr">
+                                <buttonCell key="cell" type="push" title="确定" bezelStyle="rounded" alignment="center" enabled="NO" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="FAu-Pn-kpr">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
@@ -199,6 +199,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="confirmButton" destination="NeC-7W-9m7" id="Ael-6N-Otu"/>
                         <outlet property="prompt" destination="Zqs-eS-dpQ" id="tLT-Xz-JFC"/>
                         <outlet property="tableView" destination="oJX-uy-Sj7" id="Tf2-9O-57O"/>
                     </connections>
