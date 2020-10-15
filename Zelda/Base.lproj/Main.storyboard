@@ -844,10 +844,10 @@
             </objects>
             <point key="canvasLocation" x="580" y="581"/>
         </scene>
-        <!--View Controller-->
+        <!--Side Bar Content View Controller-->
         <scene sceneID="ool-95-gE7">
             <objects>
-                <viewController id="CSd-hC-8Zy" sceneMemberID="viewController">
+                <viewController id="CSd-hC-8Zy" customClass="SideBarContentViewController" customModule="Zelda" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="L0l-sc-QJa">
                         <rect key="frame" x="0.0" y="0.0" width="800" height="300"/>
                         <autoresizingMask key="autoresizingMask"/>

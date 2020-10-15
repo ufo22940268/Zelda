@@ -12,7 +12,7 @@ import Foundation
 extension EndPointEditViewController {
 	func saveEndPoint() {
 		let ep = EndPointEntity(context: context)
-		ep.url = urlSubject.value
+		ep.url = url
 
 		for api in apiDataArray.filter({ watchPaths.contains($0.0) }) {
 			let (path, value) = api
@@ -20,7 +20,6 @@ extension EndPointEditViewController {
 			apiEntity.endPoint = ep
 			apiEntity.paths = path
 			apiEntity.value = value
-			apiEntity.watch = true
 		}
 
 		try! context.save()

@@ -13,12 +13,12 @@ class EndPointEditViewController: NSViewController, NSTextFieldDelegate {
 
 	var validateCancellable: AnyCancellable?
 	var validateResultCancellable: AnyCancellable?
-	var urlSubject = CurrentValueSubject<String, Never>("")
+	@Published var url: String = ""
 	var validateResultSubject = CurrentValueSubject<ValidateURLResult, Never>(.initial)
 	@IBOutlet var prompt: NSTextField!
 	var apiData = [String: String]()
 	@IBOutlet var tableView: NSTableView!
-	var watchPaths = Set<String>()
+	var watchPaths = Set<String>() 
 
 	var type = EndPointEditType.edit
 
@@ -29,7 +29,7 @@ class EndPointEditViewController: NSViewController, NSTextFieldDelegate {
 	override func viewDidLoad() {
 		super.viewDidLoad()
 
-		validateCancellable = urlSubject
+		validateCancellable = $url
 			.map { url -> String in
 				if !self.validateResultSubject.value.isProcessing {
 					self.validateResultSubject.send(.pending)
@@ -50,6 +50,7 @@ class EndPointEditViewController: NSViewController, NSTextFieldDelegate {
 				}
 			}
 			.receive(on: DispatchQueue.main)
+			.print()
 			.subscribe(validateResultSubject)
 
 		validateResultCancellable = validateResultSubject.sink { result in
@@ -61,14 +62,16 @@ class EndPointEditViewController: NSViewController, NSTextFieldDelegate {
 			}
 		}
 	}
+		
 
 	func controlTextDidChange(_ obj: Notification) {
 		guard let field = obj.object as? NSTextField else { return }
-		urlSubject.send(field.stringValue)
+		url = field.stringValue
 	}
 
 	@IBAction func onConfirm(_ sender: Any) {
 		saveEndPoint()
+		NotificationCenter.default.post(name: .syncEndPoint, object: nil)
 		view.window?.close()
 	}
 
