@@ -8,8 +8,7 @@
 import Cocoa
 import Combine
 
-
-class EndPointEditViewController: ViewController, NSTextFieldDelegate {
+class EndPointEditViewController: NSViewController, NSTextFieldDelegate {
 	// MARK: Internal
 
 	@Published var url: String = ""
@@ -18,22 +17,24 @@ class EndPointEditViewController: ViewController, NSTextFieldDelegate {
 	var apiData = [String: String]()
 	@IBOutlet var tableView: NSTableView!
 	var watchPathsSubject = CurrentValueSubject<Set<String>, Never>(Set<String>())
-	
-	@IBOutlet weak var confirmButton: NSButton!
+	var cancellables = Set<AnyCancellable>()
+
+	@IBOutlet var confirmButton: NSButton!
 
 	var type = EndPointEditType.edit
 
 	var context: NSManagedObjectContext {
 		type.context
 	}
-	
+
 	override func viewDidLoad() {
 		super.viewDidLoad()
-		
+
 		confirmButton.setPrimary()
 		$url
-			.map { url -> String in
-				if !self.validateResultSubject.value.isProcessing && self.validateResultSubject.value != .initial {
+			.map { [weak self] url -> String in
+				guard let self = self else { return "" }
+				if !self.validateResultSubject.value.isProcessing, self.validateResultSubject.value != .initial {
 					self.validateResultSubject.send(.pending)
 				}
 
@@ -41,7 +42,8 @@ class EndPointEditViewController: ViewController, NSTextFieldDelegate {
 			}
 			.filter { !$0.isEmpty }
 			.debounce(for: 1, scheduler: DispatchQueue.main)
-			.flatMap { url -> AnyPublisher<ValidateURLResult, Never> in
+			.flatMap { [weak self] url -> AnyPublisher<ValidateURLResult, Never> in
+				guard let self = self else { return Just(ValidateURLResult.duplicatedUrl).eraseToAnyPublisher() }
 				if self.isDuplicated(url: url) {
 					return Just(ValidateURLResult.duplicatedUrl).eraseToAnyPublisher()
 				} else {
@@ -49,11 +51,13 @@ class EndPointEditViewController: ViewController, NSTextFieldDelegate {
 				}
 			}
 			.receive(on: DispatchQueue.main)
-			.print()
+			.print("url")
 			.subscribe(validateResultSubject)
-			.store(in: &disposableBag.cancellables)
+			.store(in: &cancellables)
 
-		validateResultSubject.sink { result in
+		validateResultSubject.sink { [weak self] result in
+			guard let self = self else { return }
+
 			self.prompt.stringValue = result.label
 			if case .ok(let json) = result {
 				self.load(apiData: json.convertToPathMap())
@@ -62,37 +66,35 @@ class EndPointEditViewController: ViewController, NSTextFieldDelegate {
 				self.load(apiData: [String: String]())
 				self.confirmButton.isEnabled = false
 			}
-		}.store(in: &disposableBag.cancellables)
-		
+		}.store(in: &cancellables)
+
 		validateResultSubject.combineLatest(watchPathsSubject)
-			.sink { ar in
+			.sink { [weak self] ar in
 				let (result, watch) = ar
-				if case .ok = result, watch.count > 0  {
-					self.confirmButton.isEnabled = true
+				if case .ok = result, watch.count > 0 {
+					self?.confirmButton.isEnabled = true
 				} else {
-					self.confirmButton.isEnabled = false
+					self?.confirmButton.isEnabled = false
 				}
 			}
-			.store(in: &disposableBag.cancellables)
+			.store(in: &cancellables)
 	}
 
 	func controlTextDidChange(_ obj: Notification) {
 		guard let field = obj.object as? NSTextField else { return }
 		url = field.stringValue
 	}
-	
+
 	@IBAction func onConfirm(_ sender: Any) {
 		let endPointId = saveEndPoint()
 		NotificationCenter.default.post(name: .syncEndPoint, object: endPointId.uriRepresentation())
 		presentingViewController?.dismiss(self)
-		disposableBag.dispose()
 	}
 
 	@IBAction func onCancel(_ sender: Any) {
 		presentingViewController?.dismiss(self)
-		disposableBag.dispose()
 	}
-	
+
 	func isDuplicated(url: String) -> Bool {
 		try! context.fetchOne(EndPointEntity.self, "url = %@", url) != nil
 	}
