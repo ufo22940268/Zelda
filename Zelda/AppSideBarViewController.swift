@@ -11,9 +11,6 @@ class AppSideBarViewController: NSSplitViewController {
 
 	override func viewDidLoad() {
 		super.viewDidLoad()
-
-		// Do any additional setup after loading the view.
-		print("aaa")
 	}
 
 	override var representedObject: Any? {

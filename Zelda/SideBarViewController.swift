@@ -8,31 +8,31 @@
 import Cocoa
 
 enum SideBarItem: CaseIterable {
-	case dashboard
-	case history
-	case more
+	case all
+	case bug
+	case timeout
 
 	// MARK: Internal
 
 	var label: String {
 		switch self {
-		case .dashboard:
-			return "监控"
-		case .history:
-			return "记录"
-		case .more:
-			return "更多"
+		case .all:
+			return "全部"
+		case .bug:
+			return "异常"
+		case .timeout:
+			return "超时"
 		}
 	}
 
 	var icon: NSImage? {
 		switch self {
-		case .dashboard:
-			return NSImage(systemSymbolName: "cloud.fill", accessibilityDescription: nil)
-		case .history:
-			return NSImage(systemSymbolName: "clock.fill", accessibilityDescription: nil)
-		case .more:
-			return NSImage(systemSymbolName: "lineweight", accessibilityDescription: nil)
+		case .all:
+			return NSImage(systemSymbolName: "folder", accessibilityDescription: nil)
+		case .bug:
+			return NSImage(systemSymbolName: "ladybug", accessibilityDescription: nil)
+		case .timeout:
+			return NSImage(systemSymbolName: "timer", accessibilityDescription: nil)
 		}
 	}
 }

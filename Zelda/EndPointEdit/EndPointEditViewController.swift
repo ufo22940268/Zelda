@@ -51,7 +51,6 @@ class EndPointEditViewController: NSViewController, NSTextFieldDelegate {
 				}
 			}
 			.receive(on: DispatchQueue.main)
-			.print("url")
 			.subscribe(validateResultSubject)
 			.store(in: &cancellables)
 
