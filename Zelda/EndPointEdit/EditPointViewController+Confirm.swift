@@ -10,7 +10,7 @@ import Combine
 import Foundation
 
 extension EndPointEditViewController {
-	func saveEndPoint() {
+	func saveEndPoint() -> NSManagedObjectID {
 		let ep = EndPointEntity(context: context)
 		ep.url = url
 
@@ -24,5 +24,7 @@ extension EndPointEditViewController {
 
 		try! context.save()
 		try! context.parent!.save()
+		
+		return ep.objectID
 	}
 }

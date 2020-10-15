@@ -18,7 +18,7 @@ class EndPointEditViewController: NSViewController, NSTextFieldDelegate {
 	@IBOutlet var prompt: NSTextField!
 	var apiData = [String: String]()
 	@IBOutlet var tableView: NSTableView!
-	var watchPaths = Set<String>() 
+	var watchPaths = Set<String>()
 
 	var type = EndPointEditType.edit
 
@@ -62,7 +62,6 @@ class EndPointEditViewController: NSViewController, NSTextFieldDelegate {
 			}
 		}
 	}
-		
 
 	func controlTextDidChange(_ obj: Notification) {
 		guard let field = obj.object as? NSTextField else { return }
@@ -70,8 +69,8 @@ class EndPointEditViewController: NSViewController, NSTextFieldDelegate {
 	}
 
 	@IBAction func onConfirm(_ sender: Any) {
-		saveEndPoint()
-		NotificationCenter.default.post(name: .syncEndPoint, object: nil)
+		let endPointId = saveEndPoint()
+		NotificationCenter.default.post(name: .syncEndPoint, object: endPointId)
 		view.window?.close()
 	}
 
