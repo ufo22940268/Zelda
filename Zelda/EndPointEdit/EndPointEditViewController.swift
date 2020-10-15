@@ -8,11 +8,10 @@
 import Cocoa
 import Combine
 
-class EndPointEditViewController: NSViewController, NSTextFieldDelegate {
+
+class EndPointEditViewController: ViewController, NSTextFieldDelegate {
 	// MARK: Internal
 
-	var validateCancellable: AnyCancellable?
-	var validateResultCancellable: AnyCancellable?	
 	@Published var url: String = ""
 	var validateResultSubject = CurrentValueSubject<ValidateURLResult, Never>(.initial)
 	@IBOutlet var prompt: NSTextField!
@@ -29,7 +28,7 @@ class EndPointEditViewController: NSViewController, NSTextFieldDelegate {
 	override func viewDidLoad() {
 		super.viewDidLoad()
 
-		validateCancellable = $url
+		$url
 			.map { url -> String in
 				if !self.validateResultSubject.value.isProcessing {
 					self.validateResultSubject.send(.pending)
@@ -52,31 +51,28 @@ class EndPointEditViewController: NSViewController, NSTextFieldDelegate {
 			.receive(on: DispatchQueue.main)
 			.print()
 			.subscribe(validateResultSubject)
+			.store(in: &disposableBag.cancellables)
 
-		validateResultCancellable = validateResultSubject.sink { result in
+		validateResultSubject.sink { result in
 			self.prompt.stringValue = result.label
 			if case .ok(let json) = result {
 				self.load(apiData: json.convertToPathMap())
 			} else {
 				self.load(apiData: [String: String]())
 			}
-		}
+		}.store(in: &disposableBag.cancellables)
 	}
 
 	func controlTextDidChange(_ obj: Notification) {
 		guard let field = obj.object as? NSTextField else { return }
 		url = field.stringValue
 	}
-
+	
 	@IBAction func onConfirm(_ sender: Any) {
 		let endPointId = saveEndPoint()
 		NotificationCenter.default.post(name: .syncEndPoint, object: endPointId.uriRepresentation())
 		presentingViewController?.dismiss(self)
-	}
-	
-	override func viewDidDisappear() {
-		validateCancellable?.cancel()
-		validateResultCancellable?.cancel()
+		disposableBag.dispose()
 	}
 
 	func isDuplicated(url: String) -> Bool {
