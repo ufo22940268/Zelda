@@ -8,7 +8,7 @@
 import Cocoa
 import Combine
 
-class SideBarContentViewController: NSViewController {
+class EndPointListViewController: NSViewController {
 	var cancellables = Set<AnyCancellable>()
 	var context = NSManagedObjectContext.main
 

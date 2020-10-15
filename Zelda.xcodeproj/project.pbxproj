@@ -12,7 +12,7 @@
 		4221991B2536EC0D0090AA28 /* EndPointEditType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4221991A2536EC0D0090AA28 /* EndPointEditType.swift */; };
 		42219929253712B90090AA28 /* AppDelegate+DebugHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42219928253712B90090AA28 /* AppDelegate+DebugHelpers.swift */; };
 		4226D49B2537C45D00CE8DB1 /* NotificaitonCenter+Name.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4226D49A2537C45D00CE8DB1 /* NotificaitonCenter+Name.swift */; };
-		4226D4A02537C78B00CE8DB1 /* SideBarContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4226D49F2537C78B00CE8DB1 /* SideBarContentViewController.swift */; };
+		4226D4A02537C78B00CE8DB1 /* EndPointListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4226D49F2537C78B00CE8DB1 /* EndPointListViewController.swift */; };
 		4226D4A52537D59500CE8DB1 /* BackendAgent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4226D4A42537D59500CE8DB1 /* BackendAgent.swift */; };
 		4226D4AA2537D5E700CE8DB1 /* BackendAgent+EndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4226D4A92537D5E700CE8DB1 /* BackendAgent+EndPoint.swift */; };
 		4226D4B82538211400CE8DB1 /* Button+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4226D4B72538211400CE8DB1 /* Button+Helpers.swift */; };
@@ -60,7 +60,7 @@
 		4221991A2536EC0D0090AA28 /* EndPointEditType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndPointEditType.swift; sourceTree = "<group>"; };
 		42219928253712B90090AA28 /* AppDelegate+DebugHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AppDelegate+DebugHelpers.swift"; sourceTree = "<group>"; };
 		4226D49A2537C45D00CE8DB1 /* NotificaitonCenter+Name.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NotificaitonCenter+Name.swift"; sourceTree = "<group>"; };
-		4226D49F2537C78B00CE8DB1 /* SideBarContentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideBarContentViewController.swift; sourceTree = "<group>"; };
+		4226D49F2537C78B00CE8DB1 /* EndPointListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndPointListViewController.swift; sourceTree = "<group>"; };
 		4226D4A42537D59500CE8DB1 /* BackendAgent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackendAgent.swift; sourceTree = "<group>"; };
 		4226D4A92537D5E700CE8DB1 /* BackendAgent+EndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BackendAgent+EndPoint.swift"; sourceTree = "<group>"; };
 		4226D4B72538211400CE8DB1 /* Button+Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Button+Helpers.swift"; sourceTree = "<group>"; };
@@ -175,7 +175,7 @@
 				4221990E2536EB260090AA28 /* DB */,
 				42219928253712B90090AA28 /* AppDelegate+DebugHelpers.swift */,
 				4226D49A2537C45D00CE8DB1 /* NotificaitonCenter+Name.swift */,
-				4226D49F2537C78B00CE8DB1 /* SideBarContentViewController.swift */,
+				4226D49F2537C78B00CE8DB1 /* EndPointListViewController.swift */,
 				4226D4AE2537D5EC00CE8DB1 /* BackendAgent */,
 				4226D4B72538211400CE8DB1 /* Button+Helpers.swift */,
 			);
@@ -365,7 +365,7 @@
 				42697D142536941300EA6275 /* Api+JSON.swift in Sources */,
 				42697D03253675F200EA6275 /* Api.swift in Sources */,
 				422199132536EB410090AA28 /* NSManagedObjectContext+Helper.swift in Sources */,
-				4226D4A02537C78B00CE8DB1 /* SideBarContentViewController.swift in Sources */,
+				4226D4A02537C78B00CE8DB1 /* EndPointListViewController.swift in Sources */,
 				4226D4B82538211400CE8DB1 /* Button+Helpers.swift in Sources */,
 				42697C9B2534402800EA6275 /* AppDelegate.swift in Sources */,
 				422199042536E6860090AA28 /* NSManagedObjectContext+Name.swift in Sources */,
