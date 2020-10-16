@@ -851,17 +851,17 @@
             <objects>
                 <viewController id="CSd-hC-8Zy" customClass="EndPointListViewController" customModule="Zelda" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" misplaced="YES" id="L0l-sc-QJa">
-                        <rect key="frame" x="0.0" y="0.0" width="130" height="1316"/>
+                        <rect key="frame" x="0.0" y="0.0" width="130" height="400"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <scrollView autohidesScrollers="YES" horizontalLineScroll="28" horizontalPageScroll="10" verticalLineScroll="28" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AYU-q9-x35">
-                                <rect key="frame" x="0.0" y="0.0" width="130" height="1316"/>
+                                <rect key="frame" x="0.0" y="0.0" width="130" height="1921"/>
                                 <clipView key="contentView" drawsBackground="NO" id="emH-On-oir">
-                                    <rect key="frame" x="1" y="1" width="128" height="1314"/>
+                                    <rect key="frame" x="1" y="1" width="128" height="1919"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
-                                        <outlineView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" tableStyle="sourceList" selectionHighlightStyle="sourceList" multipleSelection="NO" autosaveColumns="NO" rowHeight="28" rowSizeStyle="medium" viewBased="YES" indentationPerLevel="13" autoresizesOutlineColumn="YES" outlineTableColumn="iG2-y7-bRp" id="NNe-g6-THc">
-                                            <rect key="frame" x="0.0" y="0.0" width="128" height="1314"/>
+                                        <outlineView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="firstColumnOnly" tableStyle="sourceList" selectionHighlightStyle="sourceList" multipleSelection="NO" autosaveColumns="NO" rowHeight="28" rowSizeStyle="medium" viewBased="YES" indentationPerLevel="13" autoresizesOutlineColumn="YES" outlineTableColumn="iG2-y7-bRp" id="NNe-g6-THc">
+                                            <rect key="frame" x="0.0" y="0.0" width="128" height="1919"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <size key="intercellSpacing" width="3" height="0.0"/>
                                             <color key="backgroundColor" name="_sourceListBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -886,8 +886,8 @@
                                                                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Rxl-yk-WyW">
                                                                     <rect key="frame" x="0.0" y="20" width="105" height="16"/>
                                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
-                                                                    <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="Table View Cell" usesSingleLineMode="YES" id="zWP-Zm-nKb">
-                                                                        <font key="font" usesAppearanceFont="YES"/>
+                                                                    <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" alignment="left" title="Table View Cell" id="zWP-Zm-nKb">
+                                                                        <font key="font" metaFont="system"/>
                                                                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                                                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                                     </textFieldCell>
@@ -933,7 +933,7 @@
                 </viewController>
                 <customObject id="0BN-St-kf5" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-209" y="1381"/>
+            <point key="canvasLocation" x="-367" y="1700"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="eFM-5f-6XF">
