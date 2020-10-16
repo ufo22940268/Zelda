@@ -36,14 +36,6 @@ struct EndPoint: Codable {
 			}
 		}
 
-		let req = DomainEntity.fetchRequest() as NSFetchRequest<DomainEntity>
-		req.predicate = NSPredicate(format: "hostname = %@", argumentArray: [url.domainName])
-		if (try? context.fetch(req).first == nil) != nil {
-			let d = DomainEntity(context: context)
-			d.hostname = url.domainName
-			d.name = url.domainName
-		}
-
 		return ee
 	}
 }

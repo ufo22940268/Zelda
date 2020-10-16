@@ -851,17 +851,17 @@
             <objects>
                 <viewController id="CSd-hC-8Zy" customClass="EndPointListViewController" customModule="Zelda" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" misplaced="YES" id="L0l-sc-QJa">
-                        <rect key="frame" x="0.0" y="0.0" width="130" height="601"/>
+                        <rect key="frame" x="0.0" y="0.0" width="130" height="1316"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <scrollView autohidesScrollers="YES" horizontalLineScroll="28" horizontalPageScroll="10" verticalLineScroll="28" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AYU-q9-x35">
-                                <rect key="frame" x="0.0" y="0.0" width="130" height="931"/>
+                                <rect key="frame" x="0.0" y="0.0" width="130" height="1316"/>
                                 <clipView key="contentView" drawsBackground="NO" id="emH-On-oir">
-                                    <rect key="frame" x="1" y="1" width="128" height="929"/>
+                                    <rect key="frame" x="1" y="1" width="128" height="1314"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <outlineView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" tableStyle="sourceList" selectionHighlightStyle="sourceList" multipleSelection="NO" autosaveColumns="NO" rowHeight="28" rowSizeStyle="medium" viewBased="YES" indentationPerLevel="13" autoresizesOutlineColumn="YES" outlineTableColumn="iG2-y7-bRp" id="NNe-g6-THc">
-                                            <rect key="frame" x="0.0" y="0.0" width="128" height="929"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="128" height="1314"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <size key="intercellSpacing" width="3" height="0.0"/>
                                             <color key="backgroundColor" name="_sourceListBackgroundColor" catalog="System" colorSpace="catalog"/>

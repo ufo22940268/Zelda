@@ -15,6 +15,13 @@ extension EndPointListViewController: NSOutlineViewDataSource, NSOutlineViewDele
 			.sorted { $0.0 < $1.0 }
 	}
 
+	func loadData() -> [EndPoint] {
+		// TODO: Load data by category.
+
+		try! context.fetchMany(EndPointEntity.self)
+			.map { $0.toItem() }
+	}
+
 	func outlineView(_ outlineView: NSOutlineView, child index: Int, ofItem item: Any?) -> Any {
 		if item == nil {
 			return groupData[index].0
@@ -50,7 +57,7 @@ extension EndPointListViewController: NSOutlineViewDataSource, NSOutlineViewDele
 			return false
 		}
 	}
-	
+
 	func outlineView(_ outlineView: NSOutlineView, shouldSelectItem item: Any) -> Bool {
 		return !self.outlineView(outlineView, isGroupItem: item)
 	}
@@ -64,7 +71,7 @@ extension EndPointListViewController: NSOutlineViewDataSource, NSOutlineViewDele
 		if let item = item as? EndPoint {
 			view.textField?.stringValue = item.url.endPointPath
 		}
-		
+
 		return view
 	}
 }

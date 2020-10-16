@@ -9,11 +9,11 @@ import Cocoa
 import Combine
 
 class EndPointListViewController: NSViewController {
-		
-	@IBOutlet weak var outlineView: NSOutlineView!
+	@IBOutlet var outlineView: NSOutlineView!
 	var cancellables = Set<AnyCancellable>()
 	var context = NSManagedObjectContext.main
-	var endPoints: [EndPoint] =  [EndPoint(url: "http://wefw.com/22", watchFields: []), EndPoint(url: "http://wefw.com/11", watchFields: [])]
+	var endPoints: [EndPoint] = []
+	var syncSubject = PassthroughSubject<Void, Never>()
 
 	override func viewDidLoad() {
 		NotificationCenter.default.publisher(for: .syncEndPoint)
@@ -27,5 +27,24 @@ class EndPointListViewController: NSViewController {
 			.store(in: &cancellables)
 		
 		outlineView.expandItem(nil, expandChildren: true)
+		
+		syncSubject
+			.flatMap { [weak self] () in
+				BackendAgent.default.syncFromServer(context: self?.context ?? .main)
+			}
+			.catch { _ in
+				Empty()
+			}
+			.map { [weak self] _ -> [EndPoint] in
+				self?.loadData() ?? []
+			}
+			.sink(receiveValue: { [weak self] (v) in
+				self?.endPoints = v
+				self?.outlineView.reloadData()
+				self?.outlineView.expandItem(nil, expandChildren: true)
+			})
+			.store(in: &cancellables)
+				
+		syncSubject.send()
 	}
 }

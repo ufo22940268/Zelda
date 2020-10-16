@@ -31,4 +31,12 @@ extension JSON {
 		}
 		return [path.joined(separator: "."): json.stringValue]
 	}
+	
+	func getJSONFragments(highlight paths: [String]) -> [JSONFragment] {
+		[JSONFragment(text: "a"), JSONFragment(text: "b", hightlight: true)]
+	}
+	
+	var result: JSON {
+		return self["result"]
+	}
 }
