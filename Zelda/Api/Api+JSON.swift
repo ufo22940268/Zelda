@@ -7,6 +7,7 @@
 
 import Foundation
 import SwiftyJSON
+import Cocoa
 
 extension JSON {
 	func convertToPathMap() -> [String: String] {
