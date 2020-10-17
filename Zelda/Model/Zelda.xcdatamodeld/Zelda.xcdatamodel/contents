@@ -4,7 +4,7 @@
         <attribute name="paths" attributeType="String"/>
         <attribute name="value" optional="YES" attributeType="String"/>
         <attribute name="watchValue" optional="YES" attributeType="String"/>
-        <relationship name="endPoint" optional="YES" maxCount="1" deletionRule="No Action" destinationEntity="EndPointEntity"/>
+        <relationship name="endPoint" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="EndPointEntity" inverseName="api" inverseEntity="EndPointEntity"/>
         <fetchedProperty name="fetchedProperty" optional="YES">
             <fetchRequest name="fetchedPropertyFetchRequest" entity="ApiEntity"/>
         </fetchedProperty>
@@ -15,13 +15,13 @@
         <attribute name="needReload" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
         <attribute name="statusCode" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="url" attributeType="String"/>
-        <relationship name="api" optional="YES" toMany="YES" deletionRule="No Action" destinationEntity="ApiEntity"/>
+        <relationship name="api" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="ApiEntity" inverseName="endPoint" inverseEntity="ApiEntity"/>
     </entity>
     <entity name="LastUpdateEntity" representedClassName="LastUpdateEntity" syncable="YES" codeGenerationType="class">
         <attribute name="time" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
     </entity>
     <elements>
-        <element name="ApiEntity" positionX="-36" positionY="9" width="128" height="131"/>
+        <element name="ApiEntity" positionX="-36" positionY="9" width="128" height="110"/>
         <element name="EndPointEntity" positionX="-18" positionY="27" width="128" height="119"/>
         <element name="LastUpdateEntity" positionX="-63" positionY="-18" width="128" height="44"/>
     </elements>
