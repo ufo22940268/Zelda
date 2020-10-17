@@ -10,10 +10,9 @@ import Charts
 
 extension EndPointDetailViewController {
 	func setChartData() {
-		let xArray = Array(0..<scanlogs.count)
-		let ys1 = scanlogs.map { $0.duration }
+		let ys1 = scanlogs.map { self.indicator.getValue(log: $0) }
 		
-		let yse1 = ys1.enumerated().map { x, y in return BarChartDataEntry(x: Double(x), y: y) }
+		let yse1 = ys1.enumerated().map { x, y in return BarChartDataEntry(x: Double(x), y: Double(y)) }
 		
 		let data = BarChartData()
 		let ds1 = BarChartDataSet(entries: yse1)
@@ -25,11 +24,11 @@ extension EndPointDetailViewController {
 		data.barWidth = barWidth
 		self.chartView.xAxis.valueFormatter = IndexAxisValueFormatter(values: span.indexes(last: scanlogs.last!.time))
 		self.chartView.leftAxis.drawLabelsEnabled = false
-		let line = ChartLimitLine(limit: 0.3)
-		line.label = "avg"
-		line.labelPosition = .bottomLeft
+
+		let line = ChartLimitLine(limit: Double(ys1.reduce(.zero, +))/Double(ys1.count))
+		line.drawLabelEnabled = false
 		line.lineColor = .green
-		line.lineDashLengths = [3, 2]
+		line.lineDashLengths = [6, 2]
 		self.chartView.leftAxis.addLimitLine(line)
 
 		self.chartView.data = data
