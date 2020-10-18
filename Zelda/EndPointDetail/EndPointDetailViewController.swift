@@ -32,6 +32,22 @@ enum EndPointIndicator {
 			return log.errorCount
 		}
 	}
+	
+	
+	class DurationValueFormatter: IAxisValueFormatter {
+		func stringForValue(_ value: Double, axis: AxisBase?) -> String {
+			"\(Int(value)) ms"
+		}
+	}
+	
+	var valueFormatter: IAxisValueFormatter {
+		switch self {
+		case .duration:
+			return DurationValueFormatter()
+		default:
+			fatalError()
+		}
+	}
 }
 
 struct ScanLogInTimeSpan: Codable {

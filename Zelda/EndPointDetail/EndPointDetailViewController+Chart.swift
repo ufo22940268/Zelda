@@ -27,6 +27,10 @@ extension EndPointDetailViewController {
 		data.barWidth = barWidth
 		self.chartView.xAxis.valueFormatter = IndexAxisValueFormatter(values: span.indexes(last: scanlogs.last!.time))
 		self.chartView.leftAxis.drawLabelsEnabled = false
+		let maxY = Double(max(100, ys1.max()!))
+		self.chartView.leftAxis.axisMaximum = maxY
+		self.chartView.rightAxis.axisMaximum = maxY
+		self.chartView.rightAxis.valueFormatter = self.indicator.valueFormatter
 
 		let line = ChartLimitLine(limit: Double(ys1.reduce(.zero, +)) / Double(ys1.count))
 		line.drawLabelEnabled = false
