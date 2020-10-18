@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="17506" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="Pm7-bW-AsL">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="17506"/>
+        <capability name="NSView safe area layout guides" minToolsVersion="12.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--End Point Detail View Controller-->
+        <scene sceneID="eFM-5f-6XF">
+            <objects>
+                <viewController id="Pm7-bW-AsL" customClass="EndPointDetailViewController" customModule="Zelda" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" id="hys-Hh-9hg">
+                        <rect key="frame" x="0.0" y="0.0" width="735" height="679"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <box title="Box" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="QvQ-6R-QuI">
+                                <rect key="frame" x="28" y="128" width="661" height="453"/>
+                                <view key="contentView" id="W82-dd-rtj">
+                                    <rect key="frame" x="3" y="3" width="655" height="447"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    <subviews>
+                                        <customView translatesAutoresizingMaskIntoConstraints="NO" id="uMK-ZO-HFX" customClass="BarChartView" customModule="Charts">
+                                            <rect key="frame" x="20" y="127" width="615" height="300"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="300" id="7yr-Tz-eps"/>
+                                            </constraints>
+                                        </customView>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="uMK-ZO-HFX" firstAttribute="leading" secondItem="W82-dd-rtj" secondAttribute="leading" constant="20" symbolic="YES" id="MoJ-DJ-Co8"/>
+                                        <constraint firstItem="uMK-ZO-HFX" firstAttribute="top" secondItem="W82-dd-rtj" secondAttribute="top" constant="20" symbolic="YES" id="SAC-aS-4Ms"/>
+                                        <constraint firstAttribute="trailing" secondItem="uMK-ZO-HFX" secondAttribute="trailing" constant="20" symbolic="YES" id="jAT-n7-7q6"/>
+                                    </constraints>
+                                </view>
+                            </box>
+                            <popUpButton verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="C4m-rF-XCc">
+                                <rect key="frame" x="597" y="583" width="93" height="25"/>
+                                <popUpButtonCell key="cell" type="push" title="今天" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="CvD-Yz-xco" id="b4o-zn-LDG">
+                                    <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="menu"/>
+                                    <menu key="menu" id="QNT-ib-CR2">
+                                        <items>
+                                            <menuItem title="今天" state="on" identifier="today" id="CvD-Yz-xco"/>
+                                            <menuItem title="最近一周" identifier="week" id="2OT-G6-c4y"/>
+                                        </items>
+                                    </menu>
+                                </popUpButtonCell>
+                                <connections>
+                                    <action selector="onSelectSpan:" target="Pm7-bW-AsL" id="fzZ-gH-KSs"/>
+                                </connections>
+                            </popUpButton>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="GCE-S5-uXb" firstAttribute="trailing" secondItem="QvQ-6R-QuI" secondAttribute="trailing" constant="29" id="0bl-ao-isH"/>
+                            <constraint firstItem="GCE-S5-uXb" firstAttribute="bottom" secondItem="QvQ-6R-QuI" secondAttribute="bottom" constant="112" id="4Pd-tk-sod"/>
+                            <constraint firstItem="C4m-rF-XCc" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="GCE-S5-uXb" secondAttribute="leading" constant="20" symbolic="YES" id="F2O-pP-AiS"/>
+                            <constraint firstItem="QvQ-6R-QuI" firstAttribute="top" secondItem="C4m-rF-XCc" secondAttribute="bottom" constant="8" symbolic="YES" id="GvS-wm-13c"/>
+                            <constraint firstItem="C4m-rF-XCc" firstAttribute="trailing" secondItem="QvQ-6R-QuI" secondAttribute="trailing" id="MmO-bt-gUy"/>
+                            <constraint firstItem="QvQ-6R-QuI" firstAttribute="leading" secondItem="GCE-S5-uXb" secondAttribute="leading" constant="11" id="OYE-Ka-Ttg"/>
+                            <constraint firstItem="C4m-rF-XCc" firstAttribute="top" secondItem="YwN-zg-5Bn" secondAttribute="top" constant="20" symbolic="YES" id="TvL-kk-zDt"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="YwN-zg-5Bn"/>
+                        <viewLayoutGuide key="layoutMargins" id="GCE-S5-uXb"/>
+                    </view>
+                    <connections>
+                        <outlet property="chartView" destination="uMK-ZO-HFX" id="SLE-uW-2d5"/>
+                    </connections>
+                </viewController>
+                <customObject id="jgH-Zg-Qpl" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="651.5" y="1540.5"/>
+        </scene>
+    </scenes>
+</document>
