@@ -42,6 +42,7 @@
 		42697D142536941300EA6275 /* Api+JSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42697D132536941300EA6275 /* Api+JSON.swift */; };
 		42697D1D2536A0FF00EA6275 /* EndPointEditViewController+Table.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42697D1C2536A0FF00EA6275 /* EndPointEditViewController+Table.swift */; };
 		42A3049E2536CC5200E89376 /* EditPointViewController+Confirm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42A3049D2536CC5200E89376 /* EditPointViewController+Confirm.swift */; };
+		42A6ABBB253BDA0D0021DA90 /* JSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42A6ABBA253BDA0D0021DA90 /* JSON.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -102,6 +103,7 @@
 		42697D132536941300EA6275 /* Api+JSON.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Api+JSON.swift"; sourceTree = "<group>"; };
 		42697D1C2536A0FF00EA6275 /* EndPointEditViewController+Table.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "EndPointEditViewController+Table.swift"; sourceTree = "<group>"; };
 		42A3049D2536CC5200E89376 /* EditPointViewController+Confirm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "EditPointViewController+Confirm.swift"; sourceTree = "<group>"; };
+		42A6ABBA253BDA0D0021DA90 /* JSON.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSON.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -175,6 +177,7 @@
 				4226D49A2537C45D00CE8DB1 /* NotificaitonCenter+Name.swift */,
 				4226D4D32538602F00CE8DB1 /* String+URL.swift */,
 				4246FFAE25391E3400963B29 /* Combine+Helpers.swift */,
+				42A6ABBA253BDA0D0021DA90 /* JSON.swift */,
 			);
 			path = Tools;
 			sourceTree = "<group>";
@@ -461,6 +464,7 @@
 				4226D49B2537C45D00CE8DB1 /* NotificaitonCenter+Name.swift in Sources */,
 				4246FFB42539339600963B29 /* EndPointEntity+Helpers.swift in Sources */,
 				42697CF825358B1900EA6275 /* MainWindowController.swift in Sources */,
+				42A6ABBB253BDA0D0021DA90 /* JSON.swift in Sources */,
 				4226D4CF25385E3D00CE8DB1 /* EndPointListViewController+OutlineTable.swift in Sources */,
 				4246FFFB2539862A00963B29 /* EndPointDetailViewController+Chart.swift in Sources */,
 			);
