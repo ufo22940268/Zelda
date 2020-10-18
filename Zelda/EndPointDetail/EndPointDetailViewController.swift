@@ -27,7 +27,7 @@ enum EndPointIndicator {
 	func getValue(log: ScanLog) -> Int {
 		switch self {
 		case .duration:
-			return Int(log.duration)
+			return Int(log.duration*1000)
 		case .error:
 			return log.errorCount
 		}
