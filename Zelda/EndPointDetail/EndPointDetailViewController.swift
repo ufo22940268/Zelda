@@ -30,6 +30,15 @@ enum EndPointIndicator {
 		}
 	}
 
+	var maxY: Int {
+		switch self {
+		case .duration:
+			return 100
+		case .error:
+			return 10
+		}
+	}
+
 	var valueFormatter: IAxisValueFormatter {
 		switch self {
 		case .duration:
