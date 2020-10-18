@@ -10,7 +10,6 @@ import Foundation
 
 extension EndPointDetailViewController {
 	func setChartData(_ scanLogsInSpan: ScanLogInTimeSpan, in span: ScanLogSpan) {
-		// TODO: Replace test data
 		let scanlogs = scanLogsInSpan[span]
 
 		let ys1 = scanlogs.map { self.indicator.getValue(log: $0) }
