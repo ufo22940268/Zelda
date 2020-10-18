@@ -12,6 +12,25 @@ typealias ObjectId = String
 let SCAN_LOG_COUNT = 7
 
 struct ScanLog: Identifiable, Codable {
+	// MARK: Lifecycle
+
+	internal init(id: ObjectId, url: String? = nil, time: Date, duration: TimeInterval, errorCount: Int) {
+		self.id = id
+		self.url = url
+		self.time = time
+		self.duration = duration
+		self.errorCount = errorCount
+	}
+
+	init(time: Date) {
+		self.time = time
+		duration = 0
+		errorCount = 0
+		id = ""		
+	}
+
+	// MARK: Internal
+
 	var id: ObjectId
 	var url: String?
 	var time: Date
@@ -22,6 +41,12 @@ struct ScanLog: Identifiable, Codable {
 enum ScanLogSpan: String, CaseIterable {
 	case today
 	case week
+
+	// MARK: Lifecycle
+
+	init(id: String) {
+		self = Self.allCases.first { $0.rawValue == id }!
+	}
 
 	// MARK: Internal
 
@@ -36,9 +61,4 @@ enum ScanLogSpan: String, CaseIterable {
 			return []
 		}
 	}
-	
-	init(id: String) {
-		self = Self.allCases.first { $0.rawValue == id }!
-	}
 }
-

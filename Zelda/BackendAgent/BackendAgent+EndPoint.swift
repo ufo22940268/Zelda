@@ -49,9 +49,5 @@ extension BackendAgent {
 		get(endPoint: "/scanlog/list/span/\(endPoint)")
 			.parseObject(to: ScanLogInTimeSpan.self)
 			.eraseToAnyPublisher()
-		
-//		return Just(testScanLogs)
-//			.setFailureType(to: ResponseError.self)
-//			.eraseToAnyPublisher()
 	}
 }

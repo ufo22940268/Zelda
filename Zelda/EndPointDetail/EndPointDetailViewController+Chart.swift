@@ -31,11 +31,11 @@ extension EndPointDetailViewController {
 		self.chartView.rightAxis.axisMaximum = maxY
 		self.chartView.rightAxis.valueFormatter = self.indicator.valueFormatter
 
-		let line = ChartLimitLine(limit: Double(ys1.reduce(.zero, +)) / Double(ys1.count))
-		line.drawLabelEnabled = false
-		line.lineColor = .green
-		line.lineDashLengths = [6, 2]
-		self.chartView.leftAxis.addLimitLine(line)
+//		let line = ChartLimitLine(limit: Double(ys1.reduce(.zero, +)) / Double(ys1.count))
+//		line.drawLabelEnabled = false
+//		line.lineColor = .green
+//		line.lineDashLengths = [6, 2]
+//		self.chartView.leftAxis.addLimitLine(line)
 
 		self.chartView.data = data
 

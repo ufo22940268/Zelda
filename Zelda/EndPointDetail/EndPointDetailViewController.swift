@@ -24,22 +24,12 @@ enum EndPointIndicator {
 
 	// MARK: Internal
 
-	func getValue(log: ScanLog) -> Int {
-		switch self {
-		case .duration:
-			return Int(log.duration*1000)
-		case .error:
-			return log.errorCount
-		}
-	}
-	
-	
 	class DurationValueFormatter: IAxisValueFormatter {
 		func stringForValue(_ value: Double, axis: AxisBase?) -> String {
 			"\(Int(value)) ms"
 		}
 	}
-	
+
 	var valueFormatter: IAxisValueFormatter {
 		switch self {
 		case .duration:
@@ -48,9 +38,20 @@ enum EndPointIndicator {
 			fatalError()
 		}
 	}
+
+	func getValue(log: ScanLog) -> Int {
+		switch self {
+		case .duration:
+			return Int(log.duration*1000)
+		case .error:
+			return log.errorCount
+		}
+	}
 }
 
 struct ScanLogInTimeSpan: Codable {
+	// MARK: Internal
+
 	var today: [ScanLog]
 	var week: [ScanLog]
 
@@ -66,6 +67,28 @@ struct ScanLogInTimeSpan: Codable {
 
 		set {}
 	}
+
+	mutating func fillGap() {
+		today = fillGap(step: 60*5, scanLogs: today)
+		week = fillGap(step: 60*60*24, scanLogs: week)
+	}
+
+	// MARK: Private
+
+	private mutating func fillGap(step: TimeInterval, scanLogs: [ScanLog]) -> [ScanLog] {
+		var newScanLogs = [ScanLog]()
+		let maxTime = scanLogs.last!.time
+		for i in (0..<SCAN_LOG_COUNT).reversed() {
+			let begin = maxTime - Double(i + 1)*step
+			let end = maxTime - Double(i)*step
+			if let log = scanLogs.first(where: { $0.time > begin && $0.time <= end }) {
+				newScanLogs.append(log)
+			} else {
+				newScanLogs.append(ScanLog(time: end))
+			}
+		}
+		return newScanLogs
+	}
 }
 
 class EndPointDetailViewController: NSViewController {
@@ -78,13 +101,17 @@ class EndPointDetailViewController: NSViewController {
 
 	override func viewDidLoad() {
 		super.viewDidLoad()
-		// Do view setup here.
-
 		BackendAgent.default.listScanLogInSpan(endPoint: "5f741f9479f90d29afe9a867")
 			.map { span -> ScanLogInTimeSpan? in
 				span
 			}
 			.replaceError(with: nil)
+			.map { [weak self] scanlogs in
+				guard let scanlogs = scanlogs else { return nil }
+				var newScanLogs = scanlogs
+				self?.fillScanLogGap(&newScanLogs)
+				return newScanLogs
+			}
 			.assign(to: &$scanLogs)
 
 		$scanLogs.combineLatest($span)
@@ -94,6 +121,10 @@ class EndPointDetailViewController: NSViewController {
 				}
 			}
 			.store(in: &cancellables)
+	}
+
+	func fillScanLogGap(_ scanLogs: inout ScanLogInTimeSpan) {
+		scanLogs.fillGap()
 	}
 
 	@IBAction func onSelectSpan(_ button: NSPopUpButton) {
