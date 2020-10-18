@@ -11,13 +11,12 @@ typealias ObjectId = String
 
 let SCAN_LOG_COUNT = 7
 
-struct ScanLog: Identifiable {
+struct ScanLog: Identifiable, Codable {
 	var id: ObjectId
 	var url: String?
 	var time: Date
 	var duration: TimeInterval
 	var errorCount: Int
-	var endPointId: ObjectId
 }
 
 enum ScanLogSpan: String, CaseIterable {
@@ -43,4 +42,3 @@ enum ScanLogSpan: String, CaseIterable {
 	}
 }
 
-typealias ScanLogInTimeSpan = [ScanLogSpan: [ScanLog]]

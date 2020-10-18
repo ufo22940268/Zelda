@@ -5,10 +5,10 @@
 //  Created by Frank Cheng on 2020/10/15.
 //
 
-import Foundation
 import Combine
-import SwiftyJSON
 import CoreData
+import Foundation
+import SwiftyJSON
 
 extension BackendAgent {
 	func upsert(endPoint: EndPointEntity) -> AnyPublisher<Void, ResponseError> {
@@ -23,7 +23,7 @@ extension BackendAgent {
 			.map { _ in () }
 			.eraseToAnyPublisher()
 	}
-	
+
 	func syncFromServer(context: NSManagedObjectContext) -> AnyPublisher<Void, ResponseError> {
 		get(endPoint: "/endpoint/sync/list")
 			.parseArrayObjects(to: EndPoint.self)
@@ -37,17 +37,21 @@ extension BackendAgent {
 					}
 
 					_ = newEndPointEntities.map {
-						let _ = $0.toEntity(context: context)
+						_ = $0.toEntity(context: context)
 					}
 				}
 				try! context.save()
 			}
 			.eraseToAnyPublisher()
 	}
-	
+
 	func listScanLogInSpan(endPoint: String) -> AnyPublisher<ScanLogInTimeSpan, ResponseError> {
-		Just(testScanLogs)
-			.setFailureType(to: ResponseError.self)
+		get(endPoint: "/scanlog/list/span/\(endPoint)")
+			.parseObject(to: ScanLogInTimeSpan.self)
 			.eraseToAnyPublisher()
+		
+//		return Just(testScanLogs)
+//			.setFailureType(to: ResponseError.self)
+//			.eraseToAnyPublisher()
 	}
 }

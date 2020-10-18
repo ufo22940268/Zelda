@@ -23,7 +23,7 @@ extension Publisher {
 
 	func parseObject<T>(to entity: T.Type) -> AnyPublisher<T, Self.Failure> where Self.Output == JSON, T: Codable {
 		Publishers.Map(upstream: self) { json in
-			try! JSONDecoder.backendDecoder.decode(entity, from: json.rawData())
+			try! JSONDecoder.backendDecoder.decode(entity, from: json.result.rawData())
 		}
 		.receive(on: DispatchQueue.main)
 		.eraseToAnyPublisher()

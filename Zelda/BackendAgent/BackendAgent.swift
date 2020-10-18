@@ -5,9 +5,9 @@
 //  Created by Frank Cheng on 2020/10/15.
 //
 
+import Combine
 import Foundation
 import SwiftyJSON
-import Combine
 
 struct LoginInfo {
 	var username: String
@@ -17,13 +17,11 @@ struct LoginInfo {
 typealias Response = JSON
 
 extension URL {
-
 	func appending(_ queryItem: String, value: String?) -> URL {
-
 		guard var urlComponents = URLComponents(string: absoluteString) else { return absoluteURL }
 
 		// Create array of existing query items
-		var queryItems: [URLQueryItem] = urlComponents.queryItems ??  []
+		var queryItems: [URLQueryItem] = urlComponents.queryItems ?? []
 
 		// Create query item
 		let queryItem = URLQueryItem(name: queryItem, value: value)
@@ -61,22 +59,20 @@ extension Publisher where Output == URLSession.DataTaskPublisher.Output, Failure
 	}
 }
 
-
 class BackendAgent {
+	struct RequestOptions: OptionSet {
+		static let login = RequestOptions(rawValue: 1 << 0)
+
+		let rawValue: Int
+	}
+
 	static let `default` = BackendAgent()
 	static let backendDomain = "http://biubiubiu.hopto.org:3000"
 
 	var loginInfo: LoginInfo! {
 		return LoginInfo(username: "mac", appleUserId: "simulator_device_token")
 	}
-	
-	struct RequestOptions: OptionSet {
-		let rawValue: Int
 
-		static let login = RequestOptions(rawValue: 1 << 0)
-	}
-
-	
 	func get(endPoint: String, query: [String: Any] = [:], options: RequestOptions = []) -> AnyPublisher<Response, ResponseError> {
 		var url = (URL(string: Self.backendDomain)!.appendingPathComponent(endPoint))
 		url = url.appending("token", value: loginInfo!.appleUserId)
@@ -87,6 +83,12 @@ class BackendAgent {
 		req.httpMethod = "GET"
 		return URLSession.shared.dataTaskPublisher(for: req)
 			.convertToJSON()
+			.handleEvents(receiveCompletion: { completion in
+				if case .failure(let e) = completion {
+					print("Http Error", e)
+				}
+			})
+			.eraseToAnyPublisher()
 	}
 
 	func post(endPoint: String, data: [String: Any] = [:], options: RequestOptions = []) -> AnyPublisher<Response, ResponseError> {
@@ -113,6 +115,11 @@ class BackendAgent {
 
 		return URLSession.shared.dataTaskPublisher(for: req)
 			.convertToJSON()
+			.handleEvents(receiveCompletion: { completion in
+				if case .failure(let e) = completion {
+					print("Http Error", e)
+				}
+			})
+			.eraseToAnyPublisher()
 	}
-
 }
