@@ -26,7 +26,7 @@ struct ScanLog: Identifiable, Codable {
 		self.time = time
 		duration = 0
 		errorCount = 0
-		id = ""		
+		id = ""
 	}
 
 	// MARK: Internal
@@ -50,15 +50,27 @@ enum ScanLogSpan: String, CaseIterable {
 
 	// MARK: Internal
 
+	var step: TimeInterval {
+		switch self {
+		case .today:
+			return 60*5
+		case .week:
+			return 60*60*24
+		}
+	}
+
 	func indexes(last date: Date) -> [String] {
 		switch self {
 		case .today:
 			let formatter = DateFormatter()
 			formatter.dateFormat = .none
 			formatter.timeStyle = .short
-			return (0 ..< SCAN_LOG_COUNT).reversed().map { formatter.string(from: date - Double(60*5*$0)) }
+			return (0 ..< SCAN_LOG_COUNT).reversed().map { formatter.string(from: date - step*Double($0)) }
 		default:
-			return []
+			let formatter = DateFormatter()
+			formatter.dateStyle = .short
+			formatter.timeStyle = .none
+			return (0 ..< SCAN_LOG_COUNT).reversed().map { formatter.string(from: date - step*Double($0)) }
 		}
 	}
 }
