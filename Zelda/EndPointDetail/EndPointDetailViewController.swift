@@ -43,7 +43,7 @@ class EndPointDetailViewController: NSViewController {
 		setChartData(span: self.span)
 		
 		$span.sink { [weak self] span in
-			self?.setChartDa ta(span: span)
+			self?.setChartData(span: span)
 		}
 		.store(in: &cancellables)
 	}
