@@ -9,7 +9,10 @@ import Foundation
 import Charts
 
 extension EndPointDetailViewController {
-	func setChartData() {
+	func setChartData(span: ScanLogSpan) {
+		/// TODO Replace test data
+		let scanlogs = testScanLogs[span]!
+		
 		let ys1 = scanlogs.map { self.indicator.getValue(log: $0) }
 		
 		let yse1 = ys1.enumerated().map { x, y in return BarChartDataEntry(x: Double(x), y: Double(y)) }

@@ -959,7 +959,7 @@
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <box title="Box" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="QvQ-6R-QuI">
-                                <rect key="frame" x="17" y="76" width="701" height="525"/>
+                                <rect key="frame" x="17" y="65" width="701" height="525"/>
                                 <view key="contentView" id="W82-dd-rtj">
                                     <rect key="frame" x="3" y="3" width="695" height="519"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -978,12 +978,31 @@
                                     </constraints>
                                 </view>
                             </box>
+                            <popUpButton verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="C4m-rF-XCc">
+                                <rect key="frame" x="626" y="592" width="93" height="25"/>
+                                <popUpButtonCell key="cell" type="push" title="今天" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="CvD-Yz-xco" id="b4o-zn-LDG">
+                                    <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="menu"/>
+                                    <menu key="menu" id="QNT-ib-CR2">
+                                        <items>
+                                            <menuItem title="今天" state="on" identifier="today" id="CvD-Yz-xco"/>
+                                            <menuItem title="最近一周" identifier="week" id="2OT-G6-c4y"/>
+                                        </items>
+                                    </menu>
+                                </popUpButtonCell>
+                                <connections>
+                                    <action selector="onSelectSpan:" target="Pm7-bW-AsL" id="fzZ-gH-KSs"/>
+                                </connections>
+                            </popUpButton>
                         </subviews>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="QvQ-6R-QuI" secondAttribute="trailing" constant="20" symbolic="YES" id="0bl-ao-isH"/>
-                            <constraint firstAttribute="bottom" secondItem="QvQ-6R-QuI" secondAttribute="bottom" constant="80" id="4Pd-tk-sod"/>
+                            <constraint firstAttribute="bottom" secondItem="QvQ-6R-QuI" secondAttribute="bottom" constant="69" id="4Pd-tk-sod"/>
+                            <constraint firstItem="C4m-rF-XCc" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="hys-Hh-9hg" secondAttribute="leading" constant="20" symbolic="YES" id="F2O-pP-AiS"/>
+                            <constraint firstItem="QvQ-6R-QuI" firstAttribute="top" secondItem="C4m-rF-XCc" secondAttribute="bottom" constant="8" symbolic="YES" id="GvS-wm-13c"/>
+                            <constraint firstItem="C4m-rF-XCc" firstAttribute="trailing" secondItem="QvQ-6R-QuI" secondAttribute="trailing" id="MmO-bt-gUy"/>
                             <constraint firstItem="QvQ-6R-QuI" firstAttribute="leading" secondItem="hys-Hh-9hg" secondAttribute="leading" constant="20" symbolic="YES" id="OYE-Ka-Ttg"/>
-                            <constraint firstItem="QvQ-6R-QuI" firstAttribute="top" secondItem="hys-Hh-9hg" secondAttribute="top" constant="80" id="nUz-VH-48U"/>
+                            <constraint firstItem="QvQ-6R-QuI" firstAttribute="top" secondItem="hys-Hh-9hg" secondAttribute="top" constant="91" id="nUz-VH-48U"/>
                         </constraints>
                     </view>
                     <connections>

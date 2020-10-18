@@ -20,16 +20,15 @@ struct ScanLog: Identifiable {
 	var endPointId: ObjectId
 }
 
-enum ScanLogSpan: String {
-	case minutes
-	case daily
-	case weekly
+enum ScanLogSpan: String, CaseIterable {
+	case today
+	case week
 
 	// MARK: Internal
 
 	func indexes(last date: Date) -> [String] {
 		switch self {
-		case .minutes:
+		case .today:
 			let formatter = DateFormatter()
 			formatter.dateFormat = .none
 			formatter.timeStyle = .short
@@ -37,6 +36,10 @@ enum ScanLogSpan: String {
 		default:
 			return []
 		}
+	}
+	
+	init(id: String) {
+		self = Self.allCases.first { $0.rawValue == id }!
 	}
 }
 
