@@ -755,18 +755,18 @@
         <scene sceneID="Rg6-dw-OFJ">
             <objects>
                 <viewController id="eiw-Ew-28k" customClass="SideBarViewController" customModule="Zelda" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" id="Dev-UX-bU7">
-                        <rect key="frame" x="0.0" y="0.0" width="130" height="536"/>
+                    <view key="view" misplaced="YES" id="Dev-UX-bU7">
+                        <rect key="frame" x="0.0" y="0.0" width="130" height="535"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <scrollView autohidesScrollers="YES" horizontalLineScroll="32" horizontalPageScroll="10" verticalLineScroll="32" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oOq-Eu-53b">
-                                <rect key="frame" x="0.0" y="0.0" width="130" height="536"/>
+                                <rect key="frame" x="0.0" y="0.0" width="130" height="534"/>
                                 <clipView key="contentView" drawsBackground="NO" id="fJb-49-6z1">
-                                    <rect key="frame" x="1" y="1" width="128" height="534"/>
+                                    <rect key="frame" x="1" y="1" width="128" height="532"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" tableStyle="sourceList" selectionHighlightStyle="sourceList" columnSelection="YES" multipleSelection="NO" autosaveColumns="NO" rowHeight="32" rowSizeStyle="large" viewBased="YES" id="IaU-Pp-TdO">
-                                            <rect key="frame" x="0.0" y="0.0" width="128" height="534"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="128" height="532"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <size key="intercellSpacing" width="17" height="0.0"/>
                                             <color key="backgroundColor" name="_sourceListBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -794,7 +794,7 @@
                                                                         <constraint firstAttribute="height" constant="20" id="Rrq-pP-azU"/>
                                                                         <constraint firstAttribute="width" constant="20" id="U9q-hd-g81"/>
                                                                     </constraints>
-                                                                    <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="NSActionTemplate" catalog="system" id="rBa-Qb-5fR"/>
+                                                                    <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="NSActionTemplate" id="rBa-Qb-5fR"/>
                                                                 </imageView>
                                                                 <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" allowsExpansionToolTips="YES" translatesAutoresizingMaskIntoConstraints="NO" id="elB-mB-tuz">
                                                                     <rect key="frame" x="28" y="1" width="96" height="16"/>
@@ -960,7 +960,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="NSActionTemplate" catalog="system" width="15" height="15"/>
+        <image name="NSActionTemplate" width="15" height="15"/>
         <image name="plus" catalog="system" width="14" height="13"/>
     </resources>
 </document>

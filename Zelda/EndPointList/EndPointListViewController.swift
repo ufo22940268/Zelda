@@ -14,7 +14,7 @@ class EndPointListViewController: NSViewController {
 	var context = NSManagedObjectContext.main
 	var endPoints: [EndPoint] = []
 	var syncSubject = PassthroughSubject<Void, Never>()
-	var detailVC: EndPointDetailViewController!
+	var detailVC: EndPointDetailTabViewController!
 
 	override func viewDidLoad() {
 		super.viewDidLoad()

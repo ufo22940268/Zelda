@@ -111,7 +111,7 @@ struct ScanLogInTimeSpan: Codable {
 	}
 }
 
-class EndPointDetailViewController: NSViewController {
+class EndPointDetailViewController: NSViewController, EndPointLoadable {
 	@IBOutlet var chartView: BarChartView!
 
 	@Published var scanLogs: ScanLogInTimeSpan?

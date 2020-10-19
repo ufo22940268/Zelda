@@ -25,6 +25,7 @@
 		4246FFD12539767700963B29 /* Charts in Frameworks */ = {isa = PBXBuildFile; productRef = 4246FFD02539767700963B29 /* Charts */; };
 		4246FFD72539784F00963B29 /* EndPointDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4246FFD52539784F00963B29 /* EndPointDetailViewController.swift */; };
 		4246FFFB2539862A00963B29 /* EndPointDetailViewController+Chart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4246FFFA2539862A00963B29 /* EndPointDetailViewController+Chart.swift */; };
+		4262EE37253D5AD50011C416 /* EndPointDetailContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4262EE36253D5AD50011C416 /* EndPointDetailContainerViewController.swift */; };
 		42697C9B2534402800EA6275 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42697C9A2534402800EA6275 /* AppDelegate.swift */; };
 		42697C9D2534402800EA6275 /* AppSideBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42697C9C2534402800EA6275 /* AppSideBarViewController.swift */; };
 		42697CA02534402800EA6275 /* Zelda.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 42697C9E2534402800EA6275 /* Zelda.xcdatamodeld */; };
@@ -44,6 +45,7 @@
 		42A3049E2536CC5200E89376 /* EditPointViewController+Confirm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42A3049D2536CC5200E89376 /* EditPointViewController+Confirm.swift */; };
 		42A6ABBB253BDA0D0021DA90 /* JSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42A6ABBA253BDA0D0021DA90 /* JSON.swift */; };
 		42A6ABC1253CF6B90021DA90 /* EndPointDetail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 42A6ABBF253CF6B90021DA90 /* EndPointDetail.storyboard */; };
+		42A6ABCC253D3D670021DA90 /* EndPointDetailTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42A6ABCB253D3D670021DA90 /* EndPointDetailTabViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -81,6 +83,7 @@
 		4246FFB32539339600963B29 /* EndPointEntity+Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "EndPointEntity+Helpers.swift"; sourceTree = "<group>"; };
 		4246FFD52539784F00963B29 /* EndPointDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndPointDetailViewController.swift; sourceTree = "<group>"; };
 		4246FFFA2539862A00963B29 /* EndPointDetailViewController+Chart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "EndPointDetailViewController+Chart.swift"; sourceTree = "<group>"; };
+		4262EE36253D5AD50011C416 /* EndPointDetailContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndPointDetailContainerViewController.swift; sourceTree = "<group>"; };
 		42697C972534402800EA6275 /* Zelda.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Zelda.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		42697C9A2534402800EA6275 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		42697C9C2534402800EA6275 /* AppSideBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSideBarViewController.swift; sourceTree = "<group>"; };
@@ -106,6 +109,7 @@
 		42A3049D2536CC5200E89376 /* EditPointViewController+Confirm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "EditPointViewController+Confirm.swift"; sourceTree = "<group>"; };
 		42A6ABBA253BDA0D0021DA90 /* JSON.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSON.swift; sourceTree = "<group>"; };
 		42A6ABC0253CF6B90021DA90 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Zelda/Storyboards/Base.lproj/EndPointDetail.storyboard; sourceTree = "<group>"; };
+		42A6ABCB253D3D670021DA90 /* EndPointDetailTabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndPointDetailTabViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -219,6 +223,8 @@
 			children = (
 				4246FFD52539784F00963B29 /* EndPointDetailViewController.swift */,
 				4246FFFA2539862A00963B29 /* EndPointDetailViewController+Chart.swift */,
+				42A6ABCB253D3D670021DA90 /* EndPointDetailTabViewController.swift */,
+				4262EE36253D5AD50011C416 /* EndPointDetailContainerViewController.swift */,
 			);
 			path = EndPointDetail;
 			sourceTree = "<group>";
@@ -444,8 +450,10 @@
 			files = (
 				4226D4A52537D59500CE8DB1 /* BackendAgent.swift in Sources */,
 				42A3049E2536CC5200E89376 /* EditPointViewController+Confirm.swift in Sources */,
+				4262EE37253D5AD50011C416 /* EndPointDetailContainerViewController.swift in Sources */,
 				42697C9D2534402800EA6275 /* AppSideBarViewController.swift in Sources */,
 				424600032539A90700963B29 /* ScanLog.swift in Sources */,
+				42A6ABCC253D3D670021DA90 /* EndPointDetailTabViewController.swift in Sources */,
 				42697CA02534402800EA6275 /* Zelda.xcdatamodeld in Sources */,
 				4221991B2536EC0D0090AA28 /* EndPointEditType.swift in Sources */,
 				4226D4D42538602F00CE8DB1 /* String+URL.swift in Sources */,
