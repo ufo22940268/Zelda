@@ -89,7 +89,7 @@
                                             <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                             <color key="gridColor" name="gridColor" catalog="System" colorSpace="catalog"/>
                                             <tableColumns>
-                                                <tableColumn width="116" minWidth="40" maxWidth="1000" id="NCO-X0-6BL">
+                                                <tableColumn identifier="time" width="116" minWidth="40" maxWidth="1000" id="NCO-X0-6BL">
                                                     <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" title="Time">
                                                         <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
                                                         <color key="backgroundColor" name="headerColor" catalog="System" colorSpace="catalog"/>
@@ -101,7 +101,7 @@
                                                     </textFieldCell>
                                                     <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                                     <prototypeCellViews>
-                                                        <tableCellView id="rPn-cO-noK">
+                                                        <tableCellView identifier="time" id="rPn-cO-noK">
                                                             <rect key="frame" x="8" y="0.0" width="114" height="24"/>
                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                             <subviews>
@@ -125,7 +125,7 @@
                                                         </tableCellView>
                                                     </prototypeCellViews>
                                                 </tableColumn>
-                                                <tableColumn width="313" minWidth="40" maxWidth="1000" id="uUH-dU-yI9">
+                                                <tableColumn identifier="value" width="313" minWidth="40" maxWidth="1000" id="uUH-dU-yI9">
                                                     <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" title="Duration">
                                                         <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
                                                         <color key="backgroundColor" name="headerColor" catalog="System" colorSpace="catalog"/>
@@ -137,7 +137,7 @@
                                                     </textFieldCell>
                                                     <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                                     <prototypeCellViews>
-                                                        <tableCellView id="EMl-B1-ujJ">
+                                                        <tableCellView identifier="value" id="EMl-B1-ujJ">
                                                             <rect key="frame" x="139" y="0.0" width="310" height="24"/>
                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                             <subviews>
@@ -162,6 +162,10 @@
                                                     </prototypeCellViews>
                                                 </tableColumn>
                                             </tableColumns>
+                                            <connections>
+                                                <outlet property="dataSource" destination="Pm7-bW-AsL" id="h33-dx-CBm"/>
+                                                <outlet property="delegate" destination="Pm7-bW-AsL" id="UNa-od-keL"/>
+                                            </connections>
                                         </tableView>
                                     </subviews>
                                 </clipView>
@@ -194,6 +198,7 @@
                     </view>
                     <connections>
                         <outlet property="chartView" destination="uMK-ZO-HFX" id="SLE-uW-2d5"/>
+                        <outlet property="tableView" destination="Igf-l3-eYe" id="49c-7T-WrS"/>
                     </connections>
                 </viewController>
             </objects>

@@ -74,3 +74,9 @@ enum ScanLogSpan: String, CaseIterable {
 		}
 	}
 }
+
+extension TimeInterval {
+	var formatDuration: String {
+		"\(self) ms"
+	}
+}

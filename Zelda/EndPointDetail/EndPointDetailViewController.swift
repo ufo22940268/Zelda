@@ -112,11 +112,21 @@ struct ScanLogInTimeSpan: Codable {
 class EndPointDetailViewController: NSViewController, EndPointLoadable {
 	@IBOutlet var chartView: BarChartView!
 
-	@Published var scanLogs: ScanLogInTimeSpan?
-	@Published var span: ScanLogSpan = .today
+	@IBOutlet var tableView: NSTableView!
 	@Published var endPointId: String?
 	var indicator = EndPointIndicator.duration
 	var cancellables = Set<AnyCancellable>()
+
+	@Published var scanLogsInSpan: ScanLogInTimeSpan?
+	@Published var span: ScanLogSpan = .today
+
+	var scanLogs: [ScanLog] {
+		if let scanLogsInSpan = scanLogsInSpan {
+			return scanLogsInSpan[span]
+		} else {
+			return []
+		}
+	}
 
 	override func viewDidLoad() {
 		super.viewDidLoad()
@@ -129,15 +139,19 @@ class EndPointDetailViewController: NSViewController, EndPointLoadable {
 				span
 			}
 			.replaceError(with: nil)
-			.map { [weak self] scanlogs in
+			.map { [weak self] (scanlogs: ScanLogInTimeSpan?) -> ScanLogInTimeSpan?  in
 				guard let scanlogs = scanlogs else { return nil }
 				var newScanLogs = scanlogs
 				self?.fillScanLogGap(&newScanLogs)
 				return newScanLogs
 			}
-			.assign(to: &$scanLogs)
+			.sink(receiveValue: { [weak self] scanLogsInSpan in
+				self?.scanLogsInSpan = scanLogsInSpan
+				self?.tableView.reloadData()
+			})
+			.store(in: &cancellables)
 
-		$scanLogs.combineLatest($span)
+		$scanLogsInSpan.combineLatest($span)
 			.sink { [weak self] scanLogs, span in
 				if let scanLogs = scanLogs {
 					self?.setChartData(scanLogs, in: span)
@@ -156,5 +170,6 @@ class EndPointDetailViewController: NSViewController, EndPointLoadable {
 
 	func onSelectSpan(_ span: ScanLogSpan) {
 		self.span = span
+		tableView.reloadData()
 	}
 }
