@@ -27,9 +27,9 @@ class EndPointListViewController: NSViewController {
 			.sink(receiveCompletion: { _ in
 			}, receiveValue: {})
 			.store(in: &cancellables)
-		
+
 		outlineView.expandItem(nil, expandChildren: true)
-		
+
 		syncSubject
 			.flatMap { [weak self] () in
 				BackendAgent.default.syncFromServer(context: self?.context ?? .main)
@@ -40,13 +40,15 @@ class EndPointListViewController: NSViewController {
 			.map { [weak self] _ -> [EndPoint] in
 				self?.loadData() ?? []
 			}
-			.sink(receiveValue: { [weak self] (v) in
-				self?.endPoints = v
-				self?.outlineView.reloadData()
-				self?.outlineView.expandItem(nil, expandChildren: true)
+			.sink(receiveValue: { [weak self] v in
+				guard let self = self else { return }
+				self.endPoints = v
+				self.outlineView.reloadData()
+				self.outlineView.expandItem(nil, expandChildren: true)
+				self.outlineView.selectRowIndexes(IndexSet([1]), byExtendingSelection: true)
 			})
 			.store(in: &cancellables)
-				
+
 		syncSubject.send()
 	}
 }
