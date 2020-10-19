@@ -38,7 +38,7 @@ enum EndPointIndicator {
 			return 10
 		}
 	}
-	
+
 	var reservedY: Int {
 		switch self {
 		case .duration:
@@ -47,8 +47,6 @@ enum EndPointIndicator {
 			return 5
 		}
 	}
-
-
 
 	var valueFormatter: IAxisValueFormatter {
 		switch self {
@@ -152,11 +150,11 @@ class EndPointDetailViewController: NSViewController, EndPointLoadable {
 		scanLogs.fillGap()
 	}
 
-	@IBAction func onSelectSpan(_ button: NSPopUpButton) {
-		span = ScanLogSpan(id: button.selectedItem!.identifier!.rawValue)
+	func load(endPoint: String) {
+		endPointId = endPoint
 	}
 
-	func load(endPoint: String) {
-		self.endPointId = endPoint
+	func onSelectSpan(_ span: ScanLogSpan) {
+		self.span = span
 	}
 }

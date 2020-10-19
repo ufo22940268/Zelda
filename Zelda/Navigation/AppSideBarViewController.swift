@@ -34,4 +34,8 @@ class AppSideBarViewController: NSSplitViewController {
 
 		listVC.detailVC = detailVC
 	}
+	
+	func onSelectSpan(_ span: ScanLogSpan) {
+		listVC.detailVC.onSelectSpan(span)
+	}
 }

@@ -8,6 +8,10 @@
 import Cocoa
 
 class MainWindowController: NSWindowController {
+	var sideBarVC: AppSideBarViewController {
+		contentViewController as! AppSideBarViewController
+	}
+
 	override func windowDidLoad() {
 		super.windowDidLoad()
 
@@ -18,5 +22,10 @@ class MainWindowController: NSWindowController {
 		if segue.identifier == "add", let vc = segue.destinationController as? EndPointEditViewController {
 			vc.type = .edit
 		}
+	}
+
+	@IBAction func onSelectSpan(_ button: NSPopUpButton) {
+		let span = ScanLogSpan(id: button.selectedItem!.identifier!.rawValue)
+		sideBarVC.onSelectSpan(span)
 	}
 }

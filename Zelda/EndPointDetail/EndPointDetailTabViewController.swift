@@ -9,6 +9,7 @@ import Cocoa
 
 protocol EndPointLoadable {
 	func load(endPoint: String)
+	func onSelectSpan(_ span: ScanLogSpan)
 }
 
 class EndPointDetailTabViewController: NSTabViewController {
@@ -27,5 +28,9 @@ class EndPointDetailTabViewController: NSTabViewController {
 extension EndPointDetailTabViewController: EndPointLoadable {
 	func load(endPoint: String) {
 		loadables.forEach { $0.load(endPoint: endPoint) }
+	}
+
+	func onSelectSpan(_ span: ScanLogSpan) {
+		loadables.forEach { $0.onSelectSpan(span) }
 	}
 }
