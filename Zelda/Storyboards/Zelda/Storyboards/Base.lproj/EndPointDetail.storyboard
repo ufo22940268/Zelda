@@ -67,12 +67,12 @@
         <scene sceneID="Ubo-JI-tcc">
             <objects>
                 <viewController storyboardIdentifier="popup" id="oby-Ip-HBC" customClass="EndPointDetailPopupViewController" customModule="Zelda" customModuleProvider="target" sceneMemberID="viewController">
-                    <stackView key="view" distribution="fill" orientation="vertical" alignment="leading" spacing="202" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" misplaced="YES" detachesHiddenViews="YES" id="sdm-qI-J5O">
-                        <rect key="frame" x="0.0" y="0.0" width="484" height="331"/>
+                    <stackView key="view" distribution="fill" orientation="vertical" alignment="leading" spacing="244" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" id="sdm-qI-J5O">
+                        <rect key="frame" x="0.0" y="0.0" width="437" height="397"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="fte-fj-Y37">
-                                <rect key="frame" x="14" y="320" width="126" height="19"/>
+                                <rect key="frame" x="14" y="362" width="126" height="19"/>
                                 <textFieldCell key="cell" lineBreakMode="clipping" title="Response Header" id="sLx-W0-hi9">
                                     <font key="font" textStyle="title3" name=".SFNS-Regular"/>
                                     <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
@@ -118,7 +118,7 @@
                 </viewController>
                 <customObject id="tRC-CX-BVm" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-76" y="1950.5"/>
+            <point key="canvasLocation" x="-125.5" y="1971.5"/>
         </scene>
         <!--End Point Detail View Controller-->
         <scene sceneID="eFM-5f-6XF">
