@@ -29,6 +29,12 @@ extension EndPointDetailViewController: NSTableViewDelegate, NSTableViewDataSour
 		}
 		return view
 	}
+	
+	func tableViewSelectionDidChange(_ notification: Notification) {
+		let selectedView = detailTableView.view(atColumn: 2, row: detailTableView.selectedRow, makeIfNecessary: true)!
+		let vc: NSViewController = storyboard!.instantiateController(identifier: "popup")
+		present(vc, asPopoverRelativeTo: selectedView.bounds, of: selectedView, preferredEdge: .maxX, behavior: .transient)
+	}
 
 	func numberOfRows(in tableView: NSTableView) -> Int {
 		validScanLogs.count

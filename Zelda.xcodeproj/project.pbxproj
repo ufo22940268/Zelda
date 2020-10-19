@@ -27,6 +27,8 @@
 		4246FFFB2539862A00963B29 /* EndPointDetailViewController+Chart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4246FFFA2539862A00963B29 /* EndPointDetailViewController+Chart.swift */; };
 		4262EE37253D5AD50011C416 /* EndPointDetailContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4262EE36253D5AD50011C416 /* EndPointDetailContainerViewController.swift */; };
 		4262EE3E253D727F0011C416 /* EndPointDetailViewController+Table.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4262EE3D253D727F0011C416 /* EndPointDetailViewController+Table.swift */; };
+		4262EE44253DA6CC0011C416 /* EndPointDetailPopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4262EE42253DA6CC0011C416 /* EndPointDetailPopupViewController.swift */; };
+		4262EE45253DA6CC0011C416 /* EndPointDetailPopupViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4262EE43253DA6CC0011C416 /* EndPointDetailPopupViewController.xib */; };
 		42697C9B2534402800EA6275 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42697C9A2534402800EA6275 /* AppDelegate.swift */; };
 		42697C9D2534402800EA6275 /* AppSideBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42697C9C2534402800EA6275 /* AppSideBarViewController.swift */; };
 		42697CA02534402800EA6275 /* Zelda.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 42697C9E2534402800EA6275 /* Zelda.xcdatamodeld */; };
@@ -86,6 +88,8 @@
 		4246FFFA2539862A00963B29 /* EndPointDetailViewController+Chart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "EndPointDetailViewController+Chart.swift"; sourceTree = "<group>"; };
 		4262EE36253D5AD50011C416 /* EndPointDetailContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndPointDetailContainerViewController.swift; sourceTree = "<group>"; };
 		4262EE3D253D727F0011C416 /* EndPointDetailViewController+Table.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "EndPointDetailViewController+Table.swift"; sourceTree = "<group>"; };
+		4262EE42253DA6CC0011C416 /* EndPointDetailPopupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndPointDetailPopupViewController.swift; sourceTree = "<group>"; };
+		4262EE43253DA6CC0011C416 /* EndPointDetailPopupViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EndPointDetailPopupViewController.xib; sourceTree = "<group>"; };
 		42697C972534402800EA6275 /* Zelda.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Zelda.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		42697C9A2534402800EA6275 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		42697C9C2534402800EA6275 /* AppSideBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSideBarViewController.swift; sourceTree = "<group>"; };
@@ -228,6 +232,8 @@
 				42A6ABCB253D3D670021DA90 /* EndPointDetailTabViewController.swift */,
 				4262EE36253D5AD50011C416 /* EndPointDetailContainerViewController.swift */,
 				4262EE3D253D727F0011C416 /* EndPointDetailViewController+Table.swift */,
+				4262EE42253DA6CC0011C416 /* EndPointDetailPopupViewController.swift */,
+				4262EE43253DA6CC0011C416 /* EndPointDetailPopupViewController.xib */,
 			);
 			path = EndPointDetail;
 			sourceTree = "<group>";
@@ -427,6 +433,7 @@
 				42697CA22534402900EA6275 /* Assets.xcassets in Resources */,
 				42697CEB2535817100EA6275 /* EndPointEdit.storyboard in Resources */,
 				42697CA52534402900EA6275 /* Main.storyboard in Resources */,
+				4262EE45253DA6CC0011C416 /* EndPointDetailPopupViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -458,6 +465,7 @@
 				424600032539A90700963B29 /* ScanLog.swift in Sources */,
 				42A6ABCC253D3D670021DA90 /* EndPointDetailTabViewController.swift in Sources */,
 				42697CA02534402800EA6275 /* Zelda.xcdatamodeld in Sources */,
+				4262EE44253DA6CC0011C416 /* EndPointDetailPopupViewController.swift in Sources */,
 				4221991B2536EC0D0090AA28 /* EndPointEditType.swift in Sources */,
 				4226D4D42538602F00CE8DB1 /* String+URL.swift in Sources */,
 				4262EE3E253D727F0011C416 /* EndPointDetailViewController+Table.swift in Sources */,

@@ -112,7 +112,7 @@ struct ScanLogInTimeSpan: Codable {
 class EndPointDetailViewController: NSViewController, EndPointLoadable {
 	@IBOutlet var chartView: BarChartView!
 
-	@IBOutlet var tableView: NSTableView!
+	@IBOutlet var detailTableView: NSTableView!
 	@Published var endPointId: String?
 	var indicator = EndPointIndicator.duration
 	var cancellables = Set<AnyCancellable>()
@@ -156,7 +156,7 @@ class EndPointDetailViewController: NSViewController, EndPointLoadable {
 			}
 			.sink(receiveValue: { [weak self] scanLogsInSpan in
 				self?.scanLogsInSpan = scanLogsInSpan
-				self?.tableView.reloadData()
+				self?.detailTableView.reloadData()
 			})
 			.store(in: &cancellables)
 
@@ -179,6 +179,6 @@ class EndPointDetailViewController: NSViewController, EndPointLoadable {
 
 	func onSelectSpan(_ span: ScanLogSpan) {
 		self.span = span
-		tableView.reloadData()
+		detailTableView.reloadData()
 	}
 }

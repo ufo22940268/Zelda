@@ -63,6 +63,19 @@
             </objects>
             <point key="canvasLocation" x="-126" y="1400"/>
         </scene>
+        <!--End Point Detail Popup View Controller-->
+        <scene sceneID="Ubo-JI-tcc">
+            <objects>
+                <viewController storyboardIdentifier="popup" id="oby-Ip-HBC" customClass="EndPointDetailPopupViewController" customModule="Zelda" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" id="aB7-bh-N4S">
+                        <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </view>
+                </viewController>
+                <customObject id="tRC-CX-BVm" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-93" y="1854"/>
+        </scene>
         <!--End Point Detail View Controller-->
         <scene sceneID="eFM-5f-6XF">
             <objects>
@@ -176,7 +189,7 @@
                                                     <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                                     <prototypeCellViews>
                                                         <tableCellView id="NXz-zt-swL">
-                                                            <rect key="frame" x="351" y="0.0" width="125" height="17"/>
+                                                            <rect key="frame" x="351" y="0.0" width="131" height="17"/>
                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                             <subviews>
                                                                 <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="e95-bB-cDS">
@@ -233,7 +246,7 @@
                     </view>
                     <connections>
                         <outlet property="chartView" destination="uMK-ZO-HFX" id="SLE-uW-2d5"/>
-                        <outlet property="tableView" destination="Igf-l3-eYe" id="49c-7T-WrS"/>
+                        <outlet property="detailTableView" destination="Igf-l3-eYe" id="49c-7T-WrS"/>
                     </connections>
                 </viewController>
             </objects>
