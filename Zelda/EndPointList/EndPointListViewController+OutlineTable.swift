@@ -74,4 +74,11 @@ extension EndPointListViewController: NSOutlineViewDataSource, NSOutlineViewDele
 
 		return view
 	}
+
+	func outlineViewSelectionDidChange(_ notification: Notification) {
+		if let item = outlineView.item(atRow: outlineView.selectedRow) as? EndPoint {
+			self.detailVC.load(endPoint: item._id)
+		}
+		print("selected", outlineView.selectedRow)
+	}
 }

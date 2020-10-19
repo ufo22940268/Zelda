@@ -38,6 +38,17 @@ enum EndPointIndicator {
 			return 10
 		}
 	}
+	
+	var reservedY: Int {
+		switch self {
+		case .duration:
+			return 20
+		case .error:
+			return 5
+		}
+	}
+
+
 
 	var valueFormatter: IAxisValueFormatter {
 		switch self {
@@ -105,12 +116,17 @@ class EndPointDetailViewController: NSViewController {
 
 	@Published var scanLogs: ScanLogInTimeSpan?
 	@Published var span: ScanLogSpan = .today
+	@Published var endPointId: String?
 	var indicator = EndPointIndicator.duration
 	var cancellables = Set<AnyCancellable>()
 
 	override func viewDidLoad() {
 		super.viewDidLoad()
-		BackendAgent.default.listScanLogInSpan(endPoint: "5f741f9479f90d29afe9a867")
+		$endPointId
+			.filter { $0 != nil && !$0!.isEmpty }
+			.flatMap { endPointId in
+				BackendAgent.default.listScanLogInSpan(endPoint: endPointId!)
+			}
 			.map { span -> ScanLogInTimeSpan? in
 				span
 			}
@@ -138,5 +154,9 @@ class EndPointDetailViewController: NSViewController {
 
 	@IBAction func onSelectSpan(_ button: NSPopUpButton) {
 		span = ScanLogSpan(id: button.selectedItem!.identifier!.rawValue)
+	}
+
+	func load(endPoint: String) {
+		self.endPointId = endPoint
 	}
 }

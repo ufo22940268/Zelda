@@ -24,11 +24,13 @@ struct EndPoint: Codable {
 
 	var url: String
 	var watchFields: [WatchField]?
+	var _id: String
 
 	func toEntity(context: NSManagedObjectContext) -> EndPointEntity {
 		let ee = EndPointEntity(context: context)
 		ee.url = url
 		ee.needReload = true
+		ee.id = _id
 
 		if let watchFields = watchFields {
 			for field in watchFields {

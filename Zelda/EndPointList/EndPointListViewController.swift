@@ -14,8 +14,10 @@ class EndPointListViewController: NSViewController {
 	var context = NSManagedObjectContext.main
 	var endPoints: [EndPoint] = []
 	var syncSubject = PassthroughSubject<Void, Never>()
+	var detailVC: EndPointDetailViewController!
 
 	override func viewDidLoad() {
+		super.viewDidLoad()
 		NotificationCenter.default.publisher(for: .syncEndPoint)
 			.flatMap { notif -> AnyPublisher<Void, ResponseError> in
 				let endPointId = (self.context.persistentStoreCoordinator?.managedObjectID(forURIRepresentation: notif.object as! URL))!

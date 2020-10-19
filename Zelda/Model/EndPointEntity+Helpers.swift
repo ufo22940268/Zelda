@@ -11,6 +11,6 @@ import Foundation
 extension EndPointEntity {
 	func toItem() -> EndPoint {
 		///TODO Convert watch fields.
-		EndPoint(url: self.url!, watchFields: [])
+		EndPoint(url: self.url!, watchFields: [], _id: self.id!)
 	}
 }
