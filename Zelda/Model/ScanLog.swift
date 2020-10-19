@@ -77,6 +77,6 @@ enum ScanLogSpan: String, CaseIterable {
 
 extension TimeInterval {
 	var formatDuration: String {
-		"\(self) ms"
+		"\(Int(self*1000)) ms"
 	}
 }

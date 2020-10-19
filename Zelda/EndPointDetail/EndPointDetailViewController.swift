@@ -128,6 +128,15 @@ class EndPointDetailViewController: NSViewController, EndPointLoadable {
 		}
 	}
 
+	var validScanLogs: [ScanLog] {
+		switch indicator {
+		case .duration:
+			return scanLogs.filter { $0.duration > 0 }
+		default:
+			return scanLogs
+		}
+	}
+
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		$endPointId
@@ -139,7 +148,7 @@ class EndPointDetailViewController: NSViewController, EndPointLoadable {
 				span
 			}
 			.replaceError(with: nil)
-			.map { [weak self] (scanlogs: ScanLogInTimeSpan?) -> ScanLogInTimeSpan?  in
+			.map { [weak self] (scanlogs: ScanLogInTimeSpan?) -> ScanLogInTimeSpan? in
 				guard let scanlogs = scanlogs else { return nil }
 				var newScanLogs = scanlogs
 				self?.fillScanLogGap(&newScanLogs)
