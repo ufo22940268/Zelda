@@ -9,9 +9,10 @@ import Cocoa
 
 extension EndPointDetailViewController: NSTableViewDelegate, NSTableViewDataSource {
 	func tableView(_ tableView: NSTableView, viewFor tableColumn: NSTableColumn?, row: Int) -> NSView? {
-		let view = tableView.makeView(withIdentifier: NSUserInterfaceItemIdentifier("time"), owner: self) as? NSTableCellView
+		let identifier = tableColumn!.identifier.rawValue
+		let view = tableView.makeView(withIdentifier: NSUserInterfaceItemIdentifier(identifier), owner: self) as? NSTableCellView
 		let scanLog = validScanLogs[row]
-		switch tableColumn!.identifier.rawValue {
+		switch identifier {
 		case "time":
 			let formatter = DateFormatter()
 			formatter.dateStyle = .short
@@ -21,6 +22,8 @@ extension EndPointDetailViewController: NSTableViewDelegate, NSTableViewDataSour
 			if indicator == .duration {
 				view?.textField?.stringValue = scanLog.duration.formatDuration
 			}
+		case "action":
+			break
 		default:
 			break
 		}
