@@ -67,14 +67,58 @@
         <scene sceneID="Ubo-JI-tcc">
             <objects>
                 <viewController storyboardIdentifier="popup" id="oby-Ip-HBC" customClass="EndPointDetailPopupViewController" customModule="Zelda" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" id="aB7-bh-N4S">
-                        <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
+                    <stackView key="view" distribution="fill" orientation="vertical" alignment="leading" spacing="202" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" misplaced="YES" detachesHiddenViews="YES" id="sdm-qI-J5O">
+                        <rect key="frame" x="0.0" y="0.0" width="484" height="331"/>
                         <autoresizingMask key="autoresizingMask"/>
-                    </view>
+                        <subviews>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="fte-fj-Y37">
+                                <rect key="frame" x="14" y="320" width="126" height="19"/>
+                                <textFieldCell key="cell" lineBreakMode="clipping" title="Response Header" id="sLx-W0-hi9">
+                                    <font key="font" textStyle="title3" name=".SFNS-Regular"/>
+                                    <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <gridView xPlacement="leading" yPlacement="bottom" rowAlignment="none" translatesAutoresizingMaskIntoConstraints="NO" id="c0l-34-t5f">
+                                <rect key="frame" x="16" y="16" width="206" height="102"/>
+                                <rows>
+                                    <gridRow id="9GW-m3-STS"/>
+                                    <gridRow id="ogj-Eg-vPP"/>
+                                    <gridRow id="X54-So-goB"/>
+                                </rows>
+                                <columns>
+                                    <gridColumn id="oV8-4B-rfE"/>
+                                    <gridColumn id="snq-Np-Ff3"/>
+                                </columns>
+                                <gridCells>
+                                    <gridCell row="9GW-m3-STS" column="oV8-4B-rfE" id="LLA-rZ-E1K"/>
+                                    <gridCell row="9GW-m3-STS" column="snq-Np-Ff3" id="P1J-St-wok"/>
+                                    <gridCell row="ogj-Eg-vPP" column="oV8-4B-rfE" id="3qC-d9-OFT"/>
+                                    <gridCell row="ogj-Eg-vPP" column="snq-Np-Ff3" id="73J-1W-3GP"/>
+                                    <gridCell row="X54-So-goB" column="oV8-4B-rfE" id="aRS-T9-8qh"/>
+                                    <gridCell row="X54-So-goB" column="snq-Np-Ff3" id="6Ay-bS-qb0"/>
+                                </gridCells>
+                            </gridView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="CeO-9R-JMn"/>
+                        <viewLayoutGuide key="layoutMargins" id="b56-AC-OwL"/>
+                        <edgeInsets key="edgeInsets" left="16" right="16" top="16" bottom="16"/>
+                        <visibilityPriorities>
+                            <integer value="1000"/>
+                            <integer value="1000"/>
+                        </visibilityPriorities>
+                        <customSpacing>
+                            <real value="3.4028234663852886e+38"/>
+                            <real value="3.4028234663852886e+38"/>
+                        </customSpacing>
+                    </stackView>
+                    <connections>
+                        <outlet property="headerView" destination="c0l-34-t5f" id="liA-3r-82b"/>
+                    </connections>
                 </viewController>
                 <customObject id="tRC-CX-BVm" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-93" y="1854"/>
+            <point key="canvasLocation" x="-76" y="1950.5"/>
         </scene>
         <!--End Point Detail View Controller-->
         <scene sceneID="eFM-5f-6XF">
@@ -189,7 +233,7 @@
                                                     <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                                     <prototypeCellViews>
                                                         <tableCellView id="NXz-zt-swL">
-                                                            <rect key="frame" x="351" y="0.0" width="131" height="17"/>
+                                                            <rect key="frame" x="351" y="0.0" width="174" height="17"/>
                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                             <subviews>
                                                                 <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="e95-bB-cDS">
