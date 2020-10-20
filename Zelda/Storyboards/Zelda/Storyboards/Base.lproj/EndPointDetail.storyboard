@@ -66,12 +66,12 @@
         <scene sceneID="Ubo-JI-tcc">
             <objects>
                 <viewController storyboardIdentifier="popup" id="oby-Ip-HBC" customClass="EndPointDetailPopupViewController" customModule="Zelda" customModuleProvider="target" sceneMemberID="viewController">
-                    <stackView key="view" distribution="fill" orientation="vertical" alignment="leading" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" id="sdm-qI-J5O">
-                        <rect key="frame" x="0.0" y="0.0" width="380" height="102"/>
+                    <stackView key="view" distribution="fill" orientation="vertical" alignment="leading" spacing="21" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" id="sdm-qI-J5O">
+                        <rect key="frame" x="0.0" y="0.0" width="402" height="469"/>
                         <autoresizingMask key="autoresizingMask" heightSizable="YES"/>
                         <subviews>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="fte-fj-Y37">
-                                <rect key="frame" x="14" y="67" width="126" height="19"/>
+                                <rect key="frame" x="14" y="434" width="126" height="19"/>
                                 <textFieldCell key="cell" lineBreakMode="clipping" title="Response Header" id="sLx-W0-hi9">
                                     <font key="font" textStyle="title3" name=".SFNS-Regular"/>
                                     <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
@@ -79,8 +79,7 @@
                                 </textFieldCell>
                             </textField>
                             <gridView xPlacement="leading" yPlacement="bottom" rowAlignment="none" translatesAutoresizingMaskIntoConstraints="NO" id="c0l-34-t5f">
-                                <rect key="frame" x="0.0" y="0.0" width="206" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <rect key="frame" x="16" y="383" width="206" height="30"/>
                                 <rows>
                                     <gridRow id="9GW-m3-STS"/>
                                 </rows>
@@ -94,23 +93,50 @@
                                 </gridCells>
                             </gridView>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="CMI-Ck-ceM">
-                                <rect key="frame" x="14" y="40" width="111" height="19"/>
+                                <rect key="frame" x="14" y="343" width="111" height="19"/>
                                 <textFieldCell key="cell" lineBreakMode="clipping" title="Response Body" id="3FV-0o-cDS">
                                     <font key="font" textStyle="title3" name=".SFNS-Regular"/>
                                     <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
-                            <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="iyS-aX-h9x">
-                                <rect key="frame" x="14" y="16" width="92" height="16"/>
-                                <textFieldCell key="cell" selectable="YES" id="UI5-G0-j9A">
-                                    <font key="font" metaFont="system"/>
-                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                </textFieldCell>
-                            </textField>
+                            <scrollView horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mXC-cq-nIk">
+                                <rect key="frame" x="16" y="16" width="366" height="306"/>
+                                <clipView key="contentView" id="KvB-2t-XwA">
+                                    <rect key="frame" x="1" y="1" width="349" height="289"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    <subviews>
+                                        <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="iyS-aX-h9x">
+                                            <rect key="frame" x="-3" y="-1" width="370" height="306"/>
+                                            <textFieldCell key="cell" selectable="YES" id="UI5-G0-j9A">
+                                                <font key="font" metaFont="system"/>
+                                                <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                            </textFieldCell>
+                                        </textField>
+                                    </subviews>
+                                </clipView>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="iyS-aX-h9x" secondAttribute="bottom" id="FUE-1Y-8VJ"/>
+                                    <constraint firstItem="iyS-aX-h9x" firstAttribute="top" secondItem="mXC-cq-nIk" secondAttribute="top" id="TPU-vO-DOz"/>
+                                    <constraint firstItem="iyS-aX-h9x" firstAttribute="leading" secondItem="mXC-cq-nIk" secondAttribute="leading" id="fIg-s1-ets"/>
+                                    <constraint firstAttribute="height" constant="306" id="irc-il-Nfy"/>
+                                    <constraint firstAttribute="trailing" secondItem="iyS-aX-h9x" secondAttribute="trailing" id="x3H-o3-DV0"/>
+                                </constraints>
+                                <scroller key="horizontalScroller" wantsLayer="YES" verticalHuggingPriority="750" doubleValue="0.14285714285714285" horizontal="YES" id="hE3-hD-RHj">
+                                    <rect key="frame" x="1" y="290" width="349" height="15"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </scroller>
+                                <scroller key="verticalScroller" wantsLayer="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="mP0-1y-4h1">
+                                    <rect key="frame" x="350" y="1" width="15" height="289"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </scroller>
+                            </scrollView>
                         </subviews>
                         <edgeInsets key="edgeInsets" left="16" right="16" top="16" bottom="16"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="mXC-cq-nIk" secondAttribute="trailing" constant="20" symbolic="YES" id="bDA-34-eL4"/>
+                        </constraints>
                         <visibilityPriorities>
                             <integer value="1000"/>
                             <integer value="1000"/>
@@ -131,7 +157,7 @@
                 </viewController>
                 <customObject id="tRC-CX-BVm" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-161" y="1916"/>
+            <point key="canvasLocation" x="-150" y="2035"/>
         </scene>
         <!--End Point Detail View Controller-->
         <scene sceneID="eFM-5f-6XF">
@@ -246,7 +272,7 @@
                                                     <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                                     <prototypeCellViews>
                                                         <tableCellView id="NXz-zt-swL">
-                                                            <rect key="frame" x="351" y="0.0" width="193" height="17"/>
+                                                            <rect key="frame" x="351" y="0.0" width="200" height="17"/>
                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                             <subviews>
                                                                 <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="e95-bB-cDS">
@@ -276,7 +302,7 @@
                                 <constraints>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="200" id="zny-E1-SG1"/>
                                 </constraints>
-                                <scroller key="horizontalScroller" wantsLayer="YES" verticalHuggingPriority="750" doubleValue="0.75" horizontal="YES" id="k18-R7-GVY">
+                                <scroller key="horizontalScroller" wantsLayer="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="YES" id="k18-R7-GVY">
                                     <rect key="frame" x="1" y="193" width="378" height="15"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>
