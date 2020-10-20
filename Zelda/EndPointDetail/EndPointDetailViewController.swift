@@ -23,12 +23,15 @@ class EndPointDetailViewController: NSViewController {
 
 	@IBOutlet var chartView: BarChartView!
 
+	@IBOutlet var progressIndicator: NSProgressIndicator!
 	@IBOutlet var detailTableView: NSTableView!
 	@Published var endPointId: String?
 	var cancellables = Set<AnyCancellable>()
 
+	@IBOutlet var tableContainer: NSScrollView!
 	@Published var scanLogsInSpan: ScanLogInTimeSpan?
 	@Published var span: ScanLogSpan = .today
+	@Published var loading: Bool = false
 
 	var indicator = EndPointIndicator.duration {
 		didSet {
@@ -55,6 +58,7 @@ class EndPointDetailViewController: NSViewController {
 
 	override func viewDidLoad() {
 		super.viewDidLoad()
+		loading = true
 		$endPointId
 			.filter { $0 != nil && !$0!.isEmpty }
 			.removeDuplicates()
@@ -81,9 +85,23 @@ class EndPointDetailViewController: NSViewController {
 			.sink { [weak self] scanLogs, span in
 				if let scanLogs = scanLogs {
 					self?.setChartData(scanLogs, in: span)
+					self?.loading = false
 				}
 			}
 			.store(in: &cancellables)
+
+		$loading.sink { [weak self] loading in
+			if loading {
+				self?.tableContainer.isHidden = true
+				self?.chartView.isHidden = true
+				self?.progressIndicator.startAnimation(self)
+			} else {
+				self?.tableContainer.isHidden = false
+				self?.chartView.isHidden = false
+				self?.progressIndicator.stopAnimation(self)
+			}
+		}
+		.store(in: &cancellables)
 	}
 
 	func load(endPoint: String) {

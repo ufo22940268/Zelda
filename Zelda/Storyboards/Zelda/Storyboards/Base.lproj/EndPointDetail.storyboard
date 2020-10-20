@@ -268,11 +268,11 @@
                                                     <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                                     <prototypeCellViews>
                                                         <tableCellView identifier="value" id="EMl-B1-ujJ">
-                                                            <rect key="frame" x="193" y="0.0" width="157" height="24"/>
+                                                            <rect key="frame" x="193" y="0.0" width="203" height="24"/>
                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                             <subviews>
                                                                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="UgB-Ey-Z2L">
-                                                                    <rect key="frame" x="0.0" y="4" width="154" height="16"/>
+                                                                    <rect key="frame" x="0.0" y="4" width="202" height="16"/>
                                                                     <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="Table View Cell" id="qW0-26-QFI">
                                                                         <font key="font" usesAppearanceFont="YES"/>
                                                                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
@@ -348,8 +348,13 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableHeaderView>
                             </scrollView>
+                            <progressIndicator maxValue="100" displayedWhenStopped="NO" indeterminate="YES" controlSize="small" style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="Ug3-QC-FT7">
+                                <rect key="frame" x="230" y="204" width="16" height="16"/>
+                            </progressIndicator>
                         </subviews>
                         <constraints>
+                            <constraint firstItem="Ug3-QC-FT7" firstAttribute="top" secondItem="Bcw-31-lHP" secondAttribute="top" id="9Zb-W2-kYp"/>
+                            <constraint firstItem="Ug3-QC-FT7" firstAttribute="centerX" secondItem="uMK-ZO-HFX" secondAttribute="centerX" id="Ioe-S5-YKi"/>
                             <constraint firstItem="uMK-ZO-HFX" firstAttribute="top" secondItem="hys-Hh-9hg" secondAttribute="top" constant="20" symbolic="YES" id="Uyx-0T-0nG"/>
                             <constraint firstItem="Bcw-31-lHP" firstAttribute="top" secondItem="uMK-ZO-HFX" secondAttribute="bottom" constant="8" symbolic="YES" id="fwp-v0-URf"/>
                             <constraint firstItem="uMK-ZO-HFX" firstAttribute="leading" secondItem="hys-Hh-9hg" secondAttribute="leading" constant="20" symbolic="YES" id="hPk-sP-8Ro"/>
@@ -362,6 +367,8 @@
                     <connections>
                         <outlet property="chartView" destination="uMK-ZO-HFX" id="SLE-uW-2d5"/>
                         <outlet property="detailTableView" destination="Igf-l3-eYe" id="49c-7T-WrS"/>
+                        <outlet property="progressIndicator" destination="Ug3-QC-FT7" id="94p-yi-Yhs"/>
+                        <outlet property="tableContainer" destination="Bcw-31-lHP" id="wUC-3c-ptK"/>
                     </connections>
                 </viewController>
             </objects>
