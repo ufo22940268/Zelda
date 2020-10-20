@@ -9,11 +9,12 @@ import Cocoa
 import Combine
 
 class EndPointListViewController: NSViewController {
-	@IBOutlet var outlineView: NSOutlineView!
+	@IBOutlet var endPointListView: NSOutlineView!
 	var cancellables = Set<AnyCancellable>()
 	var context = NSManagedObjectContext.main
 	var endPoints: [EndPoint] = []
 	var syncSubject = PassthroughSubject<Void, Never>()
+	var reloadTableSubject = PassthroughSubject<Void, Never>()
 	var detailVC: EndPointDetailTabViewController!
 
 	override func viewDidLoad() {
@@ -28,7 +29,7 @@ class EndPointListViewController: NSViewController {
 			}, receiveValue: {})
 			.store(in: &cancellables)
 
-		outlineView.expandItem(nil, expandChildren: true)
+		endPointListView.expandItem(nil, expandChildren: true)
 
 		syncSubject
 			.flatMap { [weak self] () in
@@ -37,18 +38,29 @@ class EndPointListViewController: NSViewController {
 			.catch { _ in
 				Empty()
 			}
+			.subscribe(reloadTableSubject)
+			.store(in: &cancellables)
+
+		syncSubject.send()
+		reloadTableSubject
 			.map { [weak self] _ -> [EndPoint] in
 				self?.loadData() ?? []
 			}
 			.sink(receiveValue: { [weak self] v in
 				guard let self = self else { return }
 				self.endPoints = v
-				self.outlineView.reloadData()
-				self.outlineView.expandItem(nil, expandChildren: true)
-				self.outlineView.selectRowIndexes(IndexSet([1]), byExtendingSelection: true)
+				self.endPointListView.reloadData()
+				self.endPointListView.expandItem(nil, expandChildren: true)
+				self.endPointListView.selectRowIndexes(IndexSet([1]), byExtendingSelection: true)
 			})
 			.store(in: &cancellables)
+	}
 
-		syncSubject.send()
+	@IBAction func onDelete(_ sender: NSMenuItem) {
+		let endPoint = endPointListView.item(atRow: endPointListView.clickedRow) as! EndPoint
+		let entity = try! context.fetchOne(EndPointEntity.self, "id = %@", endPoint._id)!
+		context.delete(entity)
+		try! context.save()
+		reloadTableSubject.send()
 	}
 }

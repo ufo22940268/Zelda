@@ -940,6 +940,7 @@
                                             <connections>
                                                 <outlet property="dataSource" destination="CSd-hC-8Zy" id="BxR-L8-AUM"/>
                                                 <outlet property="delegate" destination="CSd-hC-8Zy" id="mzS-0i-Eg2"/>
+                                                <outlet property="menu" destination="jTZ-Oi-okT" id="MxY-kp-fYx"/>
                                             </connections>
                                         </outlineView>
                                     </subviews>
@@ -969,10 +970,20 @@
                         <viewLayoutGuide key="layoutMargins" id="lxE-bg-GV8"/>
                     </view>
                     <connections>
-                        <outlet property="outlineView" destination="NNe-g6-THc" id="cDX-ra-poq"/>
+                        <outlet property="endPointListView" destination="NNe-g6-THc" id="cDX-ra-poq"/>
                     </connections>
                 </viewController>
                 <customObject id="0BN-St-kf5" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+                <menu id="jTZ-Oi-okT">
+                    <items>
+                        <menuItem title="删除" id="rm3-XH-Knk">
+                            <modifierMask key="keyEquivalentModifierMask"/>
+                            <connections>
+                                <action selector="onDelete:" target="CSd-hC-8Zy" id="DFU-Uk-gK9"/>
+                            </connections>
+                        </menuItem>
+                    </items>
+                </menu>
             </objects>
             <point key="canvasLocation" x="-327" y="1700"/>
         </scene>
