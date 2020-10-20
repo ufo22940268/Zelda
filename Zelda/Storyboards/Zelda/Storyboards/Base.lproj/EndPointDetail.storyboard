@@ -79,7 +79,10 @@
                                 </textFieldCell>
                             </textField>
                             <gridView xPlacement="leading" yPlacement="bottom" rowAlignment="none" translatesAutoresizingMaskIntoConstraints="NO" id="c0l-34-t5f">
-                                <rect key="frame" x="16" y="383" width="206" height="30"/>
+                                <rect key="frame" x="16" y="383" width="6" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" priority="750" constant="260" id="gVc-iD-k7n"/>
+                                </constraints>
                                 <rows>
                                     <gridRow id="9GW-m3-STS"/>
                                 </rows>
@@ -273,7 +276,7 @@
                                                     <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                                     <prototypeCellViews>
                                                         <tableCellView id="NXz-zt-swL">
-                                                            <rect key="frame" x="351" y="0.0" width="200" height="17"/>
+                                                            <rect key="frame" x="351" y="0.0" width="202" height="17"/>
                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                             <subviews>
                                                                 <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="e95-bB-cDS">
