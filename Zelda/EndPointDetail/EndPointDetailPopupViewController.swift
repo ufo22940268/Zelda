@@ -24,6 +24,7 @@ class EndPointDetailPopupViewController: NSViewController {
 	}
 
 	func loadRecordItem() {
+		(0..<headerView.numberOfRows).forEach { headerView.removeRow(at: $0)}
 		for (k, v) in recordItem.responseHeader.dict {
 			appendRow(k, v)
 		}
