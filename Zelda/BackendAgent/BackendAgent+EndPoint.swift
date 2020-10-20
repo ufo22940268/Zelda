@@ -50,4 +50,10 @@ extension BackendAgent {
 			.parseObject(to: ScanLogInTimeSpan.self)
 			.eraseToAnyPublisher()
 	}
+
+	func getRecordItem(scanLogId: String) -> AnyPublisher<RecordItem, ResponseError> {
+		get(endPoint: "/scanlog/\(scanLogId)")
+			.parseObject(to: RecordItem.self)
+			.eraseToAnyPublisher()
+	}
 }

@@ -29,11 +29,12 @@ extension EndPointDetailViewController: NSTableViewDelegate, NSTableViewDataSour
 		}
 		return view
 	}
-	
+
 	func tableViewSelectionDidChange(_ notification: Notification) {
 		guard detailTableView.selectedRow >= 0 else { return }
 		let selectedView = detailTableView.view(atColumn: 2, row: detailTableView.selectedRow, makeIfNecessary: true)!
-		let vc: NSViewController = storyboard!.instantiateController(identifier: "popup")
+		let vc: EndPointDetailPopupViewController = storyboard!.instantiateController(identifier: "popup")
+		vc.scanLogId = validScanLogs[detailTableView.selectedRow].id
 		present(vc, asPopoverRelativeTo: selectedView.bounds, of: selectedView, preferredEdge: .maxX, behavior: .transient)
 	}
 
