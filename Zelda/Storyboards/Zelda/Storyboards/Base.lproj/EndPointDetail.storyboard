@@ -122,6 +122,7 @@
                                     <constraint firstItem="iyS-aX-h9x" firstAttribute="leading" secondItem="mXC-cq-nIk" secondAttribute="leading" id="fIg-s1-ets"/>
                                     <constraint firstAttribute="height" constant="306" id="irc-il-Nfy"/>
                                     <constraint firstAttribute="trailing" secondItem="iyS-aX-h9x" secondAttribute="trailing" id="x3H-o3-DV0"/>
+                                    <constraint firstAttribute="width" constant="366" id="yx0-LJ-0cx"/>
                                 </constraints>
                                 <scroller key="horizontalScroller" wantsLayer="YES" verticalHuggingPriority="750" doubleValue="0.14285714285714285" horizontal="YES" id="hE3-hD-RHj">
                                     <rect key="frame" x="1" y="290" width="349" height="15"/>

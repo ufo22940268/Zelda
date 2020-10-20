@@ -28,10 +28,10 @@ class EndPointDetailPopupViewController: NSViewController {
 			.map { v -> RecordItem? in v }
 			.replaceError(with: nil)
 			.assign(to: &$recordItem)
-		
+
 		$recordItem
 			.filter { $0 != nil }
-			.sink { [weak self] (item) in
+			.sink { [weak self] item in
 				self?.loadRecordItem(item!)
 			}
 			.store(in: &cancellables)
@@ -46,8 +46,14 @@ class EndPointDetailPopupViewController: NSViewController {
 	}
 
 	// MARK: Private
+	
+	private func makeTextCell(str: String) -> NSTextField {
+		let tf = NSTextField(labelWithString: str)
+		tf.font = .toolTipsFont(ofSize: 12)
+		return tf
+	}
 
 	private func appendRow(_ k: String, _ v: String) {
-		headerView.addRow(with: [NSTextField(labelWithString: k.capitalized), NSTextField(labelWithString: v.jsonPrettify ?? "")])
+		headerView.addRow(with: [makeTextCell(str: k.capitalized), makeTextCell(str: v.jsonPrettify ?? "")])
 	}
 }
