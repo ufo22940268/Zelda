@@ -31,6 +31,7 @@ extension EndPointDetailViewController: NSTableViewDelegate, NSTableViewDataSour
 	}
 	
 	func tableViewSelectionDidChange(_ notification: Notification) {
+		guard detailTableView.selectedRow >= 0 else { return }
 		let selectedView = detailTableView.view(atColumn: 2, row: detailTableView.selectedRow, makeIfNecessary: true)!
 		let vc: NSViewController = storyboard!.instantiateController(identifier: "popup")
 		present(vc, asPopoverRelativeTo: selectedView.bounds, of: selectedView, preferredEdge: .maxX, behavior: .transient)
