@@ -67,12 +67,12 @@
         <scene sceneID="Ubo-JI-tcc">
             <objects>
                 <viewController storyboardIdentifier="popup" id="oby-Ip-HBC" customClass="EndPointDetailPopupViewController" customModule="Zelda" customModuleProvider="target" sceneMemberID="viewController">
-                    <stackView key="view" distribution="fill" orientation="vertical" alignment="leading" spacing="52" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" id="sdm-qI-J5O">
-                        <rect key="frame" x="0.0" y="0.0" width="473" height="344"/>
-                        <autoresizingMask key="autoresizingMask"/>
+                    <stackView key="view" distribution="fill" orientation="vertical" alignment="leading" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" id="sdm-qI-J5O">
+                        <rect key="frame" x="0.0" y="0.0" width="380" height="102"/>
+                        <autoresizingMask key="autoresizingMask" heightSizable="YES"/>
                         <subviews>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="fte-fj-Y37">
-                                <rect key="frame" x="14" y="309" width="126" height="19"/>
+                                <rect key="frame" x="14" y="67" width="126" height="19"/>
                                 <textFieldCell key="cell" lineBreakMode="clipping" title="Response Header" id="sLx-W0-hi9">
                                     <font key="font" textStyle="title3" name=".SFNS-Regular"/>
                                     <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
@@ -80,27 +80,22 @@
                                 </textFieldCell>
                             </textField>
                             <gridView xPlacement="leading" yPlacement="bottom" rowAlignment="none" translatesAutoresizingMaskIntoConstraints="NO" id="c0l-34-t5f">
-                                <rect key="frame" x="16" y="155" width="206" height="102"/>
+                                <rect key="frame" x="0.0" y="0.0" width="206" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <rows>
                                     <gridRow id="9GW-m3-STS"/>
-                                    <gridRow id="ogj-Eg-vPP"/>
-                                    <gridRow id="X54-So-goB"/>
                                 </rows>
                                 <columns>
                                     <gridColumn id="oV8-4B-rfE"/>
-                                    <gridColumn id="snq-Np-Ff3"/>
+                                    <gridColumn id="Fsm-IY-SkI"/>
                                 </columns>
                                 <gridCells>
                                     <gridCell row="9GW-m3-STS" column="oV8-4B-rfE" id="LLA-rZ-E1K"/>
-                                    <gridCell row="9GW-m3-STS" column="snq-Np-Ff3" id="P1J-St-wok"/>
-                                    <gridCell row="ogj-Eg-vPP" column="oV8-4B-rfE" id="3qC-d9-OFT"/>
-                                    <gridCell row="ogj-Eg-vPP" column="snq-Np-Ff3" id="73J-1W-3GP"/>
-                                    <gridCell row="X54-So-goB" column="oV8-4B-rfE" id="aRS-T9-8qh"/>
-                                    <gridCell row="X54-So-goB" column="snq-Np-Ff3" id="6Ay-bS-qb0"/>
+                                    <gridCell row="9GW-m3-STS" column="Fsm-IY-SkI" id="r7m-Te-fAB"/>
                                 </gridCells>
                             </gridView>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="CMI-Ck-ceM">
-                                <rect key="frame" x="14" y="84" width="111" height="19"/>
+                                <rect key="frame" x="14" y="40" width="111" height="19"/>
                                 <textFieldCell key="cell" lineBreakMode="clipping" title="Response Body" id="3FV-0o-cDS">
                                     <font key="font" textStyle="title3" name=".SFNS-Regular"/>
                                     <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
@@ -137,7 +132,7 @@
                 </viewController>
                 <customObject id="tRC-CX-BVm" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-120.5" y="1841.5"/>
+            <point key="canvasLocation" x="-161" y="1916"/>
         </scene>
         <!--End Point Detail View Controller-->
         <scene sceneID="eFM-5f-6XF">
@@ -252,7 +247,7 @@
                                                     <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                                     <prototypeCellViews>
                                                         <tableCellView id="NXz-zt-swL">
-                                                            <rect key="frame" x="351" y="0.0" width="184" height="17"/>
+                                                            <rect key="frame" x="351" y="0.0" width="187" height="17"/>
                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                             <subviews>
                                                                 <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="e95-bB-cDS">
