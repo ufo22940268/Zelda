@@ -47,6 +47,15 @@ enum EndPointIndicator: String, CaseIterable {
 			return DefaultAxisValueFormatter()
 		}
 	}
+	
+	var valueColumnName: String {
+		switch self {
+		case .duration:
+			return "时长"
+		case .issue:
+			return "错误数"
+		}
+	}
 
 	func getValue(log: ScanLog) -> Int {
 		switch self {

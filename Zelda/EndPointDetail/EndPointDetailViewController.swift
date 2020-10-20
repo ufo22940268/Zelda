@@ -18,16 +18,23 @@ let testScanLogs = ScanLogInTimeSpan(
 	}
 )
 
-class EndPointDetailViewController: NSViewController, EndPointDetailLoadabble {
+class EndPointDetailViewController: NSViewController {
 	@IBOutlet var chartView: BarChartView!
 
 	@IBOutlet var detailTableView: NSTableView!
 	@Published var endPointId: String?
-	var indicator = EndPointIndicator.duration
 	var cancellables = Set<AnyCancellable>()
 
 	@Published var scanLogsInSpan: ScanLogInTimeSpan?
 	@Published var span: ScanLogSpan = .today
+
+	var indicator = EndPointIndicator.duration {
+		didSet {
+			if let detailTableView = detailTableView {
+				detailTableView.tableColumns[1].headerCell.stringValue = indicator.valueColumnName
+			}
+		}
+	}
 
 	var scanLogs: [ScanLog] {
 		if let scanLogsInSpan = scanLogsInSpan {
@@ -50,6 +57,7 @@ class EndPointDetailViewController: NSViewController, EndPointDetailLoadabble {
 		super.viewDidLoad()
 		$endPointId
 			.filter { $0 != nil && !$0!.isEmpty }
+			.removeDuplicates()
 			.flatMap { endPointId in
 				BackendAgent.default.listScanLogInSpan(endPoint: endPointId!)
 			}
@@ -77,21 +85,8 @@ class EndPointDetailViewController: NSViewController, EndPointDetailLoadabble {
 			}
 			.store(in: &cancellables)
 	}
-	
-	func setIndicator(_ indicator: EndPointIndicator) {
-		self.indicator = indicator
-	}
-
-	func fillScanLogGap(_ scanLogs: inout ScanLogInTimeSpan) {
-		scanLogs.fillGap()
-	}
 
 	func load(endPoint: String) {
 		endPointId = endPoint
-	}
-
-	func onSelectSpan(_ span: ScanLogSpan) {
-		self.span = span
-		detailTableView.reloadData()
 	}
 }

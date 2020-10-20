@@ -32,6 +32,10 @@
 		4262EE4A253E44B00011C416 /* RecordItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4262EE49253E44B00011C416 /* RecordItem.swift */; };
 		4262EE4F253EC0270011C416 /* EndPointIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4262EE4E253EC0270011C416 /* EndPointIndicator.swift */; };
 		4262EE54253EC0440011C416 /* ScanLogInTimeSpan.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4262EE53253EC0440011C416 /* ScanLogInTimeSpan.swift */; };
+		4262EE59253ED08E0011C416 /* EndPointDetailViewController+Loadable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4262EE58253ED08E0011C416 /* EndPointDetailViewController+Loadable.swift */; };
+		4262EE5F253ED2630011C416 /* DurationDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4262EE5D253ED2630011C416 /* DurationDetailViewController.swift */; };
+		4262EE68253ED2800011C416 /* IssueDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4262EE67253ED2800011C416 /* IssueDetailViewController.swift */; };
+		4262EE6D253ED5280011C416 /* EndPointDetailContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4262EE6C253ED5280011C416 /* EndPointDetailContainer.swift */; };
 		42697C9B2534402800EA6275 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42697C9A2534402800EA6275 /* AppDelegate.swift */; };
 		42697C9D2534402800EA6275 /* AppSideBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42697C9C2534402800EA6275 /* AppSideBarViewController.swift */; };
 		42697CA02534402800EA6275 /* Zelda.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 42697C9E2534402800EA6275 /* Zelda.xcdatamodeld */; };
@@ -96,6 +100,10 @@
 		4262EE49253E44B00011C416 /* RecordItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordItem.swift; sourceTree = "<group>"; };
 		4262EE4E253EC0270011C416 /* EndPointIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndPointIndicator.swift; sourceTree = "<group>"; };
 		4262EE53253EC0440011C416 /* ScanLogInTimeSpan.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanLogInTimeSpan.swift; sourceTree = "<group>"; };
+		4262EE58253ED08E0011C416 /* EndPointDetailViewController+Loadable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "EndPointDetailViewController+Loadable.swift"; sourceTree = "<group>"; };
+		4262EE5D253ED2630011C416 /* DurationDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DurationDetailViewController.swift; sourceTree = "<group>"; };
+		4262EE67253ED2800011C416 /* IssueDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IssueDetailViewController.swift; sourceTree = "<group>"; };
+		4262EE6C253ED5280011C416 /* EndPointDetailContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndPointDetailContainer.swift; sourceTree = "<group>"; };
 		42697C972534402800EA6275 /* Zelda.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Zelda.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		42697C9A2534402800EA6275 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		42697C9C2534402800EA6275 /* AppSideBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSideBarViewController.swift; sourceTree = "<group>"; };
@@ -243,6 +251,10 @@
 				4262EE43253DA6CC0011C416 /* EndPointDetailPopupViewController.xib */,
 				4262EE4E253EC0270011C416 /* EndPointIndicator.swift */,
 				4262EE53253EC0440011C416 /* ScanLogInTimeSpan.swift */,
+				4262EE6C253ED5280011C416 /* EndPointDetailContainer.swift */,
+				4262EE58253ED08E0011C416 /* EndPointDetailViewController+Loadable.swift */,
+				4262EE5D253ED2630011C416 /* DurationDetailViewController.swift */,
+				4262EE67253ED2800011C416 /* IssueDetailViewController.swift */,
 			);
 			path = EndPointDetail;
 			sourceTree = "<group>";
@@ -470,6 +482,7 @@
 				4226D4A52537D59500CE8DB1 /* BackendAgent.swift in Sources */,
 				4262EE54253EC0440011C416 /* ScanLogInTimeSpan.swift in Sources */,
 				42A3049E2536CC5200E89376 /* EditPointViewController+Confirm.swift in Sources */,
+				4262EE5F253ED2630011C416 /* DurationDetailViewController.swift in Sources */,
 				4262EE37253D5AD50011C416 /* EndPointDetailContainerViewController.swift in Sources */,
 				42697C9D2534402800EA6275 /* AppSideBarViewController.swift in Sources */,
 				424600032539A90700963B29 /* ScanLog.swift in Sources */,
@@ -483,18 +496,21 @@
 				42697D142536941300EA6275 /* Api+JSON.swift in Sources */,
 				4262EE4F253EC0270011C416 /* EndPointIndicator.swift in Sources */,
 				42697D03253675F200EA6275 /* Api.swift in Sources */,
+				4262EE68253ED2800011C416 /* IssueDetailViewController.swift in Sources */,
 				422199132536EB410090AA28 /* NSManagedObjectContext+Helper.swift in Sources */,
 				4226D4A02537C78B00CE8DB1 /* EndPointListViewController.swift in Sources */,
 				4226D4B82538211400CE8DB1 /* Button+Helpers.swift in Sources */,
 				4246FFAF25391E3400963B29 /* Combine+Helpers.swift in Sources */,
 				42697C9B2534402800EA6275 /* AppDelegate.swift in Sources */,
 				422199042536E6860090AA28 /* NSManagedObjectContext+Name.swift in Sources */,
+				4262EE59253ED08E0011C416 /* EndPointDetailViewController+Loadable.swift in Sources */,
 				42697D1D2536A0FF00EA6275 /* EndPointEditViewController+Table.swift in Sources */,
 				4246FFD72539784F00963B29 /* EndPointDetailViewController.swift in Sources */,
 				42219929253712B90090AA28 /* AppDelegate+DebugHelpers.swift in Sources */,
 				42697CD22535245000EA6275 /* SideBarViewController.swift in Sources */,
 				42697CFD2536743D00EA6275 /* Api+Validate.swift in Sources */,
 				42697CE52535809700EA6275 /* EndPointEditViewController.swift in Sources */,
+				4262EE6D253ED5280011C416 /* EndPointDetailContainer.swift in Sources */,
 				4226D4AA2537D5E700CE8DB1 /* BackendAgent+EndPoint.swift in Sources */,
 				4226D4C925385A1A00CE8DB1 /* EndPoint.swift in Sources */,
 				4226D49B2537C45D00CE8DB1 /* NotificaitonCenter+Name.swift in Sources */,
