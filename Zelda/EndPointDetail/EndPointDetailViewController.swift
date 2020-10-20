@@ -18,98 +18,7 @@ let testScanLogs = ScanLogInTimeSpan(
 	}
 )
 
-enum EndPointIndicator {
-	case duration
-	case error
-
-	// MARK: Internal
-
-	class DurationValueFormatter: IAxisValueFormatter {
-		func stringForValue(_ value: Double, axis: AxisBase?) -> String {
-			"\(Int(value)) ms"
-		}
-	}
-
-	var maxY: Int {
-		switch self {
-		case .duration:
-			return 100
-		case .error:
-			return 10
-		}
-	}
-
-	var reservedY: Int {
-		switch self {
-		case .duration:
-			return 20
-		case .error:
-			return 5
-		}
-	}
-
-	var valueFormatter: IAxisValueFormatter {
-		switch self {
-		case .duration:
-			return DurationValueFormatter()
-		default:
-			fatalError()
-		}
-	}
-
-	func getValue(log: ScanLog) -> Int {
-		switch self {
-		case .duration:
-			return Int(log.duration*1000)
-		case .error:
-			return log.errorCount
-		}
-	}
-}
-
-struct ScanLogInTimeSpan: Codable {
-	// MARK: Internal
-
-	var today: [ScanLog]
-	var week: [ScanLog]
-
-	subscript(span: ScanLogSpan) -> [ScanLog] {
-		get {
-			switch span {
-			case .today:
-				return today
-			case .week:
-				return week
-			}
-		}
-
-		set {}
-	}
-
-	mutating func fillGap() {
-		today = fillGap(step: 60*5, scanLogs: today)
-		week = fillGap(step: 60*60*24, scanLogs: week)
-	}
-
-	// MARK: Private
-
-	private mutating func fillGap(step: TimeInterval, scanLogs: [ScanLog]) -> [ScanLog] {
-		var newScanLogs = [ScanLog]()
-		let maxTime = scanLogs.last!.time
-		for i in (0..<SCAN_LOG_COUNT).reversed() {
-			let begin = maxTime - Double(i + 1)*step
-			let end = maxTime - Double(i)*step
-			if let log = scanLogs.first(where: { $0.time > begin && $0.time <= end }) {
-				newScanLogs.append(log)
-			} else {
-				newScanLogs.append(ScanLog(time: end))
-			}
-		}
-		return newScanLogs
-	}
-}
-
-class EndPointDetailViewController: NSViewController, EndPointLoadable {
+class EndPointDetailViewController: NSViewController, EndPointDetailLoadabble {
 	@IBOutlet var chartView: BarChartView!
 
 	@IBOutlet var detailTableView: NSTableView!
@@ -167,6 +76,10 @@ class EndPointDetailViewController: NSViewController, EndPointLoadable {
 				}
 			}
 			.store(in: &cancellables)
+	}
+	
+	func setIndicator(_ indicator: EndPointIndicator) {
+		self.indicator = indicator
 	}
 
 	func fillScanLogGap(_ scanLogs: inout ScanLogInTimeSpan) {

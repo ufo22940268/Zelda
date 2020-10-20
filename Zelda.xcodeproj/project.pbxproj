@@ -30,6 +30,8 @@
 		4262EE44253DA6CC0011C416 /* EndPointDetailPopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4262EE42253DA6CC0011C416 /* EndPointDetailPopupViewController.swift */; };
 		4262EE45253DA6CC0011C416 /* EndPointDetailPopupViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4262EE43253DA6CC0011C416 /* EndPointDetailPopupViewController.xib */; };
 		4262EE4A253E44B00011C416 /* RecordItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4262EE49253E44B00011C416 /* RecordItem.swift */; };
+		4262EE4F253EC0270011C416 /* EndPointIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4262EE4E253EC0270011C416 /* EndPointIndicator.swift */; };
+		4262EE54253EC0440011C416 /* ScanLogInTimeSpan.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4262EE53253EC0440011C416 /* ScanLogInTimeSpan.swift */; };
 		42697C9B2534402800EA6275 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42697C9A2534402800EA6275 /* AppDelegate.swift */; };
 		42697C9D2534402800EA6275 /* AppSideBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42697C9C2534402800EA6275 /* AppSideBarViewController.swift */; };
 		42697CA02534402800EA6275 /* Zelda.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 42697C9E2534402800EA6275 /* Zelda.xcdatamodeld */; };
@@ -92,6 +94,8 @@
 		4262EE42253DA6CC0011C416 /* EndPointDetailPopupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndPointDetailPopupViewController.swift; sourceTree = "<group>"; };
 		4262EE43253DA6CC0011C416 /* EndPointDetailPopupViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EndPointDetailPopupViewController.xib; sourceTree = "<group>"; };
 		4262EE49253E44B00011C416 /* RecordItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordItem.swift; sourceTree = "<group>"; };
+		4262EE4E253EC0270011C416 /* EndPointIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndPointIndicator.swift; sourceTree = "<group>"; };
+		4262EE53253EC0440011C416 /* ScanLogInTimeSpan.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanLogInTimeSpan.swift; sourceTree = "<group>"; };
 		42697C972534402800EA6275 /* Zelda.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Zelda.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		42697C9A2534402800EA6275 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		42697C9C2534402800EA6275 /* AppSideBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSideBarViewController.swift; sourceTree = "<group>"; };
@@ -237,6 +241,8 @@
 				4262EE3D253D727F0011C416 /* EndPointDetailViewController+Table.swift */,
 				4262EE42253DA6CC0011C416 /* EndPointDetailPopupViewController.swift */,
 				4262EE43253DA6CC0011C416 /* EndPointDetailPopupViewController.xib */,
+				4262EE4E253EC0270011C416 /* EndPointIndicator.swift */,
+				4262EE53253EC0440011C416 /* ScanLogInTimeSpan.swift */,
 			);
 			path = EndPointDetail;
 			sourceTree = "<group>";
@@ -462,6 +468,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4226D4A52537D59500CE8DB1 /* BackendAgent.swift in Sources */,
+				4262EE54253EC0440011C416 /* ScanLogInTimeSpan.swift in Sources */,
 				42A3049E2536CC5200E89376 /* EditPointViewController+Confirm.swift in Sources */,
 				4262EE37253D5AD50011C416 /* EndPointDetailContainerViewController.swift in Sources */,
 				42697C9D2534402800EA6275 /* AppSideBarViewController.swift in Sources */,
@@ -474,6 +481,7 @@
 				4262EE3E253D727F0011C416 /* EndPointDetailViewController+Table.swift in Sources */,
 				4262EE4A253E44B00011C416 /* RecordItem.swift in Sources */,
 				42697D142536941300EA6275 /* Api+JSON.swift in Sources */,
+				4262EE4F253EC0270011C416 /* EndPointIndicator.swift in Sources */,
 				42697D03253675F200EA6275 /* Api.swift in Sources */,
 				422199132536EB410090AA28 /* NSManagedObjectContext+Helper.swift in Sources */,
 				4226D4A02537C78B00CE8DB1 /* EndPointListViewController.swift in Sources */,

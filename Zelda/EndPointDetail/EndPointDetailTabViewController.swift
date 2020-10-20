@@ -12,16 +12,23 @@ protocol EndPointLoadable {
 	func onSelectSpan(_ span: ScanLogSpan)
 }
 
+protocol EndPointDetailLoadabble: EndPointLoadable {
+	func setIndicator(_ indicator: EndPointIndicator)
+}
+
 class EndPointDetailTabViewController: NSTabViewController {
-	var loadables: [EndPointLoadable] {
+	var loadables: [EndPointDetailLoadabble] {
 		tabViewItems.map {
-			$0.viewController as! EndPointLoadable
+			$0.viewController as! EndPointDetailLoadabble
 		}
 	}
 
 	override func viewDidLoad() {
 		super.viewDidLoad()
-		// Do view setup here.
+	}
+
+	override func tabView(_ tabView: NSTabView, didSelect tabViewItem: NSTabViewItem?) {
+		loadables.forEach { $0.setIndicator(EndPointIndicator(identifier: tabViewItem?.identifier as! String)) }
 	}
 }
 
