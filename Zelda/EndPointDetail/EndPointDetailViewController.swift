@@ -19,6 +19,8 @@ let testScanLogs = ScanLogInTimeSpan(
 )
 
 class EndPointDetailViewController: NSViewController {
+	// MARK: Internal
+
 	@IBOutlet var chartView: BarChartView!
 
 	@IBOutlet var detailTableView: NSTableView!
@@ -30,9 +32,7 @@ class EndPointDetailViewController: NSViewController {
 
 	var indicator = EndPointIndicator.duration {
 		didSet {
-			if let detailTableView = detailTableView {
-				detailTableView.tableColumns[1].headerCell.stringValue = indicator.valueColumnName
-			}
+			updateTableColumn()
 		}
 	}
 
@@ -48,8 +48,8 @@ class EndPointDetailViewController: NSViewController {
 		switch indicator {
 		case .duration:
 			return scanLogs.filter { $0.duration > 0 }
-		default:
-			return scanLogs
+		case .issue:
+			return scanLogs.filter { $0.errorCount > 0 }
 		}
 	}
 
@@ -88,5 +88,14 @@ class EndPointDetailViewController: NSViewController {
 
 	func load(endPoint: String) {
 		endPointId = endPoint
+		updateTableColumn()
+	}
+
+	// MARK: Fileprivate
+
+	fileprivate func updateTableColumn() {
+		if let detailTableView = detailTableView {
+			detailTableView.tableColumns[1].headerCell.stringValue = indicator.valueColumnName
+		}
 	}
 }

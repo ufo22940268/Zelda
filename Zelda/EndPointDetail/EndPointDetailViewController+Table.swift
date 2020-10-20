@@ -21,6 +21,8 @@ extension EndPointDetailViewController: NSTableViewDelegate, NSTableViewDataSour
 		case "value":
 			if indicator == .duration {
 				view?.textField?.stringValue = scanLog.duration.formatDuration
+			} else if indicator == .issue {
+				view?.textField?.intValue = Int32(scanLog.errorCount)
 			}
 		case "action":
 			break
