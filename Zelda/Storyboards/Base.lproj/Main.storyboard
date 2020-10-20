@@ -702,9 +702,9 @@
                                 <toolbarItem implicitItemIdentifier="1A4BA36D-980D-4FAB-938C-1A8C08AB6230" label="Custom View" paletteLabel="Custom View" id="TYk-6g-8sC">
                                     <nil key="toolTip"/>
                                     <size key="minSize" width="93" height="25"/>
-                                    <size key="maxSize" width="93" height="25"/>
+                                    <size key="maxSize" width="100" height="25"/>
                                     <popUpButton key="view" verticalHuggingPriority="750" id="F4o-8y-mgh">
-                                        <rect key="frame" x="0.0" y="14" width="93" height="25"/>
+                                        <rect key="frame" x="0.0" y="14" width="100" height="25"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                         <popUpButtonCell key="cell" type="push" title="今天" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="4WJ-DZ-n7e" id="ehs-C9-z8x">
                                             <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
@@ -778,18 +778,18 @@
         <scene sceneID="Rg6-dw-OFJ">
             <objects>
                 <viewController id="eiw-Ew-28k" customClass="SideBarViewController" customModule="Zelda" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" misplaced="YES" id="Dev-UX-bU7">
-                        <rect key="frame" x="0.0" y="0.0" width="130" height="535"/>
+                    <view key="view" id="Dev-UX-bU7">
+                        <rect key="frame" x="0.0" y="0.0" width="130" height="518"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <scrollView autohidesScrollers="YES" horizontalLineScroll="32" horizontalPageScroll="10" verticalLineScroll="32" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oOq-Eu-53b">
-                                <rect key="frame" x="0.0" y="0.0" width="130" height="534"/>
+                                <rect key="frame" x="0.0" y="0.0" width="130" height="498"/>
                                 <clipView key="contentView" drawsBackground="NO" id="fJb-49-6z1">
-                                    <rect key="frame" x="1" y="1" width="128" height="532"/>
+                                    <rect key="frame" x="1" y="1" width="128" height="496"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" tableStyle="sourceList" selectionHighlightStyle="sourceList" columnSelection="YES" multipleSelection="NO" autosaveColumns="NO" rowHeight="32" rowSizeStyle="large" viewBased="YES" id="IaU-Pp-TdO">
-                                            <rect key="frame" x="0.0" y="0.0" width="128" height="532"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="128" height="496"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <size key="intercellSpacing" width="17" height="0.0"/>
                                             <color key="backgroundColor" name="_sourceListBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -851,6 +851,9 @@
                                     </subviews>
                                     <nil key="backgroundColor"/>
                                 </clipView>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="498" placeholder="YES" id="D6X-Yd-6i0"/>
+                                </constraints>
                                 <scroller key="horizontalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" horizontal="YES" id="OyK-ci-XY9">
                                     <rect key="frame" x="1" y="551" width="221" height="16"/>
                                     <autoresizingMask key="autoresizingMask"/>
@@ -864,7 +867,7 @@
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="oOq-Eu-53b" secondAttribute="trailing" id="6t0-QI-S36"/>
                             <constraint firstAttribute="bottom" secondItem="oOq-Eu-53b" secondAttribute="bottom" id="9IA-F4-MXr"/>
-                            <constraint firstItem="oOq-Eu-53b" firstAttribute="top" secondItem="Dev-UX-bU7" secondAttribute="top" id="PYt-px-F3f"/>
+                            <constraint firstItem="oOq-Eu-53b" firstAttribute="top" secondItem="Dev-UX-bU7" secondAttribute="top" constant="20" symbolic="YES" id="PYt-px-F3f"/>
                             <constraint firstItem="oOq-Eu-53b" firstAttribute="leading" secondItem="Dev-UX-bU7" secondAttribute="leading" id="utf-84-s3C"/>
                         </constraints>
                     </view>

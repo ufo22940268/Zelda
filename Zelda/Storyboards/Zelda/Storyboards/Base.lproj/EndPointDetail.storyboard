@@ -168,20 +168,20 @@
             <objects>
                 <customObject id="jgH-Zg-Qpl" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
                 <viewController id="Pm7-bW-AsL" customClass="EndPointDetailViewController" customModule="Zelda" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" misplaced="YES" id="hys-Hh-9hg">
-                        <rect key="frame" x="0.0" y="0.0" width="420" height="414"/>
+                    <view key="view" id="hys-Hh-9hg">
+                        <rect key="frame" x="0.0" y="0.0" width="300" height="414"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <customView translatesAutoresizingMaskIntoConstraints="NO" id="uMK-ZO-HFX" customClass="BarChartView" customModule="Charts">
-                                <rect key="frame" x="20" y="237" width="380" height="157"/>
+                                <rect key="frame" x="20" y="237" width="260" height="157"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="157" id="7yr-Tz-eps"/>
                                 </constraints>
                             </customView>
                             <scrollView autohidesScrollers="YES" horizontalLineScroll="24" horizontalPageScroll="10" verticalLineScroll="24" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bcw-31-lHP" userLabel="Bordered Scroll View">
-                                <rect key="frame" x="20" y="20" width="380" height="209"/>
+                                <rect key="frame" x="20" y="20" width="260" height="209"/>
                                 <clipView key="contentView" id="uFH-bu-kAM">
-                                    <rect key="frame" x="1" y="1" width="378" height="192"/>
+                                    <rect key="frame" x="1" y="1" width="258" height="192"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" columnSelection="YES" multipleSelection="NO" autosaveColumns="NO" rowHeight="24" rowSizeStyle="medium" headerView="3WA-LD-oJX" viewBased="YES" id="Igf-l3-eYe">
@@ -276,11 +276,11 @@
                                                     <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                                     <prototypeCellViews>
                                                         <tableCellView id="NXz-zt-swL">
-                                                            <rect key="frame" x="351" y="0.0" width="202" height="17"/>
+                                                            <rect key="frame" x="351" y="0.0" width="261" height="17"/>
                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                             <subviews>
                                                                 <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="e95-bB-cDS">
-                                                                    <rect key="frame" x="3" y="1" width="15" height="15"/>
+                                                                    <rect key="frame" x="3" y="1" width="236" height="15"/>
                                                                     <buttonCell key="cell" type="bevel" bezelStyle="rounded" imagePosition="overlaps" alignment="center" imageScaling="proportionallyDown" inset="2" id="eAg-2D-1cr">
                                                                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                                         <font key="font" metaFont="system"/>
@@ -289,6 +289,7 @@
                                                                 </button>
                                                             </subviews>
                                                             <constraints>
+                                                                <constraint firstAttribute="trailing" secondItem="e95-bB-cDS" secondAttribute="trailing" constant="20" symbolic="YES" id="8vx-jI-uYr"/>
                                                                 <constraint firstItem="e95-bB-cDS" firstAttribute="centerY" secondItem="NXz-zt-swL" secondAttribute="centerY" id="GeT-zR-jPA"/>
                                                                 <constraint firstItem="e95-bB-cDS" firstAttribute="leading" secondItem="NXz-zt-swL" secondAttribute="leading" constant="3" id="dDF-F5-fHQ"/>
                                                             </constraints>
@@ -306,8 +307,8 @@
                                 <constraints>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="200" id="zny-E1-SG1"/>
                                 </constraints>
-                                <scroller key="horizontalScroller" wantsLayer="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="YES" id="k18-R7-GVY">
-                                    <rect key="frame" x="1" y="193" width="378" height="15"/>
+                                <scroller key="horizontalScroller" wantsLayer="YES" verticalHuggingPriority="750" doubleValue="0.43925233644859812" horizontal="YES" id="k18-R7-GVY">
+                                    <rect key="frame" x="1" y="193" width="258" height="15"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>
                                 <scroller key="verticalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" horizontal="NO" id="x2O-Eg-zXk">

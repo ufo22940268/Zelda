@@ -93,9 +93,11 @@
                                     </gridCell>
                                 </gridCells>
                             </gridView>
-                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="d6l-a4-Ys8">
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="d6l-a4-Ys8">
                                 <rect key="frame" x="468" y="13" width="61" height="32"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="47" id="Uo2-dA-zsd"/>
+                                </constraints>
                                 <buttonCell key="cell" type="push" title="取消" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="qkj-bZ-eEG">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
@@ -199,8 +201,11 @@
                         <constraints>
                             <constraint firstItem="fGN-6H-9eo" firstAttribute="top" secondItem="T1c-3a-kA1" secondAttribute="bottom" constant="8" symbolic="YES" id="3Xi-dN-1Vq"/>
                             <constraint firstItem="N4D-Vg-u2R" firstAttribute="centerX" secondItem="7ha-wJ-Huq" secondAttribute="centerX" id="4ZD-7w-I0K"/>
+                            <constraint firstItem="d6l-a4-Ys8" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="7ha-wJ-Huq" secondAttribute="leading" constant="475" id="4rE-rJ-54q"/>
                             <constraint firstItem="fGN-6H-9eo" firstAttribute="centerX" secondItem="7ha-wJ-Huq" secondAttribute="centerX" id="B6M-fF-Ko5"/>
                             <constraint firstAttribute="trailing" secondItem="NeC-7W-9m7" secondAttribute="trailing" constant="20" symbolic="YES" id="DNr-2q-le4"/>
+                            <constraint firstItem="NeC-7W-9m7" firstAttribute="leading" secondItem="d6l-a4-Ys8" secondAttribute="trailing" constant="19" id="Jrn-K2-M0a"/>
+                            <constraint firstItem="d6l-a4-Ys8" firstAttribute="baseline" secondItem="NeC-7W-9m7" secondAttribute="baseline" id="Nae-0H-dDZ"/>
                             <constraint firstItem="N4D-Vg-u2R" firstAttribute="top" secondItem="7ha-wJ-Huq" secondAttribute="top" constant="20" symbolic="YES" id="UcP-Nl-pHv"/>
                             <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="T1c-3a-kA1" secondAttribute="trailing" constant="20" symbolic="YES" id="YRM-yO-73L"/>
                             <constraint firstItem="T1c-3a-kA1" firstAttribute="leading" secondItem="7ha-wJ-Huq" secondAttribute="leading" constant="50" id="k8r-mB-UrI"/>
