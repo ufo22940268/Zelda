@@ -779,17 +779,17 @@
             <objects>
                 <viewController id="eiw-Ew-28k" customClass="SideBarViewController" customModule="Zelda" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="Dev-UX-bU7">
-                        <rect key="frame" x="0.0" y="0.0" width="130" height="518"/>
+                        <rect key="frame" x="0.0" y="0.0" width="130" height="320"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <scrollView autohidesScrollers="YES" horizontalLineScroll="32" horizontalPageScroll="10" verticalLineScroll="32" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oOq-Eu-53b">
-                                <rect key="frame" x="0.0" y="0.0" width="130" height="498"/>
+                                <rect key="frame" x="0.0" y="0.0" width="130" height="300"/>
                                 <clipView key="contentView" drawsBackground="NO" id="fJb-49-6z1">
-                                    <rect key="frame" x="1" y="1" width="128" height="496"/>
+                                    <rect key="frame" x="1" y="1" width="128" height="298"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" tableStyle="sourceList" selectionHighlightStyle="sourceList" columnSelection="YES" multipleSelection="NO" autosaveColumns="NO" rowHeight="32" rowSizeStyle="large" viewBased="YES" id="IaU-Pp-TdO">
-                                            <rect key="frame" x="0.0" y="0.0" width="128" height="496"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="128" height="298"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <size key="intercellSpacing" width="17" height="0.0"/>
                                             <color key="backgroundColor" name="_sourceListBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -852,7 +852,7 @@
                                     <nil key="backgroundColor"/>
                                 </clipView>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="498" placeholder="YES" id="D6X-Yd-6i0"/>
+                                    <constraint firstAttribute="height" constant="300" placeholder="YES" id="D6X-Yd-6i0"/>
                                 </constraints>
                                 <scroller key="horizontalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" horizontal="YES" id="OyK-ci-XY9">
                                     <rect key="frame" x="1" y="551" width="221" height="16"/>
@@ -947,7 +947,7 @@
                                 </clipView>
                                 <constraints>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="210" id="35J-Dl-cBW"/>
-                                    <constraint firstAttribute="height" constant="600" id="R1P-dM-izG"/>
+                                    <constraint firstAttribute="height" constant="600" placeholder="YES" id="XC8-dS-Mcd"/>
                                 </constraints>
                                 <scroller key="horizontalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" horizontal="YES" id="cVv-b8-Otd">
                                     <rect key="frame" x="1" y="585" width="128" height="15"/>
