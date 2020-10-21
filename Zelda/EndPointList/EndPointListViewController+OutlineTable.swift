@@ -16,10 +16,19 @@ extension EndPointListViewController: NSOutlineViewDataSource, NSOutlineViewDele
 	}
 
 	func loadData() -> [EndPoint] {
-		// TODO: Load data by category.
-
-		try! context.fetchMany(EndPointEntity.self)
-			.map { $0.toItem() }
+		switch type {
+		case .all:
+			return try! context.fetchMany(EndPointEntity.self)
+				.map { $0.toItem() }
+		case .bug:
+			return try! context.fetchMany(EndPointEntity.self)
+				.map { $0.toItem() }
+		case .timeout:
+			return try! context.fetchMany(EndPointEntity.self)
+				.map { $0.toItem() }
+		default:
+			return []
+		}
 	}
 
 	func outlineView(_ outlineView: NSOutlineView, child index: Int, ofItem item: Any?) -> Any {

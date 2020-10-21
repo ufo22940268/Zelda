@@ -20,10 +20,20 @@ class EndPointListTabViewController: NSTabViewController {
 
 	override func viewDidLoad() {
 		super.viewDidLoad()
-		// Do view setup here.
+		setupLists()
+	}
+	
+	func setupLists() {
+		for item in SideBarItem.allCases {
+			endPointListVCS[item.rawValue].type = item
+		}
 	}
 
 	func load() {
 		tabViewItems.forEach { ($0.viewController as! EndPointListViewController).reloadTable() }
+	}
+
+	override func prepare(for segue: NSStoryboardSegue, sender: Any?) {
+		print(segue)
 	}
 }

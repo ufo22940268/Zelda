@@ -17,9 +17,11 @@ class EndPointListViewController: NSViewController {
 	var reloadTableSubject = PassthroughSubject<Void, Never>()
 	var deleteEndPointSubject = PassthroughSubject<EndPoint, Never>()
 	var detailVC: EndPointDetailTabViewController!
+	var type: SideBarItem!
 
 	override func viewDidLoad() {
 		super.viewDidLoad()
+
 		NotificationCenter.default.publisher(for: .syncEndPoint)
 			.flatMap { notif -> AnyPublisher<Void, ResponseError> in
 				let endPointId = (self.context.persistentStoreCoordinator?.managedObjectID(forURIRepresentation: notif.object as! URL))!
@@ -32,17 +34,6 @@ class EndPointListViewController: NSViewController {
 
 		endPointListView.expandItem(nil, expandChildren: true)
 
-		syncSubject
-			.flatMap { [weak self] () in
-				BackendAgent.default.syncFromServer(context: self?.context ?? .main)
-			}
-			.catch { _ in
-				Empty()
-			}
-			.subscribe(reloadTableSubject)
-			.store(in: &cancellables)
-
-		syncSubject.send()
 		reloadTableSubject
 			.map { [weak self] _ -> [EndPoint] in
 				self?.loadData() ?? []
@@ -51,8 +42,8 @@ class EndPointListViewController: NSViewController {
 				guard let self = self else { return }
 				self.endPoints = v
 				self.endPointListView.reloadData()
-				self.endPointListView.expandItem(nil, expandChildren: true)
 				self.endPointListView.selectRowIndexes(IndexSet([1]), byExtendingSelection: true)
+				self.endPointListView.expandItem(nil, expandChildren: true)
 			})
 			.store(in: &cancellables)
 
