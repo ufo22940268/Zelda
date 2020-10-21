@@ -21,7 +21,6 @@
 		4226D4D42538602F00CE8DB1 /* String+URL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4226D4D32538602F00CE8DB1 /* String+URL.swift */; };
 		424600032539A90700963B29 /* ScanLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 424600022539A90700963B29 /* ScanLog.swift */; };
 		4246FFAF25391E3400963B29 /* Combine+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4246FFAE25391E3400963B29 /* Combine+Helpers.swift */; };
-		4246FFB42539339600963B29 /* EndPointEntity+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4246FFB32539339600963B29 /* EndPointEntity+Helpers.swift */; };
 		4246FFD12539767700963B29 /* Charts in Frameworks */ = {isa = PBXBuildFile; productRef = 4246FFD02539767700963B29 /* Charts */; };
 		4246FFD72539784F00963B29 /* EndPointDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4246FFD52539784F00963B29 /* EndPointDetailViewController.swift */; };
 		4246FFFB2539862A00963B29 /* EndPointDetailViewController+Chart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4246FFFA2539862A00963B29 /* EndPointDetailViewController+Chart.swift */; };
@@ -91,7 +90,6 @@
 		4226D4D32538602F00CE8DB1 /* String+URL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+URL.swift"; sourceTree = "<group>"; };
 		424600022539A90700963B29 /* ScanLog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanLog.swift; sourceTree = "<group>"; };
 		4246FFAE25391E3400963B29 /* Combine+Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Combine+Helpers.swift"; sourceTree = "<group>"; };
-		4246FFB32539339600963B29 /* EndPointEntity+Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "EndPointEntity+Helpers.swift"; sourceTree = "<group>"; };
 		4246FFD52539784F00963B29 /* EndPointDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndPointDetailViewController.swift; sourceTree = "<group>"; };
 		4246FFFA2539862A00963B29 /* EndPointDetailViewController+Chart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "EndPointDetailViewController+Chart.swift"; sourceTree = "<group>"; };
 		4262EE36253D5AD50011C416 /* EndPointDetailContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndPointDetailContainerViewController.swift; sourceTree = "<group>"; };
@@ -194,7 +192,6 @@
 			children = (
 				42697C9E2534402800EA6275 /* Zelda.xcdatamodeld */,
 				4226D4C825385A1A00CE8DB1 /* EndPoint.swift */,
-				4246FFB32539339600963B29 /* EndPointEntity+Helpers.swift */,
 				424600022539A90700963B29 /* ScanLog.swift */,
 				4262EE49253E44B00011C416 /* RecordItem.swift */,
 			);
@@ -518,7 +515,6 @@
 				4226D4AA2537D5E700CE8DB1 /* BackendAgent+EndPoint.swift in Sources */,
 				4226D4C925385A1A00CE8DB1 /* EndPoint.swift in Sources */,
 				4226D49B2537C45D00CE8DB1 /* NotificaitonCenter+Name.swift in Sources */,
-				4246FFB42539339600963B29 /* EndPointEntity+Helpers.swift in Sources */,
 				42697CF825358B1900EA6275 /* MainWindowController.swift in Sources */,
 				42A6ABBB253BDA0D0021DA90 /* JSON.swift in Sources */,
 				4226D4CF25385E3D00CE8DB1 /* EndPointListViewController+OutlineTable.swift in Sources */,

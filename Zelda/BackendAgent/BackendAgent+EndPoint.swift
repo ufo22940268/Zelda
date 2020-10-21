@@ -24,24 +24,9 @@ extension BackendAgent {
 			.eraseToAnyPublisher()
 	}
 
-	func syncFromServer(context: NSManagedObjectContext) -> AnyPublisher<Void, ResponseError> {
-		get(endPoint: "/endpoint/sync/list")
+	func listEndPoints() -> AnyPublisher<[EndPoint], ResponseError> {
+		get(endPoint: "/endpoint/list")
 			.parseArrayObjects(to: EndPoint.self)
-			.receive(on: DispatchQueue.main)
-			.map { (endPoints: [EndPoint]) in
-				let req = EndPointEntity.fetchRequest() as NSFetchRequest<EndPointEntity>
-				req.predicate = NSPredicate(format: "url IN %@", endPoints.map { $0.url })
-				if let exists: [EndPointEntity] = try? context.fetch(req) {
-					let newEndPointEntities = endPoints.filter { e in
-						!exists.map { $0.url! }.contains(e.url)
-					}
-
-					_ = newEndPointEntities.map {
-						_ = $0.toEntity(context: context)
-					}
-				}
-				try! context.save()
-			}
 			.eraseToAnyPublisher()
 	}
 
@@ -62,4 +47,3 @@ extension BackendAgent {
 			.eraseToVoidAnyPublisher()
 	}
 }
-

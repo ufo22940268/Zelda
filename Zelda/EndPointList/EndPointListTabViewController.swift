@@ -18,19 +18,33 @@ class EndPointListTabViewController: NSTabViewController {
 		}
 	}
 
+	var endPoints: [EndPoint] = [] {
+		didSet {
+			endPointListVCS.enumerated().forEach { i, vc in
+				let type = SideBarItem(rawValue: i)!
+				var endPoints = self.endPoints
+				switch type {
+				case .all:
+					break
+				case .bug:
+					endPoints = endPoints.filter { $0.hasIssue }
+				case .timeout:
+					endPoints = endPoints.filter { $0.requestTimeout }
+				}
+				vc.endPoints = endPoints
+			}
+		}
+	}
+
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		setupLists()
 	}
-	
+
 	func setupLists() {
 		for item in SideBarItem.allCases {
 			endPointListVCS[item.rawValue].type = item
 		}
-	}
-
-	func load() {
-		tabViewItems.forEach { ($0.viewController as! EndPointListViewController).reloadTable() }
 	}
 
 	override func prepare(for segue: NSStoryboardSegue, sender: Any?) {

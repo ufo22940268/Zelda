@@ -8,12 +8,8 @@
 import CoreData
 import Foundation
 
-struct EndPoint: Codable, Equatable {
-	static func == (lhs: EndPoint, rhs: EndPoint) -> Bool {
-		lhs._id == rhs._id
-	}
-	
-	struct WatchField: Codable {
+struct EndPoint: Decodable, Equatable {
+	struct WatchField: Decodable {
 		var path: String
 		var value: String
 
@@ -26,22 +22,26 @@ struct EndPoint: Codable, Equatable {
 		}
 	}
 
+	struct WarningCount: Decodable {
+		var issue: Int
+		var duration: Int
+	}
+
 	var url: String
-	var watchFields: [WatchField]?
+//	var watchFields: [WatchField]?
 	var _id: String
 
-	func toEntity(context: NSManagedObjectContext) -> EndPointEntity {
-		let ee = EndPointEntity(context: context)
-		ee.url = url
-		ee.needReload = true
-		ee.id = _id
+	var warningCount: WarningCount
 
-		if let watchFields = watchFields {
-			for field in watchFields {
-				ee.addToApi(field.toApiEntity(context: context, ee: ee))
-			}
-		}
+	var hasIssue: Bool {
+		warningCount.issue > 0
+	}
 
-		return ee
+	var requestTimeout: Bool {
+		warningCount.duration > 0
+	}
+
+	static func == (lhs: EndPoint, rhs: EndPoint) -> Bool {
+		lhs._id == rhs._id
 	}
 }

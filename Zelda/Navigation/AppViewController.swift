@@ -18,6 +18,7 @@ class AppViewController: NSSplitViewController {
 	var syncSubject = PassthroughSubject<Void, Never>()
 	var context = NSManagedObjectContext.main
 	var cancellables = Set<AnyCancellable>()
+	@Published var endPoints: [EndPoint] = []
 
 	override var representedObject: Any? {
 		didSet {
@@ -30,15 +31,20 @@ class AppViewController: NSSplitViewController {
 		setupViewControllers()
 
 		syncSubject
-			.flatMap { [weak self] () in
-				BackendAgent.default.syncFromServer(context: self?.context ?? .main)
+			.flatMap { () in
+				BackendAgent.default.listEndPoints()
 			}
-			.sink(receiveCompletion: { _ in }) { [weak self] () in
-				self?.listTabVC.load()
-			}
-			.store(in: &cancellables)
+			.replaceError(with: [])
+			.assign(to: &$endPoints)
 
 		syncSubject.send()
+
+		$endPoints
+			.receive(on: DispatchQueue.main)
+			.sink { [weak self] endPoints in
+				self?.listTabVC.endPoints = endPoints
+			}
+			.store(in: &cancellables)
 	}
 
 	func onSelectSpan(_ span: ScanLogSpan) {

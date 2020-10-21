@@ -15,22 +15,6 @@ extension EndPointListViewController: NSOutlineViewDataSource, NSOutlineViewDele
 			.sorted { $0.0 < $1.0 }
 	}
 
-	func loadData() -> [EndPoint] {
-		switch type {
-		case .all:
-			return try! context.fetchMany(EndPointEntity.self)
-				.map { $0.toItem() }
-		case .bug:
-			return try! context.fetchMany(EndPointEntity.self)
-				.map { $0.toItem() }
-		case .timeout:
-			return try! context.fetchMany(EndPointEntity.self)
-				.map { $0.toItem() }
-		default:
-			return []
-		}
-	}
-
 	func outlineView(_ outlineView: NSOutlineView, child index: Int, ofItem item: Any?) -> Any {
 		if item == nil {
 			return groupData[index].0

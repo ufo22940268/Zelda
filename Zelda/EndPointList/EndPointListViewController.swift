@@ -12,9 +12,15 @@ class EndPointListViewController: NSViewController {
 	@IBOutlet var endPointListView: NSOutlineView!
 	var cancellables = Set<AnyCancellable>()
 	var context = NSManagedObjectContext.main
-	var endPoints: [EndPoint] = []
+	var endPoints: [EndPoint] = [] {
+		didSet {
+			endPointListView.reloadData()
+			self.endPointListView.reloadData()
+			self.endPointListView.selectRowIndexes(IndexSet([1]), byExtendingSelection: true)
+			self.endPointListView.expandItem(nil, expandChildren: true)
+		}
+	}
 	var syncSubject = PassthroughSubject<Void, Never>()
-	var reloadTableSubject = PassthroughSubject<Void, Never>()
 	var deleteEndPointSubject = PassthroughSubject<EndPoint, Never>()
 	var detailVC: EndPointDetailTabViewController!
 	var type: SideBarItem!
@@ -34,19 +40,6 @@ class EndPointListViewController: NSViewController {
 
 		endPointListView.expandItem(nil, expandChildren: true)
 
-		reloadTableSubject
-			.map { [weak self] _ -> [EndPoint] in
-				self?.loadData() ?? []
-			}
-			.sink(receiveValue: { [weak self] v in
-				guard let self = self else { return }
-				self.endPoints = v
-				self.endPointListView.reloadData()
-				self.endPointListView.selectRowIndexes(IndexSet([1]), byExtendingSelection: true)
-				self.endPointListView.expandItem(nil, expandChildren: true)
-			})
-			.store(in: &cancellables)
-
 		deleteEndPointSubject
 			.removeDuplicates()
 			.map { [weak self] endPoint -> EndPoint in
@@ -54,7 +47,7 @@ class EndPointListViewController: NSViewController {
 				let entity = try! self.context.fetchOne(EndPointEntity.self, "id = %@", endPoint._id)!
 				self.context.delete(entity)
 				try! self.context.save()
-				self.reloadTableSubject.send()
+//				self.reloadTableSubject.send()
 				return endPoint
 			}
 			.flatMap { endPoint in
@@ -62,10 +55,6 @@ class EndPointListViewController: NSViewController {
 			}
 			.sink(receiveCompletion: { _ in }, receiveValue: {})
 			.store(in: &cancellables)
-	}
-
-	func reloadTable() {
-		reloadTableSubject.send()
 	}
 
 	@IBAction func onDelete(_ sender: NSMenuItem) {
