@@ -58,12 +58,16 @@ class EndPointDetailViewController: NSViewController {
 
 	override func viewDidLoad() {
 		super.viewDidLoad()
-		loading = true
+
+		self.tableContainer.isHidden = true
+		self.chartView.isHidden = true
+
 		$endPointId
 			.filter { $0 != nil && !$0!.isEmpty }
 			.removeDuplicates()
-			.flatMap { endPointId in
-				BackendAgent.default.listScanLogInSpan(endPoint: endPointId!)
+			.flatMap { [weak self] endPointId -> AnyPublisher<ScanLogInTimeSpan, ResponseError> in
+				self?.loading = true
+				return BackendAgent.default.listScanLogInSpan(endPoint: endPointId!)
 			}
 			.map { span -> ScanLogInTimeSpan? in
 				span

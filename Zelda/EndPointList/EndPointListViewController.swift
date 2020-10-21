@@ -12,18 +12,17 @@ class EndPointListViewController: NSViewController {
 	@IBOutlet var endPointListView: NSOutlineView!
 	var cancellables = Set<AnyCancellable>()
 	var context = NSManagedObjectContext.main
-	var endPoints: [EndPoint] = [] {
-		didSet {
-			endPointListView.reloadData()
-			self.endPointListView.reloadData()
-			self.endPointListView.selectRowIndexes(IndexSet([1]), byExtendingSelection: true)
-			self.endPointListView.expandItem(nil, expandChildren: true)
-		}
-	}
 	var syncSubject = PassthroughSubject<Void, Never>()
 	var deleteEndPointSubject = PassthroughSubject<EndPoint, Never>()
 	var detailVC: EndPointDetailTabViewController!
 	var type: SideBarItem!
+
+	var endPoints: [EndPoint] = [] {
+		didSet {
+			endPointListView.reloadData()
+			self.endPointListView.expandItem(nil, expandChildren: true)
+		}
+	}
 
 	override func viewDidLoad() {
 		super.viewDidLoad()
