@@ -56,4 +56,10 @@ extension BackendAgent {
 			.parseObject(to: RecordItem.self)
 			.eraseToAnyPublisher()
 	}
+
+	func deleteEndPoint(by url: String) -> AnyPublisher<Void, ResponseError> {
+		post(endPoint: "/endpoint/delete", data: ["url": url])
+			.eraseToVoidAnyPublisher()
+	}
 }
+

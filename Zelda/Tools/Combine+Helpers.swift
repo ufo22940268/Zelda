@@ -29,3 +29,10 @@ extension Publisher {
 		.eraseToAnyPublisher()
 	}
 }
+
+extension Publisher where Output == Response, Failure == ResponseError {
+	func eraseToVoidAnyPublisher() -> AnyPublisher<Void, ResponseError> {
+		map { _ in () }
+			.eraseToAnyPublisher()
+	}
+}

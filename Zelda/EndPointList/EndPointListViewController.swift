@@ -15,6 +15,7 @@ class EndPointListViewController: NSViewController {
 	var endPoints: [EndPoint] = []
 	var syncSubject = PassthroughSubject<Void, Never>()
 	var reloadTableSubject = PassthroughSubject<Void, Never>()
+	var deleteEndPointSubject = PassthroughSubject<EndPoint, Never>()
 	var detailVC: EndPointDetailTabViewController!
 
 	override func viewDidLoad() {
@@ -54,13 +55,27 @@ class EndPointListViewController: NSViewController {
 				self.endPointListView.selectRowIndexes(IndexSet([1]), byExtendingSelection: true)
 			})
 			.store(in: &cancellables)
+
+		deleteEndPointSubject
+			.removeDuplicates()
+			.map { [weak self] endPoint -> EndPoint in
+				guard let self = self else { return endPoint }
+				let entity = try! self.context.fetchOne(EndPointEntity.self, "id = %@", endPoint._id)!
+				self.context.delete(entity)
+				try! self.context.save()
+				self.reloadTableSubject.send()
+				return endPoint
+			}
+			.flatMap { endPoint in
+				BackendAgent.default.deleteEndPoint(by: endPoint.url)
+			}
+			.sink(receiveCompletion: { _ in }, receiveValue: {})
+			.store(in: &cancellables)
 	}
 
 	@IBAction func onDelete(_ sender: NSMenuItem) {
 		let endPoint = endPointListView.item(atRow: endPointListView.clickedRow) as! EndPoint
-		let entity = try! context.fetchOne(EndPointEntity.self, "id = %@", endPoint._id)!
-		context.delete(entity)
-		try! context.save()
-		reloadTableSubject.send()
+
+		deleteEndPointSubject.send(endPoint)
 	}
 }

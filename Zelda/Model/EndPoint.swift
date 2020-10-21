@@ -8,7 +8,11 @@
 import CoreData
 import Foundation
 
-struct EndPoint: Codable {
+struct EndPoint: Codable, Equatable {
+	static func == (lhs: EndPoint, rhs: EndPoint) -> Bool {
+		lhs._id == rhs._id
+	}
+	
 	struct WatchField: Codable {
 		var path: String
 		var value: String
