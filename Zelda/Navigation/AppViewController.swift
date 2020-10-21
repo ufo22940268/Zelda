@@ -12,7 +12,7 @@ class AppViewController: NSSplitViewController {
 	// MARK: Internal
 
 	var sideBarVC: SideBarViewController!
-	var listTabVC: EndPointListTabViewController!
+	var listTabVC: ContentTabViewController!
 	var detailVC: EndPointDetailTabViewController!
 
 	var syncSubject = PassthroughSubject<Void, Never>()
@@ -55,10 +55,8 @@ class AppViewController: NSSplitViewController {
 
 	private func setupViewControllers() {
 		sideBarVC = splitViewItems[0].viewController as? SideBarViewController
-		listTabVC = splitViewItems[1].viewController as? EndPointListTabViewController
-		detailVC = (splitViewItems[2].viewController as? EndPointDetailContainerViewController)?.tabVC as? EndPointDetailTabViewController
+		listTabVC = splitViewItems[1].viewController as? ContentTabViewController
 
 		sideBarVC.listTabVC = listTabVC
-		listTabVC.detailVC = detailVC
 	}
 }

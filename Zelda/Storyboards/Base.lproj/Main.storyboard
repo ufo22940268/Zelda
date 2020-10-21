@@ -685,7 +685,7 @@
         <scene sceneID="R2V-B0-nI4">
             <objects>
                 <windowController id="B8D-0N-5wS" customClass="MainWindowController" customModule="Zelda" customModuleProvider="target" sceneMemberID="viewController">
-                    <window key="window" title="BiuBiuBiu" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" animationBehavior="default" id="IQv-IB-iLA">
+                    <window key="window" title="BiuBiuBiu" separatorStyle="line" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" animationBehavior="default" id="IQv-IB-iLA">
                         <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES" fullSizeContentView="YES"/>
                         <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
                         <rect key="contentRect" x="196" y="240" width="480" height="270"/>
@@ -739,14 +739,38 @@
             </objects>
             <point key="canvasLocation" x="-207" y="154"/>
         </scene>
+        <!--Main Split View Controller-->
+        <scene sceneID="k0Y-iR-3B3">
+            <objects>
+                <splitViewController id="EMh-hE-dzU" customClass="MainSplitViewController" customModule="Zelda" customModuleProvider="target" sceneMemberID="viewController">
+                    <splitViewItems>
+                        <splitViewItem id="ZGp-kW-ncD"/>
+                        <splitViewItem id="ghB-tp-2yQ"/>
+                    </splitViewItems>
+                    <splitView key="splitView" dividerStyle="thin" vertical="YES" id="Ou2-MA-qCw">
+                        <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <connections>
+                            <outlet property="delegate" destination="EMh-hE-dzU" id="UPB-BE-60p"/>
+                        </connections>
+                    </splitView>
+                    <connections>
+                        <outlet property="splitView" destination="Ou2-MA-qCw" id="WdP-Eg-rxG"/>
+                        <segue destination="CSd-hC-8Zy" kind="relationship" relationship="splitItems" id="zi1-Jx-kLB"/>
+                        <segue destination="YLq-Bl-oVH" kind="relationship" relationship="splitItems" id="QbA-Ub-gnv"/>
+                    </connections>
+                </splitViewController>
+                <customObject id="0I9-nr-CwL" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1037" y="1945"/>
+        </scene>
         <!--App View Controller-->
         <scene sceneID="wUO-lL-NzL">
             <objects>
                 <splitViewController id="2yY-zz-OLv" customClass="AppViewController" customModule="Zelda" customModuleProvider="target" sceneMemberID="viewController">
                     <splitViewItems>
                         <splitViewItem canCollapse="YES" holdingPriority="260" behavior="sidebar" id="Rfv-0b-or2"/>
-                        <splitViewItem id="wE1-ij-jcB"/>
-                        <splitViewItem id="WOq-9C-QBX"/>
+                        <splitViewItem id="2P5-jM-I8X"/>
                     </splitViewItems>
                     <splitView key="splitView" dividerStyle="thin" vertical="YES" id="N30-hi-1Id">
                         <rect key="frame" x="0.0" y="0.0" width="620" height="423"/>
@@ -758,13 +782,12 @@
                     <connections>
                         <outlet property="splitView" destination="N30-hi-1Id" id="1Ry-Wv-Der"/>
                         <segue destination="eiw-Ew-28k" kind="relationship" relationship="splitItems" id="kUd-Oe-yQJ"/>
-                        <segue destination="RhV-HZ-hS4" kind="relationship" relationship="splitItems" id="4Lx-5z-ZLo"/>
-                        <segue destination="YLq-Bl-oVH" kind="relationship" relationship="splitItems" id="M1f-Xg-OgM"/>
+                        <segue destination="RhV-HZ-hS4" kind="relationship" relationship="splitItems" id="PCY-pl-JPv"/>
                     </connections>
                 </splitViewController>
                 <customObject id="0TO-bg-AYW" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-122" y="763"/>
+            <point key="canvasLocation" x="-114" y="774"/>
         </scene>
         <!--addEndPoint-->
         <scene sceneID="j0y-cV-ttg">
@@ -879,14 +902,14 @@
             </objects>
             <point key="canvasLocation" x="515" y="763"/>
         </scene>
-        <!--End Point List Tab View Controller-->
+        <!--Content Tab View Controller-->
         <scene sceneID="Co8-C6-2k7">
             <objects>
-                <tabViewController selectedTabViewItemIndex="0" tabStyle="unspecified" id="RhV-HZ-hS4" customClass="EndPointListTabViewController" customModule="Zelda" customModuleProvider="target" sceneMemberID="viewController">
+                <tabViewController selectedTabViewItemIndex="0" tabStyle="unspecified" id="RhV-HZ-hS4" customClass="ContentTabViewController" customModule="Zelda" customModuleProvider="target" sceneMemberID="viewController">
                     <tabViewItems>
-                        <tabViewItem id="Vhj-fp-W1h"/>
-                        <tabViewItem id="A17-Na-loI"/>
-                        <tabViewItem id="rJ3-Wm-XjH"/>
+                        <tabViewItem id="p5Z-dN-Ts1"/>
+                        <tabViewItem id="ezy-cL-fQA"/>
+                        <tabViewItem id="hiJ-Jl-jTS"/>
                     </tabViewItems>
                     <tabView key="tabView" drawsBackground="NO" controlSize="mini" type="noTabsNoBorder" id="1vx-8g-fyJ">
                         <rect key="frame" x="0.0" y="0.0" width="215" height="320"/>
@@ -898,37 +921,37 @@
                     </tabView>
                     <connections>
                         <outlet property="tabView" destination="1vx-8g-fyJ" id="bWx-4d-MyT"/>
-                        <segue destination="CSd-hC-8Zy" kind="relationship" relationship="tabItems" id="4ig-oL-jYh"/>
-                        <segue destination="CSd-hC-8Zy" kind="relationship" relationship="tabItems" id="JJn-t9-SPR"/>
-                        <segue destination="CSd-hC-8Zy" kind="relationship" relationship="tabItems" id="XA1-T9-vA4"/>
+                        <segue destination="EMh-hE-dzU" kind="relationship" relationship="tabItems" id="TL1-4W-i1j"/>
+                        <segue destination="EMh-hE-dzU" kind="relationship" relationship="tabItems" id="z6z-Y0-ycu"/>
+                        <segue destination="EMh-hE-dzU" kind="relationship" relationship="tabItems" id="VBA-YR-vfJ"/>
                     </connections>
                 </tabViewController>
                 <customObject id="gO6-YN-thD" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-826" y="1399"/>
+            <point key="canvasLocation" x="-1036" y="1377"/>
         </scene>
         <!--End Point List View Controller-->
         <scene sceneID="ool-95-gE7">
             <objects>
                 <viewController title="End Point List View Controller" id="CSd-hC-8Zy" customClass="EndPointListViewController" customModule="Zelda" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="L0l-sc-QJa">
-                        <rect key="frame" x="0.0" y="0.0" width="210" height="652"/>
+                        <rect key="frame" x="0.0" y="0.0" width="216" height="652"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <scrollView autohidesScrollers="YES" horizontalLineScroll="28" horizontalPageScroll="10" verticalLineScroll="28" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AYU-q9-x35">
-                                <rect key="frame" x="0.0" y="0.0" width="210" height="600"/>
+                                <rect key="frame" x="0.0" y="0.0" width="216" height="600"/>
                                 <clipView key="contentView" drawsBackground="NO" id="emH-On-oir">
-                                    <rect key="frame" x="1" y="1" width="208" height="598"/>
+                                    <rect key="frame" x="1" y="1" width="214" height="598"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
-                                        <outlineView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="firstColumnOnly" tableStyle="sourceList" selectionHighlightStyle="sourceList" multipleSelection="NO" autosaveColumns="NO" rowHeight="28" rowSizeStyle="medium" viewBased="YES" indentationPerLevel="13" autoresizesOutlineColumn="YES" outlineTableColumn="iG2-y7-bRp" id="NNe-g6-THc">
-                                            <rect key="frame" x="0.0" y="0.0" width="208" height="598"/>
+                                        <outlineView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="firstColumnOnly" tableStyle="sourceList" selectionHighlightStyle="sourceList" multipleSelection="NO" autosaveColumns="NO" rowHeight="28" rowSizeStyle="medium" viewBased="YES" floatsGroupRows="NO" indentationPerLevel="13" outlineTableColumn="iG2-y7-bRp" id="NNe-g6-THc">
+                                            <rect key="frame" x="0.0" y="0.0" width="214" height="598"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <size key="intercellSpacing" width="3" height="0.0"/>
-                                            <color key="backgroundColor" name="_sourceListBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                            <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                             <color key="gridColor" name="gridColor" catalog="System" colorSpace="catalog"/>
                                             <tableColumns>
-                                                <tableColumn width="176" minWidth="40" maxWidth="1000" id="iG2-y7-bRp">
+                                                <tableColumn width="182" minWidth="40" maxWidth="1000" id="iG2-y7-bRp">
                                                     <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border">
                                                         <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
                                                         <color key="backgroundColor" name="headerColor" catalog="System" colorSpace="catalog"/>
@@ -941,11 +964,11 @@
                                                     <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                                     <prototypeCellViews>
                                                         <tableCellView identifier="header" id="K0t-3N-EGA">
-                                                            <rect key="frame" x="11" y="0.0" width="185" height="24"/>
+                                                            <rect key="frame" x="11" y="0.0" width="191" height="24"/>
                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                             <subviews>
                                                                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="Rxl-yk-WyW">
-                                                                    <rect key="frame" x="-2" y="4" width="189" height="16"/>
+                                                                    <rect key="frame" x="-2" y="4" width="195" height="16"/>
                                                                     <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" alignment="left" title="Table View Cell" id="zWP-Zm-nKb">
                                                                         <font key="font" metaFont="system"/>
                                                                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
@@ -978,7 +1001,7 @@
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="210" id="Lbg-3B-chU"/>
                                 </constraints>
                                 <scroller key="horizontalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" horizontal="YES" id="cVv-b8-Otd">
-                                    <rect key="frame" x="1" y="585" width="128" height="15"/>
+                                    <rect key="frame" x="1" y="584" width="214" height="15"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>
                                 <scroller key="verticalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" horizontal="NO" id="xg1-SW-8fx">
@@ -1012,7 +1035,7 @@
                     </items>
                 </menu>
             </objects>
-            <point key="canvasLocation" x="29" y="1626"/>
+            <point key="canvasLocation" x="-418" y="1841"/>
         </scene>
         <!--EndPointDetail-->
         <scene sceneID="htR-g2-vkO">
@@ -1020,11 +1043,11 @@
                 <controllerPlaceholder storyboardName="EndPointDetail" id="YLq-Bl-oVH" sceneMemberID="viewController"/>
                 <customObject id="l69-o8-fAX" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="323" y="1128"/>
+            <point key="canvasLocation" x="-374" y="2330"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="4ig-oL-jYh"/>
+        <segue reference="z6z-Y0-ycu"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="NSActionTemplate" width="15" height="15"/>

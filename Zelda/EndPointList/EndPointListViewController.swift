@@ -8,13 +8,18 @@
 import Cocoa
 import Combine
 
-class EndPointListViewController: NSViewController {
+protocol IEndPointList {
+	var endPoints: [EndPoint] { set get }
+	var detailVC: IEndPointDetail! { set get }
+}
+
+class EndPointListViewController: NSViewController, IEndPointList {
 	@IBOutlet var endPointListView: NSOutlineView!
 	var cancellables = Set<AnyCancellable>()
 	var context = NSManagedObjectContext.main
 	var syncSubject = PassthroughSubject<Void, Never>()
 	var deleteEndPointSubject = PassthroughSubject<EndPoint, Never>()
-	var detailVC: EndPointDetailTabViewController!
+	var detailVC: IEndPointDetail!
 	var type: SideBarItem!
 
 	var endPoints: [EndPoint] = [] {

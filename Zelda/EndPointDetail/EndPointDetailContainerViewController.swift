@@ -7,8 +7,12 @@
 
 import Cocoa
 
-class EndPointDetailContainerViewController: NSViewController {
-	var tabVC: EndPointLoadable! = nil
+class EndPointDetailContainerViewController: NSViewController, IEndPointDetail {
+	var tabVC: EndPointLoadable!
+
+	func load(endPoint: String) {
+		tabVC.load(endPoint: endPoint)
+	}
 
 	override func viewDidLoad() {
 		super.viewDidLoad()

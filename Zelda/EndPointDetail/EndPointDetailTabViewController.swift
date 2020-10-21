@@ -17,7 +17,7 @@ protocol EndPointDetailLoadable: EndPointLoadable {
 	var endPointId: String? { get set }
 }
 
-class EndPointDetailTabViewController: NSTabViewController {
+class EndPointDetailTabViewController: NSTabViewController, IEndPointDetail {
 	var endPointId: String?
 
 	var loadables: [EndPointDetailLoadable] {
