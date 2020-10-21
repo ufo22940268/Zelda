@@ -8,8 +8,8 @@
 import Cocoa
 
 class MainWindowController: NSWindowController {
-	var sideBarVC: AppSideBarViewController {
-		contentViewController as! AppSideBarViewController
+	var sideBarVC: AppViewController {
+		contentViewController as! AppViewController
 	}
 
 	override func windowDidLoad() {

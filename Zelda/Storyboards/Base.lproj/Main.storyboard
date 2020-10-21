@@ -739,14 +739,14 @@
             </objects>
             <point key="canvasLocation" x="-207" y="154"/>
         </scene>
-        <!--App Side Bar View Controller-->
+        <!--App View Controller-->
         <scene sceneID="wUO-lL-NzL">
             <objects>
-                <splitViewController id="2yY-zz-OLv" customClass="AppSideBarViewController" customModule="Zelda" customModuleProvider="target" sceneMemberID="viewController">
+                <splitViewController id="2yY-zz-OLv" customClass="AppViewController" customModule="Zelda" customModuleProvider="target" sceneMemberID="viewController">
                     <splitViewItems>
                         <splitViewItem canCollapse="YES" holdingPriority="260" behavior="sidebar" id="Rfv-0b-or2"/>
-                        <splitViewItem id="6Wj-UD-EWr"/>
-                        <splitViewItem id="5Eb-bO-PWi"/>
+                        <splitViewItem id="wE1-ij-jcB"/>
+                        <splitViewItem id="WOq-9C-QBX"/>
                     </splitViewItems>
                     <splitView key="splitView" dividerStyle="thin" vertical="YES" id="N30-hi-1Id">
                         <rect key="frame" x="0.0" y="0.0" width="620" height="423"/>
@@ -758,8 +758,8 @@
                     <connections>
                         <outlet property="splitView" destination="N30-hi-1Id" id="1Ry-Wv-Der"/>
                         <segue destination="eiw-Ew-28k" kind="relationship" relationship="splitItems" id="kUd-Oe-yQJ"/>
-                        <segue destination="CSd-hC-8Zy" kind="relationship" relationship="splitItems" id="WFH-dM-ZN1"/>
-                        <segue destination="YLq-Bl-oVH" kind="relationship" relationship="splitItems" id="cPC-fk-7cQ"/>
+                        <segue destination="RhV-HZ-hS4" kind="relationship" relationship="splitItems" id="4Lx-5z-ZLo"/>
+                        <segue destination="YLq-Bl-oVH" kind="relationship" relationship="splitItems" id="M1f-Xg-OgM"/>
                     </connections>
                 </splitViewController>
                 <customObject id="0TO-bg-AYW" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
@@ -879,10 +879,38 @@
             </objects>
             <point key="canvasLocation" x="515" y="763"/>
         </scene>
+        <!--End Point List Tab View Controller-->
+        <scene sceneID="Co8-C6-2k7">
+            <objects>
+                <tabViewController selectedTabViewItemIndex="0" tabStyle="unspecified" id="RhV-HZ-hS4" customClass="EndPointListTabViewController" customModule="Zelda" customModuleProvider="target" sceneMemberID="viewController">
+                    <tabViewItems>
+                        <tabViewItem label=" " id="bRo-KI-wmo"/>
+                        <tabViewItem label=" " id="GMa-0H-nfi"/>
+                        <tabViewItem label=" " id="ke9-YQ-gSr"/>
+                    </tabViewItems>
+                    <tabView key="tabView" drawsBackground="NO" controlSize="mini" type="noTabsNoBorder" id="1vx-8g-fyJ">
+                        <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <font key="font" metaFont="miniSystem"/>
+                        <connections>
+                            <outlet property="delegate" destination="RhV-HZ-hS4" id="3tw-3S-0kM"/>
+                        </connections>
+                    </tabView>
+                    <connections>
+                        <outlet property="tabView" destination="1vx-8g-fyJ" id="bWx-4d-MyT"/>
+                        <segue destination="CSd-hC-8Zy" kind="relationship" relationship="tabItems" id="NUJ-Sp-A3l"/>
+                        <segue destination="CSd-hC-8Zy" kind="relationship" relationship="tabItems" id="lL6-nE-008"/>
+                        <segue destination="CSd-hC-8Zy" kind="relationship" relationship="tabItems" id="9CU-fO-yZc"/>
+                    </connections>
+                </tabViewController>
+                <customObject id="gO6-YN-thD" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-738" y="1676"/>
+        </scene>
         <!--End Point List View Controller-->
         <scene sceneID="ool-95-gE7">
             <objects>
-                <viewController id="CSd-hC-8Zy" customClass="EndPointListViewController" customModule="Zelda" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="End Point List View Controller" id="CSd-hC-8Zy" customClass="EndPointListViewController" customModule="Zelda" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="L0l-sc-QJa">
                         <rect key="frame" x="0.0" y="0.0" width="210" height="600"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -985,7 +1013,7 @@
                     </items>
                 </menu>
             </objects>
-            <point key="canvasLocation" x="-327" y="1700"/>
+            <point key="canvasLocation" x="-292" y="1699"/>
         </scene>
         <!--EndPointDetail-->
         <scene sceneID="htR-g2-vkO">
@@ -993,9 +1021,12 @@
                 <controllerPlaceholder storyboardName="EndPointDetail" id="YLq-Bl-oVH" sceneMemberID="viewController"/>
                 <customObject id="l69-o8-fAX" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="651.5" y="1540.5"/>
+            <point key="canvasLocation" x="323" y="1128"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="NUJ-Sp-A3l"/>
+    </inferredMetricsTieBreakers>
     <resources>
         <image name="NSActionTemplate" width="15" height="15"/>
         <image name="plus" catalog="system" width="14" height="13"/>

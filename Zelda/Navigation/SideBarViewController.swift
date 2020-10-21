@@ -7,7 +7,7 @@
 
 import Cocoa
 
-enum SideBarItem: CaseIterable {
+enum SideBarItem: Int, CaseIterable {
 	case all
 	case bug
 	case timeout
@@ -39,6 +39,7 @@ enum SideBarItem: CaseIterable {
 
 class SideBarViewController: NSViewController, NSTableViewDataSource, NSTableViewDelegate {
 	@IBOutlet var tableView: NSTableView!
+	var listTabVC: EndPointListTabViewController!
 
 	override func viewDidLoad() {
 		super.viewDidLoad()
@@ -55,5 +56,9 @@ class SideBarViewController: NSViewController, NSTableViewDataSource, NSTableVie
 		view.textField?.stringValue = item.label
 		view.imageView?.image = item.icon
 		return view
+	}
+	
+	func tableViewSelectionDidChange(_ notification: Notification) {
+		listTabVC.selectedTabViewItemIndex = tableView.selectedRow
 	}
 }
