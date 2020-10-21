@@ -52,7 +52,7 @@ class EndPointListViewController: NSViewController {
 				self.endPoints = v
 				self.endPointListView.reloadData()
 				self.endPointListView.expandItem(nil, expandChildren: true)
-//				self.endPointListView.selectRowIndexes(IndexSet([1]), byExtendingSelection: true)
+				self.endPointListView.selectRowIndexes(IndexSet([1]), byExtendingSelection: true)
 			})
 			.store(in: &cancellables)
 

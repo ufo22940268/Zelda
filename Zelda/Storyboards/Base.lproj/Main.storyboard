@@ -884,12 +884,12 @@
             <objects>
                 <tabViewController selectedTabViewItemIndex="0" tabStyle="unspecified" id="RhV-HZ-hS4" customClass="EndPointListTabViewController" customModule="Zelda" customModuleProvider="target" sceneMemberID="viewController">
                     <tabViewItems>
-                        <tabViewItem label=" " id="bRo-KI-wmo"/>
-                        <tabViewItem label=" " id="GMa-0H-nfi"/>
-                        <tabViewItem label=" " id="ke9-YQ-gSr"/>
+                        <tabViewItem id="Vhj-fp-W1h"/>
+                        <tabViewItem id="A17-Na-loI"/>
+                        <tabViewItem id="rJ3-Wm-XjH"/>
                     </tabViewItems>
                     <tabView key="tabView" drawsBackground="NO" controlSize="mini" type="noTabsNoBorder" id="1vx-8g-fyJ">
-                        <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
+                        <rect key="frame" x="0.0" y="0.0" width="215" height="320"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <font key="font" metaFont="miniSystem"/>
                         <connections>
@@ -898,21 +898,21 @@
                     </tabView>
                     <connections>
                         <outlet property="tabView" destination="1vx-8g-fyJ" id="bWx-4d-MyT"/>
-                        <segue destination="CSd-hC-8Zy" kind="relationship" relationship="tabItems" id="NUJ-Sp-A3l"/>
-                        <segue destination="CSd-hC-8Zy" kind="relationship" relationship="tabItems" id="lL6-nE-008"/>
-                        <segue destination="CSd-hC-8Zy" kind="relationship" relationship="tabItems" id="9CU-fO-yZc"/>
+                        <segue destination="CSd-hC-8Zy" kind="relationship" relationship="tabItems" id="4ig-oL-jYh"/>
+                        <segue destination="CSd-hC-8Zy" kind="relationship" relationship="tabItems" id="JJn-t9-SPR"/>
+                        <segue destination="CSd-hC-8Zy" kind="relationship" relationship="tabItems" id="XA1-T9-vA4"/>
                     </connections>
                 </tabViewController>
                 <customObject id="gO6-YN-thD" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-738" y="1676"/>
+            <point key="canvasLocation" x="-855.5" y="1686"/>
         </scene>
         <!--End Point List View Controller-->
         <scene sceneID="ool-95-gE7">
             <objects>
                 <viewController title="End Point List View Controller" id="CSd-hC-8Zy" customClass="EndPointListViewController" customModule="Zelda" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="L0l-sc-QJa">
-                        <rect key="frame" x="0.0" y="0.0" width="210" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="210" height="652"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <scrollView autohidesScrollers="YES" horizontalLineScroll="28" horizontalPageScroll="10" verticalLineScroll="28" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AYU-q9-x35">
@@ -974,10 +974,6 @@
                                     </subviews>
                                     <nil key="backgroundColor"/>
                                 </clipView>
-                                <constraints>
-                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="210" id="35J-Dl-cBW"/>
-                                    <constraint firstAttribute="height" constant="600" placeholder="YES" id="XC8-dS-Mcd"/>
-                                </constraints>
                                 <scroller key="horizontalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" horizontal="YES" id="cVv-b8-Otd">
                                     <rect key="frame" x="1" y="585" width="128" height="15"/>
                                     <autoresizingMask key="autoresizingMask"/>
@@ -989,13 +985,13 @@
                             </scrollView>
                         </subviews>
                         <constraints>
-                            <constraint firstItem="AYU-q9-x35" firstAttribute="leading" secondItem="L0l-sc-QJa" secondAttribute="leading" id="FnP-ji-jBb"/>
-                            <constraint firstItem="AYU-q9-x35" firstAttribute="centerY" secondItem="L0l-sc-QJa" secondAttribute="centerY" id="dL6-No-EC0"/>
-                            <constraint firstAttribute="trailing" secondItem="AYU-q9-x35" secondAttribute="trailing" id="hTh-ZO-Y1t"/>
-                            <constraint firstItem="AYU-q9-x35" firstAttribute="top" secondItem="L0l-sc-QJa" secondAttribute="top" id="iem-GP-j3h"/>
+                            <constraint firstItem="AYU-q9-x35" firstAttribute="leading" secondItem="A5x-vA-f90" secondAttribute="leading" id="FnP-ji-jBb"/>
+                            <constraint firstItem="A5x-vA-f90" firstAttribute="trailing" secondItem="AYU-q9-x35" secondAttribute="trailing" id="hTh-ZO-Y1t"/>
+                            <constraint firstItem="AYU-q9-x35" firstAttribute="top" secondItem="A5x-vA-f90" secondAttribute="top" id="iem-GP-j3h"/>
+                            <constraint firstItem="A5x-vA-f90" firstAttribute="bottom" secondItem="AYU-q9-x35" secondAttribute="bottom" id="kdw-nb-OVK"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="oc0-Bb-bEO"/>
-                        <viewLayoutGuide key="layoutMargins" id="lxE-bg-GV8"/>
+                        <viewLayoutGuide key="safeArea" id="A5x-vA-f90"/>
+                        <viewLayoutGuide key="layoutMargins" id="EEN-jv-nu6"/>
                     </view>
                     <connections>
                         <outlet property="endPointListView" destination="NNe-g6-THc" id="cDX-ra-poq"/>
@@ -1013,7 +1009,7 @@
                     </items>
                 </menu>
             </objects>
-            <point key="canvasLocation" x="-292" y="1699"/>
+            <point key="canvasLocation" x="-322" y="1699"/>
         </scene>
         <!--EndPointDetail-->
         <scene sceneID="htR-g2-vkO">
@@ -1025,7 +1021,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="NUJ-Sp-A3l"/>
+        <segue reference="4ig-oL-jYh"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="NSActionTemplate" width="15" height="15"/>
