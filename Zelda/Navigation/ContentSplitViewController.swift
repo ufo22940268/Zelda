@@ -7,12 +7,13 @@
 
 import Cocoa
 
-protocol MainSplit {
+protocol ContentSplit {
 	var type: SideBarItem! { get set }
 	var endPoints: [EndPoint] { get set }
+	func onSwitch()
 }
 
-class MainSplitViewController: NSSplitViewController, MainSplit {
+class ContentSplitViewController: NSSplitViewController, ContentSplit {
 	var type: SideBarItem!
 
 	lazy var listVC: IEndPointList = {
@@ -43,5 +44,10 @@ class MainSplitViewController: NSSplitViewController, MainSplit {
 		super.viewDidLoad()
 		// Do view setup here.
 		listVC.detailVC = detailVC
+	}
+	
+
+	func onSwitch() {
+		listVC.onSwitch()
 	}
 }

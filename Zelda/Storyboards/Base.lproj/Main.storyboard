@@ -2,7 +2,6 @@
 <document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="17506" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="17506"/>
-        <capability name="NSView safe area layout guides" minToolsVersion="12.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -739,10 +738,10 @@
             </objects>
             <point key="canvasLocation" x="-207" y="154"/>
         </scene>
-        <!--Main Split View Controller-->
+        <!--Content Split View Controller-->
         <scene sceneID="k0Y-iR-3B3">
             <objects>
-                <splitViewController id="EMh-hE-dzU" customClass="MainSplitViewController" customModule="Zelda" customModuleProvider="target" sceneMemberID="viewController">
+                <splitViewController id="EMh-hE-dzU" customClass="ContentSplitViewController" customModule="Zelda" customModuleProvider="target" sceneMemberID="viewController">
                     <splitViewItems>
                         <splitViewItem id="ZGp-kW-ncD"/>
                         <splitViewItem id="ghB-tp-2yQ"/>
@@ -935,16 +934,17 @@
             <objects>
                 <viewController title="End Point List View Controller" id="CSd-hC-8Zy" customClass="EndPointListViewController" customModule="Zelda" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="L0l-sc-QJa">
-                        <rect key="frame" x="0.0" y="0.0" width="216" height="652"/>
+                        <rect key="frame" x="0.0" y="0.0" width="216" height="600"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
-                            <scrollView autohidesScrollers="YES" horizontalLineScroll="28" horizontalPageScroll="10" verticalLineScroll="28" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AYU-q9-x35">
+                            <scrollView autohidesScrollers="YES" horizontalLineScroll="28" horizontalPageScroll="10" verticalLineScroll="28" verticalPageScroll="10" usesPredominantAxisScrolling="NO" id="AYU-q9-x35">
                                 <rect key="frame" x="0.0" y="0.0" width="216" height="600"/>
+                                <autoresizingMask key="autoresizingMask"/>
                                 <clipView key="contentView" drawsBackground="NO" id="emH-On-oir">
                                     <rect key="frame" x="1" y="1" width="214" height="598"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
-                                        <outlineView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="firstColumnOnly" tableStyle="sourceList" selectionHighlightStyle="sourceList" multipleSelection="NO" autosaveColumns="NO" rowHeight="28" rowSizeStyle="medium" viewBased="YES" floatsGroupRows="NO" indentationPerLevel="13" outlineTableColumn="iG2-y7-bRp" id="NNe-g6-THc">
+                                        <outlineView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="firstColumnOnly" tableStyle="sourceList" selectionHighlightStyle="sourceList" multipleSelection="NO" autosaveColumns="NO" rowHeight="28" rowSizeStyle="systemDefault" viewBased="YES" floatsGroupRows="NO" indentationPerLevel="13" outlineTableColumn="iG2-y7-bRp" id="NNe-g6-THc">
                                             <rect key="frame" x="0.0" y="0.0" width="214" height="598"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <size key="intercellSpacing" width="3" height="0.0"/>
@@ -1011,13 +1011,11 @@
                             </scrollView>
                         </subviews>
                         <constraints>
-                            <constraint firstItem="AYU-q9-x35" firstAttribute="leading" secondItem="A5x-vA-f90" secondAttribute="leading" id="FnP-ji-jBb"/>
-                            <constraint firstItem="A5x-vA-f90" firstAttribute="trailing" secondItem="AYU-q9-x35" secondAttribute="trailing" id="hTh-ZO-Y1t"/>
-                            <constraint firstItem="AYU-q9-x35" firstAttribute="top" secondItem="A5x-vA-f90" secondAttribute="top" id="iem-GP-j3h"/>
-                            <constraint firstItem="A5x-vA-f90" firstAttribute="bottom" secondItem="AYU-q9-x35" secondAttribute="bottom" id="kdw-nb-OVK"/>
+                            <constraint firstItem="AYU-q9-x35" firstAttribute="leading" secondItem="L0l-sc-QJa" secondAttribute="leading" id="FnP-ji-jBb"/>
+                            <constraint firstAttribute="trailing" secondItem="AYU-q9-x35" secondAttribute="trailing" id="hTh-ZO-Y1t"/>
+                            <constraint firstItem="AYU-q9-x35" firstAttribute="top" secondItem="L0l-sc-QJa" secondAttribute="top" id="iem-GP-j3h"/>
+                            <constraint firstAttribute="bottom" secondItem="AYU-q9-x35" secondAttribute="bottom" id="kdw-nb-OVK"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="A5x-vA-f90"/>
-                        <viewLayoutGuide key="layoutMargins" id="EEN-jv-nu6"/>
                     </view>
                     <connections>
                         <outlet property="endPointListView" destination="NNe-g6-THc" id="cDX-ra-poq"/>
@@ -1047,7 +1045,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="z6z-Y0-ycu"/>
+        <segue reference="TL1-4W-i1j"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="NSActionTemplate" width="15" height="15"/>

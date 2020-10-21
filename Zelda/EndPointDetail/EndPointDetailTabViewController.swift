@@ -38,7 +38,7 @@ class EndPointDetailTabViewController: NSTabViewController, IEndPointDetail {
 		if let endPointId = endPointId {
 			loadables.forEach { $0.load(endPoint: endPointId)}
 		}
-	}
+	}	
 }
 
 extension EndPointDetailTabViewController: EndPointLoadable {

@@ -7,10 +7,15 @@
 
 import Cocoa
 
-class ContentTabViewController: NSTabViewController {
-	var mainSplits: [MainSplit] {
+protocol IMainContent {
+	var endPoints: [EndPoint] { get set }
+	var selectedTabViewItemIndex: Int { get set }
+}
+
+class ContentTabViewController: NSTabViewController, IMainContent {
+	var mainSplits: [ContentSplit] {
 		tabViewItems.map {
-			$0.viewController as! MainSplit
+			$0.viewController as! ContentSplit
 		}
 	}
 
@@ -30,8 +35,12 @@ class ContentTabViewController: NSTabViewController {
 
 	func setupLists() {
 		for item in SideBarItem.allCases {
-			var split = (tabViewItems[item.rawValue].viewController as! MainSplit)
+			var split = (tabViewItems[item.rawValue].viewController as! ContentSplit)
 			split.type = item
 		}
+	}
+
+	override func tabView(_ tabView: NSTabView, didSelect tabViewItem: NSTabViewItem?) {
+		(tabViewItem?.viewController as! ContentSplit).onSwitch()
 	}
 }

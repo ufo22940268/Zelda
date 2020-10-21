@@ -51,7 +51,7 @@
 		42697D09253676A800EA6275 /* SwiftyJSON in Frameworks */ = {isa = PBXBuildFile; productRef = 42697D08253676A800EA6275 /* SwiftyJSON */; };
 		42697D142536941300EA6275 /* Api+JSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42697D132536941300EA6275 /* Api+JSON.swift */; };
 		42697D1D2536A0FF00EA6275 /* EndPointEditViewController+Table.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42697D1C2536A0FF00EA6275 /* EndPointEditViewController+Table.swift */; };
-		428D114825404E9A0031233A /* MainSplitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 428D114725404E9A0031233A /* MainSplitViewController.swift */; };
+		428D114825404E9A0031233A /* ContentSplitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 428D114725404E9A0031233A /* ContentSplitViewController.swift */; };
 		4292D876253FCB1E003DA863 /* ContentTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4292D875253FCB1E003DA863 /* ContentTabViewController.swift */; };
 		42A3049E2536CC5200E89376 /* EditPointViewController+Confirm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42A3049D2536CC5200E89376 /* EditPointViewController+Confirm.swift */; };
 		42A6ABBB253BDA0D0021DA90 /* JSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42A6ABBA253BDA0D0021DA90 /* JSON.swift */; };
@@ -126,7 +126,7 @@
 		42697D02253675F200EA6275 /* Api.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Api.swift; sourceTree = "<group>"; };
 		42697D132536941300EA6275 /* Api+JSON.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Api+JSON.swift"; sourceTree = "<group>"; };
 		42697D1C2536A0FF00EA6275 /* EndPointEditViewController+Table.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "EndPointEditViewController+Table.swift"; sourceTree = "<group>"; };
-		428D114725404E9A0031233A /* MainSplitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainSplitViewController.swift; sourceTree = "<group>"; };
+		428D114725404E9A0031233A /* ContentSplitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentSplitViewController.swift; sourceTree = "<group>"; };
 		4292D875253FCB1E003DA863 /* ContentTabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentTabViewController.swift; sourceTree = "<group>"; };
 		42A3049D2536CC5200E89376 /* EditPointViewController+Confirm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "EditPointViewController+Confirm.swift"; sourceTree = "<group>"; };
 		42A6ABBA253BDA0D0021DA90 /* JSON.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSON.swift; sourceTree = "<group>"; };
@@ -227,7 +227,7 @@
 				42697C9C2534402800EA6275 /* AppViewController.swift */,
 				42697CD12535245000EA6275 /* SideBarViewController.swift */,
 				42697CF725358B1900EA6275 /* MainWindowController.swift */,
-				428D114725404E9A0031233A /* MainSplitViewController.swift */,
+				428D114725404E9A0031233A /* ContentSplitViewController.swift */,
 			);
 			path = Navigation;
 			sourceTree = "<group>";
@@ -522,7 +522,7 @@
 				42A6ABBB253BDA0D0021DA90 /* JSON.swift in Sources */,
 				4226D4CF25385E3D00CE8DB1 /* EndPointListViewController+OutlineTable.swift in Sources */,
 				4246FFFB2539862A00963B29 /* EndPointDetailViewController+Chart.swift in Sources */,
-				428D114825404E9A0031233A /* MainSplitViewController.swift in Sources */,
+				428D114825404E9A0031233A /* ContentSplitViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

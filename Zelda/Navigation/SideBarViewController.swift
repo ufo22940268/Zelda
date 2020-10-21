@@ -37,9 +37,13 @@ enum SideBarItem: Int, CaseIterable {
 	}
 }
 
+protocol IMainSideBar {
+	var listTabVC: IMainContent! { get set }
+}
+
 class SideBarViewController: NSViewController, NSTableViewDataSource, NSTableViewDelegate {
 	@IBOutlet var tableView: NSTableView!
-	var listTabVC: ContentTabViewController!
+	var listTabVC: IMainContent!
 
 	override func viewDidLoad() {
 		super.viewDidLoad()

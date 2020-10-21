@@ -11,9 +11,12 @@ import Combine
 protocol IEndPointList {
 	var endPoints: [EndPoint] { set get }
 	var detailVC: IEndPointDetail! { set get }
+	func onSwitch()
 }
 
 class EndPointListViewController: NSViewController, IEndPointList {
+	// MARK: Internal
+
 	@IBOutlet var endPointListView: NSOutlineView!
 	var cancellables = Set<AnyCancellable>()
 	var context = NSManagedObjectContext.main
@@ -42,16 +45,10 @@ class EndPointListViewController: NSViewController, IEndPointList {
 			}, receiveValue: {})
 			.store(in: &cancellables)
 
-		endPointListView.expandItem(nil, expandChildren: true)
-
 		deleteEndPointSubject
 			.removeDuplicates()
-			.map { [weak self] endPoint -> EndPoint in
-				guard let self = self else { return endPoint }
-				let entity = try! self.context.fetchOne(EndPointEntity.self, "id = %@", endPoint._id)!
-				self.context.delete(entity)
-				try! self.context.save()
-//				self.reloadTableSubject.send()
+			.map { (endPoint: EndPoint) -> EndPoint in
+				NotificationCenter.default.post(name: .deleteEndPoint, object: endPoint)
 				return endPoint
 			}
 			.flatMap { endPoint in
@@ -59,11 +56,31 @@ class EndPointListViewController: NSViewController, IEndPointList {
 			}
 			.sink(receiveCompletion: { _ in }, receiveValue: {})
 			.store(in: &cancellables)
+
+		setupObservers()
 	}
+
+	func onDeleteEndPoint() {}
 
 	@IBAction func onDelete(_ sender: NSMenuItem) {
 		let endPoint = endPointListView.item(atRow: endPointListView.clickedRow) as! EndPoint
 
 		deleteEndPointSubject.send(endPoint)
+	}
+
+	func onSwitch() {
+		endPointListView.reloadData()
+		endPointListView.expandItem(nil, expandChildren: true)
+	}
+
+	// MARK: Private
+
+	private func setupObservers() {
+		NotificationCenter.default.publisher(for: .deleteEndPoint).sink { [weak self] notif in
+			let endPoint = notif.object as! EndPoint
+			self?.endPointListView.reloadData()
+			self?.endPoints.removeAll { $0 == endPoint }
+		}
+		.store(in: &cancellables)
 	}
 }
