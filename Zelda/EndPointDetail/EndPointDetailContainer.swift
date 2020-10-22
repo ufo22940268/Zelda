@@ -9,5 +9,5 @@ import Foundation
 
 protocol EndPointDetailContainer {
 	var endPointId: String! { get set }
-	var loadable: EndPointDetailLoadable! {get set}
+	var loadable: EndPointLoadable! {get set}
 }

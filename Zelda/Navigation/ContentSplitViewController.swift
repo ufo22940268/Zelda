@@ -20,8 +20,8 @@ class ContentSplitViewController: NSSplitViewController, ContentSplit {
 		(splitViewItems[0].viewController as! IEndPointList)
 	}()
 	
-	lazy var detailVC: IEndPointDetail = {
-		(splitViewItems[1].viewController as! IEndPointDetail)
+	lazy var detailVC: EndPointLoadable = {
+		(splitViewItems[1].viewController as! EndPointLoadable)
 	}()
 
 

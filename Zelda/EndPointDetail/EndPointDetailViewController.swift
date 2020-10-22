@@ -18,11 +18,14 @@ let testScanLogs = ScanLogInTimeSpan(
 	}
 )
 
-protocol IEndPointDetail {
-	func load(endPoint: String)
+protocol IEndPointDetailContent: EndPointLoadable {
+	func setIndicator(_ indicator: EndPointDetailKind)
+	var endPointId: String? { get set }
+	var spanScanLogs: ScanLogInTimeSpan? { get set }
+	var kind: EndPointDetailKind { get set }
 }
 
-class EndPointDetailViewController: NSViewController, IEndPointDetail {
+class EndPointDetailViewController: NSViewController, IEndPointDetailContent {
 	// MARK: Internal
 
 	@IBOutlet var chartView: BarChartView!
@@ -47,11 +50,7 @@ class EndPointDetailViewController: NSViewController, IEndPointDetail {
 		}
 	}
 
-	var kind = EndPointDetailKind.duration {
-		didSet {
-			updateTableColumn()
-		}
-	}
+	var kind = EndPointDetailKind.duration
 
 	var scanLogs: [ScanLog] {
 		if let scanLogsInSpan = spanScanLogs {
@@ -93,6 +92,8 @@ class EndPointDetailViewController: NSViewController, IEndPointDetail {
 				}
 			}
 			.store(in: &cancellables)
+		
+		loadSpanLogs()
 	}
 
 	func load(endPoint: String) {
@@ -103,13 +104,16 @@ class EndPointDetailViewController: NSViewController, IEndPointDetail {
 	// MARK: Fileprivate
 
 	fileprivate func loadSpanLogs() {
+		if !isViewLoaded { return }
 		if let spanScanLogs = spanScanLogs {
+			loading = false
 			setChartData(spanScanLogs, in: span)
 			detailTableView.reloadData()
-			loading = false
 		} else {
 			loading = true
 		}
+		
+		updateTableColumn()
 	}
 
 	fileprivate func updateTableColumn() {
@@ -188,5 +192,16 @@ extension EndPointDetailViewController {
 		chartView.data = data
 
 		chartView.gridBackgroundColor = NSUIColor.white
+	}
+}
+
+extension EndPointDetailViewController {
+	func setIndicator(_ indicator: EndPointDetailKind) {
+		kind = indicator
+	}
+
+	func onSelectSpan(_ span: ScanLogSpan) {
+		self.span = span
+		detailTableView.reloadData()
 	}
 }

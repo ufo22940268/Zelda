@@ -7,7 +7,7 @@
 
 import Cocoa
 
-class EndPointDetailContainerViewController: NSViewController, IEndPointDetail {
+class EndPointDetailContainerViewController: NSViewController, EndPointLoadable {
 	var tabVC: EndPointLoadable!
 
 	func load(endPoint: String) {
@@ -21,5 +21,9 @@ class EndPointDetailContainerViewController: NSViewController, IEndPointDetail {
 
 	override func prepare(for segue: NSStoryboardSegue, sender: Any?) {
 		tabVC = segue.destinationController as? EndPointLoadable
+	}
+	
+	func onSelectSpan(_ span: ScanLogSpan) {
+		
 	}
 }

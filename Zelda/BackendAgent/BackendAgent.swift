@@ -143,6 +143,7 @@ extension BackendAgent {
 	func listScanLogInSpan(endPoint: String) -> AnyPublisher<ScanLogInTimeSpan, ResponseError> {
 		get(endPoint: "/scanlog/list/span/\(endPoint)")
 			.parseObject(to: ScanLogInTimeSpan.self)
+//			.delay(for: 3, scheduler: DispatchQueue.main)
 			.eraseToAnyPublisher()
 	}
 

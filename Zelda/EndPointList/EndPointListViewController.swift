@@ -10,7 +10,7 @@ import Combine
 
 protocol IEndPointList {
 	var endPoints: [EndPoint] { set get }
-	var detailVC: IEndPointDetail! { set get }
+	var detailVC: EndPointLoadable! { set get }
 	func onSwitch()
 }
 
@@ -22,7 +22,7 @@ class EndPointListViewController: NSViewController, IEndPointList {
 	var context = NSManagedObjectContext.main
 	var syncSubject = PassthroughSubject<Void, Never>()
 	var deleteEndPointSubject = PassthroughSubject<EndPoint, Never>()
-	var detailVC: IEndPointDetail!
+	var detailVC: EndPointLoadable!
 	var type: SideBarItem!
 
 	var endPoints: [EndPoint] = [] {

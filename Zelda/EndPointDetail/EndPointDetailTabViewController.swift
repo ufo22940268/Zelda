@@ -13,27 +13,24 @@ protocol EndPointLoadable {
 	func onSelectSpan(_ span: ScanLogSpan)
 }
 
-protocol EndPointDetailLoadable: EndPointLoadable {
-	func setIndicator(_ indicator: EndPointDetailKind)
-	var endPointId: String? { get set }
-	var spanScanLogs: ScanLogInTimeSpan? { get set }
-}
-
-
-protocol IEndPointDetailTab {
-	var containerView: NSTabView! { get }
-}
-
-class EndPointDetailTabViewController: NSTabViewController, IEndPointDetail, IEndPointDetailTab {
+class EndPointDetailTabViewController: NSTabViewController, EndPointLoadable {
 	@Published var endPointId: String?
 	var cancellables = Set<AnyCancellable>()
 	@Published var scanLogsInSpan: ScanLogInTimeSpan?
 
 	@IBOutlet var containerView: NSTabView!
+	
+	lazy var durationVC: IEndPointDetailContent = {
+		loadables[0]
+	}()
+	
+	lazy var issueVC: IEndPointDetailContent = {
+		loadables[1]
+	}()
 
-	var loadables: [EndPointDetailLoadable] {
-		tabViewItems.map { item -> EndPointDetailLoadable? in
-			if let loadable = (item.viewController as? EndPointDetailContainer)?.loadable {
+	var loadables: [IEndPointDetailContent] {
+		tabViewItems.map { item -> IEndPointDetailContent? in
+			if let loadable = item.viewController as? IEndPointDetailContent {
 				return loadable
 			} else {
 				return nil
@@ -61,10 +58,10 @@ class EndPointDetailTabViewController: NSTabViewController, IEndPointDetail, IEn
 				return newScanLogs
 			}
 			.assign(to: &$scanLogsInSpan)
-		
+
 		$scanLogsInSpan
-			.filter { $0 != nil  }
-			.sink { [weak self] (span) in
+			.filter { $0 != nil }
+			.sink { [weak self] span in
 				self?.loadables.forEach {
 					var n = $0
 					n.spanScanLogs = span
@@ -72,6 +69,9 @@ class EndPointDetailTabViewController: NSTabViewController, IEndPointDetail, IEn
 				self?.containerView.isHidden = false
 			}
 			.store(in: &cancellables)
+		
+		durationVC.kind = .duration
+		issueVC.kind = .issue
 	}
 
 	override func tabView(_ tabView: NSTabView, didSelect tabViewItem: NSTabViewItem?) {
@@ -81,9 +81,8 @@ class EndPointDetailTabViewController: NSTabViewController, IEndPointDetail, IEn
 	}
 }
 
-extension EndPointDetailTabViewController: EndPointLoadable {
+extension EndPointDetailTabViewController {
 	func load(endPoint: String) {
-		loadables.forEach { $0.load(endPoint: endPoint) }
 		endPointId = endPoint
 	}
 
