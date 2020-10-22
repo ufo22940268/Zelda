@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="17506" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="17506"/>
+        <capability name="NSView safe area layout guides" minToolsVersion="12.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -800,17 +801,17 @@
         <scene sceneID="Rg6-dw-OFJ">
             <objects>
                 <viewController id="eiw-Ew-28k" customClass="SideBarViewController" customModule="Zelda" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" id="Dev-UX-bU7">
-                        <rect key="frame" x="0.0" y="0.0" width="219" height="320"/>
+                    <view key="view" misplaced="YES" id="Dev-UX-bU7">
+                        <rect key="frame" x="0.0" y="0.0" width="219" height="372"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <scrollView borderType="none" autohidesScrollers="YES" horizontalLineScroll="32" horizontalPageScroll="10" verticalLineScroll="32" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oOq-Eu-53b">
                                 <rect key="frame" x="0.0" y="0.0" width="219" height="300"/>
-                                <clipView key="contentView" drawsBackground="NO" id="fJb-49-6z1">
+                                <clipView key="contentView" ambiguous="YES" drawsBackground="NO" id="fJb-49-6z1">
                                     <rect key="frame" x="0.0" y="0.0" width="219" height="300"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
-                                        <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" tableStyle="sourceList" selectionHighlightStyle="sourceList" columnSelection="YES" multipleSelection="NO" autosaveColumns="NO" rowHeight="32" rowSizeStyle="large" viewBased="YES" id="IaU-Pp-TdO">
+                                        <tableView verticalHuggingPriority="750" ambiguous="YES" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" tableStyle="sourceList" selectionHighlightStyle="sourceList" columnSelection="YES" multipleSelection="NO" autosaveColumns="NO" rowHeight="32" rowSizeStyle="large" viewBased="YES" id="IaU-Pp-TdO">
                                             <rect key="frame" x="0.0" y="0.0" width="219" height="300"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <size key="intercellSpacing" width="17" height="0.0"/>
@@ -915,9 +916,11 @@
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="oOq-Eu-53b" secondAttribute="trailing" id="6t0-QI-S36"/>
                             <constraint firstAttribute="bottom" secondItem="oOq-Eu-53b" secondAttribute="bottom" id="9IA-F4-MXr"/>
-                            <constraint firstItem="oOq-Eu-53b" firstAttribute="top" secondItem="Dev-UX-bU7" secondAttribute="top" constant="20" symbolic="YES" id="PYt-px-F3f"/>
+                            <constraint firstItem="oOq-Eu-53b" firstAttribute="top" secondItem="P0s-0g-Vpn" secondAttribute="top" id="PYt-px-F3f"/>
                             <constraint firstItem="oOq-Eu-53b" firstAttribute="leading" secondItem="Dev-UX-bU7" secondAttribute="leading" id="utf-84-s3C"/>
                         </constraints>
+                        <viewLayoutGuide key="safeArea" id="8Cf-uT-VwE"/>
+                        <viewLayoutGuide key="layoutMargins" id="P0s-0g-Vpn"/>
                     </view>
                     <connections>
                         <outlet property="tableView" destination="IaU-Pp-TdO" id="uQP-dh-vYz"/>
