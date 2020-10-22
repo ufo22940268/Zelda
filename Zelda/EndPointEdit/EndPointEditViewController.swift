@@ -108,7 +108,6 @@ class EndPointEditViewController: NSViewController, NSTextFieldDelegate {
 	}
 
 	@IBAction func onConfirm(_ sender: Any) {
-//		self.presentingViewController?.dismiss(self)
 		if let endPointToUpsert = endPointToUpsert {
 			saveSubject.send(endPointToUpsert)
 		}

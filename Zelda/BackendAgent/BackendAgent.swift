@@ -124,23 +124,14 @@ class BackendAgent {
 	}
 }
 
-
 extension BackendAgent {
 	func upsert(endPoint: EndPointReq) -> AnyPublisher<Void, ResponseError> {
-		Just(Void())
-			.setFailureType(to: ResponseError.self)
-			.delay(for: 3, scheduler: DispatchQueue.global())
+		var json = JSON()
+		json["url"].string = endPoint.url
+		json["watchFields"].arrayObject = endPoint.watchFields!.map {["value": $0.value, "path": $0.path]}
+		return post(endPoint: "/endpoint/upsert", data: json)
+			.map { _ in () }
 			.eraseToAnyPublisher()
-//		var json = JSON()
-//		json["url"].string = endPoint.url!
-//		if let apis = endPoint.api?.allObjects.map({ $0 as! ApiEntity }) {
-//			json["watchFields"].arrayObject = apis.map { api in
-//				["value": api.watchValue, "path": api.paths]
-//			}
-//		}
-//		return post(endPoint: "/endpoint/upsert", data: json)
-//			.map { _ in () }
-//			.eraseToAnyPublisher()
 	}
 
 	func listEndPoints() -> AnyPublisher<[EndPoint], ResponseError> {
