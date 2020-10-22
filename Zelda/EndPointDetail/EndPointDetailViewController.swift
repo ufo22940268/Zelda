@@ -18,14 +18,14 @@ let testScanLogs = ScanLogInTimeSpan(
 	}
 )
 
-protocol IEndPointDetailContent: EndPointLoadable {
+protocol IEndPointDetail: EndPointLoadable {
 	func setIndicator(_ indicator: EndPointDetailKind)
 	var endPointId: String? { get set }
 	var spanScanLogs: ScanLogInTimeSpan? { get set }
 	var kind: EndPointDetailKind { get set }
 }
 
-class EndPointDetailViewController: NSViewController, IEndPointDetailContent {
+class EndPointDetailViewController: NSViewController, IEndPointDetail {
 	// MARK: Internal
 
 	@IBOutlet var chartView: BarChartView!

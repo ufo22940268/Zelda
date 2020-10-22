@@ -16,17 +16,17 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <subviews>
                             <containerView translatesAutoresizingMaskIntoConstraints="NO" id="q7j-fb-RYg">
-                                <rect key="frame" x="0.0" y="0.0" width="450" height="248"/>
+                                <rect key="frame" x="20" y="30" width="410" height="198"/>
                                 <connections>
                                     <segue destination="qiY-vd-REW" kind="embed" id="MwB-6p-pRS"/>
                                 </connections>
                             </containerView>
                         </subviews>
                         <constraints>
-                            <constraint firstItem="q7j-fb-RYg" firstAttribute="leading" secondItem="Wsx-oH-p9L" secondAttribute="leading" id="Czu-Jp-RtO"/>
-                            <constraint firstItem="q7j-fb-RYg" firstAttribute="bottom" secondItem="Wsx-oH-p9L" secondAttribute="bottom" id="WQj-Df-PFI"/>
-                            <constraint firstItem="q7j-fb-RYg" firstAttribute="top" secondItem="Wsx-oH-p9L" secondAttribute="top" id="X9N-5N-bEc"/>
-                            <constraint firstItem="Wsx-oH-p9L" firstAttribute="trailing" secondItem="q7j-fb-RYg" secondAttribute="trailing" id="sbJ-Gv-GmS"/>
+                            <constraint firstItem="q7j-fb-RYg" firstAttribute="leading" secondItem="Wsx-oH-p9L" secondAttribute="leading" constant="20" symbolic="YES" id="Czu-Jp-RtO"/>
+                            <constraint firstItem="q7j-fb-RYg" firstAttribute="bottom" secondItem="Wsx-oH-p9L" secondAttribute="bottom" constant="-30" id="WQj-Df-PFI"/>
+                            <constraint firstItem="q7j-fb-RYg" firstAttribute="top" secondItem="Wsx-oH-p9L" secondAttribute="top" constant="20" symbolic="YES" id="X9N-5N-bEc"/>
+                            <constraint firstItem="Wsx-oH-p9L" firstAttribute="trailing" secondItem="q7j-fb-RYg" secondAttribute="trailing" constant="20" symbolic="YES" id="sbJ-Gv-GmS"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Wsx-oH-p9L"/>
                         <viewLayoutGuide key="layoutMargins" id="0ZC-xx-hHt"/>

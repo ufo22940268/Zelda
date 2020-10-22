@@ -20,17 +20,17 @@ class EndPointDetailTabViewController: NSTabViewController, EndPointLoadable {
 
 	@IBOutlet var containerView: NSTabView!
 	
-	lazy var durationVC: IEndPointDetailContent = {
+	lazy var durationVC: IEndPointDetail = {
 		loadables[0]
 	}()
 	
-	lazy var issueVC: IEndPointDetailContent = {
+	lazy var issueVC: IEndPointDetail = {
 		loadables[1]
 	}()
 
-	var loadables: [IEndPointDetailContent] {
-		tabViewItems.map { item -> IEndPointDetailContent? in
-			if let loadable = item.viewController as? IEndPointDetailContent {
+	var loadables: [IEndPointDetail] {
+		tabViewItems.map { item -> IEndPointDetail? in
+			if let loadable = item.viewController as? IEndPointDetail {
 				return loadable
 			} else {
 				return nil
