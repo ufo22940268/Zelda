@@ -53,7 +53,7 @@
                         </connections>
                     </tabView>
                     <connections>
-                        <outlet property="tabView" destination="U4q-Sv-QLJ" id="ufe-w5-GG8"/>
+                        <outlet property="containerView" destination="U4q-Sv-QLJ" id="far-cB-0DK"/>
                         <segue destination="SHD-R4-z0H" kind="relationship" relationship="tabItems" id="zgk-Ww-BK2"/>
                         <segue destination="GVx-3N-LpS" kind="relationship" relationship="tabItems" id="pjJ-7N-ho1"/>
                     </connections>
@@ -373,7 +373,7 @@
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="85" id="91u-Rm-s2z"/>
                                 </constraints>
                                 <scroller key="horizontalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" horizontal="YES" id="k18-R7-GVY">
-                                    <rect key="frame" x="1" y="184" width="433" height="15"/>
+                                    <rect key="frame" x="1" y="69" width="433" height="15"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>
                                 <scroller key="verticalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" horizontal="NO" id="x2O-Eg-zXk">

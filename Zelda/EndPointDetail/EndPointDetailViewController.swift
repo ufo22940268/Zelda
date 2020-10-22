@@ -33,9 +33,19 @@ class EndPointDetailViewController: NSViewController, IEndPointDetail {
 	var cancellables = Set<AnyCancellable>()
 
 	@IBOutlet var tableContainer: NSScrollView!
-	@Published var scanLogsInSpan: ScanLogInTimeSpan?
-	@Published var span: ScanLogSpan = .today
 	@Published var loading: Bool = false
+
+	var spanScanLogs: ScanLogInTimeSpan? {
+		didSet {
+			loadSpanLogs()
+		}
+	}
+
+	var span: ScanLogSpan = .today {
+		didSet {
+			loadSpanLogs()
+		}
+	}
 
 	var kind = EndPointDetailKind.duration {
 		didSet {
@@ -44,7 +54,7 @@ class EndPointDetailViewController: NSViewController, IEndPointDetail {
 	}
 
 	var scanLogs: [ScanLog] {
-		if let scanLogsInSpan = scanLogsInSpan {
+		if let scanLogsInSpan = spanScanLogs {
 			return scanLogsInSpan[span]
 		} else {
 			return []
@@ -63,53 +73,26 @@ class EndPointDetailViewController: NSViewController, IEndPointDetail {
 	override func viewDidLoad() {
 		super.viewDidLoad()
 
-		self.tableContainer.isHidden = true
-		self.chartView.isHidden = true
+		tableContainer.isHidden = true
+		chartView.isHidden = true
+		showContainerView(false)
 
-		$endPointId
-			.filter { $0 != nil && !$0!.isEmpty }
-			.removeDuplicates()
-			.flatMap { [weak self] endPointId -> AnyPublisher<ScanLogInTimeSpan, ResponseError> in
-				self?.loading = true
-				return BackendAgent.default.listScanLogInSpan(endPoint: endPointId!)
-			}
-			.map { span -> ScanLogInTimeSpan? in
-				span
-			}
-			.replaceError(with: nil)
-			.map { [weak self] (scanlogs: ScanLogInTimeSpan?) -> ScanLogInTimeSpan? in
-				guard let scanlogs = scanlogs else { return nil }
-				var newScanLogs = scanlogs
-				self?.fillScanLogGap(&newScanLogs)
-				return newScanLogs
-			}
-			.sink(receiveValue: { [weak self] scanLogsInSpan in
-				self?.scanLogsInSpan = scanLogsInSpan
-				self?.detailTableView.reloadData()
-			})
-			.store(in: &cancellables)
-
-		$scanLogsInSpan.combineLatest($span)
-			.sink { [weak self] scanLogs, span in
-				if let scanLogs = scanLogs {
-					self?.setChartData(scanLogs, in: span)
-					self?.loading = false
+		$loading
+			.dropFirst()
+			.sink { [weak self] loading in
+				if loading {
+					self?.showContainerView(false)
+					self?.tableContainer.isHidden = true
+					self?.chartView.isHidden = true
+					self?.progressIndicator.startAnimation(self)
+				} else {
+					self?.showContainerView(true)
+					self?.tableContainer.isHidden = false
+					self?.chartView.isHidden = false
+					self?.progressIndicator.stopAnimation(self)
 				}
 			}
 			.store(in: &cancellables)
-
-		$loading.sink { [weak self] loading in
-			if loading {
-				self?.tableContainer.isHidden = true
-				self?.chartView.isHidden = true
-				self?.progressIndicator.startAnimation(self)
-			} else {
-				self?.tableContainer.isHidden = false
-				self?.chartView.isHidden = false
-				self?.progressIndicator.stopAnimation(self)
-			}
-		}
-		.store(in: &cancellables)
 	}
 
 	func load(endPoint: String) {
@@ -119,11 +102,25 @@ class EndPointDetailViewController: NSViewController, IEndPointDetail {
 
 	// MARK: Fileprivate
 
+	fileprivate func loadSpanLogs() {
+		if let spanScanLogs = spanScanLogs {
+			setChartData(spanScanLogs, in: span)
+			detailTableView.reloadData()
+			loading = false
+		} else {
+			loading = true
+		}
+	}
+
 	fileprivate func updateTableColumn() {
 		if let detailTableView = detailTableView {
 			detailTableView.tableColumns[1].headerCell.stringValue = kind.valueColumnName
 		}
 	}
+
+	// MARK: Private
+
+	private func showContainerView(_ show: Bool) {}
 }
 
 extension EndPointDetailViewController: NSTableViewDelegate, NSTableViewDataSource {
@@ -181,15 +178,15 @@ extension EndPointDetailViewController {
 		let barWidth = 0.4
 
 		data.barWidth = barWidth
-		self.chartView.xAxis.valueFormatter = IndexAxisValueFormatter(values: span.indexes(last: scanlogs.last!.time))
-		self.chartView.leftAxis.drawLabelsEnabled = false
-		let maxY = Double(max(self.kind.maxY, ys1.max()! + self.kind.reservedY))
-		self.chartView.leftAxis.axisMaximum = maxY
-		self.chartView.rightAxis.axisMaximum = maxY
-		self.chartView.rightAxis.valueFormatter = self.kind.valueFormatter
+		chartView.xAxis.valueFormatter = IndexAxisValueFormatter(values: span.indexes(last: scanlogs.last!.time))
+		chartView.leftAxis.drawLabelsEnabled = false
+		let maxY = Double(max(kind.maxY, ys1.max()! + kind.reservedY))
+		chartView.leftAxis.axisMaximum = maxY
+		chartView.rightAxis.axisMaximum = maxY
+		chartView.rightAxis.valueFormatter = kind.valueFormatter
 
-		self.chartView.data = data
+		chartView.data = data
 
-		self.chartView.gridBackgroundColor = NSUIColor.white
+		chartView.gridBackgroundColor = NSUIColor.white
 	}
 }

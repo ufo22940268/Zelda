@@ -71,7 +71,11 @@ class SideBarItemView: NSTableCellView {
 class SideBarViewController: NSViewController, NSTableViewDataSource, NSTableViewDelegate {
 	@IBOutlet var tableView: NSTableView!
 	var listTabVC: IMainContent!
-	var endPoints: [EndPoint] = []
+	var endPoints: [EndPoint] = [] {
+		didSet {
+			tableView.reloadData()
+		}
+	}
 
 	override func viewDidLoad() {
 		super.viewDidLoad()
