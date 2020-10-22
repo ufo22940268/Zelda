@@ -12,14 +12,6 @@ struct EndPoint: Decodable, Equatable {
 	struct WatchField: Decodable {
 		var path: String
 		var value: String
-
-		func toApiEntity(context: NSManagedObjectContext, ee: EndPointEntity) -> ApiEntity {
-			let ae = ApiEntity(context: context)
-			ae.endPoint = ee
-			ae.watchValue = value
-			ae.paths = path
-			return ae
-		}
 	}
 
 	struct WarningCount: Decodable {
@@ -44,4 +36,14 @@ struct EndPoint: Decodable, Equatable {
 	static func == (lhs: EndPoint, rhs: EndPoint) -> Bool {
 		lhs._id == rhs._id
 	}
+}
+
+struct EndPointReq: Codable {
+	struct WatchField: Codable {
+		var path: String
+		var value: String
+	}
+
+	var url: String
+	var watchFields: [WatchField]?
 }

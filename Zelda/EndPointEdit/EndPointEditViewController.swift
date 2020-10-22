@@ -17,11 +17,15 @@ class EndPointEditViewController: NSViewController, NSTextFieldDelegate {
 	var apiData = [String: String]()
 	@IBOutlet var tableView: NSTableView!
 	var watchPathsSubject = CurrentValueSubject<Set<String>, Never>(Set<String>())
+	var saveSubject = PassthroughSubject<EndPointReq, Never>()
 	var cancellables = Set<AnyCancellable>()
 
 	@IBOutlet var confirmButton: NSButton!
-
 	var type = EndPointEditType.edit
+
+	var endPointToUpsert: EndPointReq? {
+		EndPointReq(url: url, watchFields: apiDataArray.filter { watchPathsSubject.value.contains($0.0) }.map { path, value in EndPointReq.WatchField(path: path, value: value) })
+	}
 
 	var context: NSManagedObjectContext {
 		type.context
@@ -77,6 +81,25 @@ class EndPointEditViewController: NSViewController, NSTextFieldDelegate {
 				}
 			}
 			.store(in: &cancellables)
+
+		saveSubject
+			.debounce(for: 1, scheduler: DispatchQueue.main)
+			.handleEvents(receiveOutput: { [weak self] _ in
+				DispatchQueue.main.async {
+					self?.confirmButton.isEnabled = false
+				}
+			})
+			.flatMap { endPoint in
+				BackendAgent.default.upsert(endPoint: endPoint)
+			}
+			.receive(on: DispatchQueue.main, options: nil)
+			.handleEvents(receiveOutput: { [weak self] _ in
+				self?.confirmButton.isEnabled = true
+			})
+			.sink(receiveCompletion: { _ in }, receiveValue: {
+				self.presentingViewController?.dismiss(self)
+			})
+			.store(in: &cancellables)
 	}
 
 	func controlTextDidChange(_ obj: Notification) {
@@ -85,9 +108,28 @@ class EndPointEditViewController: NSViewController, NSTextFieldDelegate {
 	}
 
 	@IBAction func onConfirm(_ sender: Any) {
-		let endPointId = saveEndPoint()
-		NotificationCenter.default.post(name: .syncEndPoint, object: endPointId.uriRepresentation())
-		presentingViewController?.dismiss(self)
+//		self.presentingViewController?.dismiss(self)
+		if let endPointToUpsert = endPointToUpsert {
+			saveSubject.send(endPointToUpsert)
+		}
+	}
+
+	func saveEndPoint() -> NSManagedObjectID {
+		let ep = EndPointEntity(context: context)
+		ep.url = url
+
+		for api in apiDataArray.filter({ watchPathsSubject.value.contains($0.0) }) {
+			let (path, value) = api
+			let apiEntity = ApiEntity(context: context)
+			apiEntity.endPoint = ep
+			apiEntity.paths = path
+			apiEntity.value = value
+		}
+
+		try! context.save()
+		try! context.parent!.save()
+
+		return ep.objectID
 	}
 
 	@IBAction func onCancel(_ sender: Any) {
@@ -103,5 +145,42 @@ class EndPointEditViewController: NSViewController, NSTextFieldDelegate {
 	private func load(apiData: [String: String]) {
 		self.apiData = apiData
 		tableView.reloadData()
+	}
+}
+
+extension EndPointEditViewController: NSTableViewDelegate, NSTableViewDataSource {
+	var apiDataArray: [(String, String)] {
+		apiData.enumerated()
+			.sorted(by: { $0.element.key < $1.element.key })
+			.map { $0.element }
+	}
+
+	func numberOfRows(in tableView: NSTableView) -> Int {
+		apiData.count
+	}
+
+	func tableView(_ tableView: NSTableView, objectValueFor tableColumn: NSTableColumn?, row: Int) -> Any? {
+		let (path, value) = apiDataArray[row]
+		if tableColumn?.identifier.rawValue == "key" {
+			return path
+		} else if tableColumn?.identifier.rawValue == "value" {
+			return value
+		} else if tableColumn?.identifier.rawValue == "check" {
+			return watchPathsSubject.value.contains(path)
+		}
+
+		return nil
+	}
+
+	func tableView(_ tableView: NSTableView, setObjectValue object: Any?, for tableColumn: NSTableColumn?, row: Int) {
+		guard let identifier = tableColumn?.identifier else { return }
+		if identifier.rawValue == "check" {
+			let checked = object as! Bool
+			if checked {
+				watchPathsSubject.value.insert(apiDataArray[row].0)
+			} else {
+				watchPathsSubject.value.remove(apiDataArray[row].0)
+			}
+		}
 	}
 }

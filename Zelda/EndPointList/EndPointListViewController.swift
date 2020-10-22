@@ -34,17 +34,7 @@ class EndPointListViewController: NSViewController, IEndPointList {
 
 	override func viewDidLoad() {
 		super.viewDidLoad()
-
-		NotificationCenter.default.publisher(for: .syncEndPoint)
-			.flatMap { notif -> AnyPublisher<Void, ResponseError> in
-				let endPointId = (self.context.persistentStoreCoordinator?.managedObjectID(forURIRepresentation: notif.object as! URL))!
-				let endPoint = self.context.object(with: endPointId)
-				return BackendAgent.default.upsert(endPoint: endPoint as! EndPointEntity)
-			}
-			.sink(receiveCompletion: { _ in
-			}, receiveValue: {})
-			.store(in: &cancellables)
-
+		
 		deleteEndPointSubject
 			.removeDuplicates()
 			.map { (endPoint: EndPoint) -> EndPoint in
