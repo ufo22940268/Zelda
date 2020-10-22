@@ -829,35 +829,49 @@
                                                     </textFieldCell>
                                                     <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                                     <prototypeCellViews>
-                                                        <tableCellView identifier="cell" id="TGc-gS-JdM">
+                                                        <tableCellView identifier="cell" id="TGc-gS-JdM" customClass="SideBarItemView" customModule="Zelda" customModuleProvider="target">
                                                             <rect key="frame" x="18" y="0.0" width="182" height="17"/>
                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                             <subviews>
-                                                                <stackView distribution="fill" orientation="horizontal" alignment="centerY" spacing="7" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jXB-PG-WKR">
-                                                                    <rect key="frame" x="3" y="-1" width="119" height="20"/>
-                                                                    <subviews>
-                                                                        <imageView wantsLayer="YES" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="JtH-eU-lZ0">
-                                                                            <rect key="frame" x="0.0" y="-3" width="20" height="26"/>
+                                                                <stackView orientation="horizontal" alignment="centerY" spacing="7" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jXB-PG-WKR">
+                                                                    <rect key="frame" x="3" y="-1" width="159" height="20"/>
+                                                                    <beginningViews>
+                                                                        <imageView wantsLayer="YES" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="JtH-eU-lZ0">
+                                                                            <rect key="frame" x="0.0" y="3" width="15" height="15"/>
                                                                             <constraints>
                                                                                 <constraint firstAttribute="height" constant="20" id="Rrq-pP-azU"/>
                                                                                 <constraint firstAttribute="width" constant="20" id="U9q-hd-g81"/>
                                                                             </constraints>
                                                                             <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="NSActionTemplate" id="rBa-Qb-5fR"/>
                                                                         </imageView>
-                                                                        <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" allowsExpansionToolTips="YES" translatesAutoresizingMaskIntoConstraints="NO" id="elB-mB-tuz">
-                                                                            <rect key="frame" x="25" y="2" width="96" height="16"/>
+                                                                        <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" allowsExpansionToolTips="YES" translatesAutoresizingMaskIntoConstraints="NO" id="elB-mB-tuz">
+                                                                            <rect key="frame" x="20" y="2" width="94" height="16"/>
                                                                             <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="Table View Cell" id="Os4-7P-31B">
                                                                                 <font key="font" metaFont="system"/>
                                                                                 <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                                                                 <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                                                             </textFieldCell>
+                                                                            <connections>
+                                                                                <outlet property="delegate" destination="1wg-66-0cs" id="AVd-O3-QZ9"/>
+                                                                            </connections>
                                                                         </textField>
-                                                                    </subviews>
+                                                                    </beginningViews>
+                                                                    <endViews>
+                                                                        <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="swa-Ni-7mH">
+                                                                            <rect key="frame" x="119" y="1" width="40" height="18"/>
+                                                                            <buttonCell key="cell" type="inline" title="a" bezelStyle="inline" alignment="center" enabled="NO" borderStyle="border" inset="2" id="XCm-RS-ks8">
+                                                                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                                                <font key="font" metaFont="smallSystemBold"/>
+                                                                            </buttonCell>
+                                                                        </button>
+                                                                    </endViews>
                                                                     <visibilityPriorities>
+                                                                        <integer value="1000"/>
                                                                         <integer value="1000"/>
                                                                         <integer value="1000"/>
                                                                     </visibilityPriorities>
                                                                     <customSpacing>
+                                                                        <real value="3.4028234663852886e+38"/>
                                                                         <real value="3.4028234663852886e+38"/>
                                                                         <real value="3.4028234663852886e+38"/>
                                                                     </customSpacing>
@@ -865,9 +879,11 @@
                                                             </subviews>
                                                             <constraints>
                                                                 <constraint firstItem="jXB-PG-WKR" firstAttribute="centerY" secondItem="TGc-gS-JdM" secondAttribute="centerY" id="1Sk-9T-NJp"/>
+                                                                <constraint firstAttribute="trailing" secondItem="jXB-PG-WKR" secondAttribute="trailing" constant="20" symbolic="YES" id="WaK-ee-9b1"/>
                                                                 <constraint firstItem="jXB-PG-WKR" firstAttribute="leading" secondItem="TGc-gS-JdM" secondAttribute="leading" constant="3" id="r4G-fw-NXk"/>
                                                             </constraints>
                                                             <connections>
+                                                                <outlet property="countView" destination="swa-Ni-7mH" id="Uq5-vL-pzK"/>
                                                                 <outlet property="imageView" destination="JtH-eU-lZ0" id="WBO-bh-rCt"/>
                                                                 <outlet property="textField" destination="elB-mB-tuz" id="wNS-0h-cuo"/>
                                                             </connections>

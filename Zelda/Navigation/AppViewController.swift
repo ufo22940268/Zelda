@@ -43,6 +43,7 @@ class AppViewController: NSSplitViewController {
 			.receive(on: DispatchQueue.main)
 			.sink { [weak self] endPoints in
 				self?.listTabVC.endPoints = endPoints
+				self?.sideBarVC.endPoints = endPoints
 			}
 			.store(in: &cancellables)
 	}

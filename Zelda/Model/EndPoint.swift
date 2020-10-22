@@ -14,24 +14,11 @@ struct EndPoint: Decodable, Equatable {
 		var value: String
 	}
 
-	struct WarningCount: Decodable {
-		var issue: Int
-		var duration: Int
-	}
-
 	var url: String
-//	var watchFields: [WatchField]?
 	var _id: String
 
-	var warningCount: WarningCount
-
-	var hasIssue: Bool {
-		warningCount.issue > 0
-	}
-
-	var requestTimeout: Bool {
-		warningCount.duration > 0
-	}
+	var hasIssue: Bool
+	var hasTimeout: Bool
 
 	static func == (lhs: EndPoint, rhs: EndPoint) -> Bool {
 		lhs._id == rhs._id

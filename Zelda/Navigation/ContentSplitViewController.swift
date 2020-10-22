@@ -30,10 +30,10 @@ class ContentSplitViewController: NSSplitViewController, ContentSplit {
 			switch type {
 			case .all:
 				listVC.endPoints = self.endPoints
-			case .bug:
+			case .issue:
 				listVC.endPoints = endPoints.filter { $0.hasIssue }
-			case .timeout:
-				listVC.endPoints = endPoints.filter { $0.requestTimeout }
+			case .duration:
+				listVC.endPoints = endPoints.filter { $0.hasTimeout }
 			case .none:
 				break
 			}
