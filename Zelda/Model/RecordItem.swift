@@ -14,7 +14,7 @@ struct RecordItem: Decodable {
 	struct WatchField: Decodable, Identifiable {
 		var path: String
 		var value: String
-		var watchValue: String
+		var watchValue: String!
 
 		var id: String {
 			path

@@ -9,8 +9,8 @@ import Foundation
 
 
 extension EndPointDetailViewController: EndPointDetailLoadable {
-	func setIndicator(_ indicator: EndPointIndicator) {
-		self.indicator = indicator
+	func setIndicator(_ indicator: EndPointDetailKind) {
+		self.kind = indicator
 	}
 
 	func fillScanLogGap(_ scanLogs: inout ScanLogInTimeSpan) {

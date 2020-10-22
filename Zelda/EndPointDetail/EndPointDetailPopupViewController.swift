@@ -13,12 +13,21 @@ let testRecordItem = RecordItem(duration: 100, statusCode: 8, time: Date(), requ
 class EndPointDetailPopupViewController: NSViewController {
 	// MARK: Internal
 
+	enum Kind {
+		case duration
+		case issue
+	}
+
 	@Published var recordItem: RecordItem?
 	var scanLogId: String!
 	var cancellables = Set<AnyCancellable>()
 
 	@IBOutlet var headerView: NSGridView!
 	@IBOutlet var bodyView: NSTextField!
+	@IBOutlet var watchView: NSGridView!
+	@IBOutlet var watchHeader: NSTextField!
+
+	var kind: EndPointDetailKind = .issue 
 
 	override func viewDidLoad() {
 		super.viewDidLoad()
@@ -35,18 +44,38 @@ class EndPointDetailPopupViewController: NSViewController {
 				self?.loadRecordItem(item!)
 			}
 			.store(in: &cancellables)
+		setupWatchView()
 	}
 
 	func loadRecordItem(_ recordItem: RecordItem) {
-		(0 ..< headerView.numberOfRows).forEach { headerView.removeRow(at: $0) }
+		headerView.removeRows()
 		for (k, v) in recordItem.responseHeader.dict {
 			appendRow(k, v)
 		}
 		bodyView.stringValue = recordItem.responseBody
 	}
 
+	// MARK: Fileprivate
+
+	fileprivate func setupWatchView() {
+		switch kind {
+		case .duration:
+			watchView.isHidden = true
+			watchHeader.isHidden = true
+		case .issue:
+			fillWatchHeader()
+		}
+	}
+
 	// MARK: Private
-	
+
+	private func fillWatchHeader() {
+		watchView.removeRows()
+		recordItem?.fields.forEach { field in
+			watchView.addRow(with: [makeTextCell(str: field.path), makeTextCell(str: field.watchValue ?? "")])
+		}
+	}
+
 	private func makeTextCell(str: String) -> NSTextField {
 		let tf = NSTextField(labelWithString: str)
 		tf.font = .toolTipsFont(ofSize: 12)

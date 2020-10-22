@@ -13,7 +13,7 @@ protocol EndPointLoadable {
 }
 
 protocol EndPointDetailLoadable: EndPointLoadable {
-	func setIndicator(_ indicator: EndPointIndicator)
+	func setIndicator(_ indicator: EndPointDetailKind)
 	var endPointId: String? { get set }
 }
 

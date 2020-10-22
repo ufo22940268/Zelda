@@ -9,7 +9,7 @@ import Charts
 import Cocoa
 import Foundation
 
-enum EndPointIndicator: String, CaseIterable {
+enum EndPointDetailKind: String, CaseIterable {
 	case duration
 	case issue
 
@@ -67,7 +67,7 @@ enum EndPointIndicator: String, CaseIterable {
 	}
 }
 
-extension EndPointIndicator {
+extension EndPointDetailKind {
 	init(identifier: String) {
 		self = Self.allCases.first { $0.rawValue == identifier }!
 	}

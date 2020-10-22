@@ -37,7 +37,7 @@ class EndPointDetailViewController: NSViewController, IEndPointDetail {
 	@Published var span: ScanLogSpan = .today
 	@Published var loading: Bool = false
 
-	var indicator = EndPointIndicator.duration {
+	var kind = EndPointDetailKind.duration {
 		didSet {
 			updateTableColumn()
 		}
@@ -52,7 +52,7 @@ class EndPointDetailViewController: NSViewController, IEndPointDetail {
 	}
 
 	var validScanLogs: [ScanLog] {
-		switch indicator {
+		switch kind {
 		case .duration:
 			return scanLogs.filter { $0.duration > 0 }
 		case .issue:
@@ -121,7 +121,75 @@ class EndPointDetailViewController: NSViewController, IEndPointDetail {
 
 	fileprivate func updateTableColumn() {
 		if let detailTableView = detailTableView {
-			detailTableView.tableColumns[1].headerCell.stringValue = indicator.valueColumnName
+			detailTableView.tableColumns[1].headerCell.stringValue = kind.valueColumnName
 		}
+	}
+}
+
+extension EndPointDetailViewController: NSTableViewDelegate, NSTableViewDataSource {
+	func tableView(_ tableView: NSTableView, viewFor tableColumn: NSTableColumn?, row: Int) -> NSView? {
+		let identifier = tableColumn!.identifier.rawValue
+		let view = tableView.makeView(withIdentifier: NSUserInterfaceItemIdentifier(identifier), owner: self) as? NSTableCellView
+		let scanLog = validScanLogs[row]
+		switch identifier {
+		case "time":
+			let formatter = DateFormatter()
+			formatter.dateStyle = .short
+			formatter.timeStyle = .short
+			view?.textField?.stringValue = formatter.string(from: scanLog.time)
+		case "value":
+			if kind == .duration {
+				view?.textField?.stringValue = scanLog.duration.formatDuration
+			} else if kind == .issue {
+				view?.textField?.intValue = Int32(scanLog.errorCount)
+			}
+		case "action":
+			break
+		default:
+			break
+		}
+		return view
+	}
+
+	func tableViewSelectionDidChange(_ notification: Notification) {
+		guard detailTableView.selectedRow >= 0 else { return }
+		let selectedView = detailTableView.view(atColumn: 2, row: detailTableView.selectedRow, makeIfNecessary: true)!
+		let vc: EndPointDetailPopupViewController = storyboard!.instantiateController(identifier: "popup")
+		vc.kind = kind
+		vc.scanLogId = validScanLogs[detailTableView.selectedRow].id
+		present(vc, asPopoverRelativeTo: selectedView.bounds, of: selectedView, preferredEdge: .maxX, behavior: .transient)
+	}
+
+	func numberOfRows(in tableView: NSTableView) -> Int {
+		validScanLogs.count
+	}
+}
+
+extension EndPointDetailViewController {
+	func setChartData(_ scanLogsInSpan: ScanLogInTimeSpan, in span: ScanLogSpan) {
+		let scanlogs = scanLogsInSpan[span]
+
+		let ys1 = scanlogs.map { self.kind.getValue(log: $0) }
+
+		let yse1 = ys1.enumerated().map { x, y in BarChartDataEntry(x: Double(x), y: Double(y)) }
+
+		let data = BarChartData()
+		let ds1 = BarChartDataSet(entries: yse1)
+		ds1.colors = ChartColorTemplates.material()
+		data.addDataSet(ds1)
+
+		let barWidth = 0.4
+
+		data.barWidth = barWidth
+		self.chartView.xAxis.valueFormatter = IndexAxisValueFormatter(values: span.indexes(last: scanlogs.last!.time))
+		self.chartView.leftAxis.drawLabelsEnabled = false
+		let maxY = Double(max(self.kind.maxY, ys1.max()! + self.kind.reservedY))
+		self.chartView.leftAxis.axisMaximum = maxY
+		self.chartView.rightAxis.axisMaximum = maxY
+		self.chartView.rightAxis.valueFormatter = self.kind.valueFormatter
+
+		self.chartView.data = data
+
+		self.chartView.gridBackgroundColor = NSUIColor.white
 	}
 }
