@@ -38,6 +38,8 @@ class EndPointDetailViewController: NSViewController, IEndPointDetail {
 	@IBOutlet var tableContainer: NSScrollView!
 	@Published var loading: Bool = false
 
+	var kind = EndPointDetailKind.duration
+
 	var spanScanLogs: ScanLogInTimeSpan? {
 		didSet {
 			loadSpanLogs()
@@ -49,8 +51,6 @@ class EndPointDetailViewController: NSViewController, IEndPointDetail {
 			loadSpanLogs()
 		}
 	}
-
-	var kind = EndPointDetailKind.duration
 
 	var scanLogs: [ScanLog] {
 		if let scanLogsInSpan = spanScanLogs {
@@ -92,13 +92,49 @@ class EndPointDetailViewController: NSViewController, IEndPointDetail {
 				}
 			}
 			.store(in: &cancellables)
-		
+
 		loadSpanLogs()
 	}
 
 	func load(endPoint: String) {
 		endPointId = endPoint
 		updateTableColumn()
+	}
+
+	func setIndicator(_ indicator: EndPointDetailKind) {
+		kind = indicator
+	}
+
+	func onSelectSpan(_ span: ScanLogSpan) {
+		self.span = span
+		detailTableView.reloadData()
+	}
+
+	func setChartData(_ scanLogsInSpan: ScanLogInTimeSpan, in span: ScanLogSpan) {
+		let scanlogs = scanLogsInSpan[span]
+
+		let ys1 = scanlogs.map { self.kind.getValue(log: $0) }
+
+		let yse1 = ys1.enumerated().map { x, y in BarChartDataEntry(x: Double(x), y: Double(y)) }
+
+		let data = BarChartData()
+		let ds1 = BarChartDataSet(entries: yse1)
+		ds1.colors = ChartColorTemplates.material()
+		data.addDataSet(ds1)
+
+		let barWidth = 0.4
+
+		data.barWidth = barWidth
+		chartView.xAxis.valueFormatter = IndexAxisValueFormatter(values: span.indexes(last: scanlogs.last!.time))
+		chartView.leftAxis.drawLabelsEnabled = false
+		let maxY = Double(max(kind.maxY, ys1.max()! + kind.reservedY))
+		chartView.leftAxis.axisMaximum = maxY
+		chartView.rightAxis.axisMaximum = maxY
+		chartView.rightAxis.valueFormatter = kind.valueFormatter
+
+		chartView.data = data
+
+		chartView.gridBackgroundColor = NSUIColor.white
 	}
 
 	// MARK: Fileprivate
@@ -112,7 +148,7 @@ class EndPointDetailViewController: NSViewController, IEndPointDetail {
 		} else {
 			loading = true
 		}
-		
+
 		updateTableColumn()
 	}
 
@@ -163,45 +199,5 @@ extension EndPointDetailViewController: NSTableViewDelegate, NSTableViewDataSour
 
 	func numberOfRows(in tableView: NSTableView) -> Int {
 		validScanLogs.count
-	}
-}
-
-extension EndPointDetailViewController {
-	func setChartData(_ scanLogsInSpan: ScanLogInTimeSpan, in span: ScanLogSpan) {
-		let scanlogs = scanLogsInSpan[span]
-
-		let ys1 = scanlogs.map { self.kind.getValue(log: $0) }
-
-		let yse1 = ys1.enumerated().map { x, y in BarChartDataEntry(x: Double(x), y: Double(y)) }
-
-		let data = BarChartData()
-		let ds1 = BarChartDataSet(entries: yse1)
-		ds1.colors = ChartColorTemplates.material()
-		data.addDataSet(ds1)
-
-		let barWidth = 0.4
-
-		data.barWidth = barWidth
-		chartView.xAxis.valueFormatter = IndexAxisValueFormatter(values: span.indexes(last: scanlogs.last!.time))
-		chartView.leftAxis.drawLabelsEnabled = false
-		let maxY = Double(max(kind.maxY, ys1.max()! + kind.reservedY))
-		chartView.leftAxis.axisMaximum = maxY
-		chartView.rightAxis.axisMaximum = maxY
-		chartView.rightAxis.valueFormatter = kind.valueFormatter
-
-		chartView.data = data
-
-		chartView.gridBackgroundColor = NSUIColor.white
-	}
-}
-
-extension EndPointDetailViewController {
-	func setIndicator(_ indicator: EndPointDetailKind) {
-		kind = indicator
-	}
-
-	func onSelectSpan(_ span: ScanLogSpan) {
-		self.span = span
-		detailTableView.reloadData()
 	}
 }
