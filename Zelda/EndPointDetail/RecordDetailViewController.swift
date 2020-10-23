@@ -26,8 +26,8 @@ class RecordDetailViewController: NSViewController, IRecordDetail {
 	@Published var scanLogId: String!
 	var cancellables = Set<AnyCancellable>()
 
+	@IBOutlet var monitorTableView: NSTableView!
 	@IBOutlet var responseHeaderView: NSTextView!
-	@IBOutlet var watchView: NSGridView!
 	@IBOutlet var bodyView: NSTextView!
 
 	var kind: EndPointDetailKind = .issue
@@ -43,7 +43,12 @@ class RecordDetailViewController: NSViewController, IRecordDetail {
 			}
 			.map { v -> RecordItem? in v }
 			.replaceError(with: nil)
-			.assign(to: &$recordItem)
+			.sink { [weak self] (recordItem) in
+				self?.recordItem = recordItem
+				self?.monitorTableView.reloadData()
+			}
+			.store(in: &cancellables)
+		
 
 		$recordItem
 			.filter { $0 != nil }
@@ -51,9 +56,7 @@ class RecordDetailViewController: NSViewController, IRecordDetail {
 				self?.loadRecordItem(item!)
 			}
 			.store(in: &cancellables)
-		
-		setupWatchView()
-		
+
 		responseHeaderView.textContainerInset = .init(width: 8, height: 8)
 		bodyView.textContainerInset = .init(width: 8, height: 8)
 	}
@@ -63,29 +66,38 @@ class RecordDetailViewController: NSViewController, IRecordDetail {
 		bodyView.string = recordItem.responseBody.jsonPrettify ?? ""
 	}
 
-	// MARK: Fileprivate
-
-	fileprivate func setupWatchView() {
-		switch kind {
-		case .duration:
-			watchView.isHidden = true
-		case .issue:
-			fillWatchHeader()
-		}
-	}
-
 	// MARK: Private
-
-	private func fillWatchHeader() {
-		watchView.removeRows()
-		recordItem?.fields.forEach { field in
-			watchView.addRow(with: [makeTextCell(str: field.path), makeTextCell(str: field.watchValue ?? "")])
-		}
-	}
 
 	private func makeTextCell(str: String) -> NSTextField {
 		let tf = NSTextField(labelWithString: str)
 		tf.font = .toolTipsFont(ofSize: 12)
 		return tf
+	}
+}
+
+// MARK： Monitor table
+extension RecordDetailViewController: NSTableViewDelegate, NSTableViewDataSource {
+	var monitorFields: [RecordItem.WatchField] {
+		recordItem?.fields ?? []
+	}
+
+	func numberOfRows(in tableView: NSTableView) -> Int {
+		monitorFields.count
+	}
+
+	func tableView(_ tableView: NSTableView, viewFor tableColumn: NSTableColumn?, row: Int) -> NSView? {
+		let identifier = tableColumn!.identifier.rawValue
+		let view = tableView.makeView(withIdentifier: .init(identifier), owner: self) as! NSTableCellView
+
+		let field = monitorFields[row]
+		if identifier == "path" {
+			view.textField?.stringValue = field.path
+		} else if identifier == "expectValue" {
+			view.textField?.stringValue = field.watchValue ?? ""
+		} else if identifier == "value" {
+			view.textField?.stringValue = field.value
+		}
+
+		return view
 	}
 }
