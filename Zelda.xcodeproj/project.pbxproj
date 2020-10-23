@@ -22,7 +22,7 @@
 		4246FFAF25391E3400963B29 /* Combine+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4246FFAE25391E3400963B29 /* Combine+Helpers.swift */; };
 		4246FFD12539767700963B29 /* Charts in Frameworks */ = {isa = PBXBuildFile; productRef = 4246FFD02539767700963B29 /* Charts */; };
 		4246FFD72539784F00963B29 /* EndPointDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4246FFD52539784F00963B29 /* EndPointDetailViewController.swift */; };
-		4262EE44253DA6CC0011C416 /* EndPointDetailPopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4262EE42253DA6CC0011C416 /* EndPointDetailPopupViewController.swift */; };
+		4262EE44253DA6CC0011C416 /* RecordDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4262EE42253DA6CC0011C416 /* RecordDetailViewController.swift */; };
 		4262EE4A253E44B00011C416 /* RecordItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4262EE49253E44B00011C416 /* RecordItem.swift */; };
 		4262EE4F253EC0270011C416 /* EndPointDetailKind.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4262EE4E253EC0270011C416 /* EndPointDetailKind.swift */; };
 		4262EE54253EC0440011C416 /* ScanLogInTimeSpan.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4262EE53253EC0440011C416 /* ScanLogInTimeSpan.swift */; };
@@ -83,7 +83,7 @@
 		424600022539A90700963B29 /* ScanLog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanLog.swift; sourceTree = "<group>"; };
 		4246FFAE25391E3400963B29 /* Combine+Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Combine+Helpers.swift"; sourceTree = "<group>"; };
 		4246FFD52539784F00963B29 /* EndPointDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndPointDetailViewController.swift; sourceTree = "<group>"; };
-		4262EE42253DA6CC0011C416 /* EndPointDetailPopupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndPointDetailPopupViewController.swift; sourceTree = "<group>"; };
+		4262EE42253DA6CC0011C416 /* RecordDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordDetailViewController.swift; sourceTree = "<group>"; };
 		4262EE49253E44B00011C416 /* RecordItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordItem.swift; sourceTree = "<group>"; };
 		4262EE4E253EC0270011C416 /* EndPointDetailKind.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndPointDetailKind.swift; sourceTree = "<group>"; };
 		4262EE53253EC0440011C416 /* ScanLogInTimeSpan.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanLogInTimeSpan.swift; sourceTree = "<group>"; };
@@ -232,7 +232,7 @@
 				428D117B25418F6B0031233A /* EndPointDetailContainerViewController.swift */,
 				4246FFD52539784F00963B29 /* EndPointDetailViewController.swift */,
 				42A6ABCB253D3D670021DA90 /* EndPointDetailTabViewController.swift */,
-				4262EE42253DA6CC0011C416 /* EndPointDetailPopupViewController.swift */,
+				4262EE42253DA6CC0011C416 /* RecordDetailViewController.swift */,
 				4262EE4E253EC0270011C416 /* EndPointDetailKind.swift */,
 				4262EE53253EC0440011C416 /* ScanLogInTimeSpan.swift */,
 				4262EE6C253ED5280011C416 /* EndPointDetailContainer.swift */,
@@ -464,7 +464,7 @@
 				424600032539A90700963B29 /* ScanLog.swift in Sources */,
 				42A6ABCC253D3D670021DA90 /* EndPointDetailTabViewController.swift in Sources */,
 				42697CA02534402800EA6275 /* Zelda.xcdatamodeld in Sources */,
-				4262EE44253DA6CC0011C416 /* EndPointDetailPopupViewController.swift in Sources */,
+				4262EE44253DA6CC0011C416 /* RecordDetailViewController.swift in Sources */,
 				428D115925410B8D0031233A /* GridView+Helpers.swift in Sources */,
 				4221991B2536EC0D0090AA28 /* EndPointEditType.swift in Sources */,
 				4226D4D42538602F00CE8DB1 /* String+URL.swift in Sources */,

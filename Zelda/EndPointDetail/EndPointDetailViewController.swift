@@ -74,18 +74,15 @@ class EndPointDetailViewController: NSViewController, IEndPointDetail {
 
 		tableContainer.isHidden = true
 		chartView.isHidden = true
-		showContainerView(false)
 
 		$loading
 			.dropFirst()
 			.sink { [weak self] loading in
 				if loading {
-					self?.showContainerView(false)
 					self?.tableContainer.isHidden = true
 					self?.chartView.isHidden = true
 					self?.progressIndicator.startAnimation(self)
 				} else {
-					self?.showContainerView(true)
 					self?.tableContainer.isHidden = false
 					self?.chartView.isHidden = false
 					self?.progressIndicator.stopAnimation(self)
@@ -137,6 +134,17 @@ class EndPointDetailViewController: NSViewController, IEndPointDetail {
 		chartView.gridBackgroundColor = NSUIColor.white
 	}
 
+	@IBAction func doubleClick(_ sender: Any) {
+		presentDetail()
+	}
+
+	override func prepare(for segue: NSStoryboardSegue, sender: Any?) {
+		if var recordDetail = segue.destinationController as? IRecordDetail {
+			recordDetail.scanLogId = validScanLogs[detailTableView.selectedRow].id
+			print("prepare for segue")
+		}
+	}
+
 	// MARK: Fileprivate
 
 	fileprivate func loadSpanLogs() {
@@ -160,7 +168,10 @@ class EndPointDetailViewController: NSViewController, IEndPointDetail {
 
 	// MARK: Private
 
-	private func showContainerView(_ show: Bool) {}
+	private func presentDetail() {
+		let recordDetail: NSViewController = storyboard!.instantiateController(identifier: "recordDetail")
+		presentAsModalWindow(recordDetail)
+	}
 }
 
 extension EndPointDetailViewController: NSTableViewDelegate, NSTableViewDataSource {
@@ -188,14 +199,18 @@ extension EndPointDetailViewController: NSTableViewDelegate, NSTableViewDataSour
 		return view
 	}
 
-	func tableViewSelectionDidChange(_ notification: Notification) {
-		guard detailTableView.selectedRow >= 0 else { return }
-		let selectedView = detailTableView.view(atColumn: 2, row: detailTableView.selectedRow, makeIfNecessary: true)!
-		let vc: EndPointDetailPopupViewController = storyboard!.instantiateController(identifier: "popup")
-		vc.kind = kind
-		vc.scanLogId = validScanLogs[detailTableView.selectedRow].id
-		present(vc, asPopoverRelativeTo: selectedView.bounds, of: selectedView, preferredEdge: .maxX, behavior: .transient)
-	}
+//	func tableViewSelectionDidChange(_ notification: Notification) {
+//		print("did selection")
+//	}
+
+//	func tableViewSelectionDidChange(_ notification: Notification) {
+//		guard detailTableView.selectedRow >= 0 else { return }
+//		let selectedView = detailTableView.view(atColumn: 2, row: detailTableView.selectedRow, makeIfNecessary: true)!
+//		let vc: EndPointDetailPopupViewController = storyboard!.instantiateController(identifier: "popup")
+//		vc.kind = kind
+//		vc.scanLogId = validScanLogs[detailTableView.selectedRow].id
+//		present(vc, asPopoverRelativeTo: selectedView.bounds, of: selectedView, preferredEdge: .maxX, behavior: .transient)
+//	}
 
 	func numberOfRows(in tableView: NSTableView) -> Int {
 		validScanLogs.count
