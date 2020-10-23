@@ -45,6 +45,7 @@
 		428D114825404E9A0031233A /* ContentSplitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 428D114725404E9A0031233A /* ContentSplitViewController.swift */; };
 		428D115925410B8D0031233A /* GridView+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 428D115825410B8D0031233A /* GridView+Helpers.swift */; };
 		428D117C25418F6B0031233A /* EndPointDetailContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 428D117B25418F6B0031233A /* EndPointDetailContainerViewController.swift */; };
+		428D118425426C1F0031233A /* EndPointInfoCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 428D118325426C1F0031233A /* EndPointInfoCellView.swift */; };
 		4292D876253FCB1E003DA863 /* ContentTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4292D875253FCB1E003DA863 /* ContentTabViewController.swift */; };
 		42A6ABBB253BDA0D0021DA90 /* JSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42A6ABBA253BDA0D0021DA90 /* JSON.swift */; };
 		42A6ABC1253CF6B90021DA90 /* EndPointDetail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 42A6ABBF253CF6B90021DA90 /* EndPointDetail.storyboard */; };
@@ -112,6 +113,7 @@
 		428D114725404E9A0031233A /* ContentSplitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentSplitViewController.swift; sourceTree = "<group>"; };
 		428D115825410B8D0031233A /* GridView+Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GridView+Helpers.swift"; sourceTree = "<group>"; };
 		428D117B25418F6B0031233A /* EndPointDetailContainerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EndPointDetailContainerViewController.swift; sourceTree = "<group>"; };
+		428D118325426C1F0031233A /* EndPointInfoCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndPointInfoCellView.swift; sourceTree = "<group>"; };
 		4292D875253FCB1E003DA863 /* ContentTabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentTabViewController.swift; sourceTree = "<group>"; };
 		42A6ABBA253BDA0D0021DA90 /* JSON.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSON.swift; sourceTree = "<group>"; };
 		42A6ABC0253CF6B90021DA90 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Zelda/Storyboards/Base.lproj/EndPointDetail.storyboard; sourceTree = "<group>"; };
@@ -236,6 +238,7 @@
 				4262EE4E253EC0270011C416 /* EndPointDetailKind.swift */,
 				4262EE53253EC0440011C416 /* ScanLogInTimeSpan.swift */,
 				4262EE6C253ED5280011C416 /* EndPointDetailContainer.swift */,
+				428D118325426C1F0031233A /* EndPointInfoCellView.swift */,
 			);
 			path = EndPointDetail;
 			sourceTree = "<group>";
@@ -472,6 +475,7 @@
 				42697D142536941300EA6275 /* Api+JSON.swift in Sources */,
 				4262EE4F253EC0270011C416 /* EndPointDetailKind.swift in Sources */,
 				4292D876253FCB1E003DA863 /* ContentTabViewController.swift in Sources */,
+				428D118425426C1F0031233A /* EndPointInfoCellView.swift in Sources */,
 				42697D03253675F200EA6275 /* Api.swift in Sources */,
 				422199132536EB410090AA28 /* NSManagedObjectContext+Helper.swift in Sources */,
 				4226D4A02537C78B00CE8DB1 /* EndPointListViewController.swift in Sources */,

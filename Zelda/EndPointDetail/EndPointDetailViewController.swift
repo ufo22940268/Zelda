@@ -134,10 +134,14 @@ class EndPointDetailViewController: NSViewController, IEndPointDetail {
 		chartView.gridBackgroundColor = NSUIColor.white
 	}
 
-	@IBAction func doubleClick(_ sender: Any) {
-		presentDetail()
+	@IBAction func onDoubleClick(_ sender: Any) {
+		presentDetail(row: detailTableView.selectedRow)
 	}
-
+	
+	@IBAction func onClickInfo(_ sender: NSButton) {
+		presentDetail(row: Int(sender.identifier!.rawValue)!)
+	}
+	
 	override func prepare(for segue: NSStoryboardSegue, sender: Any?) {
 		if var recordDetail = segue.destinationController as? IRecordDetail {
 			recordDetail.scanLogId = validScanLogs[detailTableView.selectedRow].id
@@ -168,8 +172,9 @@ class EndPointDetailViewController: NSViewController, IEndPointDetail {
 
 	// MARK: Private
 
-	private func presentDetail() {
-		let recordDetail: NSViewController = storyboard!.instantiateController(identifier: "recordDetail")
+	private func presentDetail(row: Int) {
+		let recordDetail: RecordDetailViewController = storyboard!.instantiateController(identifier: "recordDetail")
+		recordDetail.scanLogId = validScanLogs[row].id
 		presentAsModalWindow(recordDetail)
 	}
 }
@@ -192,25 +197,12 @@ extension EndPointDetailViewController: NSTableViewDelegate, NSTableViewDataSour
 				view?.textField?.intValue = Int32(scanLog.errorCount)
 			}
 		case "action":
-			break
+			(view as! EndPointInfoCellView).row = row
 		default:
 			break
 		}
 		return view
 	}
-
-//	func tableViewSelectionDidChange(_ notification: Notification) {
-//		print("did selection")
-//	}
-
-//	func tableViewSelectionDidChange(_ notification: Notification) {
-//		guard detailTableView.selectedRow >= 0 else { return }
-//		let selectedView = detailTableView.view(atColumn: 2, row: detailTableView.selectedRow, makeIfNecessary: true)!
-//		let vc: EndPointDetailPopupViewController = storyboard!.instantiateController(identifier: "popup")
-//		vc.kind = kind
-//		vc.scanLogId = validScanLogs[detailTableView.selectedRow].id
-//		present(vc, asPopoverRelativeTo: selectedView.bounds, of: selectedView, preferredEdge: .maxX, behavior: .transient)
-//	}
 
 	func numberOfRows(in tableView: NSTableView) -> Int {
 		validScanLogs.count

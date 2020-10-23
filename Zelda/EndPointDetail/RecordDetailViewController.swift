@@ -27,9 +27,9 @@ class RecordDetailViewController: NSViewController, IRecordDetail {
 	var cancellables = Set<AnyCancellable>()
 
 	@IBOutlet var headerView: NSGridView!
-	@IBOutlet var bodyView: NSTextField!
+//	@IBOutlet var bodyView: NSTextField!
 	@IBOutlet var watchView: NSGridView!
-	@IBOutlet var watchHeader: NSTextField!
+	@IBOutlet var bodyView: NSTextView!
 
 	var kind: EndPointDetailKind = .issue
 
@@ -60,7 +60,7 @@ class RecordDetailViewController: NSViewController, IRecordDetail {
 		for (k, v) in recordItem.responseHeader.dict {
 			appendRow(k, v)
 		}
-		bodyView.stringValue = recordItem.responseBody
+		bodyView.string = recordItem.responseBody
 	}
 
 	// MARK: Fileprivate
@@ -69,7 +69,6 @@ class RecordDetailViewController: NSViewController, IRecordDetail {
 		switch kind {
 		case .duration:
 			watchView.isHidden = true
-			watchHeader.isHidden = true
 		case .issue:
 			fillWatchHeader()
 		}
