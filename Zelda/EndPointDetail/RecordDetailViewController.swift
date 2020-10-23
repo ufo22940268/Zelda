@@ -60,7 +60,7 @@ class RecordDetailViewController: NSViewController, IRecordDetail {
 		for (k, v) in recordItem.responseHeader.dict {
 			appendRow(k, v)
 		}
-		bodyView.string = recordItem.responseBody
+		bodyView.string = recordItem.responseBody.jsonPrettify ?? ""
 	}
 
 	// MARK: Fileprivate

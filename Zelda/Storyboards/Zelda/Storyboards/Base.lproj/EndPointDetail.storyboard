@@ -105,15 +105,14 @@
                                     <rect key="frame" x="10" y="33" width="430" height="254"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
-                                        <gridView fixedFrame="YES" xPlacement="leading" yPlacement="bottom" rowAlignment="none" translatesAutoresizingMaskIntoConstraints="NO" id="xbT-WT-axl">
-                                            <rect key="frame" x="-3" y="221" width="206" height="30"/>
-                                            <autoresizingMask key="autoresizingMask"/>
+                                        <gridView xPlacement="leading" yPlacement="bottom" rowAlignment="none" translatesAutoresizingMaskIntoConstraints="NO" id="xbT-WT-axl">
+                                            <rect key="frame" x="20" y="204" width="351" height="30"/>
                                             <rows>
                                                 <gridRow id="1sJ-5Y-N8E"/>
                                             </rows>
                                             <columns>
-                                                <gridColumn id="5Gt-Pu-VbU"/>
-                                                <gridColumn id="WyK-GX-eO0"/>
+                                                <gridColumn width="167" id="5Gt-Pu-VbU"/>
+                                                <gridColumn width="178" id="WyK-GX-eO0"/>
                                             </columns>
                                             <gridCells>
                                                 <gridCell row="1sJ-5Y-N8E" column="5Gt-Pu-VbU" id="ECP-jQ-sFy"/>
@@ -121,6 +120,10 @@
                                             </gridCells>
                                         </gridView>
                                     </subviews>
+                                    <constraints>
+                                        <constraint firstItem="xbT-WT-axl" firstAttribute="top" secondItem="Xr3-ai-ACT" secondAttribute="top" constant="20" symbolic="YES" id="RJ6-Bg-7oW"/>
+                                        <constraint firstItem="xbT-WT-axl" firstAttribute="leading" secondItem="Xr3-ai-ACT" secondAttribute="leading" constant="20" symbolic="YES" id="WYW-iM-dir"/>
+                                    </constraints>
                                 </view>
                             </tabViewItem>
                             <tabViewItem label="返回内容" identifier="" id="pQJ-20-JkZ">
@@ -129,17 +132,17 @@
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <scrollView borderType="none" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" translatesAutoresizingMaskIntoConstraints="NO" id="R1E-nO-G3a">
-                                            <rect key="frame" x="-3" y="-3" width="436" height="266"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="430" height="254"/>
                                             <clipView key="contentView" drawsBackground="NO" id="Ak9-QV-Non">
-                                                <rect key="frame" x="0.0" y="0.0" width="421" height="266"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="415" height="254"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <subviews>
                                                     <textView importsGraphics="NO" richText="NO" verticallyResizable="YES" smartInsertDelete="YES" id="C4i-zJ-JoC">
-                                                        <rect key="frame" x="0.0" y="0.0" width="421" height="266"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="415" height="254"/>
                                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                         <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                                        <size key="minSize" width="421" height="266"/>
+                                                        <size key="minSize" width="415" height="254"/>
                                                         <size key="maxSize" width="447" height="10000000"/>
                                                         <color key="insertionPointColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                                     </textView>
@@ -150,16 +153,16 @@
                                                 <autoresizingMask key="autoresizingMask"/>
                                             </scroller>
                                             <scroller key="verticalScroller" verticalHuggingPriority="750" horizontal="NO" id="sxO-Ee-ZaH">
-                                                <rect key="frame" x="421" y="0.0" width="15" height="266"/>
+                                                <rect key="frame" x="415" y="0.0" width="15" height="254"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                             </scroller>
                                         </scrollView>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstItem="R1E-nO-G3a" firstAttribute="top" secondItem="tLs-Eq-2GV" secondAttribute="top" constant="-9" id="Lpt-u5-NkO"/>
-                                        <constraint firstAttribute="trailing" secondItem="R1E-nO-G3a" secondAttribute="trailing" constant="-3" id="dTu-kW-rLn"/>
-                                        <constraint firstAttribute="bottom" secondItem="R1E-nO-G3a" secondAttribute="bottom" constant="-3" id="fkE-iT-oGz"/>
-                                        <constraint firstItem="R1E-nO-G3a" firstAttribute="leading" secondItem="tLs-Eq-2GV" secondAttribute="leading" constant="-3" id="zW2-Pg-FWY"/>
+                                        <constraint firstItem="R1E-nO-G3a" firstAttribute="top" secondItem="tLs-Eq-2GV" secondAttribute="top" id="Lpt-u5-NkO"/>
+                                        <constraint firstAttribute="trailing" secondItem="R1E-nO-G3a" secondAttribute="trailing" id="dTu-kW-rLn"/>
+                                        <constraint firstAttribute="bottom" secondItem="R1E-nO-G3a" secondAttribute="bottom" id="fkE-iT-oGz"/>
+                                        <constraint firstItem="R1E-nO-G3a" firstAttribute="leading" secondItem="tLs-Eq-2GV" secondAttribute="leading" id="zW2-Pg-FWY"/>
                                     </constraints>
                                 </view>
                             </tabViewItem>
