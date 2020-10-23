@@ -26,8 +26,7 @@ class RecordDetailViewController: NSViewController, IRecordDetail {
 	@Published var scanLogId: String!
 	var cancellables = Set<AnyCancellable>()
 
-	@IBOutlet var headerView: NSGridView!
-//	@IBOutlet var bodyView: NSTextField!
+	@IBOutlet var responseHeaderView: NSTextView!
 	@IBOutlet var watchView: NSGridView!
 	@IBOutlet var bodyView: NSTextView!
 
@@ -52,14 +51,15 @@ class RecordDetailViewController: NSViewController, IRecordDetail {
 				self?.loadRecordItem(item!)
 			}
 			.store(in: &cancellables)
+		
 		setupWatchView()
+		
+		responseHeaderView.textContainerInset = .init(width: 8, height: 8)
+		bodyView.textContainerInset = .init(width: 8, height: 8)
 	}
 
 	func loadRecordItem(_ recordItem: RecordItem) {
-		headerView.removeRows()
-		for (k, v) in recordItem.responseHeader.dict {
-			appendRow(k, v)
-		}
+		responseHeaderView.string = recordItem.responseHeader.format
 		bodyView.string = recordItem.responseBody.jsonPrettify ?? ""
 	}
 
@@ -87,9 +87,5 @@ class RecordDetailViewController: NSViewController, IRecordDetail {
 		let tf = NSTextField(labelWithString: str)
 		tf.font = .toolTipsFont(ofSize: 12)
 		return tf
-	}
-
-	private func appendRow(_ k: String, _ v: String) {
-		headerView.addRow(with: [makeTextCell(str: k.capitalized), makeTextCell(str: v.jsonPrettify ?? "")])
 	}
 }

@@ -133,6 +133,7 @@ class EndPointDetailViewController: NSViewController, IEndPointDetail {
 	}
 
 	@IBAction func onDoubleClick(_ sender: Any) {
+		guard detailTableView.selectedRow != -1 else { return }
 		presentDetail(row: detailTableView.selectedRow)
 	}
 	

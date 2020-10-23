@@ -50,4 +50,9 @@ extension HttpHeader {
 				headers[String(ar[0])] = String(ar[1])
 			}
 	}
+
+	var format: String {
+//		return "Aa:bb\nCc:dd"
+		return self
+	}
 }
