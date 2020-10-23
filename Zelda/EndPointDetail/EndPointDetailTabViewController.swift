@@ -9,12 +9,13 @@ import Cocoa
 import Combine
 
 protocol EndPointLoadable {
-	func load(endPoint: String)
+	func load(endPoint: String, url: String)
 	func onSelectSpan(_ span: ScanLogSpan)
 }
 
 class EndPointDetailTabViewController: NSTabViewController, EndPointLoadable {
 	@Published var endPointId: String?
+	var url: String!
 	var cancellables = Set<AnyCancellable>()
 	@Published var scanLogsInSpan: ScanLogInTimeSpan?
 
@@ -65,6 +66,7 @@ class EndPointDetailTabViewController: NSTabViewController, EndPointLoadable {
 				self?.loadables.forEach {
 					var n = $0
 					n.spanScanLogs = span
+					n.url = self?.url
 				}
 				self?.containerView.isHidden = false
 			}
@@ -73,20 +75,15 @@ class EndPointDetailTabViewController: NSTabViewController, EndPointLoadable {
 		durationVC.kind = .duration
 		issueVC.kind = .issue
 	}
-
-	override func tabView(_ tabView: NSTabView, didSelect tabViewItem: NSTabViewItem?) {
-		if let endPointId = endPointId {
-			loadables.forEach { $0.load(endPoint: endPointId) }
-		}
-	}
 }
 
 extension EndPointDetailTabViewController {
-	func load(endPoint: String) {
+	func load(endPoint: String, url: String) {
+		self.url = url
 		endPointId = endPoint
 	}
 
 	func onSelectSpan(_ span: ScanLogSpan) {
-		loadables.forEach { $0.onSelectSpan(span) }
+//		loadables.forEach { $0.onSelectSpan(span) }
 	}
 }

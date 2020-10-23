@@ -18,11 +18,13 @@ let testScanLogs = ScanLogInTimeSpan(
 	}
 )
 
-protocol IEndPointDetail: EndPointLoadable {
+protocol IEndPointDetail {
 	func setIndicator(_ indicator: EndPointDetailKind)
 	var endPointId: String? { get set }
 	var spanScanLogs: ScanLogInTimeSpan? { get set }
 	var kind: EndPointDetailKind { get set }
+	var url: String! { get set }
+	func onSelectSpan(_ span: ScanLogSpan)
 }
 
 class EndPointDetailViewController: NSViewController, IEndPointDetail {
@@ -33,6 +35,7 @@ class EndPointDetailViewController: NSViewController, IEndPointDetail {
 	@IBOutlet var progressIndicator: NSProgressIndicator!
 	@IBOutlet var detailTableView: NSTableView!
 	@Published var endPointId: String?
+	var url: String!
 	var cancellables = Set<AnyCancellable>()
 
 	@IBOutlet var tableContainer: NSScrollView!
@@ -91,11 +94,6 @@ class EndPointDetailViewController: NSViewController, IEndPointDetail {
 			.store(in: &cancellables)
 
 		loadSpanLogs()
-	}
-
-	func load(endPoint: String) {
-		endPointId = endPoint
-		updateTableColumn()
 	}
 
 	func setIndicator(_ indicator: EndPointDetailKind) {
@@ -175,6 +173,7 @@ class EndPointDetailViewController: NSViewController, IEndPointDetail {
 	private func presentDetail(row: Int) {
 		let recordDetail: RecordDetailViewController = storyboard!.instantiateController(identifier: "recordDetail")
 		recordDetail.scanLogId = validScanLogs[row].id
+		recordDetail.title = url
 		presentAsModalWindow(recordDetail)
 	}
 }

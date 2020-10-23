@@ -10,8 +10,8 @@ import Cocoa
 class EndPointDetailContainerViewController: NSViewController, EndPointLoadable {
 	var tabVC: EndPointLoadable!
 
-	func load(endPoint: String) {
-		tabVC.load(endPoint: endPoint)
+	func load(endPoint: String, url: String) {
+		tabVC.load(endPoint: endPoint, url: url)
 	}
 
 	override func viewDidLoad() {
