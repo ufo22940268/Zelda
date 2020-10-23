@@ -52,7 +52,11 @@ extension HttpHeader {
 	}
 
 	var format: String {
-//		return "Aa:bb\nCc:dd"
-		return self
+		split(separator: "\n")
+			.map { $0.split(separator: ":") }
+			.reduce(into: "") { headers, ar -> Void in
+				headers += ar[0].capitalized + ": " + ar[1]
+				headers += "\n"
+			}
 	}
 }
