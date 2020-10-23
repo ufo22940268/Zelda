@@ -140,13 +140,6 @@ class EndPointDetailViewController: NSViewController, IEndPointDetail {
 		presentDetail(row: Int(sender.identifier!.rawValue)!)
 	}
 	
-	override func prepare(for segue: NSStoryboardSegue, sender: Any?) {
-		if var recordDetail = segue.destinationController as? IRecordDetail {
-			recordDetail.scanLogId = validScanLogs[detailTableView.selectedRow].id
-			print("prepare for segue")
-		}
-	}
-
 	// MARK: Fileprivate
 
 	fileprivate func loadSpanLogs() {

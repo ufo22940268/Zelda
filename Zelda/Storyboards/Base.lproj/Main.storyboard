@@ -801,7 +801,7 @@
         <scene sceneID="Rg6-dw-OFJ">
             <objects>
                 <viewController id="eiw-Ew-28k" customClass="SideBarViewController" customModule="Zelda" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" misplaced="YES" id="Dev-UX-bU7">
+                    <view key="view" id="Dev-UX-bU7">
                         <rect key="frame" x="0.0" y="0.0" width="219" height="372"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
@@ -835,19 +835,15 @@
                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                             <subviews>
                                                                 <stackView orientation="horizontal" alignment="centerY" spacing="7" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jXB-PG-WKR">
-                                                                    <rect key="frame" x="3" y="-1" width="159" height="20"/>
+                                                                    <rect key="frame" x="3" y="0.0" width="159" height="18"/>
                                                                     <beginningViews>
-                                                                        <imageView wantsLayer="YES" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="JtH-eU-lZ0">
-                                                                            <rect key="frame" x="0.0" y="3" width="15" height="15"/>
-                                                                            <constraints>
-                                                                                <constraint firstAttribute="height" constant="20" id="Rrq-pP-azU"/>
-                                                                                <constraint firstAttribute="width" constant="20" id="U9q-hd-g81"/>
-                                                                            </constraints>
+                                                                        <imageView wantsLayer="YES" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="JtH-eU-lZ0">
+                                                                            <rect key="frame" x="0.0" y="2" width="15" height="15"/>
                                                                             <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="NSActionTemplate" id="rBa-Qb-5fR"/>
                                                                         </imageView>
                                                                         <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" allowsExpansionToolTips="YES" translatesAutoresizingMaskIntoConstraints="NO" id="elB-mB-tuz">
-                                                                            <rect key="frame" x="20" y="2" width="94" height="16"/>
-                                                                            <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="Table View Cell" id="Os4-7P-31B">
+                                                                            <rect key="frame" x="20" y="1" width="48" height="16"/>
+                                                                            <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="sample" id="Os4-7P-31B">
                                                                                 <font key="font" metaFont="system"/>
                                                                                 <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                                                                 <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
@@ -859,7 +855,7 @@
                                                                     </beginningViews>
                                                                     <endViews>
                                                                         <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="swa-Ni-7mH">
-                                                                            <rect key="frame" x="119" y="1" width="40" height="18"/>
+                                                                            <rect key="frame" x="119" y="0.0" width="40" height="18"/>
                                                                             <buttonCell key="cell" type="inline" title="a" bezelStyle="inline" alignment="center" enabled="NO" borderStyle="border" inset="2" id="XCm-RS-ks8">
                                                                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                                                 <font key="font" metaFont="smallSystemBold"/>
