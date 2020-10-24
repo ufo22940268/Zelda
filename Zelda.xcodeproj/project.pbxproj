@@ -16,7 +16,6 @@
 		4226D4A52537D59500CE8DB1 /* BackendAgent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4226D4A42537D59500CE8DB1 /* BackendAgent.swift */; };
 		4226D4B82538211400CE8DB1 /* Button+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4226D4B72538211400CE8DB1 /* Button+Helpers.swift */; };
 		4226D4C925385A1A00CE8DB1 /* EndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4226D4C825385A1A00CE8DB1 /* EndPoint.swift */; };
-		4226D4CF25385E3D00CE8DB1 /* EndPointListViewController+OutlineTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4226D4CE25385E3D00CE8DB1 /* EndPointListViewController+OutlineTable.swift */; };
 		4226D4D42538602F00CE8DB1 /* String+URL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4226D4D32538602F00CE8DB1 /* String+URL.swift */; };
 		424600032539A90700963B29 /* ScanLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 424600022539A90700963B29 /* ScanLog.swift */; };
 		4246FFAF25391E3400963B29 /* Combine+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4246FFAE25391E3400963B29 /* Combine+Helpers.swift */; };
@@ -34,7 +33,7 @@
 		42697CA52534402900EA6275 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 42697CA32534402900EA6275 /* Main.storyboard */; };
 		42697CB12534402900EA6275 /* ZeldaTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42697CB02534402900EA6275 /* ZeldaTests.swift */; };
 		42697CBC2534402900EA6275 /* ZeldaUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42697CBB2534402900EA6275 /* ZeldaUITests.swift */; };
-		42697CD22535245000EA6275 /* SideBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42697CD12535245000EA6275 /* SideBarViewController.swift */; };
+		42697CD22535245000EA6275 /* SidebarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42697CD12535245000EA6275 /* SidebarViewController.swift */; };
 		42697CE52535809700EA6275 /* EndPointEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42697CE42535809700EA6275 /* EndPointEditViewController.swift */; };
 		42697CEB2535817100EA6275 /* EndPointEdit.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 42697CE92535817100EA6275 /* EndPointEdit.storyboard */; };
 		42697CF825358B1900EA6275 /* MainWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42697CF725358B1900EA6275 /* MainWindowController.swift */; };
@@ -50,6 +49,7 @@
 		42A6ABBB253BDA0D0021DA90 /* JSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42A6ABBA253BDA0D0021DA90 /* JSON.swift */; };
 		42A6ABC1253CF6B90021DA90 /* EndPointDetail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 42A6ABBF253CF6B90021DA90 /* EndPointDetail.storyboard */; };
 		42A6ABCC253D3D670021DA90 /* EndPointDetailTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42A6ABCB253D3D670021DA90 /* EndPointDetailTabViewController.swift */; };
+		42CE239D254410E600D0A34C /* SidebarEmptyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42CE239C254410E600D0A34C /* SidebarEmptyViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -79,7 +79,6 @@
 		4226D4A42537D59500CE8DB1 /* BackendAgent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackendAgent.swift; sourceTree = "<group>"; };
 		4226D4B72538211400CE8DB1 /* Button+Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Button+Helpers.swift"; sourceTree = "<group>"; };
 		4226D4C825385A1A00CE8DB1 /* EndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndPoint.swift; sourceTree = "<group>"; };
-		4226D4CE25385E3D00CE8DB1 /* EndPointListViewController+OutlineTable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "EndPointListViewController+OutlineTable.swift"; sourceTree = "<group>"; };
 		4226D4D32538602F00CE8DB1 /* String+URL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+URL.swift"; sourceTree = "<group>"; };
 		424600022539A90700963B29 /* ScanLog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanLog.swift; sourceTree = "<group>"; };
 		4246FFAE25391E3400963B29 /* Combine+Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Combine+Helpers.swift"; sourceTree = "<group>"; };
@@ -103,7 +102,7 @@
 		42697CB72534402900EA6275 /* ZeldaUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ZeldaUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		42697CBB2534402900EA6275 /* ZeldaUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZeldaUITests.swift; sourceTree = "<group>"; };
 		42697CBD2534402900EA6275 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		42697CD12535245000EA6275 /* SideBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideBarViewController.swift; sourceTree = "<group>"; };
+		42697CD12535245000EA6275 /* SidebarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SidebarViewController.swift; sourceTree = "<group>"; };
 		42697CE42535809700EA6275 /* EndPointEditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndPointEditViewController.swift; sourceTree = "<group>"; };
 		42697CEA2535817100EA6275 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Zelda/Base.lproj/EndPointEdit.storyboard; sourceTree = "<group>"; };
 		42697CF725358B1900EA6275 /* MainWindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainWindowController.swift; sourceTree = "<group>"; };
@@ -118,6 +117,7 @@
 		42A6ABBA253BDA0D0021DA90 /* JSON.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSON.swift; sourceTree = "<group>"; };
 		42A6ABC0253CF6B90021DA90 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Zelda/Storyboards/Base.lproj/EndPointDetail.storyboard; sourceTree = "<group>"; };
 		42A6ABCB253D3D670021DA90 /* EndPointDetailTabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndPointDetailTabViewController.swift; sourceTree = "<group>"; };
+		42CE239C254410E600D0A34C /* SidebarEmptyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SidebarEmptyViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -168,7 +168,6 @@
 			isa = PBXGroup;
 			children = (
 				4226D49F2537C78B00CE8DB1 /* EndPointListViewController.swift */,
-				4226D4CE25385E3D00CE8DB1 /* EndPointListViewController+OutlineTable.swift */,
 				4292D875253FCB1E003DA863 /* ContentTabViewController.swift */,
 			);
 			path = EndPointList;
@@ -211,9 +210,10 @@
 				42219928253712B90090AA28 /* AppDelegate+DebugHelpers.swift */,
 				42697C9A2534402800EA6275 /* AppDelegate.swift */,
 				42697C9C2534402800EA6275 /* AppViewController.swift */,
-				42697CD12535245000EA6275 /* SideBarViewController.swift */,
+				42697CD12535245000EA6275 /* SidebarViewController.swift */,
 				42697CF725358B1900EA6275 /* MainWindowController.swift */,
 				428D114725404E9A0031233A /* ContentSplitViewController.swift */,
+				42CE239C254410E600D0A34C /* SidebarEmptyViewController.swift */,
 			);
 			path = Navigation;
 			sourceTree = "<group>";
@@ -485,7 +485,8 @@
 				422199042536E6860090AA28 /* NSManagedObjectContext+Name.swift in Sources */,
 				4246FFD72539784F00963B29 /* EndPointDetailViewController.swift in Sources */,
 				42219929253712B90090AA28 /* AppDelegate+DebugHelpers.swift in Sources */,
-				42697CD22535245000EA6275 /* SideBarViewController.swift in Sources */,
+				42697CD22535245000EA6275 /* SidebarViewController.swift in Sources */,
+				42CE239D254410E600D0A34C /* SidebarEmptyViewController.swift in Sources */,
 				42697CFD2536743D00EA6275 /* Api+Validate.swift in Sources */,
 				42697CE52535809700EA6275 /* EndPointEditViewController.swift in Sources */,
 				4262EE6D253ED5280011C416 /* EndPointDetailContainer.swift in Sources */,
@@ -493,7 +494,6 @@
 				4226D49B2537C45D00CE8DB1 /* NotificaitonCenter+Name.swift in Sources */,
 				42697CF825358B1900EA6275 /* MainWindowController.swift in Sources */,
 				42A6ABBB253BDA0D0021DA90 /* JSON.swift in Sources */,
-				4226D4CF25385E3D00CE8DB1 /* EndPointListViewController+OutlineTable.swift in Sources */,
 				428D114825404E9A0031233A /* ContentSplitViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -229,7 +229,7 @@
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 </view>
                             </tabViewItem>
-                            <tabViewItem label="返回头" identifier="" id="pnt-d7-ObL">
+                            <tabViewItem label="响应报头" identifier="" id="pnt-d7-ObL">
                                 <view key="view" id="Xr3-ai-ACT">
                                     <rect key="frame" x="10" y="33" width="580" height="354"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -280,7 +280,7 @@
                                     <viewLayoutGuide key="layoutMargins" id="Ewv-U7-0q8"/>
                                 </view>
                             </tabViewItem>
-                            <tabViewItem label="返回内容" identifier="" id="pQJ-20-JkZ">
+                            <tabViewItem label="响应数据" identifier="" id="pQJ-20-JkZ">
                                 <view key="view" id="tLs-Eq-2GV">
                                     <rect key="frame" x="10" y="33" width="580" height="354"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

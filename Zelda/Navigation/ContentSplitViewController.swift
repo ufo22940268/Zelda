@@ -14,7 +14,11 @@ protocol ContentSplit {
 }
 
 class ContentSplitViewController: NSSplitViewController, ContentSplit {
-	var type: SideBarItem!
+	var type: SideBarItem! {
+		didSet {			
+			listVC.type = self.type
+		}
+	}
 
 	lazy var listVC: IEndPointList = {
 		(splitViewItems[0].viewController as! IEndPointList)
@@ -42,12 +46,12 @@ class ContentSplitViewController: NSSplitViewController, ContentSplit {
 
 	override func viewDidLoad() {
 		super.viewDidLoad()
-		// Do view setup here.
 		listVC.detailVC = detailVC
 	}
 	
 
 	func onSwitch() {
+		if !isViewLoaded { return }
 		listVC.onSwitch()
 	}
 }

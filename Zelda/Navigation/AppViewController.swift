@@ -11,7 +11,7 @@ import Combine
 class AppViewController: NSSplitViewController {
 	// MARK: Internal
 
-	var sideBarVC: SideBarViewController!
+	var sideBarVC: SidebarViewController!
 	var listTabVC: IMainContent!
 	var detailVC: EndPointDetailTabViewController!
 
@@ -55,7 +55,7 @@ class AppViewController: NSSplitViewController {
 	// MARK: Private
 
 	private func setupViewControllers() {
-		sideBarVC = splitViewItems[0].viewController as? SideBarViewController
+		sideBarVC = splitViewItems[0].viewController as? SidebarViewController
 		listTabVC = splitViewItems[1].viewController as? IMainContent
 
 		sideBarVC.listTabVC = listTabVC
