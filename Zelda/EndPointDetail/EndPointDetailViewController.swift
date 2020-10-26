@@ -63,12 +63,13 @@ class EndPointDetailViewController: NSViewController, IEndPointDetail {
 		}
 	}
 
-	var validScanLogs: [ScanLog] {
+	var tableScanLogs: [ScanLog] {
+		let logs = self.scanLogs.sorted { $0.time > $1.time }
 		switch kind {
 		case .duration:
-			return scanLogs.filter { $0.duration > 0 }
+			return logs.filter { $0.duration > 0 }
 		case .issue:
-			return scanLogs.filter { $0.errorCount > 0 }
+			return logs.filter { $0.errorCount > 0 }
 		}
 	}
 
@@ -96,14 +97,6 @@ class EndPointDetailViewController: NSViewController, IEndPointDetail {
 		loadSpanLogs()
 
 		setupObservers()
-	}
-
-	private func setupObservers() {
-		NotificationCenter.default.publisher(for: .spanChanged)
-			.sink { [weak self] _ in
-				self?.span = ConfigStore.shared.getSpan()
-			}
-			.store(in: &cancellables)
 	}
 
 	func setIndicator(_ indicator: EndPointDetailKind) {
@@ -173,9 +166,17 @@ class EndPointDetailViewController: NSViewController, IEndPointDetail {
 
 	// MARK: Private
 
+	private func setupObservers() {
+		NotificationCenter.default.publisher(for: .spanChanged)
+			.sink { [weak self] _ in
+				self?.span = ConfigStore.shared.getSpan()
+			}
+			.store(in: &cancellables)
+	}
+
 	private func presentDetail(row: Int) {
 		let recordDetail: RecordDetailViewController = storyboard!.instantiateController(identifier: "recordDetail")
-		recordDetail.scanLogId = validScanLogs[row].id
+		recordDetail.scanLogId = tableScanLogs[row].id
 		recordDetail.title = url
 		presentAsModalWindow(recordDetail)
 	}
@@ -185,7 +186,7 @@ extension EndPointDetailViewController: NSTableViewDelegate, NSTableViewDataSour
 	func tableView(_ tableView: NSTableView, viewFor tableColumn: NSTableColumn?, row: Int) -> NSView? {
 		let identifier = tableColumn!.identifier.rawValue
 		let view = tableView.makeView(withIdentifier: NSUserInterfaceItemIdentifier(identifier), owner: self) as? NSTableCellView
-		let scanLog = validScanLogs[row]
+		let scanLog = tableScanLogs[row]
 		switch identifier {
 		case "time":
 			let formatter = DateFormatter()
@@ -207,6 +208,6 @@ extension EndPointDetailViewController: NSTableViewDelegate, NSTableViewDataSour
 	}
 
 	func numberOfRows(in tableView: NSTableView) -> Int {
-		validScanLogs.count
+		tableScanLogs.count
 	}
 }

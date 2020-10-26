@@ -33,8 +33,10 @@ struct ScanLogInTimeSpan: Codable {
 
 	// MARK: Private
 
-	private mutating func fillGap(step: TimeInterval, scanLogs: [ScanLog]) -> [ScanLog] {
+	private mutating func fillGap(step: TimeInterval, scanLogs rawScanLogs: [ScanLog]) -> [ScanLog] {
 		var newScanLogs = [ScanLog]()
+		
+		let scanLogs = rawScanLogs.sorted { $0.time < $1.time }
 		let maxTime = scanLogs.last!.time
 		for i in (0..<SCAN_LOG_COUNT).reversed() {
 			let begin = maxTime - Double(i + 1)*step
