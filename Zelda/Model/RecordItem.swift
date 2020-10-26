@@ -40,6 +40,19 @@ struct RecordItem: Decodable {
 	var failedFields: [WatchField] {
 		fields.filter { !$0.match }
 	}
+	
+	var timings: Timings
+	
+	struct Timings: Decodable {
+		var wait: TimeInterval
+		var dns: TimeInterval
+		var tcp: TimeInterval
+		var request: TimeInterval
+		var firstByte: TimeInterval
+		var download: TimeInterval
+		var total: TimeInterval
+	}
+
 }
 
 extension HttpHeader {

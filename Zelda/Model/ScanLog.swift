@@ -36,6 +36,7 @@ struct ScanLog: Identifiable, Codable {
 	var time: Date
 	var duration: TimeInterval
 	var errorCount: Int
+	
 }
 
 enum ScanLogSpan: String, CaseIterable {

@@ -8,7 +8,7 @@
 import Cocoa
 import Combine
 
-let testRecordItem = RecordItem(duration: 100, statusCode: 8, time: Date(), requestHeader: "", responseHeader: "server:nginx/1.10.2\ndate:Tue, 15 Sep 2020 11:59:29 GMT\ncontent-type:text/plain\ncontent-length:110\nlast-modified:Sun, 16 Aug 2020 23:47:44 GMT\nconnection:close\netag:\"5f39c5a0-6e\"\naccept-ranges:bytes", responseBody: "{\"a\": 1, \"b\": {\"c\": 2}}", fields: [])
+let testRecordItem = RecordItem(duration: 100, statusCode: 8, time: Date(), requestHeader: "", responseHeader: "server:nginx/1.10.2\ndate:Tue, 15 Sep 2020 11:59:29 GMT\ncontent-type:text/plain\ncontent-length:110\nlast-modified:Sun, 16 Aug 2020 23:47:44 GMT\nconnection:close\netag:\"5f39c5a0-6e\"\naccept-ranges:bytes", responseBody: "{\"a\": 1, \"b\": {\"c\": 2}}", fields: [], timings: RecordItem.Timings(wait: 0, dns: 0, tcp: 0, request: 1, firstByte: 3, download: 3, total: 4))
 
 protocol IRecordDetail {
 	var scanLogId: String! { get set }
