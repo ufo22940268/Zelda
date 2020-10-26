@@ -29,8 +29,7 @@ class EndPointListViewController: NSViewController, IEndPointList {
 
 	var endPoints: [EndPoint] = [] {
 		didSet {
-			endPointListView.reloadData()
-			self.endPointListView.expandItem(nil, expandChildren: true)
+			self.refreshView()
 		}
 	}
 
@@ -65,17 +64,21 @@ class EndPointListViewController: NSViewController, IEndPointList {
 	}
 
 	func onSwitch() {
+		refreshView()
+	}
+
+	// MARK: Private
+
+	private func refreshView() {
 		endPointListView.reloadData()
 		endPointListView.expandItem(nil, expandChildren: true)
-		
+
 		if endPointListView.numberOfRows == 0 {
 			emptyView.label = type.emptyText
 		} else {
 			emptyView.label = nil
 		}
 	}
-
-	// MARK: Private
 
 	private func setupObservers() {
 		NotificationCenter.default.publisher(for: .deleteEndPoint).sink { [weak self] notif in
@@ -153,4 +156,3 @@ extension EndPointListViewController: NSOutlineViewDataSource, NSOutlineViewDele
 		}
 	}
 }
-
