@@ -223,10 +223,55 @@
                                     </subviews>
                                 </view>
                             </tabViewItem>
-                            <tabViewItem label="请求时长" identifier="" id="uTV-qk-2ig">
-                                <view key="view" id="jqq-1J-bI4">
+                            <tabViewItem label="请求时长" identifier="" id="ZQP-yL-Ptk">
+                                <view key="view" id="Swo-AC-hZK">
                                     <rect key="frame" x="10" y="33" width="580" height="354"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    <subviews>
+                                        <scrollView borderType="none" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gRP-9X-sc2">
+                                            <rect key="frame" x="20" y="20" width="540" height="314"/>
+                                            <clipView key="contentView" drawsBackground="NO" id="N9T-YH-Vsr">
+                                                <rect key="frame" x="0.0" y="0.0" width="525" height="314"/>
+                                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                <subviews>
+                                                    <textView editable="NO" importsGraphics="NO" richText="NO" verticallyResizable="YES" smartInsertDelete="YES" id="Rln-bZ-Qc9">
+                                                        <rect key="frame" x="0.0" y="0.0" width="525" height="314"/>
+                                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                        <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                        <size key="minSize" width="525" height="314"/>
+                                                        <size key="maxSize" width="540" height="10000000"/>
+                                                        <attributedString key="textStorage">
+                                                            <fragment content="asdfwefwef:wefwef">
+                                                                <attributes>
+                                                                    <color key="NSColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                                                    <font key="NSFont" textStyle="body" name=".SFNS-Regular"/>
+                                                                    <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                                </attributes>
+                                                            </fragment>
+                                                        </attributedString>
+                                                        <color key="insertionPointColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                                    </textView>
+                                                </subviews>
+                                            </clipView>
+                                            <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="YES" id="kiC-ua-wEn">
+                                                <rect key="frame" x="-100" y="-100" width="225" height="15"/>
+                                                <autoresizingMask key="autoresizingMask"/>
+                                            </scroller>
+                                            <scroller key="verticalScroller" verticalHuggingPriority="750" horizontal="NO" id="XhT-sL-Nmh">
+                                                <rect key="frame" x="525" y="0.0" width="15" height="314"/>
+                                                <autoresizingMask key="autoresizingMask"/>
+                                            </scroller>
+                                        </scrollView>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="gRP-9X-sc2" firstAttribute="top" secondItem="9jt-5y-dPt" secondAttribute="top" id="3TC-Lc-rMB"/>
+                                        <constraint firstItem="gRP-9X-sc2" firstAttribute="leading" secondItem="9jt-5y-dPt" secondAttribute="leading" id="65C-6j-u8j"/>
+                                        <constraint firstItem="9jt-5y-dPt" firstAttribute="trailing" secondItem="gRP-9X-sc2" secondAttribute="trailing" id="bTj-LE-XFc"/>
+                                        <constraint firstItem="gRP-9X-sc2" firstAttribute="bottom" secondItem="9jt-5y-dPt" secondAttribute="bottom" id="geu-pv-Tyt"/>
+                                    </constraints>
+                                    <viewLayoutGuide key="safeArea" id="C4W-6M-sRN"/>
+                                    <viewLayoutGuide key="layoutMargins" id="9jt-5y-dPt"/>
                                 </view>
                             </tabViewItem>
                             <tabViewItem label="响应报头" identifier="" id="pnt-d7-ObL">
@@ -246,7 +291,7 @@
                                                         <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                         <size key="minSize" width="525" height="314"/>
-                                                        <size key="maxSize" width="525" height="10000000"/>
+                                                        <size key="maxSize" width="540" height="10000000"/>
                                                         <attributedString key="textStorage">
                                                             <fragment content="asdfwefwef:wefwef">
                                                                 <attributes>
@@ -297,7 +342,7 @@
                                                         <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                         <size key="minSize" width="525" height="314"/>
-                                                        <size key="maxSize" width="525" height="10000000"/>
+                                                        <size key="maxSize" width="540" height="10000000"/>
                                                         <attributedString key="textStorage">
                                                             <fragment content="sdfwef">
                                                                 <attributes>
@@ -337,6 +382,7 @@
                         <outlet property="bodyView" destination="C4i-zJ-JoC" id="e7h-Gd-YSR"/>
                         <outlet property="monitorTableView" destination="vUh-jG-SMF" id="tfV-7W-W2A"/>
                         <outlet property="responseHeaderView" destination="uSl-f6-Hcc" id="lSM-0n-PvC"/>
+                        <outlet property="timingView" destination="Rln-bZ-Qc9" id="icr-xw-k72"/>
                     </connections>
                 </viewController>
                 <customObject id="tRC-CX-BVm" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
@@ -421,7 +467,7 @@
                                                     <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                                     <prototypeCellViews>
                                                         <tableCellView identifier="value" id="EMl-B1-ujJ">
-                                                            <rect key="frame" x="193" y="0.0" width="186" height="24"/>
+                                                            <rect key="frame" x="193.5" y="0.0" width="186" height="24"/>
                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                             <subviews>
                                                                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="UgB-Ey-Z2L">

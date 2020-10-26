@@ -10,6 +10,10 @@ import Foundation
 typealias StatusCode = Int
 typealias HttpHeader = String
 
+protocol Formattable {
+	var format: String { get }
+}
+
 struct RecordItem: Decodable {
 	struct WatchField: Decodable, Identifiable {
 		var path: String
@@ -25,6 +29,22 @@ struct RecordItem: Decodable {
 		}
 	}
 
+	struct Timings: Decodable, Formattable {
+		var wait: TimeInterval
+		var dns: TimeInterval
+		var tcp: TimeInterval
+		var request: TimeInterval
+		var firstByte: TimeInterval
+		var download: TimeInterval
+		var total: TimeInterval
+
+		var format: String {
+			let metrics = [\Timings.wait, \Timings.dns, \Timings.firstByte, \Timings.total]
+			let labels = ["Wait", "DNS", "First Byte", "Total"]
+			return zip(metrics, labels).reduce("", {(str, t) in str + "\(t.1): \(self[keyPath: t.0].formatDuration)\n" })
+		}
+	}
+
 	var duration: TimeInterval
 	var statusCode: Int
 	var time: Date
@@ -33,6 +53,8 @@ struct RecordItem: Decodable {
 	var responseBody: String
 	var fields: [WatchField]
 
+	var timings: Timings
+
 	var okFields: [WatchField] {
 		fields.filter { $0.match }
 	}
@@ -40,22 +62,9 @@ struct RecordItem: Decodable {
 	var failedFields: [WatchField] {
 		fields.filter { !$0.match }
 	}
-	
-	var timings: Timings
-	
-	struct Timings: Decodable {
-		var wait: TimeInterval
-		var dns: TimeInterval
-		var tcp: TimeInterval
-		var request: TimeInterval
-		var firstByte: TimeInterval
-		var download: TimeInterval
-		var total: TimeInterval
-	}
-
 }
 
-extension HttpHeader {
+extension HttpHeader: Formattable {
 	var dict: [String: String] {
 		split(separator: "\n")
 			.map { $0.split(separator: ":") }

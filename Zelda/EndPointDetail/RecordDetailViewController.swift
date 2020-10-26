@@ -15,8 +15,6 @@ protocol IRecordDetail {
 }
 
 class RecordDetailViewController: NSViewController, IRecordDetail {
-	// MARK: Internal
-
 	enum Kind {
 		case duration
 		case issue
@@ -26,6 +24,7 @@ class RecordDetailViewController: NSViewController, IRecordDetail {
 	@Published var scanLogId: String!
 	var cancellables = Set<AnyCancellable>()
 
+	@IBOutlet var timingView: NSTextView!
 	@IBOutlet var monitorTableView: NSTableView!
 	@IBOutlet var responseHeaderView: NSTextView!
 	@IBOutlet var bodyView: NSTextView!
@@ -43,12 +42,11 @@ class RecordDetailViewController: NSViewController, IRecordDetail {
 			}
 			.map { v -> RecordItem? in v }
 			.replaceError(with: nil)
-			.sink { [weak self] (recordItem) in
+			.sink { [weak self] recordItem in
 				self?.recordItem = recordItem
 				self?.monitorTableView.reloadData()
 			}
 			.store(in: &cancellables)
-		
 
 		$recordItem
 			.filter { $0 != nil }
@@ -59,19 +57,13 @@ class RecordDetailViewController: NSViewController, IRecordDetail {
 
 		responseHeaderView.textContainerInset = .init(width: 8, height: 8)
 		bodyView.textContainerInset = .init(width: 8, height: 8)
+		timingView.textContainerInset = .init(width: 8, height: 8)
 	}
 
 	func loadRecordItem(_ recordItem: RecordItem) {
 		responseHeaderView.string = recordItem.responseHeader.format
 		bodyView.string = recordItem.responseBody.jsonPrettify ?? ""
-	}
-
-	// MARK: Private
-
-	private func makeTextCell(str: String) -> NSTextField {
-		let tf = NSTextField(labelWithString: str)
-		tf.font = .toolTipsFont(ofSize: 12)
-		return tf
+		timingView.string = recordItem.timings.format
 	}
 }
 
