@@ -94,6 +94,16 @@ class EndPointDetailViewController: NSViewController, IEndPointDetail {
 			.store(in: &cancellables)
 
 		loadSpanLogs()
+
+		setupObservers()
+	}
+
+	private func setupObservers() {
+		NotificationCenter.default.publisher(for: .spanChanged)
+			.sink { [weak self] _ in
+				self?.span = ConfigStore.shared.getSpan()
+			}
+			.store(in: &cancellables)
 	}
 
 	func setIndicator(_ indicator: EndPointDetailKind) {
@@ -117,8 +127,7 @@ class EndPointDetailViewController: NSViewController, IEndPointDetail {
 		ds1.colors = ChartColorTemplates.material()
 		data.addDataSet(ds1)
 
-		let barWidth = 0.4
-
+		let barWidth = 0.2
 		data.barWidth = barWidth
 		chartView.xAxis.valueFormatter = IndexAxisValueFormatter(values: span.indexes(last: scanlogs.last!.time))
 		chartView.leftAxis.drawLabelsEnabled = false
@@ -136,11 +145,11 @@ class EndPointDetailViewController: NSViewController, IEndPointDetail {
 		guard detailTableView.selectedRow != -1 else { return }
 		presentDetail(row: detailTableView.selectedRow)
 	}
-	
+
 	@IBAction func onClickInfo(_ sender: NSButton) {
 		presentDetail(row: Int(sender.identifier!.rawValue)!)
 	}
-	
+
 	// MARK: Fileprivate
 
 	fileprivate func loadSpanLogs() {

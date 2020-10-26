@@ -50,6 +50,8 @@ enum ScanLogSpan: String, CaseIterable {
 
 	// MARK: Internal
 
+	static let `default` = Self.today
+
 	var step: TimeInterval {
 		switch self {
 		case .today:
@@ -66,10 +68,9 @@ enum ScanLogSpan: String, CaseIterable {
 			formatter.dateFormat = .none
 			formatter.timeStyle = .short
 			return (0 ..< SCAN_LOG_COUNT).reversed().map { formatter.string(from: date - step*Double($0)) }
-		default:
+		default:
 			let formatter = DateFormatter()
-			formatter.dateStyle = .short
-			formatter.timeStyle = .none
+			formatter.dateFormat = "MM-dd"
 			return (0 ..< SCAN_LOG_COUNT).reversed().map { formatter.string(from: date - step*Double($0)) }
 		}
 	}

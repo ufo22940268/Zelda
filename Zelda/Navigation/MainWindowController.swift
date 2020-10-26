@@ -26,6 +26,8 @@ class MainWindowController: NSWindowController {
 
 	@IBAction func onSelectSpan(_ button: NSPopUpButton) {
 		let span = ScanLogSpan(id: button.selectedItem!.identifier!.rawValue)
-		sideBarVC.onSelectSpan(span)
+		
+		ConfigStore.shared.set(range: span)
+		NotificationCenter.default.post(.init(name: .spanChanged))
 	}
 }

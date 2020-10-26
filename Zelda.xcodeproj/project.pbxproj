@@ -50,6 +50,7 @@
 		42A6ABC1253CF6B90021DA90 /* EndPointDetail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 42A6ABBF253CF6B90021DA90 /* EndPointDetail.storyboard */; };
 		42A6ABCC253D3D670021DA90 /* EndPointDetailTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42A6ABCB253D3D670021DA90 /* EndPointDetailTabViewController.swift */; };
 		42CE239D254410E600D0A34C /* SidebarEmptyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42CE239C254410E600D0A34C /* SidebarEmptyViewController.swift */; };
+		42F613E62545421F004C5DE5 /* ConfigStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42F613E52545421F004C5DE5 /* ConfigStore.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -118,6 +119,7 @@
 		42A6ABC0253CF6B90021DA90 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Zelda/Storyboards/Base.lproj/EndPointDetail.storyboard; sourceTree = "<group>"; };
 		42A6ABCB253D3D670021DA90 /* EndPointDetailTabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndPointDetailTabViewController.swift; sourceTree = "<group>"; };
 		42CE239C254410E600D0A34C /* SidebarEmptyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SidebarEmptyViewController.swift; sourceTree = "<group>"; };
+		42F613E52545421F004C5DE5 /* ConfigStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigStore.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -191,6 +193,7 @@
 				4226D4D32538602F00CE8DB1 /* String+URL.swift */,
 				4246FFAE25391E3400963B29 /* Combine+Helpers.swift */,
 				42A6ABBA253BDA0D0021DA90 /* JSON.swift */,
+				42F613E52545421F004C5DE5 /* ConfigStore.swift */,
 			);
 			path = Tools;
 			sourceTree = "<group>";
@@ -463,6 +466,7 @@
 				428D117C25418F6B0031233A /* EndPointDetailContainerViewController.swift in Sources */,
 				4226D4A52537D59500CE8DB1 /* BackendAgent.swift in Sources */,
 				4262EE54253EC0440011C416 /* ScanLogInTimeSpan.swift in Sources */,
+				42F613E62545421F004C5DE5 /* ConfigStore.swift in Sources */,
 				42697C9D2534402800EA6275 /* AppViewController.swift in Sources */,
 				424600032539A90700963B29 /* ScanLog.swift in Sources */,
 				42A6ABCC253D3D670021DA90 /* EndPointDetailTabViewController.swift in Sources */,
