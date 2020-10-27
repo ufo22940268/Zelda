@@ -703,7 +703,7 @@
                                     <size key="minSize" width="40.5" height="29"/>
                                     <size key="maxSize" width="40.5" height="29"/>
                                     <connections>
-                                        <segue destination="6RC-Gq-vJE" kind="sheet" identifier="add" id="FGf-a9-FNV"/>
+                                        <segue destination="6RC-Gq-vJE" kind="modal" identifier="add" id="FGf-a9-FNV"/>
                                     </connections>
                                 </toolbarItem>
                                 <toolbarItem implicitItemIdentifier="1A4BA36D-980D-4FAB-938C-1A8C08AB6230" label="Custom View" paletteLabel="Custom View" id="TYk-6g-8sC">
@@ -798,10 +798,10 @@
             </objects>
             <point key="canvasLocation" x="-114" y="774"/>
         </scene>
-        <!--addEndPoint-->
+        <!--EndPointEdit-->
         <scene sceneID="j0y-cV-ttg">
             <objects>
-                <controllerPlaceholder storyboardName="EndPointEdit" referencedIdentifier="addEndPoint" id="6RC-Gq-vJE" sceneMemberID="viewController"/>
+                <controllerPlaceholder storyboardName="EndPointEdit" id="6RC-Gq-vJE" sceneMemberID="viewController"/>
                 <customObject id="HDe-hC-9od" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="687" y="437"/>

@@ -9,9 +9,8 @@
         <scene sceneID="9H5-H3-HHU">
             <objects>
                 <windowController id="7pg-A8-NyK" sceneMemberID="viewController">
-                    <window key="window" title="添加监控" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" titlebarAppearsTransparent="YES" id="ik5-DH-Yxx">
+                    <window key="window" title="添加监控" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" animationBehavior="alertPanel" frameAutosaveName="" toolbarStyle="unified" id="ik5-DH-Yxx">
                         <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES"/>
-                        <windowCollectionBehavior key="collectionBehavior" fullScreenPrimary="YES"/>
                         <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
                         <rect key="contentRect" x="425" y="462" width="480" height="270"/>
                         <rect key="screenRect" x="0.0" y="0.0" width="2560" height="1415"/>
