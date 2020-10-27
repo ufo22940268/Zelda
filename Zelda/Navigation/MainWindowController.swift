@@ -40,7 +40,7 @@ class MainWindowController: NSWindowController {
 	}
 
 	@IBAction func onStartRefresh(_ sender: NSToolbarItem) {
-		NotificationCenter.default.post(.init(name: .startRefresh))
 		startRefreshButton.isEnabled = false
+		NotificationCenter.default.post(.init(name: .startRefresh))
 	}
 }

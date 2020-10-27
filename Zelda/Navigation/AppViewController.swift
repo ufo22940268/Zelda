@@ -46,6 +46,7 @@ class AppViewController: NSSplitViewController {
 			.sink { [weak self] endPoints in
 				self?.listTabVC.endPoints = endPoints
 				self?.sideBarVC.endPoints = endPoints
+				NotificationCenter.default.post(.init(name: .refreshEnded))
 			}
 			.store(in: &cancellables)
 
@@ -55,7 +56,7 @@ class AppViewController: NSSplitViewController {
 			}
 			.store(in: &cancellables)
 
-		let timer = Timer.TimerPublisher(interval: 20, runLoop: .main, mode: .common)
+		let timer = Timer.TimerPublisher(interval: 30, runLoop: .main, mode: .common)
 
 		timer
 			.receive(on: DispatchQueue.global(qos: .background))

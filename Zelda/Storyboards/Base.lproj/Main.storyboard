@@ -692,7 +692,7 @@
                         <rect key="screenRect" x="0.0" y="0.0" width="2560" height="1415"/>
                         <toolbar key="toolbar" implicitIdentifier="98B97C19-1460-4DDF-8240-9CAEFEA814FE" centeredItem="Ibe-Xe-Zun" autosavesConfiguration="NO" displayMode="iconOnly" sizeMode="regular" id="Abf-lY-QYw" customClass="Toolbar" customModule="Zelda" customModuleProvider="target">
                             <allowedToolbarItems>
-                                <toolbarItem implicitItemIdentifier="0503002C-57DB-4208-8423-547248B65746" label="刷新" paletteLabel="刷新" tag="-1" image="arrow.clockwise" catalog="system" id="C8v-Bs-bpO">
+                                <toolbarItem implicitItemIdentifier="0503002C-57DB-4208-8423-547248B65746" label="刷新" paletteLabel="刷新" tag="-1" image="arrow.clockwise" catalog="system" autovalidates="NO" id="C8v-Bs-bpO">
                                     <size key="minSize" width="33.5" height="29"/>
                                     <size key="maxSize" width="33.5" height="29"/>
                                     <connections>
