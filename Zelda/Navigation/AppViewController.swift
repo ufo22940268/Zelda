@@ -31,10 +31,12 @@ class AppViewController: NSSplitViewController {
 		setupViewControllers()
 
 		syncSubject
+			.throttle(for: 10, scheduler: DispatchQueue.global(), latest: true)
 			.flatMap { () in
 				BackendAgent.default.listEndPoints()
 			}
 			.replaceError(with: [])
+			.receive(on: DispatchQueue.main, options: nil)
 			.assign(to: &$endPoints)
 
 		syncSubject.send()
@@ -46,11 +48,23 @@ class AppViewController: NSSplitViewController {
 				self?.sideBarVC.endPoints = endPoints
 			}
 			.store(in: &cancellables)
-		
+
 		NotificationCenter.default.publisher(for: .startRefresh)
-			.sink { [weak self](_) in
+			.sink { [weak self] _ in
 				self?.syncSubject.send()
 			}
+			.store(in: &cancellables)
+
+		let timer = Timer.TimerPublisher(interval: 20, runLoop: .main, mode: .common)
+
+		timer
+			.receive(on: DispatchQueue.global(qos: .background))
+			.sink { [weak self] _ in
+				self?.syncSubject.send()
+			}
+			.store(in: &cancellables)
+
+		timer.connect()
 			.store(in: &cancellables)
 	}
 
