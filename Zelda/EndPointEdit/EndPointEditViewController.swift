@@ -96,8 +96,8 @@ class EndPointEditViewController: NSViewController, NSTextFieldDelegate {
 			.handleEvents(receiveOutput: { [weak self] _ in
 				self?.confirmButton.isEnabled = true
 			})
-			.sink(receiveCompletion: { _ in }, receiveValue: {
-				self.presentingViewController?.dismiss(self)
+			.sink(receiveCompletion: { _ in }, receiveValue: { [weak self]() in
+				self?.view.window?.close()
 			})
 			.store(in: &cancellables)
 	}
@@ -132,7 +132,9 @@ class EndPointEditViewController: NSViewController, NSTextFieldDelegate {
 	}
 
 	@IBAction func onCancel(_ sender: Any) {
-		presentingViewController?.dismiss(self)
+//		dismiss(self)
+		self.view.window?.close()
+//		presentingViewController?.dismiss(self)
 	}
 
 	func isDuplicated(url: String) -> Bool {

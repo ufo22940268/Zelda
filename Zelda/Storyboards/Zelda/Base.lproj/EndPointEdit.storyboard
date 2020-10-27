@@ -92,29 +92,6 @@
                                     </gridCell>
                                 </gridCells>
                             </gridView>
-                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="d6l-a4-Ys8">
-                                <rect key="frame" x="468" y="13" width="61" height="32"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="47" id="Uo2-dA-zsd"/>
-                                </constraints>
-                                <buttonCell key="cell" type="push" title="取消" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="qkj-bZ-eEG">
-                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                    <font key="font" metaFont="system"/>
-                                    <connections>
-                                        <action selector="onCancel:" target="EuP-jN-LuZ" id="IJO-2x-Y0q"/>
-                                    </connections>
-                                </buttonCell>
-                            </button>
-                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="NeC-7W-9m7">
-                                <rect key="frame" x="534" y="13" width="61" height="32"/>
-                                <buttonCell key="cell" type="push" title="确定" bezelStyle="rounded" alignment="center" enabled="NO" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="FAu-Pn-kpr">
-                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                    <font key="font" metaFont="system"/>
-                                </buttonCell>
-                                <connections>
-                                    <action selector="onConfirm:" target="EuP-jN-LuZ" id="1L0-0Z-NQ8"/>
-                                </connections>
-                            </button>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="T1c-3a-kA1">
                                 <rect key="frame" x="48" y="341" width="101" height="16"/>
                                 <textFieldCell key="cell" lineBreakMode="clipping" title="可以监控的字段:" id="74O-7b-VyH">
@@ -123,6 +100,20 @@
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
+                            <box verticalHuggingPriority="750" boxType="separator" id="Q69-zA-ZZv">
+                                <rect key="frame" x="0.0" y="37" width="608" height="5"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES"/>
+                            </box>
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="NeC-7W-9m7">
+                                <rect key="frame" x="534" y="4" width="61" height="32"/>
+                                <buttonCell key="cell" type="push" title="确定" bezelStyle="rounded" alignment="center" enabled="NO" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="FAu-Pn-kpr">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="onConfirm:" target="EuP-jN-LuZ" id="1L0-0Z-NQ8"/>
+                                </connections>
+                            </button>
                             <scrollView autohidesScrollers="YES" horizontalLineScroll="24" horizontalPageScroll="10" verticalLineScroll="24" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fGN-6H-9eo">
                                 <rect key="frame" x="49" y="88" width="510" height="245"/>
                                 <clipView key="contentView" id="COB-6C-HVC">
@@ -196,20 +187,33 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableHeaderView>
                             </scrollView>
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="d6l-a4-Ys8">
+                                <rect key="frame" x="475" y="4" width="61" height="32"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="47" id="Uo2-dA-zsd"/>
+                                </constraints>
+                                <buttonCell key="cell" type="push" title="取消" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="qkj-bZ-eEG">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                    <connections>
+                                        <action selector="onCancel:" target="EuP-jN-LuZ" id="IJO-2x-Y0q"/>
+                                    </connections>
+                                </buttonCell>
+                            </button>
                         </subviews>
                         <constraints>
                             <constraint firstItem="fGN-6H-9eo" firstAttribute="top" secondItem="T1c-3a-kA1" secondAttribute="bottom" constant="8" symbolic="YES" id="3Xi-dN-1Vq"/>
                             <constraint firstItem="N4D-Vg-u2R" firstAttribute="centerX" secondItem="7ha-wJ-Huq" secondAttribute="centerX" id="4ZD-7w-I0K"/>
-                            <constraint firstItem="d6l-a4-Ys8" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="7ha-wJ-Huq" secondAttribute="leading" constant="475" id="4rE-rJ-54q"/>
+                            <constraint firstItem="d6l-a4-Ys8" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="7ha-wJ-Huq" secondAttribute="leading" constant="468" id="4rE-rJ-54q"/>
                             <constraint firstItem="fGN-6H-9eo" firstAttribute="centerX" secondItem="7ha-wJ-Huq" secondAttribute="centerX" id="B6M-fF-Ko5"/>
                             <constraint firstAttribute="trailing" secondItem="NeC-7W-9m7" secondAttribute="trailing" constant="20" symbolic="YES" id="DNr-2q-le4"/>
-                            <constraint firstItem="NeC-7W-9m7" firstAttribute="leading" secondItem="d6l-a4-Ys8" secondAttribute="trailing" constant="19" id="Jrn-K2-M0a"/>
+                            <constraint firstItem="NeC-7W-9m7" firstAttribute="leading" secondItem="d6l-a4-Ys8" secondAttribute="trailing" constant="12" id="Jrn-K2-M0a"/>
                             <constraint firstItem="d6l-a4-Ys8" firstAttribute="baseline" secondItem="NeC-7W-9m7" secondAttribute="baseline" id="Nae-0H-dDZ"/>
                             <constraint firstItem="N4D-Vg-u2R" firstAttribute="top" secondItem="7ha-wJ-Huq" secondAttribute="top" constant="20" symbolic="YES" id="UcP-Nl-pHv"/>
                             <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="T1c-3a-kA1" secondAttribute="trailing" constant="20" symbolic="YES" id="YRM-yO-73L"/>
                             <constraint firstItem="T1c-3a-kA1" firstAttribute="leading" secondItem="7ha-wJ-Huq" secondAttribute="leading" constant="50" id="k8r-mB-UrI"/>
                             <constraint firstItem="NeC-7W-9m7" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="7ha-wJ-Huq" secondAttribute="leading" constant="20" symbolic="YES" id="n6Q-as-fzp"/>
-                            <constraint firstAttribute="bottom" secondItem="NeC-7W-9m7" secondAttribute="bottom" constant="20" symbolic="YES" id="nTY-uT-gMV"/>
+                            <constraint firstAttribute="bottom" secondItem="NeC-7W-9m7" secondAttribute="bottom" constant="11" id="nTY-uT-gMV"/>
                             <constraint firstItem="T1c-3a-kA1" firstAttribute="top" secondItem="N4D-Vg-u2R" secondAttribute="bottom" constant="20" id="wBm-I8-t5O"/>
                         </constraints>
                     </view>
@@ -221,7 +225,7 @@
                 </viewController>
                 <customObject id="KtC-ds-7VR" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-585.5" y="1084.5"/>
+            <point key="canvasLocation" x="-586" y="1084.5"/>
         </scene>
     </scenes>
 </document>
