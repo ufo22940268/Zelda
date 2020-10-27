@@ -12,4 +12,6 @@ extension NSNotification.Name {
 	static let deleteEndPoint = Self("deleteEndPoint")
 	static let loadScanLog = Self("loadScanLog")
 	static let spanChanged = Self("spanChanged")
+	static let startRefresh = Self("startRefresh")
+	static let refreshEnded = Self("refreshEnded")
 }

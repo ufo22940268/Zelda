@@ -402,7 +402,7 @@
                                 <rect key="frame" x="20" y="113" width="435" height="157"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="157" id="7yr-Tz-eps"/>
-                                    <constraint firstAttribute="width" constant="435" id="XCQ-ph-hF3"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="435" id="XCQ-ph-hF3"/>
                                 </constraints>
                             </customView>
                             <scrollView autohidesScrollers="YES" horizontalLineScroll="24" horizontalPageScroll="10" verticalLineScroll="24" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bcw-31-lHP" userLabel="Bordered Scroll View">
@@ -467,7 +467,7 @@
                                                     <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                                     <prototypeCellViews>
                                                         <tableCellView identifier="value" id="EMl-B1-ujJ">
-                                                            <rect key="frame" x="193.5" y="0.0" width="186" height="24"/>
+                                                            <rect key="frame" x="193" y="0.0" width="186" height="24"/>
                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                             <subviews>
                                                                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="UgB-Ey-Z2L">
@@ -578,7 +578,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="thm-hp-Cj7"/>
+        <segue reference="3ds-9y-DgU"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="info.circle" catalog="system" width="15" height="15"/>

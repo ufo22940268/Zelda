@@ -2,7 +2,6 @@
 <document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="17506" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="17506"/>
-        <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="NSView safe area layout guides" minToolsVersion="12.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -691,15 +690,16 @@
                         <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
                         <rect key="contentRect" x="196" y="240" width="480" height="270"/>
                         <rect key="screenRect" x="0.0" y="0.0" width="2560" height="1415"/>
-                        <toolbar key="toolbar" implicitIdentifier="98B97C19-1460-4DDF-8240-9CAEFEA814FE" autosavesConfiguration="NO" displayMode="iconOnly" sizeMode="regular" id="Abf-lY-QYw" customClass="Toolbar" customModule="Zelda" customModuleProvider="target">
+                        <toolbar key="toolbar" implicitIdentifier="98B97C19-1460-4DDF-8240-9CAEFEA814FE" centeredItem="Ibe-Xe-Zun" autosavesConfiguration="NO" displayMode="iconOnly" sizeMode="regular" id="Abf-lY-QYw" customClass="Toolbar" customModule="Zelda" customModuleProvider="target">
                             <allowedToolbarItems>
-                                <toolbarItem implicitItemIdentifier="0503002C-57DB-4208-8423-547248B65746" label="刷新" paletteLabel="刷新" tag="-1" id="C8v-Bs-bpO">
-                                    <imageReference key="image" image="arrow.clockwise" catalog="system" symbolScale="large"/>
-                                    <size key="minSize" width="40.5" height="33"/>
-                                    <size key="maxSize" width="40.5" height="33"/>
+                                <toolbarItem implicitItemIdentifier="0503002C-57DB-4208-8423-547248B65746" label="刷新" paletteLabel="刷新" tag="-1" image="arrow.clockwise" catalog="system" id="C8v-Bs-bpO">
+                                    <size key="minSize" width="33.5" height="29"/>
+                                    <size key="maxSize" width="33.5" height="29"/>
+                                    <connections>
+                                        <action selector="onStartRefresh:" target="B8D-0N-5wS" id="ZDV-cR-czu"/>
+                                    </connections>
                                 </toolbarItem>
-                                <toolbarItem implicitItemIdentifier="3D7F07FF-A2E6-485E-BBF8-4980EADA968C" label="添加" paletteLabel="添加" tag="-1" id="Ibe-Xe-Zun">
-                                    <imageReference key="image" image="plus" catalog="system" symbolScale="medium"/>
+                                <toolbarItem implicitItemIdentifier="3D7F07FF-A2E6-485E-BBF8-4980EADA968C" label="添加" paletteLabel="添加" tag="-1" image="plus" catalog="system" id="Ibe-Xe-Zun">
                                     <size key="minSize" width="40.5" height="29"/>
                                     <size key="maxSize" width="40.5" height="29"/>
                                     <connections>
@@ -740,6 +740,7 @@
                         </connections>
                     </window>
                     <connections>
+                        <outlet property="startRefreshButton" destination="C8v-Bs-bpO" id="HcQ-60-y8L"/>
                         <segue destination="2yY-zz-OLv" kind="relationship" relationship="window.shadowedContentViewController" id="5gV-hz-ux9"/>
                     </connections>
                 </windowController>
@@ -1124,7 +1125,7 @@
     </inferredMetricsTieBreakers>
     <resources>
         <image name="NSActionTemplate" width="15" height="15"/>
-        <image name="arrow.clockwise" catalog="system" width="17" height="20"/>
+        <image name="arrow.clockwise" catalog="system" width="14" height="16"/>
         <image name="plus" catalog="system" width="14" height="13"/>
     </resources>
 </document>

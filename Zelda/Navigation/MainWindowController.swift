@@ -6,16 +6,24 @@
 //
 
 import Cocoa
+import Combine
 
 class MainWindowController: NSWindowController {
+	@IBOutlet var startRefreshButton: NSToolbarItem!
+	var cancellables = Set<AnyCancellable>()
+
 	var sideBarVC: AppViewController {
 		contentViewController as! AppViewController
 	}
 
 	override func windowDidLoad() {
 		super.windowDidLoad()
-
-		// Implement this method to handle any initialization after your window controller's window has been loaded from its nib file.
+		
+		NotificationCenter.default.publisher(for: .refreshEnded)
+			.sink { [weak self] (_) in
+				self?.startRefreshButton.isEnabled = true
+			}
+			.store(in: &cancellables)
 	}
 
 	override func prepare(for segue: NSStoryboardSegue, sender: Any?) {
@@ -26,8 +34,13 @@ class MainWindowController: NSWindowController {
 
 	@IBAction func onSelectSpan(_ button: NSPopUpButton) {
 		let span = ScanLogSpan(id: button.selectedItem!.identifier!.rawValue)
-		
+
 		ConfigStore.shared.set(range: span)
 		NotificationCenter.default.post(.init(name: .spanChanged))
+	}
+
+	@IBAction func onStartRefresh(_ sender: NSToolbarItem) {
+		NotificationCenter.default.post(.init(name: .startRefresh))
+		startRefreshButton.isEnabled = false
 	}
 }

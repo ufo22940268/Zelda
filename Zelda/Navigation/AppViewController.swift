@@ -46,10 +46,12 @@ class AppViewController: NSSplitViewController {
 				self?.sideBarVC.endPoints = endPoints
 			}
 			.store(in: &cancellables)
-	}
-
-	func onSelectSpan(_ span: ScanLogSpan) {
-//		listVC.detailVC.onSelectSpan(span)
+		
+		NotificationCenter.default.publisher(for: .startRefresh)
+			.sink { [weak self](_) in
+				self?.syncSubject.send()
+			}
+			.store(in: &cancellables)
 	}
 
 	// MARK: Private
