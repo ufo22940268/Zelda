@@ -145,7 +145,7 @@ class EndPointEditViewController: NSViewController, NSTextFieldDelegate {
 
 	private func load(apiData: [String: String]) {
 		self.apiData = apiData
-		tableView.reloadData()
+//		tableView.reloadData()
 	}
 }
 
