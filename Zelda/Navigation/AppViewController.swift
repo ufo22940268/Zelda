@@ -56,7 +56,7 @@ class AppViewController: NSSplitViewController {
 			}
 			.store(in: &cancellables)
 
-		let timer = Timer.TimerPublisher(interval: 30, runLoop: .main, mode: .common)
+		let timer = Timer.TimerPublisher(interval: 60, runLoop: .main, mode: .common)
 
 		timer
 			.receive(on: DispatchQueue.global(qos: .background))
