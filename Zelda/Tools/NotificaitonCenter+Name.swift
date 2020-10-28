@@ -14,4 +14,6 @@ extension NSNotification.Name {
 	static let spanChanged = Self("spanChanged")
 	static let startRefresh = Self("startRefresh")
 	static let refreshEnded = Self("refreshEnded")
+	
+	static let endPointEditTableChanged = Self("endPointEditTableChanged")
 }

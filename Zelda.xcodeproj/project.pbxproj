@@ -51,6 +51,7 @@
 		42A6ABCC253D3D670021DA90 /* EndPointDetailTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42A6ABCB253D3D670021DA90 /* EndPointDetailTabViewController.swift */; };
 		42CE239D254410E600D0A34C /* SidebarEmptyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42CE239C254410E600D0A34C /* SidebarEmptyViewController.swift */; };
 		42F613E62545421F004C5DE5 /* ConfigStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42F613E52545421F004C5DE5 /* ConfigStore.swift */; };
+		42F614A9254917C1004C5DE5 /* RequestParamsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42F614A8254917C1004C5DE5 /* RequestParamsViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -120,6 +121,7 @@
 		42A6ABCB253D3D670021DA90 /* EndPointDetailTabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndPointDetailTabViewController.swift; sourceTree = "<group>"; };
 		42CE239C254410E600D0A34C /* SidebarEmptyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SidebarEmptyViewController.swift; sourceTree = "<group>"; };
 		42F613E52545421F004C5DE5 /* ConfigStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigStore.swift; sourceTree = "<group>"; };
+		42F614A8254917C1004C5DE5 /* RequestParamsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestParamsViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -320,6 +322,7 @@
 			children = (
 				42697CE42535809700EA6275 /* EndPointEditViewController.swift */,
 				4221991A2536EC0D0090AA28 /* EndPointEditType.swift */,
+				42F614A8254917C1004C5DE5 /* RequestParamsViewController.swift */,
 			);
 			path = EndPointEdit;
 			sourceTree = "<group>";
@@ -497,6 +500,7 @@
 				4226D4C925385A1A00CE8DB1 /* EndPoint.swift in Sources */,
 				4226D49B2537C45D00CE8DB1 /* NotificaitonCenter+Name.swift in Sources */,
 				42697CF825358B1900EA6275 /* MainWindowController.swift in Sources */,
+				42F614A9254917C1004C5DE5 /* RequestParamsViewController.swift in Sources */,
 				42A6ABBB253BDA0D0021DA90 /* JSON.swift in Sources */,
 				428D114825404E9A0031233A /* ContentSplitViewController.swift in Sources */,
 			);

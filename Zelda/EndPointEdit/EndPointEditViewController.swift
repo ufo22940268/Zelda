@@ -11,15 +11,7 @@ import Combine
 class EndPointEditViewController: NSViewController, NSTextFieldDelegate {
 	// MARK: Internal
 
-//	var endPointToUpsert: EndPointReq? {
-//		EndPointReq(url: url, watchFields: apiDataArray.filter { watchPathsSubject.value.contains($0.0) }.map { path, value in EndPointReq.WatchField(path: path, value: value) })
-//	}
-
-	struct Query {
-		var key: String
-		var value: String
-	}
-
+	@IBOutlet var urlView: NSTextField!
 	@Published var url: String = ""
 	var validateResultSubject = CurrentValueSubject<ValidateURLResult, Never>(.initial)
 	var apiData = [String: String]()
@@ -27,8 +19,7 @@ class EndPointEditViewController: NSViewController, NSTextFieldDelegate {
 	var watchPathsSubject = CurrentValueSubject<Set<String>, Never>(Set<String>())
 	var saveSubject = PassthroughSubject<EndPointReq, Never>()
 	var cancellables = Set<AnyCancellable>()
-	var queries = [Query]()
-	@IBOutlet var queryTableView: NSTableView!
+	var queryTable: ParamTable!
 
 	@IBOutlet var confirmButton: NSButton!
 	var type = EndPointEditType.edit
@@ -37,76 +28,15 @@ class EndPointEditViewController: NSViewController, NSTextFieldDelegate {
 		type.context
 	}
 
+	var queries: [QueryParam] {
+		queryTable.params
+	}
+
 	override func viewDidLoad() {
 		super.viewDidLoad()
 
 		confirmButton.setPrimary()
-		$url
-			.map { [weak self] url -> String in
-				guard let self = self else { return "" }
-				if !self.validateResultSubject.value.isProcessing, self.validateResultSubject.value != .initial {
-					self.validateResultSubject.send(.pending)
-				}
-
-				return url
-			}
-			.filter { !$0.isEmpty }
-			.debounce(for: 1, scheduler: DispatchQueue.main)
-			.flatMap { [weak self] url -> AnyPublisher<ValidateURLResult, Never> in
-				guard let self = self else { return Just(ValidateURLResult.duplicatedUrl).eraseToAnyPublisher() }
-				if self.isDuplicated(url: url) {
-					return Just(ValidateURLResult.duplicatedUrl).eraseToAnyPublisher()
-				} else {
-					return ApiHelper.validate(url: url).eraseToAnyPublisher()
-				}
-			}
-			.receive(on: DispatchQueue.main)
-			.subscribe(validateResultSubject)
-			.store(in: &cancellables)
-
-		validateResultSubject.sink { [weak self] result in
-			guard let self = self else { return }
-
-			if case .ok(let json) = result {
-				self.load(apiData: json.convertToPathMap())
-				self.confirmButton.isEnabled = true
-			} else {
-				self.load(apiData: [String: String]())
-				self.confirmButton.isEnabled = false
-			}
-		}.store(in: &cancellables)
-
-		validateResultSubject.combineLatest(watchPathsSubject)
-			.sink { [weak self] ar in
-				let (result, watch) = ar
-				if case .ok = result, watch.count > 0 {
-					self?.confirmButton.isEnabled = true
-				} else {
-					self?.confirmButton.isEnabled = false
-				}
-			}
-			.store(in: &cancellables)
-
-		saveSubject
-			.debounce(for: 1, scheduler: DispatchQueue.main)
-			.handleEvents(receiveOutput: { [weak self] _ in
-				DispatchQueue.main.async {
-					self?.confirmButton.isEnabled = false
-				}
-			})
-			.flatMap { endPoint in
-				BackendAgent.default.upsert(endPoint: endPoint)
-			}
-			.receive(on: DispatchQueue.main, options: nil)
-			.handleEvents(receiveOutput: { [weak self] _ in
-				self?.confirmButton.isEnabled = true
-			})
-			.sink(receiveCompletion: { _ in }, receiveValue: { [weak self] () in
-				self?.view.window?.close()
-			})
-			.store(in: &cancellables)
-
-		queries = [Query(key: "a", value: "b"), Query(key: "c", value: "d")]
+		setupObservers()
 	}
 
 	func controlTextDidChange(_ obj: Notification) {
@@ -114,69 +44,47 @@ class EndPointEditViewController: NSViewController, NSTextFieldDelegate {
 		url = field.stringValue
 	}
 
-//	@IBAction func onConfirm(_ sender: Any) {
-//		if let endPointToUpsert = endPointToUpsert {
-//			saveSubject.send(endPointToUpsert)
-//		}
-//	}
-//
-//	func saveEndPoint() -> NSManagedObjectID {
-//		let ep = EndPointEntity(context: context)
-//		ep.url = url
-//
-//		for api in apiDataArray.filter({ watchPathsSubject.value.contains($0.0) }) {
-//			let (path, value) = api
-//			let apiEntity = ApiEntity(context: context)
-//			apiEntity.endPoint = ep
-//			apiEntity.paths = path
-//			apiEntity.value = value
-//		}
-//
-//		try! context.save()
-//		try! context.parent!.save()
-//
-//		return ep.objectID
-//	}
-
-	@IBAction func onTextEdit(_ sender: Any) {
-		print("onTextEdit")
-	}
-
-	@IBAction func onUpdateQueryParams(_ sender: NSSegmentedCell) {
-		if sender.selectedSegment == 1 {
-			// Delete
-			if queryTableView.selectedRow > 0 {
-				queries.remove(at: queryTableView.selectedRow)
-				queryTableView.reloadData()
-			}
-		} else if sender.selectedSegment == 0 {
-			// Add
-			queryTableView.beginUpdates()
-			queryTableView.insertRows(at: IndexSet(integer: queries.count), withAnimation: .effectFade)
-			queryTableView.endUpdates()
-			queryTableView.editColumn(0, row: queries.count, with: nil, select: true)
-		}
-	}
-
 	func tableView(_ tableView: NSTableView, setObjectValue object: Any?, for tableColumn: NSTableColumn?, row: Int) {
 		print(object)
 	}
 
 	@IBAction func onCancel(_ sender: Any) {
-//		dismiss(self)
 		view.window?.close()
-//		presentingViewController?.dismiss(self)
 	}
 
 	func isDuplicated(url: String) -> Bool {
 		try! context.fetchOne(EndPointEntity.self, "url = %@", url) != nil
 	}
 
+	override func prepare(for segue: NSStoryboardSegue, sender: Any?) {
+		if segue.identifier == "queryParams" {
+			queryTable = segue.destinationController as! ParamTable
+		}
+	}
+
 	// MARK: Private
+
+	private func setupObservers() {
+		NotificationCenter.default.publisher(for: .endPointEditTableChanged)
+			.sink { [weak self] _ in
+				self?.syncQueryToURL()
+			}
+			.store(in: &cancellables)
+	}
+
+	private func syncQueryToURL() {
+		guard !url.isEmpty else {
+			return
+		}
+
+		if var url = URLComponents(string: self.url) {
+			url.queryItems = queries.map { URLQueryItem(name: $0.key, value: $0.value) }
+			urlView.stringValue = url.string ?? ""
+		}
+	}
 
 	private func load(apiData: [String: String]) {
 		self.apiData = apiData
-//		tableView.reloadData()
 	}
 }
 
@@ -201,75 +109,4 @@ extension EndPointEditViewController: NSTableViewDelegate, NSTableViewDataSource
 		case queryParams
 		case headers
 	}
-
-	func numberOfRows(in tableView: NSTableView) -> Int {
-		if tableView.identifier?.rawValue == Table.queryParams.rawValue {
-			return queries.count
-		}
-
-		fatalError()
-	}
-
-	func tableView(_ tableView: NSTableView, viewFor tableColumn: NSTableColumn?, row: Int) -> NSView? {
-		if tableView.identifier?.rawValue == Table.queryParams.rawValue {
-			let id = tableColumn!.identifier.rawValue
-			let view = tableView.makeView(withIdentifier: .init(id), owner: self) as! NSTableCellView
-			if row < queries.count {
-				let query = queries[row]
-				if id == "key" {
-					view.textField?.stringValue = query.key
-				} else {
-					view.textField?.stringValue = query.value
-				}
-			} else {
-				// Add new row
-				view.textField?.stringValue = ""
-//				if id == "key" {
-//					view.textField?.currentEditor()?.selectedRange = NSMakeRange(0, 0)
-//					view.textField?.selectText(self)
-////					view.window?.makeFirstResponder(view.textField)
-//				}
-			}
-			return view
-		}
-
-		fatalError()
-	}
 }
-
-// extension EndPointEditViewController: NSTableViewDelegate, NSTableViewDataSource {
-//	var apiDataArray: [(String, String)] {
-//		apiData.enumerated()
-//			.sorted(by: { $0.element.key < $1.element.key })
-//			.map { $0.element }
-//	}
-//
-//	func numberOfRows(in tableView: NSTableView) -> Int {
-//		apiData.count
-//	}
-//
-//	func tableView(_ tableView: NSTableView, objectValueFor tableColumn: NSTableColumn?, row: Int) -> Any? {
-//		let (path, value) = apiDataArray[row]
-//		if tableColumn?.identifier.rawValue == "key" {
-//			return path
-//		} else if tableColumn?.identifier.rawValue == "value" {
-//			return value
-//		} else if tableColumn?.identifier.rawValue == "check" {
-//			return watchPathsSubject.value.contains(path)
-//		}
-//
-//		return nil
-//	}
-//
-//	func tableView(_ tableView: NSTableView, setObjectValue object: Any?, for tableColumn: NSTableColumn?, row: Int) {
-//		guard let identifier = tableColumn?.identifier else { return }
-//		if identifier.rawValue == "check" {
-//			let checked = object as! Bool
-//			if checked {
-//				watchPathsSubject.value.insert(apiDataArray[row].0)
-//			} else {
-//				watchPathsSubject.value.remove(apiDataArray[row].0)
-//			}
-//		}
-//	}
-// }
