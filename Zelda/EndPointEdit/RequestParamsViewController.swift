@@ -91,6 +91,7 @@ class RequestParamsViewController: NSViewController, NSTableViewDelegate, NSTabl
 			listView.insertRows(at: IndexSet(integer: params.count), withAnimation: .effectFade)
 			listView.endUpdates()
 			
+			listView.selectRowIndexes(IndexSet(integer: 0), byExtendingSelection: false)
 			listView.editColumn(0, row: params.count - 1, with: nil, select: true)
 		}
 	}

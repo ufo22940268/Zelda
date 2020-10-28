@@ -228,10 +228,10 @@
                                                                         <font key="font" usesAppearanceFont="YES"/>
                                                                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                                                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                                                        <connections>
-                                                                            <action selector="onUpdateKey:" target="TGY-Sd-XwH" id="j54-ka-vaq"/>
-                                                                        </connections>
                                                                     </textFieldCell>
+                                                                    <connections>
+                                                                        <action selector="onUpdateKey:" target="TGY-Sd-XwH" id="E8V-Tl-tff"/>
+                                                                    </connections>
                                                                 </textField>
                                                             </subviews>
                                                             <constraints>
