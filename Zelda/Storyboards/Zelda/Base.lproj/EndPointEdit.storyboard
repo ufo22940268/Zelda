@@ -289,6 +289,7 @@
                                                 </tableColumn>
                                             </tableColumns>
                                             <connections>
+                                                <action trigger="doubleAction" selector="tableDoubleAction:" target="TGY-Sd-XwH" id="9p0-7j-O92"/>
                                                 <outlet property="dataSource" destination="TGY-Sd-XwH" id="n7T-tV-zaq"/>
                                                 <outlet property="delegate" destination="TGY-Sd-XwH" id="KuW-Hk-ytu"/>
                                             </connections>

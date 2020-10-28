@@ -26,6 +26,8 @@ protocol ParamTable {
 }
 
 class RequestParamsViewController: NSViewController, NSTableViewDelegate, NSTableViewDataSource {
+	// MARK: Internal
+
 	@IBOutlet var listView: NSTableView!
 	@IBOutlet var stepperView: NSSegmentedControl!
 
@@ -103,7 +105,7 @@ class RequestParamsViewController: NSViewController, NSTableViewDelegate, NSTabl
 	}
 
 	func tableView(_ tableView: NSTableView, didAdd rowView: NSTableRowView, forRow row: Int) {
-		params.append(Param(key: "", value: ""))
+		addEmptyRow()
 	}
 
 	@IBAction func onUpdateValue(_ sender: NSTextField) {
@@ -118,6 +120,14 @@ class RequestParamsViewController: NSViewController, NSTableViewDelegate, NSTabl
 
 	func reload() {
 		listView.reloadData()
+	}
+
+	// MARK: Fileprivate
+
+	fileprivate func addEmptyRow() {
+		if !hasEmptyTail() {
+			params.append(Param(key: "", value: ""))
+		}
 	}
 }
 
