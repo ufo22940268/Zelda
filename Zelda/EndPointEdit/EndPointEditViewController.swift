@@ -13,7 +13,6 @@ class EndPointEditViewController: NSViewController, NSTextFieldDelegate {
 
 	@Published var url: String = ""
 	var validateResultSubject = CurrentValueSubject<ValidateURLResult, Never>(.initial)
-	@IBOutlet var prompt: NSTextField!
 	var apiData = [String: String]()
 	@IBOutlet var tableView: NSTableView!
 	var watchPathsSubject = CurrentValueSubject<Set<String>, Never>(Set<String>())
@@ -23,9 +22,9 @@ class EndPointEditViewController: NSViewController, NSTextFieldDelegate {
 	@IBOutlet var confirmButton: NSButton!
 	var type = EndPointEditType.edit
 
-	var endPointToUpsert: EndPointReq? {
-		EndPointReq(url: url, watchFields: apiDataArray.filter { watchPathsSubject.value.contains($0.0) }.map { path, value in EndPointReq.WatchField(path: path, value: value) })
-	}
+//	var endPointToUpsert: EndPointReq? {
+//		EndPointReq(url: url, watchFields: apiDataArray.filter { watchPathsSubject.value.contains($0.0) }.map { path, value in EndPointReq.WatchField(path: path, value: value) })
+//	}
 
 	var context: NSManagedObjectContext {
 		type.context
@@ -61,7 +60,6 @@ class EndPointEditViewController: NSViewController, NSTextFieldDelegate {
 		validateResultSubject.sink { [weak self] result in
 			guard let self = self else { return }
 
-			self.prompt.stringValue = result.label
 			if case .ok(let json) = result {
 				self.load(apiData: json.convertToPathMap())
 				self.confirmButton.isEnabled = true
@@ -107,29 +105,29 @@ class EndPointEditViewController: NSViewController, NSTextFieldDelegate {
 		url = field.stringValue
 	}
 
-	@IBAction func onConfirm(_ sender: Any) {
-		if let endPointToUpsert = endPointToUpsert {
-			saveSubject.send(endPointToUpsert)
-		}
-	}
-
-	func saveEndPoint() -> NSManagedObjectID {
-		let ep = EndPointEntity(context: context)
-		ep.url = url
-
-		for api in apiDataArray.filter({ watchPathsSubject.value.contains($0.0) }) {
-			let (path, value) = api
-			let apiEntity = ApiEntity(context: context)
-			apiEntity.endPoint = ep
-			apiEntity.paths = path
-			apiEntity.value = value
-		}
-
-		try! context.save()
-		try! context.parent!.save()
-
-		return ep.objectID
-	}
+//	@IBAction func onConfirm(_ sender: Any) {
+//		if let endPointToUpsert = endPointToUpsert {
+//			saveSubject.send(endPointToUpsert)
+//		}
+//	}
+//
+//	func saveEndPoint() -> NSManagedObjectID {
+//		let ep = EndPointEntity(context: context)
+//		ep.url = url
+//
+//		for api in apiDataArray.filter({ watchPathsSubject.value.contains($0.0) }) {
+//			let (path, value) = api
+//			let apiEntity = ApiEntity(context: context)
+//			apiEntity.endPoint = ep
+//			apiEntity.paths = path
+//			apiEntity.value = value
+//		}
+//
+//		try! context.save()
+//		try! context.parent!.save()
+//
+//		return ep.objectID
+//	}
 
 	@IBAction func onCancel(_ sender: Any) {
 //		dismiss(self)
@@ -150,38 +148,74 @@ class EndPointEditViewController: NSViewController, NSTextFieldDelegate {
 }
 
 extension EndPointEditViewController: NSTableViewDelegate, NSTableViewDataSource {
-	var apiDataArray: [(String, String)] {
-		apiData.enumerated()
-			.sorted(by: { $0.element.key < $1.element.key })
-			.map { $0.element }
-	}
-
-	func numberOfRows(in tableView: NSTableView) -> Int {
-		apiData.count
-	}
-
-	func tableView(_ tableView: NSTableView, objectValueFor tableColumn: NSTableColumn?, row: Int) -> Any? {
-		let (path, value) = apiDataArray[row]
-		if tableColumn?.identifier.rawValue == "key" {
-			return path
-		} else if tableColumn?.identifier.rawValue == "value" {
-			return value
-		} else if tableColumn?.identifier.rawValue == "check" {
-			return watchPathsSubject.value.contains(path)
-		}
-
-		return nil
-	}
-
-	func tableView(_ tableView: NSTableView, setObjectValue object: Any?, for tableColumn: NSTableColumn?, row: Int) {
-		guard let identifier = tableColumn?.identifier else { return }
-		if identifier.rawValue == "check" {
-			let checked = object as! Bool
-			if checked {
-				watchPathsSubject.value.insert(apiDataArray[row].0)
-			} else {
-				watchPathsSubject.value.remove(apiDataArray[row].0)
+	
+	enum Kind: CaseIterable {
+		case query
+		case headers
+		
+		var label: String {
+			switch self {
+			case .query:
+				return "Query Params"
+			case .headers:
+				return "Headers"
 			}
 		}
 	}
+	
+	func numberOfRows(in tableView: NSTableView) -> Int {
+		if tableView.identifier?.rawValue == "kind" {
+			return Kind.allCases.count
+		}
+		
+		fatalError()
+	}
+	
+	func tableView(_ tableView: NSTableView, viewFor tableColumn: NSTableColumn?, row: Int) -> NSView? {
+		if tableView.identifier?.rawValue == "kind" {
+			let view = tableView.makeView(withIdentifier: .init("cell"), owner: self) as! NSTableCellView
+			view.textField?.stringValue = Kind.allCases[row].label
+			return view
+		}
+		
+		fatalError()
+	}
+	
 }
+
+//extension EndPointEditViewController: NSTableViewDelegate, NSTableViewDataSource {
+//	var apiDataArray: [(String, String)] {
+//		apiData.enumerated()
+//			.sorted(by: { $0.element.key < $1.element.key })
+//			.map { $0.element }
+//	}
+//
+//	func numberOfRows(in tableView: NSTableView) -> Int {
+//		apiData.count
+//	}
+//
+//	func tableView(_ tableView: NSTableView, objectValueFor tableColumn: NSTableColumn?, row: Int) -> Any? {
+//		let (path, value) = apiDataArray[row]
+//		if tableColumn?.identifier.rawValue == "key" {
+//			return path
+//		} else if tableColumn?.identifier.rawValue == "value" {
+//			return value
+//		} else if tableColumn?.identifier.rawValue == "check" {
+//			return watchPathsSubject.value.contains(path)
+//		}
+//
+//		return nil
+//	}
+//
+//	func tableView(_ tableView: NSTableView, setObjectValue object: Any?, for tableColumn: NSTableColumn?, row: Int) {
+//		guard let identifier = tableColumn?.identifier else { return }
+//		if identifier.rawValue == "check" {
+//			let checked = object as! Bool
+//			if checked {
+//				watchPathsSubject.value.insert(apiDataArray[row].0)
+//			} else {
+//				watchPathsSubject.value.remove(apiDataArray[row].0)
+//			}
+//		}
+//	}
+//}

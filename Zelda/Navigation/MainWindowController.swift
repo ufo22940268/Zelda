@@ -24,6 +24,10 @@ class MainWindowController: NSWindowController {
 				self?.startRefreshButton.isEnabled = true
 			}
 			.store(in: &cancellables)
+		
+		DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
+			self.performSegue(withIdentifier: "add", sender: self)
+		}
 	}
 
 	override func prepare(for segue: NSStoryboardSegue, sender: Any?) {
