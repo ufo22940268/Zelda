@@ -81,6 +81,7 @@ class RequestParamsViewController: NSViewController, NSTableViewDelegate, NSTabl
 		if sender.selectedSegment == 1 {
 			// Delete
 			if let selectedRow = selectedRow {
+				params.remove(at: selectedRow)
 				listView.removeRows(at: IndexSet(integer: selectedRow), withAnimation: .effectFade)
 			}
 		} else if sender.selectedSegment == 0 {
@@ -103,11 +104,6 @@ class RequestParamsViewController: NSViewController, NSTableViewDelegate, NSTabl
 
 	func tableView(_ tableView: NSTableView, didAdd rowView: NSTableRowView, forRow row: Int) {
 		params.append(Param(key: "", value: ""))
-	}
-
-	func tableView(_ tableView: NSTableView, didRemove rowView: NSTableRowView, forRow row: Int) {
-		guard row != -1 else { return }
-		params.remove(at: row)
 	}
 
 	@IBAction func onUpdateValue(_ sender: NSTextField) {
