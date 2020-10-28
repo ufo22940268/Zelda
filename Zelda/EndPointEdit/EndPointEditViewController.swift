@@ -45,6 +45,16 @@ class EndPointEditViewController: NSViewController, NSTextFieldDelegate {
 				}
 			}
 			.store(in: &cancellables)
+		
+		$url
+			.map { $0.isValidURL() }
+			.sink { [weak self] valid in
+				if let table = self?.queryTable {
+					table.setEnabled(valid)
+				}
+			}
+			.store(in: &cancellables)
+		
 		setupObservers()
 	}
 

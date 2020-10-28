@@ -313,6 +313,7 @@
                     </view>
                     <connections>
                         <outlet property="listView" destination="1Qa-Of-bBy" id="gZa-NZ-arb"/>
+                        <outlet property="stepperView" destination="knb-ks-VWR" id="Pxu-T8-YZe"/>
                     </connections>
                 </viewController>
                 <customObject id="tEJ-be-Gf2" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>

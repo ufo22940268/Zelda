@@ -21,10 +21,13 @@ typealias QueryParam = Param
 protocol ParamTable {
 	var params: [Param] { get set }
 	func reload()
+
+	func setEnabled(_ enabled: Bool)
 }
 
 class RequestParamsViewController: NSViewController, NSTableViewDelegate, NSTableViewDataSource {
 	@IBOutlet var listView: NSTableView!
+	@IBOutlet var stepperView: NSSegmentedControl!
 
 	var selectedParam: Param? {
 		if (0 ..< params.count).contains(listView.selectedRow) {
@@ -50,6 +53,7 @@ class RequestParamsViewController: NSViewController, NSTableViewDelegate, NSTabl
 
 	override func viewDidLoad() {
 		super.viewDidLoad()
+		setEnabled(false)
 	}
 
 	func tableView(_ tableView: NSTableView, viewFor tableColumn: NSTableColumn?, row: Int) -> NSView? {
@@ -86,12 +90,13 @@ class RequestParamsViewController: NSViewController, NSTableViewDelegate, NSTabl
 			listView.beginUpdates()
 			listView.insertRows(at: IndexSet(integer: params.count), withAnimation: .effectFade)
 			listView.endUpdates()
-			listView.editColumn(0, row: params.count, with: nil, select: true)
+			
+			listView.editColumn(0, row: params.count - 1, with: nil, select: true)
 		}
 	}
 
 	func tableView(_ tableView: NSTableView, didAdd rowView: NSTableRowView, forRow row: Int) {
-		params.insert(Param(key: "", value: ""), at: row)
+		params.append(Param(key: "", value: ""))
 	}
 
 	@IBAction func onUpdateValue(_ sender: NSTextField) {
@@ -103,10 +108,15 @@ class RequestParamsViewController: NSViewController, NSTableViewDelegate, NSTabl
 		guard let row = selectedRow else { return }
 		params[row].key = sender.stringValue
 	}
-	
+
 	func reload() {
-		self.listView.reloadData()
+		listView.reloadData()
 	}
 }
 
-extension RequestParamsViewController: ParamTable {}
+extension RequestParamsViewController: ParamTable {
+	func setEnabled(_ enabled: Bool) {
+		listView.isEnabled = enabled
+		stepperView.isEnabled = enabled
+	}
+}
