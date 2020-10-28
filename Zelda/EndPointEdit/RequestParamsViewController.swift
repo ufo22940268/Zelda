@@ -81,8 +81,7 @@ class RequestParamsViewController: NSViewController, NSTableViewDelegate, NSTabl
 		if sender.selectedSegment == 1 {
 			// Delete
 			if let selectedRow = selectedRow {
-				params.remove(at: selectedRow)
-				listView.reloadData()
+				listView.removeRows(at: IndexSet(integer: selectedRow), withAnimation: .effectFade)
 			}
 		} else if sender.selectedSegment == 0 {
 			// MARK: Add
@@ -92,7 +91,7 @@ class RequestParamsViewController: NSViewController, NSTableViewDelegate, NSTabl
 				listView.insertRows(at: IndexSet(integer: params.count), withAnimation: .effectFade)
 				listView.endUpdates()
 			}
-			
+
 			listView.selectRowIndexes(IndexSet(integer: 0), byExtendingSelection: false)
 			listView.editColumn(0, row: params.count - 1, with: nil, select: true)
 		}
@@ -104,6 +103,11 @@ class RequestParamsViewController: NSViewController, NSTableViewDelegate, NSTabl
 
 	func tableView(_ tableView: NSTableView, didAdd rowView: NSTableRowView, forRow row: Int) {
 		params.append(Param(key: "", value: ""))
+	}
+	
+	func tableView(_ tableView: NSTableView, didRemove rowView: NSTableRowView, forRow row: Int) {
+		guard row != -1 else { return }
+		params.remove(at: row)
 	}
 
 	@IBAction func onUpdateValue(_ sender: NSTextField) {
