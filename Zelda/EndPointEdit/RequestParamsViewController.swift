@@ -53,7 +53,7 @@ class RequestParamsViewController: NSViewController, NSTableViewDelegate, NSTabl
 
 	override func viewDidLoad() {
 		super.viewDidLoad()
-		setEnabled(false)
+		//	setEnabled(false)
 	}
 
 	func tableView(_ tableView: NSTableView, viewFor tableColumn: NSTableColumn?, row: Int) -> NSView? {
@@ -104,19 +104,19 @@ class RequestParamsViewController: NSViewController, NSTableViewDelegate, NSTabl
 	func tableView(_ tableView: NSTableView, didAdd rowView: NSTableRowView, forRow row: Int) {
 		params.append(Param(key: "", value: ""))
 	}
-	
+
 	func tableView(_ tableView: NSTableView, didRemove rowView: NSTableRowView, forRow row: Int) {
 		guard row != -1 else { return }
 		params.remove(at: row)
 	}
 
 	@IBAction func onUpdateValue(_ sender: NSTextField) {
-		guard let row = selectedRow else { return }
+		let row = listView.row(for: sender)
 		params[row].value = sender.stringValue
 	}
 
 	@IBAction func onUpdateKey(_ sender: NSTextField) {
-		guard let row = selectedRow else { return }
+		let row = listView.row(for: sender)
 		params[row].key = sender.stringValue
 	}
 
