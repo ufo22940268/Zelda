@@ -11,6 +11,15 @@ import Combine
 class EndPointEditViewController: NSViewController, NSTextFieldDelegate {
 	// MARK: Internal
 
+//	var endPointToUpsert: EndPointReq? {
+//		EndPointReq(url: url, watchFields: apiDataArray.filter { watchPathsSubject.value.contains($0.0) }.map { path, value in EndPointReq.WatchField(path: path, value: value) })
+//	}
+
+	struct Query {
+		var key: String
+		var value: String
+	}
+
 	@Published var url: String = ""
 	var validateResultSubject = CurrentValueSubject<ValidateURLResult, Never>(.initial)
 	var apiData = [String: String]()
@@ -18,13 +27,11 @@ class EndPointEditViewController: NSViewController, NSTextFieldDelegate {
 	var watchPathsSubject = CurrentValueSubject<Set<String>, Never>(Set<String>())
 	var saveSubject = PassthroughSubject<EndPointReq, Never>()
 	var cancellables = Set<AnyCancellable>()
+	var queries = [Query]()
+	@IBOutlet var queryTableView: NSTableView!
 
 	@IBOutlet var confirmButton: NSButton!
 	var type = EndPointEditType.edit
-
-//	var endPointToUpsert: EndPointReq? {
-//		EndPointReq(url: url, watchFields: apiDataArray.filter { watchPathsSubject.value.contains($0.0) }.map { path, value in EndPointReq.WatchField(path: path, value: value) })
-//	}
 
 	var context: NSManagedObjectContext {
 		type.context
@@ -94,10 +101,12 @@ class EndPointEditViewController: NSViewController, NSTextFieldDelegate {
 			.handleEvents(receiveOutput: { [weak self] _ in
 				self?.confirmButton.isEnabled = true
 			})
-			.sink(receiveCompletion: { _ in }, receiveValue: { [weak self]() in
+			.sink(receiveCompletion: { _ in }, receiveValue: { [weak self] () in
 				self?.view.window?.close()
 			})
 			.store(in: &cancellables)
+
+		queries = [Query(key: "a", value: "b"), Query(key: "c", value: "d")]
 	}
 
 	func controlTextDidChange(_ obj: Notification) {
@@ -129,9 +138,33 @@ class EndPointEditViewController: NSViewController, NSTextFieldDelegate {
 //		return ep.objectID
 //	}
 
+	@IBAction func onTextEdit(_ sender: Any) {
+		print("onTextEdit")
+	}
+
+	@IBAction func onUpdateQueryParams(_ sender: NSSegmentedCell) {
+		if sender.selectedSegment == 1 {
+			// Delete
+			if queryTableView.selectedRow > 0 {
+				queries.remove(at: queryTableView.selectedRow)
+				queryTableView.reloadData()
+			}
+		} else if sender.selectedSegment == 0 {
+			// Add
+			queryTableView.beginUpdates()
+			queryTableView.insertRows(at: IndexSet(integer: queries.count), withAnimation: .effectFade)
+			queryTableView.endUpdates()
+			queryTableView.editColumn(0, row: queries.count, with: nil, select: true)
+		}
+	}
+
+	func tableView(_ tableView: NSTableView, setObjectValue object: Any?, for tableColumn: NSTableColumn?, row: Int) {
+		print(object)
+	}
+
 	@IBAction func onCancel(_ sender: Any) {
 //		dismiss(self)
-		self.view.window?.close()
+		view.window?.close()
 //		presentingViewController?.dismiss(self)
 	}
 
@@ -148,11 +181,12 @@ class EndPointEditViewController: NSViewController, NSTextFieldDelegate {
 }
 
 extension EndPointEditViewController: NSTableViewDelegate, NSTableViewDataSource {
-	
 	enum Kind: CaseIterable {
 		case query
 		case headers
-		
+
+		// MARK: Internal
+
 		var label: String {
 			switch self {
 			case .query:
@@ -162,28 +196,48 @@ extension EndPointEditViewController: NSTableViewDelegate, NSTableViewDataSource
 			}
 		}
 	}
-	
+
+	enum Table: String {
+		case queryParams
+		case headers
+	}
+
 	func numberOfRows(in tableView: NSTableView) -> Int {
-		if tableView.identifier?.rawValue == "kind" {
-			return Kind.allCases.count
+		if tableView.identifier?.rawValue == Table.queryParams.rawValue {
+			return queries.count
 		}
-		
+
 		fatalError()
 	}
-	
+
 	func tableView(_ tableView: NSTableView, viewFor tableColumn: NSTableColumn?, row: Int) -> NSView? {
-		if tableView.identifier?.rawValue == "kind" {
-			let view = tableView.makeView(withIdentifier: .init("cell"), owner: self) as! NSTableCellView
-			view.textField?.stringValue = Kind.allCases[row].label
+		if tableView.identifier?.rawValue == Table.queryParams.rawValue {
+			let id = tableColumn!.identifier.rawValue
+			let view = tableView.makeView(withIdentifier: .init(id), owner: self) as! NSTableCellView
+			if row < queries.count {
+				let query = queries[row]
+				if id == "key" {
+					view.textField?.stringValue = query.key
+				} else {
+					view.textField?.stringValue = query.value
+				}
+			} else {
+				// Add new row
+				view.textField?.stringValue = ""
+//				if id == "key" {
+//					view.textField?.currentEditor()?.selectedRange = NSMakeRange(0, 0)
+//					view.textField?.selectText(self)
+////					view.window?.makeFirstResponder(view.textField)
+//				}
+			}
 			return view
 		}
-		
+
 		fatalError()
 	}
-	
 }
 
-//extension EndPointEditViewController: NSTableViewDelegate, NSTableViewDataSource {
+// extension EndPointEditViewController: NSTableViewDelegate, NSTableViewDataSource {
 //	var apiDataArray: [(String, String)] {
 //		apiData.enumerated()
 //			.sorted(by: { $0.element.key < $1.element.key })
@@ -218,4 +272,4 @@ extension EndPointEditViewController: NSTableViewDelegate, NSTableViewDataSource
 //			}
 //		}
 //	}
-//}
+// }
