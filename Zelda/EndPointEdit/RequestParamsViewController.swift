@@ -87,13 +87,19 @@ class RequestParamsViewController: NSViewController, NSTableViewDelegate, NSTabl
 		} else if sender.selectedSegment == 0 {
 			// MARK: Add
 
-			listView.beginUpdates()
-			listView.insertRows(at: IndexSet(integer: params.count), withAnimation: .effectFade)
-			listView.endUpdates()
+			if !hasEmptyTail() {
+				listView.beginUpdates()
+				listView.insertRows(at: IndexSet(integer: params.count), withAnimation: .effectFade)
+				listView.endUpdates()
+			}
 			
 			listView.selectRowIndexes(IndexSet(integer: 0), byExtendingSelection: false)
 			listView.editColumn(0, row: params.count - 1, with: nil, select: true)
 		}
+	}
+
+	func hasEmptyTail() -> Bool {
+		params.last != nil && params.last!.key.isEmpty
 	}
 
 	func tableView(_ tableView: NSTableView, didAdd rowView: NSTableRowView, forRow row: Int) {
