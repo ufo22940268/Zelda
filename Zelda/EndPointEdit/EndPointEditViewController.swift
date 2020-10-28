@@ -41,6 +41,7 @@ class EndPointEditViewController: NSViewController, NSTextFieldDelegate {
 			.sink { [weak self] url in
 				if let url = URLComponents(string: url) {
 					self?.queryTable.params = url.queryItems?.params ?? []
+					self?.queryTable.reload()
 				}
 			}
 			.store(in: &cancellables)

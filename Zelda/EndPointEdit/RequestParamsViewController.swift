@@ -10,7 +10,7 @@ import Cocoa
 struct Param {
 	var key: String
 	var value: String
-	
+
 	var isEmpty: Bool {
 		key.isEmpty || value.isEmpty
 	}
@@ -20,6 +20,7 @@ typealias QueryParam = Param
 
 protocol ParamTable {
 	var params: [Param] { get set }
+	func reload()
 }
 
 class RequestParamsViewController: NSViewController, NSTableViewDelegate, NSTableViewDataSource {
@@ -80,13 +81,17 @@ class RequestParamsViewController: NSViewController, NSTableViewDelegate, NSTabl
 				listView.reloadData()
 			}
 		} else if sender.selectedSegment == 0 {
-			// Add
+			// MARK: Add
+
 			listView.beginUpdates()
 			listView.insertRows(at: IndexSet(integer: params.count), withAnimation: .effectFade)
 			listView.endUpdates()
-			params.append(Param(key: "", value: ""))
 			listView.editColumn(0, row: params.count, with: nil, select: true)
 		}
+	}
+
+	func tableView(_ tableView: NSTableView, didAdd rowView: NSTableRowView, forRow row: Int) {
+		params.insert(Param(key: "", value: ""), at: row)
 	}
 
 	@IBAction func onUpdateValue(_ sender: NSTextField) {
@@ -97,6 +102,10 @@ class RequestParamsViewController: NSViewController, NSTableViewDelegate, NSTabl
 	@IBAction func onUpdateKey(_ sender: NSTextField) {
 		guard let row = selectedRow else { return }
 		params[row].key = sender.stringValue
+	}
+	
+	func reload() {
+		self.listView.reloadData()
 	}
 }
 
