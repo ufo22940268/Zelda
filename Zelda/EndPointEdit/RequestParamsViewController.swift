@@ -10,6 +10,10 @@ import Cocoa
 struct Param {
 	var key: String
 	var value: String
+	
+	var isEmpty: Bool {
+		key.isEmpty || value.isEmpty
+	}
 }
 
 typealias QueryParam = Param
@@ -39,14 +43,12 @@ class RequestParamsViewController: NSViewController, NSTableViewDelegate, NSTabl
 
 	var params = [Param]() {
 		didSet {
-			listView.reloadData()
 			NotificationCenter.default.post(.init(name: .endPointEditTableChanged))
 		}
 	}
 
 	override func viewDidLoad() {
 		super.viewDidLoad()
-		params = [Param(key: "a", value: "b"), Param(key: "c", value: "d")]
 	}
 
 	func tableView(_ tableView: NSTableView, viewFor tableColumn: NSTableColumn?, row: Int) -> NSView? {
@@ -73,8 +75,8 @@ class RequestParamsViewController: NSViewController, NSTableViewDelegate, NSTabl
 	@IBAction func onUpdateQueryParams(_ sender: NSSegmentedCell) {
 		if sender.selectedSegment == 1 {
 			// Delete
-			if listView.selectedRow > 0 {
-				params.remove(at: listView.selectedRow)
+			if let selectedRow = selectedRow {
+				params.remove(at: selectedRow)
 				listView.reloadData()
 			}
 		} else if sender.selectedSegment == 0 {
@@ -82,6 +84,7 @@ class RequestParamsViewController: NSViewController, NSTableViewDelegate, NSTabl
 			listView.beginUpdates()
 			listView.insertRows(at: IndexSet(integer: params.count), withAnimation: .effectFade)
 			listView.endUpdates()
+			params.append(Param(key: "", value: ""))
 			listView.editColumn(0, row: params.count, with: nil, select: true)
 		}
 	}

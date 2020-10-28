@@ -52,9 +52,7 @@ class EndPointEditViewController: NSViewController, NSTextFieldDelegate {
 		url = field.stringValue
 	}
 
-	func tableView(_ tableView: NSTableView, setObjectValue object: Any?, for tableColumn: NSTableColumn?, row: Int) {
-		print(object)
-	}
+	func tableView(_ tableView: NSTableView, setObjectValue object: Any?, for tableColumn: NSTableColumn?, row: Int) {}
 
 	@IBAction func onCancel(_ sender: Any) {
 		view.window?.close()
@@ -86,7 +84,7 @@ class EndPointEditViewController: NSViewController, NSTextFieldDelegate {
 		}
 
 		if var url = URLComponents(string: self.url) {
-			url.queryItems = queries.map { URLQueryItem(name: $0.key, value: $0.value) }
+			url.queryItems = queries.filter { !$0.isEmpty }.map { URLQueryItem(name: $0.key, value: $0.value) }
 			urlView.stringValue = url.string ?? ""
 		}
 	}
