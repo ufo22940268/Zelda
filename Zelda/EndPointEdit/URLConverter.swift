@@ -9,7 +9,11 @@ import Foundation
 
 typealias Params = [Param]
 
-extension Params {}
+extension Params {
+	var queryItems: [URLQueryItem] {
+		self.map { URLQueryItem(name: $0.key, value: $0.value) }
+	}
+}
 
 typealias URLQueryItems = [URLQueryItem]
 

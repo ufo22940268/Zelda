@@ -95,7 +95,7 @@ class EndPointEditViewController: NSViewController, NSTextFieldDelegate {
 		}
 
 		if var url = URLComponents(string: self.url) {
-			url.queryItems = queries.filter { !$0.isEmpty }.map { URLQueryItem(name: $0.key, value: $0.value) }
+			url.queryItems = queries.filter { !$0.isEmpty }.queryItems
 			urlView.stringValue = url.string ?? ""
 		}
 	}
