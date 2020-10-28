@@ -36,6 +36,14 @@ class EndPointEditViewController: NSViewController, NSTextFieldDelegate {
 		super.viewDidLoad()
 
 		confirmButton.setPrimary()
+		$url
+			.filter { $0.isValidURL() }
+			.sink { [weak self] url in
+				if let url = URLComponents(string: url) {
+					self?.queryTable.params = url.queryItems?.params ?? []
+				}
+			}
+			.store(in: &cancellables)
 		setupObservers()
 	}
 
@@ -58,7 +66,7 @@ class EndPointEditViewController: NSViewController, NSTextFieldDelegate {
 
 	override func prepare(for segue: NSStoryboardSegue, sender: Any?) {
 		if segue.identifier == "queryParams" {
-			queryTable = segue.destinationController as! ParamTable
+			queryTable = segue.destinationController as? ParamTable
 		}
 	}
 

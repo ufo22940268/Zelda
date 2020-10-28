@@ -15,29 +15,29 @@ struct Param {
 typealias QueryParam = Param
 
 protocol ParamTable {
-	var params: [Param] { get }
+	var params: [Param] { get set }
 }
 
 class RequestParamsViewController: NSViewController, NSTableViewDelegate, NSTableViewDataSource {
 	@IBOutlet var listView: NSTableView!
 
 	var selectedParam: Param? {
-		if (0 ..< data.count).contains(listView.selectedRow) {
-			return data[listView.selectedRow]
+		if (0 ..< params.count).contains(listView.selectedRow) {
+			return params[listView.selectedRow]
 		} else {
 			return nil
 		}
 	}
 
 	var selectedRow: Int? {
-		if (0 ..< data.count).contains(listView.selectedRow) {
+		if (0 ..< params.count).contains(listView.selectedRow) {
 			return listView.selectedRow
 		} else {
 			return nil
 		}
 	}
 
-	var data = [Param]() {
+	var params = [Param]() {
 		didSet {
 			listView.reloadData()
 			NotificationCenter.default.post(.init(name: .endPointEditTableChanged))
@@ -46,14 +46,14 @@ class RequestParamsViewController: NSViewController, NSTableViewDelegate, NSTabl
 
 	override func viewDidLoad() {
 		super.viewDidLoad()
-		data = [Param(key: "a", value: "b"), Param(key: "c", value: "d")]
+		params = [Param(key: "a", value: "b"), Param(key: "c", value: "d")]
 	}
 
 	func tableView(_ tableView: NSTableView, viewFor tableColumn: NSTableColumn?, row: Int) -> NSView? {
 		let id = tableColumn!.identifier.rawValue
 		let view = tableView.makeView(withIdentifier: .init(id), owner: self) as! NSTableCellView
-		if row < data.count {
-			let query = data[row]
+		if row < params.count {
+			let query = params[row]
 			if id == "key" {
 				view.textField?.stringValue = query.key
 			} else {
@@ -67,38 +67,34 @@ class RequestParamsViewController: NSViewController, NSTableViewDelegate, NSTabl
 	}
 
 	func numberOfRows(in tableView: NSTableView) -> Int {
-		return data.count
+		return params.count
 	}
 
 	@IBAction func onUpdateQueryParams(_ sender: NSSegmentedCell) {
 		if sender.selectedSegment == 1 {
 			// Delete
 			if listView.selectedRow > 0 {
-				data.remove(at: listView.selectedRow)
+				params.remove(at: listView.selectedRow)
 				listView.reloadData()
 			}
 		} else if sender.selectedSegment == 0 {
 			// Add
 			listView.beginUpdates()
-			listView.insertRows(at: IndexSet(integer: data.count), withAnimation: .effectFade)
+			listView.insertRows(at: IndexSet(integer: params.count), withAnimation: .effectFade)
 			listView.endUpdates()
-			listView.editColumn(0, row: data.count, with: nil, select: true)
+			listView.editColumn(0, row: params.count, with: nil, select: true)
 		}
 	}
 
 	@IBAction func onUpdateValue(_ sender: NSTextField) {
 		guard let row = selectedRow else { return }
-		data[row].value = sender.stringValue
+		params[row].value = sender.stringValue
 	}
 
 	@IBAction func onUpdateKey(_ sender: NSTextField) {
 		guard let row = selectedRow else { return }
-		data[row].key = sender.stringValue
+		params[row].key = sender.stringValue
 	}
 }
 
-extension RequestParamsViewController: ParamTable {
-	var params: [Param] {
-		data
-	}
-}
+extension RequestParamsViewController: ParamTable {}
